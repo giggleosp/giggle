@@ -3,6 +3,48 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+$indigo: #3F51B5;
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.bg-indigo {
+  background-color: $indigo;
+}
+
+.navbar {
+  border-color: $indigo;
+  border-radius: 0;
+  -webkit-box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
+  -moz-box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
+  box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
+}
+
+.navbar-nav > li > a, .navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 65px;
+}
+
+@media (max-width: 767px) {
+  .navbar-brand {
+    margin-top: 5px;
+  }
+}
+
+.navbar-form {
+  padding-top: 8px;
+  //padding-bottom: 5px;
+}
+
+@media (max-width: 767px) {
+  .navbar-nav > li > a, .navbar-brand {
+    line-height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;}
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
