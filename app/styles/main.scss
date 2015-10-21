@@ -16,33 +16,54 @@ html {
   height: 100%;
 }
 
-$indigo: #3F51B5;
-$grey: #9E9E9E;
+// color scheme
+$primary-color-dark:   #303F9F;
+$primary-color:        #3F51B5;
+$primary-color-light:  #C5CAE9;
+$primary-color-text:   #EEEEEE;
+$accent-color:         #FF5252;
+$primary-text-color:   #212121;
+$secondary-text-color: #727272;
+$divider-color:        #B6B6B6;
 
 body {
   font-family: "Geomanist Regular", 'Helvetica Neue', sans-serif;
 }
 
-.material-icons.md-24 { font-size: 24px; }
-
-.navbar {
-  background-color: inherit;
-  border: none;
+.wrapper {
+  padding:0;
 }
 
-.navbar-brand {
-  padding-top: 20px;
-  font-size: 28px;
+.material-icons.md-24 { font-size: 24px; }
+
+.navbar-default {
+  background-color: $primary-color;
+  border: 1px solid $primary-color;
+  border-radius: 0;
+
+  .navbar-brand {
+    padding-top: 18px;
+    margin-bottom: 8px;
+    font-size: 30px;
+  }
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: $primary-color-text;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: $primary-color-text;
 }
 
 .navbar-form {
   padding-top: 5px;
 
   .form-group > input {
-    background-color: $grey;
+    //background-color: $grey;
     opacity: .6;
     border-radius: 0;
-    border-color: $grey;
+    //border-color: $grey;
   }
 }
 
@@ -110,11 +131,19 @@ body {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    position:absolute;
+    right: 0;
+    top: 0;
+  }
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
     max-width: 730px;
   }
+
 
   /* Remove the padding we set earlier */
   .header,
@@ -136,6 +165,7 @@ body {
 .nav-menu {
   position:absolute;
   right: 0;
+  padding-top: 2px;
 }
 
 .side-nav {
@@ -143,8 +173,27 @@ body {
   display: none;
   right:0;
   top:0;
-  min-height: 3000px;
+  min-height: 100%;
   background-color: white;
+
+  .header {
+    padding-bottom: 100px;
+  }
+
+  .nav > ul {
+    padding: 20px 0 0 5px;
+    li {
+      list-style-type: none;
+      position: relative;
+      overflow: hidden;
+
+      a {
+        display: block;
+        text-decoration: none;
+        padding: 15px 20px;
+      }
+    }
+  }
 }
 
 .shadow {
@@ -154,7 +203,10 @@ body {
 }
 
 #menu-drawer {
+  margin-bottom: 10px;
   background-color: inherit;
   border: none;
   cursor: pointer;
 }
+
+
