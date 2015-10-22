@@ -133,15 +133,15 @@ body {
 
 @media screen and (max-width: 768px) {
   .nav-menu {
-    position:absolute;
-    right: 0;
-    top: 0;
+    position: absolute;
+    padding-right: 10px;
+    top: -3px;
   }
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 800px;
   }
 
 
@@ -169,25 +169,27 @@ body {
 }
 
 .side-nav {
-  position: absolute;
+  position: fixed;
   display: none;
   right:0;
   top:0;
+  bottom: 0;
   min-height: 100%;
-  background-color: white;
+  background-color: $primary-color-text;
 
   .header {
-    padding-bottom: 50px;
+    padding-bottom: 60px;
   }
 
   .nav > ul {
-    padding: 20px 0 0 5px;
+    padding: 0 0 0 5px;
     li {
       list-style-type: none;
       position: relative;
       overflow: hidden;
 
       a {
+        font-size: 16px;
         display: block;
         text-decoration: none;
         padding: 15px 20px;
@@ -202,11 +204,24 @@ body {
   box-shadow: 0 15px 30px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
 }
 
-#menu-drawer {
-  margin-bottom: 10px;
+.btn-menu {
   background-color: inherit;
   border: none;
   cursor: pointer;
+}
+
+#menu-open {
+  margin-top: -4px;
+  .material-icons {
+    padding-top: 4px;
+  }
+}
+
+#menu-close {
+  position: absolute;
+  margin-top: 17px;
+  //margin-left: 17px;
+  padding: 1px;
 }
 
 
