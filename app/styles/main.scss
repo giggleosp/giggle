@@ -30,10 +30,6 @@ body {
   font-family: "Geomanist Regular", 'Helvetica Neue', sans-serif;
 }
 
-.wrapper {
-  padding:0;
-}
-
 .material-icons.md-24 { font-size: 24px; }
 
 .navbar-default {
@@ -63,6 +59,45 @@ body {
     margin-bottom: 8px;
     font-size: 30px;
   }
+
+  .navbar-nav {
+    li {
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $primary-color-dark;
+      }
+    }
+    .dropdown {
+      &:hover {
+        background-color: $primary-color-dark;
+      }
+      &:active {
+        background-color: $primary-color-dark;
+      }
+    }
+  }
+  .dropdown {
+    ul {
+      background-color: $primary-color;
+      li {
+        a {
+          color: $primary-color-text;
+          padding-top: 0;
+          padding-bottom: 0;
+          line-height: 35px;
+
+          &:hover {
+            background-color: $primary-color-dark;
+          }
+        }
+      }
+    }
+  }
+}
+
+.navbar-form {
+  padding-top: 6px;
 }
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -73,6 +108,10 @@ body {
   color: $primary-color-text;
 }
 
+.navbar-default .navbar-nav > li.dropdown > a.dropdown-toggle:focus {
+  color: $primary-color-text;
+  background-color: $primary-color-dark;
+}
 
 body {
   padding: 0;
@@ -183,6 +222,10 @@ body {
       }
     }
   }
+}
+
+.dropdown {
+  color: black;
 }
 
 .shadow {
