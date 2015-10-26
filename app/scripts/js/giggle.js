@@ -19,9 +19,9 @@ $(function () {
 });
 
 function showSideNav() {
-  sideNav.show("slide", { direction: "right" }, 250);
+  sideNav.show('slide', {direction: 'left'}, 250);
 }
 
 function hideSideNav() {
-  sideNav.hide("slide", { direction: "right" }, 250);
+  sideNav.hide('slide', {direction: 'left'}, 250);
 }

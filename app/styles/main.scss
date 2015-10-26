@@ -42,6 +42,12 @@ body {
   line-height: 60px;
 }
 
+@media (max-width: 992px) {
+  .navbar-brand {
+    padding-left: 45px;
+  }
+}
+
 @media (max-width: 767px) {
   .navbar-nav > li > a {
     line-height: 10px;
@@ -86,7 +92,6 @@ body {
           padding-top: 0;
           padding-bottom: 0;
           line-height: 35px;
-
           &:hover {
             background-color: $primary-color-dark;
           }
@@ -176,7 +181,6 @@ body {
     max-width: 800px;
   }
 
-
   /* Remove the padding we set earlier */
   .header,
   .marketing,
@@ -197,17 +201,12 @@ body {
 .side-nav {
   position: fixed;
   display: none;
-  right:0;
   top:0;
-  bottom: 0;
   min-height: 100%;
   background-color: $primary-color-text;
 
-  .header {
-    padding-bottom: 60px;
-  }
-
   .nav > ul {
+    left:0;
     padding: 0 0 0 5px;
     li {
       list-style-type: none;
@@ -224,10 +223,6 @@ body {
   }
 }
 
-.dropdown {
-  color: black;
-}
-
 .shadow {
   -webkit-box-shadow: 0 15px 30px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
   -moz-box-shadow: 0 15px 30px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
@@ -241,17 +236,56 @@ body {
 }
 
 #menu-close {
-  position: absolute;
-  margin-top: 17px;
-  padding: 1px;
+  border: 1px solid black;
+  margin-right:-20px;
 }
 
 #menu-open {
   text-decoration: none;
   color: $primary-color-text;
   position: absolute;
-  top: 16px;
+  top: 17px;
+  left: 10px;
+}
+
+.nav-search-mobile {
+  cursor: pointer;
+  text-decoration: none;
+  color: $primary-color-text;
+  position: absolute;
+  top: 17px;
   right: 10px;
+  &:hover,
+  &:focus {
+    color: $primary-color-text;
+  }
+}
+
+.form-control {
+  background-color: $primary-color-text;
+  border-radius: 1px;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+  &:focus {
+    border-bottom: solid 2px $divider-color;
+  }
 }
 
 
+.navbar-form {
+  .form-group {
+    display:inline-block;
+    position:relative;
+    > .form-control {
+      width: 300px;
+      margin-left: 50px;
+      padding-right:30px;
+    }
+    > #nav-search {
+      position:absolute;
+      right:0;
+      top:5px;
+    }
+  }
+}

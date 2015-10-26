@@ -22,70 +22,71 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <nav class="navbar navbar-default shadow">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#/">Giggle</a>
-        </div>
+    <div class="wrapper">
+      <nav class="navbar navbar-default shadow">
+        <div class="container-fluid">
+          <a id="menu-open" class="btn-menu visible-xs visible-sm"><i class="material-icons menu">menu</i></a>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#/">Giggle</a>
+          </div>
+          <div>
+            <ul class="nav navbar-nav hidden-xs hidden-sm">
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu shadow">
+                  <li><a href="#">All</a></li>
+                  <li><a href="#">Favourites</a></li>
+                  <li><a href="#">Nearby</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Music</a></li>
+                  <li><a href="#">Comedy</a></li>
+                  <li><a href="#">Theatre</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artists <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-left hidden-xs hidden-sm" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <a type="button" id="nav-search" href=""><i class="material-icons">search</i></a>
+              </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+              <li><a href="#">Link</a></li>
+              <li><a href="">Test</a></li>
+            </ul>
+            <a class="nav-btn-search visible-xs visible-sm nav-search-mobile"><i class="material-icons">search</i></a>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
 
-        <div>
-          <ul class="nav navbar-nav hidden-xs hidden-sm">
-            <li class="dropdown">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-haspopup="true" aria-expanded="false">Gigs <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu shadow">
-                <li><a href="#">All</a></li>
-                <li><a href="#">Nearby</a></li>
-                <li><a href="#">Favourites</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Music</a></li>
-                <li><a href="#">Comedy</a></li>
-                <li><a href="#">Theatre</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-          <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-            <li><a href="#">Link</a></li>
-            <li><a href="">Test</a></li>
-          </ul>
-          <a href="/#" id="menu-open" class="btn-menu visible-xs visible-sm"><i class="material-icons menu">menu</i></a>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-
-    <div class="container">
-      <div ng-view=""></div>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <div ng-view=""></div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <div class="container">
+          <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        </div>
       </div>
     </div>
-    <div id="side-nav" class="side-nav pull-right col-sm-4 col-xs-8 shadow">
-      <div class="header">
-        <a class="btn-menu" id="menu-close"><i class="material-icons">arrow_forward</i></a>
+    <div id="side-nav" class="side-nav col-sm-8 col-xs-10 shadow">
+      <div class="side-nav-header">
+        <a href="" class="btn-menu material-icons" id="menu-close">arrow_backward</a>
       </div>
       <div class="nav">
         <ul>
@@ -97,7 +98,6 @@
         </ul>
       </div>
     </div>
-
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
