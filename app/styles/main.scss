@@ -75,16 +75,13 @@ body {
   .navbar-nav {
     li {
       &:hover,
-      &:active,
+      &.active,
       &:focus {
         background-color: $primary-color-dark;
       }
     }
     .dropdown {
       &:hover {
-        background-color: $primary-color-dark;
-      }
-      &:active {
         background-color: $primary-color-dark;
       }
     }
@@ -103,12 +100,34 @@ body {
           }
         }
       }
+      &.active {
+        background-color: $primary-color-dark;
+      }
+      .divider {
+        background-color: $primary-color-dark;
+      }
     }
   }
 }
 
 .navbar-form {
   padding-top: 6px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  background-color: $primary-color-dark;
+  color: $primary-color-text;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: $primary-color-dark;
+  color: $primary-color-text;
+}
+
+.navbar-default .navbar-nav {
+  .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: $primary-color-dark;
+  }
 }
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -123,6 +142,17 @@ body {
   color: $primary-color-text;
   background-color: $primary-color-dark;
 }
+
+.navbar-default .navbar-nav > li.dropdown > a.dropdown-toggle:focus {
+  color: $primary-color-text;
+  background-color: $primary-color-dark;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+  background-color: $primary-color-dark;
+}
+
+
 
 body {
   padding: 0;
@@ -214,25 +244,46 @@ body {
   .top {
     line-height: 60px;
     .btn-menu > i {
+      color: $primary-color-dark;
       margin-top: 20px;
     }
   }
-  .nav {
-    padding-top: 20px;
-    > ul {
-      padding: 0 0 0 5px;
+  .nav-wrapper {
+    > .nav {
+      padding: 0;
       li {
         list-style-type: none;
         position: relative;
         overflow: hidden;
-        &:hover {
-          background-color: #E0E0E0;
-        }
         a {
+          color: $primary-color-dark;
           font-size: 16px;
           display: block;
           text-decoration: none;
           padding: 15px 10px;
+          &:hover {
+            background-color: #E0E0E0;
+          }
+        }
+      }
+      .dropdown {
+        > ul {
+          background-color: #E0E0E0;
+          position: relative;
+          border-radius: 0;
+          border: 1px solid #E0E0E0;
+          margin-left: 10px;
+          > li .active > a {
+            background-color: black;
+          }
+          > li {
+            > a {
+              line-height: 0;
+              &:hover {
+                background-color: $primary-color-text;
+              }
+            }
+          }
         }
       }
     }
@@ -260,10 +311,6 @@ body {
   left: 10px;
 }
 
-.col-md-6, .col-md-offset-6 {
-  border: 1px solid black;
-}
-
 .nav-search-mobile {
   cursor: pointer;
   text-decoration: none;
@@ -278,8 +325,9 @@ body {
 }
 
 .form-control {
+  padding: 10px;
   background-color: $primary-color-text;
-  border-radius: 1px;
+  border-radius: 0;
   border: none;
   border-bottom: solid 2px #E0E0E0;
   transition: border 0.3s;

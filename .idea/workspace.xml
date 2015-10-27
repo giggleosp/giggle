@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4886930f-d61b-44cc-a10a-c79b4e17e6f1" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Dev\college\prj400\giggle\npm-debug.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/js/giggle.js" afterPath="$PROJECT_DIR$/app/scripts/js/giggle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/main.scss" afterPath="$PROJECT_DIR$/app/styles/main.scss" />
@@ -27,12 +26,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36131933">
-              <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
-              <folding />
+            <state vertical-scroll-proportion="-40.73077">
+              <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+              <folding>
+                <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,12 +49,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="giggle.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="giggle.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/js/giggle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.8037518">
+              <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+              <folding>
+                <element signature="e#474#583#0" expanded="false" />
+                <element signature="n#!!block;n#showSideNav#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,10 +65,10 @@
       <file leaf-file-name="main.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/styles/main.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.2545457">
-              <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+            <state vertical-scroll-proportion="-17.115385">
+              <caret line="280" column="28" selection-start-line="280" selection-start-column="28" selection-end-line="280" selection-end-column="28" />
               <folding>
-                <element signature="e#1431#2239#0" expanded="false" />
+                <element signature="e#243#589#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -87,9 +92,9 @@
         <option value="$PROJECT_DIR$/app/scripts/app.js" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss" />
+        <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/styles/main.scss" />
         <option value="$PROJECT_DIR$/app/scripts/js/giggle.js" />
-        <option value="$PROJECT_DIR$/app/index.html" />
       </list>
     </option>
   </component>
@@ -127,6 +132,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -145,9 +151,118 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap-sass-official" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap-sass-official" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap-sass-official" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="giggle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap-sass-official" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -282,8 +397,11 @@
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="88" column="81" selection-start-line="88" selection-start-column="81" selection-end-line="88" selection-end-column="81" />
-          <folding />
+          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -298,17 +416,20 @@
     <entry file="file://$PROJECT_DIR$/app/scripts/js/giggle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#474#583#0" expanded="false" />
+            <element signature="n#!!block;n#showSideNav#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/main.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
           <folding>
-            <element signature="e#1431#2239#0" expanded="false" />
+            <element signature="e#243#589#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -317,7 +438,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="88" column="81" selection-start-line="88" selection-start-column="81" selection-end-line="88" selection-end-column="81" />
-          <folding />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -333,7 +457,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#474#583#0" expanded="false" />
+            <element signature="n#!!block;n#showSideNav#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -342,7 +469,47 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1431#2239#0" expanded="false" />
+            <element signature="e#243#589#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="81" selection-start-line="88" selection-start-column="81" selection-end-line="88" selection-end-column="81" />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/js/giggle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#474#583#0" expanded="false" />
+            <element signature="n#!!block;n#showSideNav#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#243#589#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -351,7 +518,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="34" />
-          <folding />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -367,7 +537,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding />
+          <folding>
+            <element signature="e#474#583#0" expanded="false" />
+            <element signature="n#!!block;n#showSideNav#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -375,7 +548,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="85" column="10" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="10" />
-          <folding />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -391,7 +567,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding />
+          <folding>
+            <element signature="e#474#583#0" expanded="false" />
+            <element signature="n#!!block;n#showSideNav#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -400,7 +579,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1431#2239#0" expanded="false" />
+            <element signature="e#243#589#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -409,7 +588,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -425,7 +607,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#474#583#0" expanded="false" />
+            <element signature="n#!!block;n#showSideNav#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -434,7 +619,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="194" column="24" selection-start-line="194" selection-start-column="24" selection-end-line="194" selection-end-column="24" />
           <folding>
-            <element signature="e#1431#2239#0" expanded="false" />
+            <element signature="e#243#589#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -443,7 +628,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -451,7 +639,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="e#474#583#0" expanded="false" />
+            <element signature="n#!!block;n#showSideNav#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -460,7 +651,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
           <folding>
-            <element signature="e#1431#2239#0" expanded="false" />
+            <element signature="e#243#589#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -493,13 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.925926">
-          <caret line="183" column="32" selection-start-line="183" selection-start-column="21" selection-end-line="183" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navbar.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -521,6 +705,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="126" column="18" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15292354">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="16" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -531,27 +731,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/styles/main.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.2545457">
-          <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+        <state vertical-scroll-proportion="-17.115385">
+          <caret line="280" column="28" selection-start-line="280" selection-start-column="28" selection-end-line="280" selection-end-column="28" />
           <folding>
-            <element signature="e#1431#2239#0" expanded="false" />
+            <element signature="e#243#589#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-40.73077">
+          <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+          <folding>
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/js/giggle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36131933">
-          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
-          <folding />
+        <state vertical-scroll-proportion="0.8037518">
+          <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+          <folding>
+            <element signature="e#474#583#0" expanded="false" />
+            <element signature="n#!!block;n#showSideNav#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
