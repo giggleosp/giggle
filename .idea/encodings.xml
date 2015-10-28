@@ -5,5 +5,11 @@
     <file url="file://$PROJECT_DIR$/app/scripts/app.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/js/giggle.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/styles/main.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/styles/stylesheets/_effects.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/styles/stylesheets/_fonts.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/styles/stylesheets/_form-controls.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/styles/stylesheets/_navigation.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/styles/stylesheets/_variables.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/styles/stylesheets/_yeoman-stuff.scss" charset="UTF-8" />
   </component>
 </project>

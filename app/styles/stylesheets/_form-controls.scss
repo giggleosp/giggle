@@ -1,0 +1,10 @@
+.form-control {
+  background-color: $primary-color-text;
+  border-radius: 1px;
+  border: none;
+  border-bottom: solid 2px #E0E0E0;
+  transition: border 0.3s;
+  &:focus {
+    border-bottom: solid 2px $divider-color;
+  }
+}

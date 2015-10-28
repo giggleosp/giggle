@@ -29,11 +29,11 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#/">Giggle</a>
           </div>
-          <div>
+          <div class="links">
             <ul class="nav navbar-nav hidden-xs hidden-sm">
               <li class="dropdown">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                   aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span>
+                   aria-haspopup="true" aria-expanded="false">Gigs <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu shadow">
                   <li><a href="#">All</a></li>
@@ -42,19 +42,24 @@
                   <li role="separator" class="divider"></li>
                   <li><a href="#">Music</a></li>
                   <li><a href="#">Comedy</a></li>
-                  <li><a href="#">Theatre</a></li>
                 </ul>
               </li>
               <li class="dropdown">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artists <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acts <span class="caret"></span></a>
+                <ul class="dropdown-menu shadow">
+                  <li><a href="#">All</a></li>
+                  <li><a href="#">Favourites</a></li>
                   <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li><a href="#">Music</a></li>
+                  <li><a href="#">Comedy</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Venues <span class="caret"></span></a>
+                <ul class="dropdown-menu shadow">
+                  <li><a href="#">All</a></li>
+                  <li><a href="#">Favourites</a></li>
+                  <li><a href="#">Nearby</a></li>
                 </ul>
               </li>
             </ul>
@@ -68,8 +73,8 @@
               <li><a href="#">Link</a></li>
               <li><a href="">Test</a></li>
             </ul>
-            <a class="nav-btn-search visible-xs visible-sm nav-search-mobile"><i class="material-icons">search</i></a>
-          </div><!-- /.navbar-collapse -->
+            <a id="btn-search-sm" class="visible-xs visible-sm"><i class="material-icons">search</i></a>
+          </div>
         </div><!-- /.container-fluid -->
       </nav>
 
@@ -84,13 +89,13 @@
         </div>
       </div>
     </div>
-    <div id="side-nav" class="side-nav col-sm-4 col-xs-9 hidden-md shadow">
+    <div class="side-nav col-sm-3 col-xs-9 hidden-md shadow">
       <div class="top">
-        <a id="menu-close" class="btn-menu" href=""><i class="material-icons">arrow_back</i></a>
+        <a class="btn-menu" href=""><i class="material-icons">arrow_back</i></a>
       </div>
       <div class="nav-wrapper">
         <ul class="nav">
-          <li class="active"><a href="#/">Home</a></li>
+          <li class="active home"><a href="#/">Home</a></li>
           <li class="dropdown">
             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
                aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span>
@@ -99,7 +104,6 @@
               <li><a href="#">All</a></li>
               <li><a href="#">Favourites</a></li>
               <li><a href="#">Nearby</a></li>
-              <li role="separator" class="divider"></li>
               <li><a href="#">Music</a></li>
               <li><a href="#">Comedy</a></li>
               <li><a href="#">Theatre</a></li>

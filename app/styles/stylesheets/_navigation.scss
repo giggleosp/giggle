@@ -1,0 +1,201 @@
+.navbar-default {
+  min-height: 60px;
+  background-color: $primary-color;
+  border: 1px solid $primary-color;
+  border-radius: 0;
+
+  .btn-menu {
+    text-decoration: none;
+    color: $primary-color-text;
+    position: absolute;
+    top: 17px;
+    left: 10px;
+  }
+
+  .navbar-brand {
+    color: $primary-color-text;
+    padding-top: 18px;
+    margin-bottom: 8px;
+    font-size: 30px;
+    &:hover,
+    &:focus {
+      color: $primary-color-text;
+    }
+  }
+
+  .navbar-nav {
+    li > a {
+      padding-top: 0;
+      padding-bottom: 0;
+      line-height: 60px;
+      color: $primary-color-text;
+      &:hover,
+      &.active,
+      &:focus {
+        color: $primary-color-text;
+        background-color: $primary-color-dark;
+      }
+    }
+    .active > a {
+      background-color: $primary-color-dark;
+      color: $primary-color-text;
+      &:focus,
+      &:hover {
+        background-color: $primary-color-dark;
+        color: $primary-color-text;
+      }
+    }
+    .dropdown {
+      &:hover {
+        background-color: $primary-color-dark;
+      }
+    }
+    .open > a {
+      &:hover,
+      &:focus {
+        background-color: $primary-color-dark;
+        color: $primary-color-text;
+      }
+    }
+    .dropdown {
+      .dropdown-menu {
+        background-color: $primary-color;
+        li {
+          a {
+            color: $primary-color-text;
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 35px;
+            &:hover {
+              background-color: $primary-color-dark;
+            }
+          }
+        }
+        > .active > a {
+          background-color: $primary-color-dark;
+          &:hover,
+          &:focus {
+            background-color: $primary-color-dark;
+          }
+        }
+        &.active {
+          background-color: $primary-color-dark;
+        }
+        .divider {
+          background-color: $primary-color-dark;
+        }
+        > .dropdown-toggle:focus {
+          color: $primary-color-text;
+          background-color: $primary-color-dark;
+        }
+      }
+    }
+  }
+
+  .navbar-form {
+    padding-top: 6px;
+    .form-group {
+      display:inline-block;
+      position:relative;
+      > .form-control {
+        width: 300px;
+        margin-left: 50px;
+        padding-right:30px;
+      }
+      > a {
+        position:absolute;
+        right:0;
+        top:5px;
+      }
+    }
+  }
+}
+
+.side-nav {
+  position: fixed;
+  display: none;
+  top:0;
+  left: 0;
+  min-height: 100%;
+  background-color: $primary-color-text;
+  .top {
+    line-height: 60px;
+    .btn-menu > i {
+      color: $primary-color-dark;
+      margin-top: 20px;
+    }
+  }
+  .nav-wrapper {
+    > .nav {
+      padding: 0;
+      li {
+        list-style-type: none;
+        position: relative;
+        overflow: hidden;
+        a {
+          color: $primary-color-dark;
+          font-size: 16px;
+          display: block;
+          text-decoration: none;
+          padding: 15px 10px;
+          &:hover {
+            background-color: #E0E0E0;
+          }
+        }
+      }
+      .dropdown {
+        &:hover {
+          background-color: #E0E0E0;
+        }
+        > .dropdown-menu {
+          box-shadow: 0 0 0 0;
+          background-color: #E0E0E0;
+          position: relative;
+          border-radius: 0;
+          border: 0;
+          margin-left: 10px;
+          > li .active > a {
+            background-color: black;
+          }
+          > li {
+            > a {
+              line-height: 0;
+              &:hover {
+                background-color: $primary-color-text;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// phones
+@media (max-width: 767px) {
+  .navbar-nav > li > a {
+    line-height: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;}
+}
+
+
+// tablets
+@media (max-width: 992px) {
+  .navbar-brand {
+    padding-left: 45px;
+  }
+}
+
+#btn-search-sm {
+  cursor: pointer;
+  text-decoration: none;
+  color: $primary-color-text;
+  position: absolute;
+  top: 17px;
+  right: 10px;
+  &:hover,
+  &:focus {
+    color: $primary-color-text;
+  }
+}
