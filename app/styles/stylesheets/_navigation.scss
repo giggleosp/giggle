@@ -99,7 +99,7 @@
       position:relative;
       > .form-control {
         width: 300px;
-        margin-left: 50px;
+        margin-left: 10px;
         padding-right:30px;
       }
       > a {
@@ -125,45 +125,62 @@
       margin-top: 20px;
     }
   }
-  .nav-wrapper {
-    > .nav {
-      padding: 0;
-      li {
-        list-style-type: none;
-        position: relative;
-        overflow: hidden;
-        a {
+  > .nav {
+    width:95%;
+    padding: 0;
+    li {
+      list-style-type: none;
+      position: relative;
+      overflow: hidden;
+      a {
+        color: $primary-color-dark;
+        font-size: 16px;
+        display: block;
+        text-decoration: none;
+        padding: 15px 10px;
+        &:hover {
           color: $primary-color-dark;
-          font-size: 16px;
-          display: block;
-          text-decoration: none;
-          padding: 15px 10px;
-          &:hover {
-            background-color: #E0E0E0;
-          }
+          background-color: #E0E0E0;
         }
       }
-      .dropdown {
-        &:hover {
-          background-color: #E0E0E0;
-        }
-        > .dropdown-menu {
-          box-shadow: 0 0 0 0;
-          background-color: #E0E0E0;
-          position: relative;
-          border-radius: 0;
-          border: 0;
-          margin-left: 10px;
-          > li .active > a {
-            background-color: black;
-          }
-          > li {
-            > a {
-              line-height: 0;
-              &:hover {
-                background-color: $primary-color-text;
-              }
+    }
+    > .active > a {
+      background-color: #E0E0E0;
+      &:hover {
+        background-color: #E0E0E0;
+      }
+      &:focus {
+        background-color: #E0E0E0;
+      }
+    }
+    .dropdown {
+      padding-bottom:2px;
+      > .dropdown-menu {
+        margin-left:10px;
+        box-shadow: 0 0 0 0;
+        background-color: #E0E0E0;
+        position: relative;
+        border-radius: 0;
+        border: 0;
+        li {
+          a {
+            color: $primary-color-dark;
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 35px;
+            &:hover {
+              color: $primary-color-dark;
+              background-color: $primary-color-text;
             }
+          }
+        }
+        > .active > a {
+          background-color: $primary-color-text;
+          &:hover {
+            background-color: $primary-color-text;
+          }
+          &:focus {
+            background-color: $primary-color-text;
           }
         }
       }
@@ -178,7 +195,6 @@
     padding-top: 5px;
     padding-bottom: 5px;}
 }
-
 
 // tablets
 @media (max-width: 992px) {
