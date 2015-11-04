@@ -8,14 +8,22 @@ var sideNav = $(".side-nav");
 var listItem = $(".nav > li");
 var dropdownListItem = $(".nav > .dropdown > .dropdown-menu > li");
 var navbarBrand = $(".navbar-brand");
+var mobileSearchButton = $("#btn-search-sm");
+var mobileTextBox = $(".navbar-form-sm > .form-control");
+var mobileForm = $(".navbar-form-sm");
 
 $(function () {
+
+  // when a list item (navigation button) is clicked
   listItem.on("click", function () {
     addActiveClassToListItem(this);
   });
+
+  // when a dropdown list item is clicked
   dropdownListItem.on("click", function () {
     addActiveClassToListItem(this);
   });
+
   // show/hide side navigation menu
   btnMenu.on("click", function () {
     if(sideNav.css("display") == "none") {
@@ -25,12 +33,28 @@ $(function () {
     }
   });
 
+  // main logo click
   navbarBrand.on("click", function () {
-    removeOtherActiveClassDeclarations();
+    removeOtherActiveClasses();
     addActiveClassToListItem(".home");
-  })
+  });
+
+  mobileSearchButton.on("click", function () {
+    toggleMobileSearch();
+  });
+
+  mobileTextBox.on("blur", function () {
+    mobileForm.removeClass("focus");
+  });
 
 });
+
+function toggleMobileSearch() {
+  if (!mobileForm.hasClass("focus")) {
+    mobileForm.addClass("focus");
+    mobileTextBox.focus(); // focus in on the textbox
+  }
+}
 
 function showSideNav() {
   sideNav.show('slide', {direction: 'left'}, 250);
@@ -40,7 +64,7 @@ function hideSideNav() {
   sideNav.hide('slide', {direction: 'left'}, 250);
 }
 
-function removeOtherActiveClassDeclarations() {
+function removeOtherActiveClasses() {
   if(listItem.hasClass("active")) {
     listItem.removeClass("active");
   }
@@ -48,11 +72,12 @@ function removeOtherActiveClassDeclarations() {
     dropdownListItem.removeClass("active");
   }
 }
+
 function addActiveClassToListItem(li) {
   var item = $(li);
 
   if(!item.hasClass("dropdown")) {
-    removeOtherActiveClassDeclarations();
+    removeOtherActiveClasses();
     item.addClass("active");
   }
 
@@ -61,5 +86,4 @@ function addActiveClassToListItem(li) {
   if(dropdown.length > 0) {
     dropdown.addClass("active");
   }
-
 }

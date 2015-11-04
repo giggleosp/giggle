@@ -1,0 +1,13 @@
+.i-button {
+  position: relative;
+  display:inline-block;
+  padding:0;
+  border:none;
+  background:none;
+  &:focus {
+    outline:none;
+  }
+  > i {
+    display:block;
+  }
+}

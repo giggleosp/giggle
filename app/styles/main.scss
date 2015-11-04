@@ -8,6 +8,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 // custom imports
 @import "stylesheets/_variables";
+@import "stylesheets/_components.scss";
 @import "stylesheets/_navigation.scss";
 @import "stylesheets/_form-controls.scss";
 @import "stylesheets/_fonts.scss";
@@ -26,12 +27,5 @@ html {
 @media (min-width: 992px) {
   .hidden-md {
     visibility: hidden;
-  }
-}
-
-.btn-menu {
-  background-color: inherit;
-  > i {
-    cursor: pointer;
   }
 }

@@ -102,10 +102,51 @@
         margin-left: 10px;
         padding-right:30px;
       }
-      > a {
+      > button {
         position:absolute;
         right:0;
         top:5px;
+        > i {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  // TODO: fix margin issue with text box when visible
+  .navbar-form-sm {
+    > .form-control {
+      position:absolute;
+      top:0;
+      left:0;
+      margin:-1px;
+      margin-right:0;
+      width:100%;
+      visibility: hidden;
+      border-radius: 0;
+      border: solid 2px #E0E0E0;
+      padding: 28px 40px 28px 25px;
+    }
+
+    > .i-button {
+      z-index: 1;
+      cursor: pointer;
+      text-decoration: none;
+      color: $primary-color-text;
+      position: absolute;
+      top: 17px;
+      right: 10px;
+      &:hover,
+      &:focus {
+        color: $primary-color-text;
+      }
+    }
+    &.focus {
+      > .form-control {
+        visibility: visible;
+      }
+      > #btn-search-sm {
+        color: $primary-color;
       }
     }
   }
@@ -203,15 +244,9 @@
   }
 }
 
-#btn-search-sm {
-  cursor: pointer;
-  text-decoration: none;
-  color: $primary-color-text;
-  position: absolute;
-  top: 17px;
-  right: 10px;
-  &:hover,
-  &:focus {
-    color: $primary-color-text;
+.btn-menu {
+  background-color: inherit;
+  > i {
+    cursor: pointer;
   }
 }

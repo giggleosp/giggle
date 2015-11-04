@@ -66,14 +66,19 @@
             <form class="navbar-form navbar-left hidden-xs hidden-sm" role="search">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search">
-                <a type="button" id="nav-search" href=""><i class="material-icons">search</i></a>
+                <button class="i-button" type="submit" id="nav-search"><i class="material-icons">search</i></button>
               </div>
             </form>
             <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
               <li><a href="#">Sign In</a></li>
               <!--<li><a href="#">About</a></li>-->
             </ul>
-            <a id="btn-search-sm" class="visible-xs visible-sm"><i class="material-icons">search</i></a>
+            <form class="navbar-form-sm" role="search">
+              <input type="text" class="form-control visible-xs visible-sm" placeholder="search"/>
+              <button id="btn-search-sm" type="submit" class="ripple i-button visible-xs visible-sm">
+                <i class="material-icons">search</i>
+              </button>
+            </form>
           </div>
         </div><!-- /.container-fluid -->
       </nav>
@@ -156,7 +161,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- custom js-->
-    <script src="scripts/js/giggle.js"></script>
+    <script src="scripts/js/navigation.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
