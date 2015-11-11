@@ -5,12 +5,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 
-
 // custom imports
 @import "stylesheets/_variables";
 @import "stylesheets/_components.scss";
-@import "stylesheets/_navigation.scss";
 @import "stylesheets/_form-controls.scss";
+@import "stylesheets/_navigation.scss";
 @import "stylesheets/_fonts.scss";
 @import "stylesheets/_effects.scss";
 @import "stylesheets/_yeoman-stuff.scss";
@@ -28,4 +27,12 @@ html {
   .hidden-md {
     visibility: hidden;
   }
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
 }

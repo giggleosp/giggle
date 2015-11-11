@@ -9,23 +9,29 @@ var listItem = $(".nav > li");
 var dropdownListItem = $(".nav > .dropdown > .dropdown-menu > li");
 var navbarBrand = $(".navbar-brand");
 var mobileSearchButton = $("#btn-search-sm");
-var mobileTextBox = $(".navbar-form-sm > .form-control");
-var mobileForm = $(".navbar-form-sm");
+var mobileTextBox = $(".navbar-form-sm > .form-group > .form-control");
 
 $(function () {
 
+  // when window is resized above tablet level
+  window.addEventListener("resize", function () {
+    if($(this).width() > 767 && navbarBrand.hasClass("hidden")) {
+      toggleMobileSearch();
+    }
+  });
+
   // when a list item (navigation button) is clicked
-  listItem.on("click", function () {
+  listItem.on("mousedown", function () {
     addActiveClassToListItem(this);
   });
 
   // when a dropdown list item is clicked
-  dropdownListItem.on("click", function () {
+  dropdownListItem.on("mousedown", function () {
     addActiveClassToListItem(this);
   });
 
   // show/hide side navigation menu
-  btnMenu.on("click", function () {
+  btnMenu.on("mousedown", function () {
     if(sideNav.css("display") == "none") {
       showSideNav();
     } else {
@@ -34,26 +40,30 @@ $(function () {
   });
 
   // main logo click
-  navbarBrand.on("click", function () {
+  navbarBrand.on("mousedown", function () {
     removeOtherActiveClasses();
     addActiveClassToListItem(".home");
   });
 
-  mobileSearchButton.on("click", function () {
-    toggleMobileSearch();
+  // show textbox on mobile
+  mobileSearchButton.on("mousedown", function () {
+    if($(window).width() < 767 && mobileTextBox.hasClass("hidden-xs")) {
+      toggleMobileSearch();
+    }
   });
 
+  // hide textbox if mobile and clear any value
   mobileTextBox.on("blur", function () {
-    mobileForm.removeClass("focus");
+    $(this).val("");
+    if($(window).width() < 767 && !mobileTextBox.hasClass("hidden-xs")) {
+      toggleMobileSearch();
+    }
   });
-
 });
 
 function toggleMobileSearch() {
-  if (!mobileForm.hasClass("focus")) {
-    mobileForm.addClass("focus");
-    mobileTextBox.focus(); // focus in on the textbox
-  }
+  navbarBrand.toggleClass("hidden");
+  mobileTextBox.toggleClass("hidden-xs");
 }
 
 function showSideNav() {

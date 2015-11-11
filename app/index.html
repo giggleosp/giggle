@@ -27,7 +27,7 @@
         <div class="container-fluid">
           <a id="menu-open" class="btn-menu visible-xs visible-sm"><i class="material-icons menu">menu</i></a>
           <div class="navbar-header">
-            <a class="navbar-brand" href="#/">Giggle</a>
+            <a class="navbar-brand visible" href="#/">Giggle</a>
           </div>
           <div class="links">
             <ul class="nav navbar-nav hidden-xs hidden-sm">
@@ -73,11 +73,13 @@
               <li><a href="#">Sign In</a></li>
               <!--<li><a href="#">About</a></li>-->
             </ul>
-            <form class="navbar-form-sm" role="search">
-              <input type="text" class="form-control visible-xs visible-sm" placeholder="search"/>
-              <button id="btn-search-sm" type="submit" class="ripple i-button visible-xs visible-sm">
-                <i class="material-icons">search</i>
-              </button>
+            <form class="navbar-form-sm visible-xs visible-sm" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control hidden-xs" placeholder="Search"/>
+                <button id="btn-search-sm" type="submit" class="ripple i-button">
+                  <i class="material-icons">search</i>
+                </button>
+              </div>
             </form>
           </div>
         </div><!-- /.container-fluid -->
@@ -129,7 +131,7 @@
             <li><a href="#">Nearby</a></li>
           </ul>
         </li>
-        <li><a href="#">Sign In</a></li>
+        <li><a href="#/sign-up">Sign Up</a></li>
       </ul>
     </div>
 
@@ -167,6 +169,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
         <!-- endbuild -->
 </body>
 </html>
