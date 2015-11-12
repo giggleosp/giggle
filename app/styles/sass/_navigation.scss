@@ -16,8 +16,9 @@
     color: $primary-color-text;
     visibility: visible;
     padding-top: 18px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-size: 30px;
+    letter-spacing: 1.8px;
     &:hover,
     &:focus {
       color: $primary-color-text;
@@ -131,13 +132,13 @@
         margin-left:20px;
         padding-left:5px;
       }
-      > .i-button {
+      > .cbutton {
         z-index: 1;
         cursor: pointer;
         text-decoration: none;
         color: $primary-color-text;
         position: absolute;
-        top: 17px;
+        top: 18px;
         right: 10px;
         &:hover,
         &:focus {
@@ -168,9 +169,11 @@
   background-color: $primary-color-text;
   .top {
     line-height: 60px;
-    .btn-menu > i {
-      color: $primary-color-dark;
+    .btn-menu {
       margin-top: 20px;
+      > i {
+        color: $primary-color-dark;
+      }
     }
   }
   > .nav {
@@ -188,17 +191,17 @@
         padding: 15px 10px;
         &:hover {
           color: $primary-color-dark;
-          background-color: #E0E0E0;
+          background-color: #BDBDBD;
         }
       }
     }
     > .active > a {
-      background-color: #E0E0E0;
+      background-color: #BDBDBD;
       &:hover {
-        background-color: #E0E0E0;
+        background-color: #BDBDBD;
       }
       &:focus {
-        background-color: #E0E0E0;
+        background-color: #BDBDBD;
       }
     }
     .dropdown {
@@ -206,7 +209,7 @@
       > .dropdown-menu {
         margin-left:10px;
         box-shadow: 0 0 0 0;
-        background-color: #E0E0E0;
+        background-color: #BDBDBD;
         position: relative;
         border-radius: 0;
         border: 0;

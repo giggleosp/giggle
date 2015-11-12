@@ -8,12 +8,13 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    <link rel="stylesheet" href="styles/css/component.css"/>
+    <link rel="stylesheet" href="styles/css/normalize.css"/>
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <!--<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- endbuild -->
   </head>
@@ -25,7 +26,7 @@
     <div class="wrapper">
       <nav class="navbar navbar-default shadow">
         <div class="container-fluid">
-          <a id="menu-open" class="btn-menu visible-xs visible-sm"><i class="material-icons menu">menu</i></a>
+          <button id="menu-open" class="cbutton btn-menu visible-xs visible-sm cbutton cbutton--effect-ilinka"><i class="material-icons menu">menu</i></button>
           <div class="navbar-header">
             <a class="navbar-brand visible" href="#/">Giggle</a>
           </div>
@@ -33,15 +34,18 @@
             <ul class="nav navbar-nav hidden-xs hidden-sm">
               <li class="dropdown">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                   aria-haspopup="true" aria-expanded="false">Gigs <span class="caret"></span>
+                   aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu shadow">
                   <li><a href="#">All</a></li>
                   <li><a href="#">Favourites</a></li>
-                  <li><a href="#">Nearby</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="#">Music</a></li>
                   <li><a href="#">Comedy</a></li>
+                  <li><a href="#">Theatre</a></li>
+                  <li><a href="#">Arts</a></li>
+                  <li><a href="#">Festivals</a></li>
+                  <!--<li><a href="#">Cinema</a></li>-->
                 </ul>
               </li>
               <li class="dropdown">
@@ -65,18 +69,20 @@
             </ul>
             <form class="navbar-form navbar-left hidden-xs hidden-sm" role="search">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <button class="i-button" type="submit" id="nav-search"><i class="material-icons">search</i></button>
+                <label class="sr-only" for="txtSearch">Email address</label>
+                <input id="txtSearch" type="text" class="form-control" placeholder="Search">
+                <button class="cbutton" type="submit" id="nav-search"><i class="material-icons">search</i></button>
               </div>
             </form>
             <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-              <li><a href="#">Sign In</a></li>
-              <!--<li><a href="#">About</a></li>-->
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Register</a></li>
             </ul>
             <form class="navbar-form-sm visible-xs visible-sm" role="search">
               <div class="form-group">
-                <input type="text" class="form-control hidden-xs" placeholder="Search"/>
-                <button id="btn-search-sm" type="submit" class="ripple i-button">
+                <label class="sr-only" for="txtSearchSm">Email address</label>
+                <input id="txtSearchSm" type="text" class="form-control hidden-xs" placeholder="Search"/>
+                <button id="btn-search-sm" type="submit" class="cbutton cbutton--effect-ilinka">
                   <i class="material-icons">search</i>
                 </button>
               </div>
@@ -86,7 +92,8 @@
       </nav>
 
       <div class="container">
-        <div ng-view=""></div>
+        <div ng-view="">
+        </div>
       </div>
 
       <!-- FOOTER -->
@@ -98,7 +105,7 @@
     </div>
     <div class="side-nav col-sm-3 col-xs-9 hidden-md shadow">
       <div class="top">
-        <a class="btn-menu" href=""><i class="material-icons">arrow_back</i></a>
+        <button id="menu-close" class="btn-menu cbutton cbutton--effect-ilinka"><i class="material-icons">arrow_back</i></button>
       </div>
       <ul class="nav col-xs-2">
         <li class="home"><a href="#/">Home</a></li>
@@ -164,6 +171,9 @@
     <!-- endbuild -->
     <!-- custom js-->
     <script src="scripts/js/navigation.js"></script>
+    <script src="scripts/js/classie.js"></script>
+    <script src="scripts/js/modernizr.custom.js"></script>
+    <script src="scripts/js/clickeffects.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>

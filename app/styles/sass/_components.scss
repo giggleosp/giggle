@@ -1,0 +1,8 @@
+.cbutton {
+  &:focus {
+    outline:none;
+  }
+  > i {
+    display:block;
+  }
+}

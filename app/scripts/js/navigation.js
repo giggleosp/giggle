@@ -3,7 +3,8 @@
  */
 
 // global controls
-var btnMenu = $(".btn-menu");
+var btnMenuOpen = $("#menu-open");
+var btnMenuClose = $("#menu-close");
 var sideNav = $(".side-nav");
 var listItem = $(".nav > li");
 var dropdownListItem = $(".nav > .dropdown > .dropdown-menu > li");
@@ -31,12 +32,12 @@ $(function () {
   });
 
   // show/hide side navigation menu
-  btnMenu.on("mousedown", function () {
-    if(sideNav.css("display") == "none") {
-      showSideNav();
-    } else {
-      hideSideNav();
-    }
+  btnMenuOpen.on("mousedown", function () {
+    showSideNav();
+  });
+
+  btnMenuClose.on("mousedown", function () {
+    hideSideNav();
   });
 
   // main logo click
@@ -67,11 +68,11 @@ function toggleMobileSearch() {
 }
 
 function showSideNav() {
-  sideNav.show('slide', {direction: 'left'}, 250);
+  sideNav.delay(500).show('slide', {direction: 'left'}, 200);
 }
 
 function hideSideNav() {
-  sideNav.hide('slide', {direction: 'left'}, 250);
+  sideNav.delay(300).hide('slide', {direction: 'left'}, 200);
 }
 
 function removeOtherActiveClasses() {

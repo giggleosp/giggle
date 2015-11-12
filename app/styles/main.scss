@@ -6,13 +6,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 
 // custom imports
-@import "stylesheets/_variables";
-@import "stylesheets/_components.scss";
-@import "stylesheets/_form-controls.scss";
-@import "stylesheets/_navigation.scss";
-@import "stylesheets/_fonts.scss";
-@import "stylesheets/_effects.scss";
-@import "stylesheets/_yeoman-stuff.scss";
+@import "sass/_variables";
+@import "sass/_components.scss";
+@import "sass/_form-controls.scss";
+@import "sass/_navigation.scss";
+@import "sass/_fonts.scss";
+@import "sass/_effects.scss";
+@import "sass/_yeoman-stuff.scss";
 // end
 
 
