@@ -8,7 +8,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // custom imports
 @import "sass/_variables";
 @import "sass/_components.scss";
-@import "sass/_form-controls.scss";
+@import "sass/_forms";
 @import "sass/_navigation.scss";
 @import "sass/_fonts.scss";
 @import "sass/_effects.scss";
@@ -18,6 +18,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 html {
   height: 100%;
+}
+
+body {
+  font-family: $open-sans;
 }
 
 .material-icons.md-24 { font-size: 24px; }
@@ -35,4 +39,51 @@ html {
 
 .hidden {
   visibility: hidden;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+div.login-wrapper {
+  //padding-top: 20px;
+  .headers {
+    h2 {
+      color: $primary-color-dark;
+      font-size: 35px;
+    }
+  }
+  .well {
+    margin-top:70px;
+    background-color: #EEEEEE;
+    border-radius: 2px;
+    form {
+      padding-top:40px;
+      .form-group {
+        .form-control {
+          padding: 25px;
+          &:focus {
+
+          }
+        }
+      }
+
+      button {
+        background-color: #F44336;
+        border-radius: 3px;
+        color: $primary-color-text;
+        height:50px;
+        width:100%;
+        &:active, &:focus {
+          outline: 0;
+          background-color: #E53935;
+          color: $primary-color-text;
+        }
+      }
+      .checkbox {
+        padding-top: 10px;
+      }
+    }
+  }
 }

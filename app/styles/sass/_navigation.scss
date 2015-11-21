@@ -18,7 +18,6 @@
     padding-top: 18px;
     margin-bottom: 10px;
     font-size: 30px;
-    letter-spacing: 1.8px;
     &:hover,
     &:focus {
       color: $primary-color-text;
@@ -100,9 +99,14 @@
       display:inline-block;
       position:relative;
       > .form-control {
+        background-color: $primary-color-text;
         width: 300px;
         margin-left: 10px;
         padding-right:30px;
+
+        :focus {
+          border: none;
+        }
       }
       > button {
         position:absolute;
@@ -121,7 +125,7 @@
         position:absolute;
         top:10px;
         right:0;
-        width: 200px;
+        width: 220px;
         visibility: visible;
         background:inherit;
         border: 0 solid #212121;
@@ -249,6 +253,10 @@
 
   .container-fluid {
     height:50px;
+  }
+
+  .navbar-default {
+    min-height: 60px;
   }
 }
 
