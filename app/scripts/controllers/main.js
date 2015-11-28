@@ -2,12 +2,19 @@
 
 /**
  * @ngdoc function
- * @name giggleApp.controller:MainCtrl
+ * @name app.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the giggleApp
+ * Controller of the app
  */
-angular.module('giggleApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.greeting = {id: 'xxx', content: 'Hello World!'}
+angular.module('controllers', [])
+  .controller('MainCtrl', function ($scope, userService) {
+
+    userService.allUsers()
+      .success(function (data) {
+        console.log(data);
+      }).error(function (response) {
+        console.log(response);
+      });
+
   });

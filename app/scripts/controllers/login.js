@@ -2,12 +2,13 @@
 
 /**
  * @ngdoc function
- * @name giggleApp.controller:LoginCtrl
+ * @name app.controller:LoginCtrl
  * @description
  * # LoginCtrl
- * Controller of the giggleApp
+ * Controller of the app
  */
-angular.module('giggleApp')
-  .controller('LoginCtrl', function ($rootScope, $scope, $http, $location) {
+angular.module('app')
+  .controller('LoginCtrl', function ($scope, userService) {
+
 
   });
