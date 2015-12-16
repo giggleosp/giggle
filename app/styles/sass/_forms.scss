@@ -1,13 +1,71 @@
 .form-control {
   border-radius: 1px;
-  border: none;
-  border-bottom: solid 2px #E0E0E0;
+  border: solid 1.5px #E0E0E0;
   transition: border 0.3s;
   &:focus {
-    border-bottom: solid 2px #E0E0E0;
+    border: solid 1.5px $primary-color-dark;
     box-shadow: none;
   }
+  &.valid {
+    border-color: $success-color;
+  }
   &.invalid {
-    border-color: red;
+    border-color: $error-color;
+  }
+}
+
+.error-messages {
+  padding:4px;
+  span {
+    color: $error-color;
+  }
+}
+
+#signupForm {
+  .form-control {
+    font-size: 16px;
+  }
+}
+
+div.login-wrapper {
+  .headers {
+    h2 {
+      color: $primary-color-dark;
+      font-size: 35px;
+    }
+  }
+  .well {
+    margin-top:100px;
+    background-color: #E0E0E0;
+    border-radius: 2px;
+    form {
+      padding-top:40px;
+      .form-group {
+        .form-control {
+          padding: 24px;
+          &:focus {
+
+          }
+        }
+      }
+
+      button {
+        margin-top:10px;
+        background-color: #F44336;
+        border-radius: 3px;
+        color: $primary-color-text;
+        height:50px;
+        width:100%;
+        &:active {
+          background-color: #E53935;
+        } &:focus {
+            outline: 0;
+            color: $primary-color-text;
+          }
+      }
+      .checkbox {
+        padding-top: 10px;
+      }
+    }
   }
 }

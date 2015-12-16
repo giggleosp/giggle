@@ -34,6 +34,8 @@ module.exports = function(config) {
       'bower_components/angular-aria/angular-aria.js',
       'bower_components/angular-material/angular-material.js',
       'bower_components/jquery-ui/jquery-ui.js',
+      'bower_components/lodash/lodash.js',
+      'bower_components/ng-password-strength/dist/scripts/ng-password-strength.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

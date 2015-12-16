@@ -10,8 +10,9 @@
  */
 angular
   .module('app', [
-    'controllers',
-    'services',
+    'app.controllers',
+    'app.services',
+    'app.directives',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -29,10 +30,15 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
       })
+      .when('/sign-up', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignUpCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
 
-    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+      $httpProvider.defaults.useXDomain = true;
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
   });

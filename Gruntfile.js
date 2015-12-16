@@ -44,6 +44,9 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
+      //jsHint: {
+      //  files: ['lib/**/*.js', 'test/**/*.js']
+      //},
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']

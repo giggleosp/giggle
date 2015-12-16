@@ -1,5 +1,7 @@
 (function() {
 
+  'use strict';
+
   // http://stackoverflow.com/a/11381730/989439
   function mobilecheck() {
     var check = false;

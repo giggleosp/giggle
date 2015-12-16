@@ -8,7 +8,6 @@
  * Controller of the app
  */
 angular.module('app')
-  .controller('LoginCtrl', function ($scope, userService) {
-
+  .controller('LoginCtrl', function ($scope, userApiService) {
 
   });
