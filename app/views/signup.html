@@ -1,10 +1,8 @@
 <div class="row">
-  <div class="login-wrapper col-md-6 col-sm-8 col-xs-12 col-centered">
-    <div class="headers text-center">
-    </div>
+  <div class="auth-wrapper col-md-6 col-sm-8 col-xs-12 col-centered">
     <div class="well well-lg">
       <h1 class="text-center">Sign Up</h1>
-      <form name="form" id="signupForm" role="form" ng-submit="signup(user)">
+      <form name="form" class="authForm" role="form" ng-submit="signup(user)">
         <div class="form-group">
           <label for="txtUsername" class="sr-only">Username</label>
           <input type="text" class="form-control" ng-class="{ 'invalid': form.username.$dirty && form.username.$invalid, 'valid': form.username.$valid }" name="username" id="txtUsername" placeholder="Username" ng-required="true" ng-model="user.username" minlength="4" username-exists="">
@@ -14,7 +12,6 @@
             <span ng-show="form.username.$error.usernameExists">This username is already in use.</span>
           </div>
         </div>
-
         <div class="form-group">
           <label for="txtEmail" class="sr-only">Email</label>
           <input type="email" class="form-control" name="email" ng-class="{ 'invalid': form.email.$dirty && form.email.$invalid, 'valid': form.email.$valid}"

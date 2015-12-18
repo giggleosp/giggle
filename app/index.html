@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- endbuild -->
   </head>
-  <body ng-app="app">
+  <body ng-app="app" ng-controller="ApplicationCtrl">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -75,9 +75,13 @@
                 <button class="cbutton" type="submit" id="nav-search"><i class="material-icons">search</i></button>
               </div>
             </form>
-            <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-              <li><a href="#/login">Login</a></li>
-              <li><a href="#/sign-up">Sign Up</a></li>
+            <ul ng-if="!currentUser" class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+              <li ng-class="menuClass('login')"><a href="#/login">Login</a></li>
+              <li ng-class="menuClass('sign-up')"><a href="#/sign-up">Sign Up</a></li>
+            </ul>
+            <ul ng-if="currentUser" class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+              <li ng-class="menuClass('profile')"><a ng-href="#/profile">{{ currentUser.username }}</a></li>
+              <li></li>
             </ul>
             <form class="navbar-form-sm visible-xs visible-sm" role="search">
               <div class="form-group">
@@ -143,16 +147,16 @@
       </ul>
     </div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID &ndash;&gt;-->
+     <!--<script>-->
+       <!--!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){-->
+       <!--(A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),-->
+       <!--r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)-->
+       <!--}(window,document,'script','https://www.google-analytics.com/analytics.js','ga');-->
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+       <!--ga('create', 'UA-XXXXX-X');-->
+       <!--ga('send', 'pageview');-->
+    <!--</script>-->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -188,6 +192,11 @@
         <script src="scripts/directives/user/usernameexists.js"></script>
         <script src="scripts/directives/user/emailexists.js"></script>
         <script src="scripts/directives/user/passwordstrength.js"></script>
+        <script src="scripts/controllers/application.js"></script>
+        <script src="scripts/services/user/authservice.js"></script>
+        <script src="scripts/services/auth_events.js"></script>
+        <script src="scripts/services/user_roles.js"></script>
+        <script src="scripts/services/session.js"></script>
         <!-- endbuild -->
 </body>
 </html>

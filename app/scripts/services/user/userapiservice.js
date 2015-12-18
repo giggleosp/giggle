@@ -13,18 +13,15 @@ angular.module('app.services', [])
     var baseUrl = "http://localhost:8080/user";
     var response = {};
 
-    var headers = {
-      'Content-Type': 'application/json'
-    };
-
-
     response.usernameExists = function (username) {
       return $http({
         method: "GET",
         dataType: "json",
         url: baseUrl + "/usernameexists",
         params: { username : username },
-        headers: headers
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
     };
 
@@ -34,20 +31,23 @@ angular.module('app.services', [])
         dataType: "json",
         url: baseUrl + "/emailexists",
         params: { email : email },
-        headers: headers
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
     };
 
-    response.addUser = function (data) {
+    response.addUser = function (user) {
       return $http({
         method: "POST",
         dataType: "json",
         url: baseUrl + "/insert",
-        data: JSON.stringify(data),
-        headers: headers
+        data: $.param(user),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
       });
     };
-
 
     return response;
 

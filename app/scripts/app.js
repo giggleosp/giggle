@@ -13,6 +13,7 @@ angular
     'app.controllers',
     'app.services',
     'app.directives',
+    'app.constants',
     'ngAnimate',
     'ngCookies',
     'ngResource',

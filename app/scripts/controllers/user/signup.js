@@ -8,19 +8,17 @@
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('SignUpCtrl', function ($scope, userApiService) {
+  .controller('SignUpCtrl', ['$scope', 'userApiService', '$location', function ($scope, userApiService, $location) {
 
-  	$scope.signup = function () {
-      userApiService.addUser($scope.user)
+  	$scope.signup = function (user) {
+
+      userApiService.addUser(user)
         .then(function (response) {
-
-          if (response.status === 200) {
-            // successful sign up
-
-          } else {
-            alert("Woops, something went wrong! :/");
+          if (status === 200) {
+            
           }
+        }, function (response) {
 
         });
     }
-  });
+  }]);

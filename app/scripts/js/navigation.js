@@ -59,15 +59,15 @@ $(function () {
     }
   });
 
-  // when a list item (navigation button) is clicked
-  listItem.on("mousedown", function () {
-    addActiveClassToListItem(this);
-  });
+  //// when a list item (navigation button) is clicked
+  //listItem.on("mousedown", function () {
+  //  addActiveClassToListItem(this);
+  //});
 
-  // when a dropdown list item is clicked
-  dropdownListItem.on("mousedown", function () {
-    addActiveClassToListItem(this);
-  });
+  //// when a dropdown list item is clicked
+  //dropdownListItem.on("mousedown", function () {
+  //  addActiveClassToListItem(this);
+  //});
 
   // show/hide side navigation menu
   btnMenuOpen.on("mousedown", function () {
