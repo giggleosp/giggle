@@ -1,11 +1,3 @@
-@font-face {
-  font-family: 'Geomanist Regular';
-  src: url('../../styles/fonts/geomanist-regular-webfont.eot') format('embedded-opentype'),
-  url('../../styles/fonts/geomanist-regular-webfont.woff') format('woff'),
-  url('../../styles/fonts/geomanist-regular-webfont.ttf')  format('truetype'),
-  url('../../styles/fonts/geomanist-regular-webfont.svg') format('svg');
+body {
+  font-family: "Roboto", sans-serif;
 }
-
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-@import url(https://fonts.googleapis.com/css?family=Droid+Sans);

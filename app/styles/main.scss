@@ -1,6 +1,5 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 @import "font-awesome/scss/font-awesome.scss";
 // endbower
 
@@ -22,31 +21,9 @@ html {
 }
 
 body {
-  font-family: $open-sans;
+  font-family: "Roboto", sans-serif;
 }
 
-.material-icons.md-24 { font-size: 24px; }
-
-
-@media (min-width: 992px) {
-  .hidden-md {
-    visibility: hidden;
-  }
-}
-
-.error-text {
-  color: #F44336;
-}
-
-.visible {
-  visibility: visible;
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.col-centered {
-  float: none;
-  margin: 0 auto;
+.search-toolbar {
+  background-color: white;
 }

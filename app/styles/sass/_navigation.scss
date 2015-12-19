@@ -1,275 +1,39 @@
-.navbar-default {
-  min-height: 60px;
-  background-color: $primary-color;
-  border: 1px solid $primary-color;
-  border-radius: 0;
+$gray: #eee;
 
-  .btn-menu {
-    text-decoration: none;
-    color: $primary-color-text;
-    position: absolute;
-    top: 17px;
-    left: 10px;
-  }
-
-  .navbar-brand {
-    color: $primary-color-text;
-    visibility: visible;
-    padding-top: 18px;
-    margin-bottom: 10px;
-    font-size: 30px;
-    &:hover,
-    &:focus {
-      color: $primary-color-text;
-    }
-  }
-
-  .navbar-nav {
-    li > a {
-      padding-top: 0;
-      padding-bottom: 0;
-      line-height: 60px;
-      color: $primary-color-text;
-      &:hover,
-      &.active,
-      &:focus {
-        color: $primary-color-text;
-        background-color: $primary-color-dark;
-      }
-    }
-    .active > a {
-      background-color: $primary-color-dark;
-      color: $primary-color-text;
-      &:focus,
-      &:hover {
-        background-color: $primary-color-dark;
-        color: $primary-color-text;
-      }
-    }
-    .dropdown {
-      &:hover {
-        background-color: $primary-color-dark;
-      }
-    }
-    .open > a {
-      &:hover,
-      &:focus {
-        background-color: $primary-color-dark;
-        color: $primary-color-text;
-      }
-    }
-    .dropdown {
-      .dropdown-menu {
-        background-color: $primary-color;
-        li {
-          a {
-            color: $primary-color-text;
-            padding-top: 0;
-            padding-bottom: 0;
-            line-height: 35px;
-            &:hover {
-              background-color: $primary-color-dark;
-            }
-          }
-        }
-        > .active > a {
-          background-color: $primary-color-dark;
-          &:hover,
-          &:focus {
-            background-color: $primary-color-dark;
-          }
-        }
-        &.active {
-          background-color: $primary-color-dark;
-        }
-        .divider {
-          background-color: $primary-color-dark;
-        }
-        > .dropdown-toggle:focus {
-          color: $primary-color-text;
-          background-color: $primary-color-dark;
-        }
-      }
-    }
-  }
-
-  .navbar-form {
-    padding-top: 6px;
-    .form-group {
-      display:inline-block;
-      position:relative;
-      > .form-control {
-        background-color: $primary-color-text;
-        width: 300px;
-        margin-left: 10px;
-        padding-right:30px;
-
-        :focus {
-          border: none;
-        }
-      }
-      > button {
-        position:absolute;
-        right:0;
-        top:5px;
-        > i {
-          color: $primary-color;
-        }
-      }
-    }
-  }
-
-  .navbar-form-sm {
-    .form-group {
-      > .form-control {
-        position:absolute;
-        top:10px;
-        right:0;
-        width: 220px;
-        visibility: visible;
-        background:inherit;
-        border: 0 solid #212121;
-        border-bottom-width: 1.5px;
-        color: $primary-color-text;
-        box-shadow: none;
-        margin-right:30px;
-        margin-left:20px;
-        padding-left:5px;
-      }
-      > .cbutton {
-        z-index: 1;
-        cursor: pointer;
-        text-decoration: none;
-        color: $primary-color-text;
-        position: absolute;
-        top: 18px;
-        right: 10px;
-        &:hover,
-        &:focus {
-          color: $primary-color-text;
-        }
-      }
-      ::-webkit-input-placeholder {
-        color: $divider-color;
-      }
-
-      ::-moz-placeholder {
-        color: $divider-color;
-      }
-
-      :-ms-input-placeholder {
-        color: $divider-color;
-      }
-    }
+md-content.md-default-theme {
+  background-color: $gray;
+}
+md-card {
+  background-color: #fff;
+  h2:first-of-type {
+    margin-top: 0;
   }
 }
-
-.side-nav {
-  position: fixed;
-  display: none;
-  top:0;
-  left: 0;
-  min-height: 100%;
-  background-color: $primary-color-text;
-  .top {
-    line-height: 60px;
-    .btn-menu {
-      margin-top: 20px;
-      > i {
-        color: $primary-color-dark;
-      }
-    }
-  }
-  > .nav {
-    width:95%;
-    padding: 0;
-    li {
-      list-style-type: none;
-      position: relative;
-      overflow: hidden;
-      a {
-        color: $primary-color-dark;
-        font-size: 16px;
-        display: block;
-        text-decoration: none;
-        padding: 15px 10px;
-        &:hover {
-          color: $primary-color-dark;
-          background-color: #BDBDBD;
-        }
-      }
-    }
-    > .active > a {
-      background-color: #BDBDBD;
-      &:hover {
-        background-color: #BDBDBD;
-      }
-      &:focus {
-        background-color: #BDBDBD;
-      }
-    }
-    .dropdown {
-      padding-bottom:2px;
-      > .dropdown-menu {
-        margin-left:10px;
-        box-shadow: 0 0 0 0;
-        background-color: #BDBDBD;
-        position: relative;
-        border-radius: 0;
-        border: 0;
-        li {
-          a {
-            color: $primary-color-dark;
-            padding-top: 0;
-            padding-bottom: 0;
-            line-height: 35px;
-            &:hover {
-              color: $primary-color-dark;
-              background-color: $primary-color-text;
-            }
-          }
-        }
-        > .active > a {
-          background-color: $primary-color-text;
-          &:hover {
-            background-color: $primary-color-text;
-          }
-          &:focus {
-            background-color: $primary-color-text;
-          }
-        }
-      }
-    }
+md-toolbar {
+  .md-button.md-default-theme {
+    border-radius: 99%; // round toolbar buttons
   }
 }
-
-// phones
-@media (max-width: 767px) {
-  .navbar-nav > li > a {
-    line-height: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-
-  .container-fluid {
-    height:50px;
-  }
-
-  .navbar-default {
-    min-height: 60px;
+h2 {
+  font-weight: 400;
+}
+.md-toolbar-tools-bottom {
+  font-size: small;
+  & :last-child {
+    opacity: 0.8;
   }
 }
-
-// tablets
-@media (max-width: 992px) {
-  .navbar-brand {
-    padding-left: 45px;
+md-toolbar:not(.md-hue-1),
+.md-fab {
+  fill: #fff;
+}
+md-sidenav {
+  fill: #737373;
+  md-icon {
+    //position: relative;
+    //top: 5px; // adjust for svg viewbox
   }
 }
-
-.btn-menu {
-  background-color: inherit;
-  > i {
-    cursor: pointer;
-  }
+.user-avatar {
+  border-radius: 99%;
 }
