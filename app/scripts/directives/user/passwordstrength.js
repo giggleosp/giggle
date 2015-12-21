@@ -24,10 +24,8 @@ angular.module('app.directives')
           var regexp = new RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!£$%^&*-+=#@]){8,}.+$");
 
           if(regexp.test(value)) {
-            console.log("valid");
             def.resolve();
           } else {
-            console.log("invalid");
            def.reject();
           }
 

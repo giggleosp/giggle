@@ -1,38 +1,93 @@
-<div class="row">
-  <div class="auth-wrapper col-md-6 col-sm-8 col-xs-12 col-centered">
-    <div class="well well-lg">
-      <h1 class="text-center">Sign Up</h1>
-      <form name="form" class="authForm" role="form" ng-submit="signup(user)">
-        <div class="form-group">
-          <label for="txtUsername" class="sr-only">Username</label>
-          <input type="text" class="form-control" ng-class="{ 'invalid': form.username.$dirty && form.username.$invalid, 'valid': form.username.$valid }" name="username" id="txtUsername" placeholder="Username" ng-required="true" ng-model="user.username" minlength="4" username-exists="">
-          <div ng-show="form.username.$dirty || form.$submitted" class="error-messages">
-            <span ng-show="form.username.$error.required">Username is a required field.</span>
-            <span ng-show="form.username.$error.minlength">Username must be at least 4 characters.</span>
-            <span ng-show="form.username.$error.usernameExists">This username is already in use.</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="txtEmail" class="sr-only">Email</label>
-          <input type="email" class="form-control" name="email" ng-class="{ 'invalid': form.email.$dirty && form.email.$invalid, 'valid': form.email.$valid}"
-                 id="txtEmail" placeholder="Email" ng-model="user.email" ng-required="true" email-exists="">
-          <div ng-show="form.$submitted || form.email.$dirty" class="error-messages">
-            <span ng-show="form.email.$error.required">Email is a required field</span>
-            <span ng-show="form.email.$touched && form.email.$invalid && form.email.$error.email">This is not a valid email address.</span>
-            <span ng-show="form.email.$error.emailExists">This email is already in use.</span>
-          </div>
-        </div>
+<div layout="column" layout-align="center center">
 
-        <div class="form-group">
-          <label for="txtPassword" class="sr-only">Password</label>
-          <input name="password" type="password" class="form-control" required="true" ng-class="{ 'invalid': form.password.$dirty && form.password.$invalid, 'valid': form.password.$valid}" id="txtPassword" placeholder="Password" ng-model="user.password" password-strength="">
-          <div ng-show="form.$submitted || form.password.$dirty" class="error-messages">
-            <span ng-show="form.password.$error.required">Password is a required field.</span>
-            <span ng-show="form.password.$error.passwordStrength">Password must be 8 characters or more, with at least one letter, one digit [0-9] and one special character [!£$%^&*-+=#@]</span>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-default raised">Sign Up</button>
-      </form>
+  <md-content class="md-padding autoscroll" layout="row" layout-fill="">
+
+    <div flex><!-- filler --></div>
+    <div flex-xs="90" flex-sm="50" flex="30">
+      <md-card layout-align="center center" layout="column" class="md-whiteframe-5dp">
+        <md-card-header>
+          <md-card-header-text>
+            <span class="md-title" style="font-size: 36px">Sign Up</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content layout-fill="">
+            <form name="signupForm" layout-align="center center">
+              <md-input-container class="md-block">
+                <label>Name</label>
+                <input ng-model="user.name">
+              </md-input-container>
+              <md-input-container class="md-block">
+                <label>Username (Required)</label>
+                <input name="username" ng-model="user.username" username-exists ng-required md-maxlength="30" minlength="4">
+                <div ng-messages="signupForm.username.$error" ng-show="signupForm.username.$dirty">
+                  <span ng-message="required">Username is a required field!</span>
+                  <span ng-message="usernameExists">This username is already in use!</span>
+                  <span ng-message="md-maxlength">Username can't be more than 30 characters!</span>
+                  <span ng-message="minlength">Username requires at least 4 characters!</span>
+                </div>
+              </md-input-container>
+              <md-input-container class="md-block">
+                <label>Email (Required)</label>
+                <input type="email" name="email" ng-model="user.email" email-exists ng-required minlength="4">
+                <div ng-messages="signupForm.email.$error" ng-show="signupForm.email.$dirty">
+                  <span ng-message="email">This is not a valid email!</span>
+                  <span ng-message="required">This field cannot be left blank!</span>
+                  <span ng-message="emailExists">This email is already in use!</span>
+                  <span ng-message="minlength">Email requires at least 4 characters!</span>
+                </div>
+              </md-input-container>
+              <md-input-container class="md-block">
+                <label>Password (Required)</label>
+                <input type="password" name="password" ng-model="user.password" email-exists ng-required password-strength>
+                <div ng-messages="signupForm.password.$error" ng-show="signupForm.password.$dirty">
+                  <span ng-message="required">Password is a required field!</span>
+                  <span ng-message="passwordStrength">This password is not strong enough!</span>
+                </div>
+                <md-tooltip>
+                  Password should be a minimum of 8 characters, with at least one digit, one letter and one special character.
+                </md-tooltip>
+              </md-input-container>
+              <md-autocomplete md-selected-item="user.country"
+                               md-search-text="countrySearchText"
+                               md-selected-item-change="countryValueChange(user.country.id)"
+                               md-items="country in countries | filter: countrySearchText"
+                               md-item-text="country.niceName"
+                               md-min-length="0"
+                               placeholder="Where are you from?">
+                <md-item-template>
+                  <span md-highlight-text="countrySearchText">
+                    {{ country.niceName }}
+                  </span>
+                </md-item-template>
+                <md-not-found>
+                  No matches for "{{ countrySearchText }}"
+                </md-not-found>
+              </md-autocomplete>
+
+              <div style="height:40px;"></div>
+
+              <md-autocomplete md-selected-item="user.county"
+                               ng-disabled="!counties"
+                               md-search-text="countySearchText"
+                               md-items="county in counties | filter: countySearchText"
+                               md-item-text="county.name"
+                               md-min-length="0"
+                               placeholder="{{ countyPlaceholder }}">
+                <md-item-template>
+                  <span md-highlight-text="countrySearchText">
+                    {{ country.niceName }}
+                  </span>
+                </md-item-template>
+                <md-not-found>
+                  No matches for "{{ countrySearchText }}"
+                </md-not-found>
+              </md-autocomplete>
+
+            </form>
+        </md-card-content>
+      </md-card>
     </div>
-  </div>
+    <div flex><!-- filler --></div>
+
+  </md-content>
 </div>

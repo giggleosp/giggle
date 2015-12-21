@@ -15,6 +15,7 @@ angular
     'app.directives',
     'app.constants',
     'ngMaterial',
+    'ngMessages',
     'ngAnimate',
     'ngCookies',
     'ngResource',

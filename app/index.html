@@ -37,7 +37,7 @@
         </md-toolbar>
       </md-whiteframe>
       <md-list>
-        <md-list-item ng-repeat="item in menu" ng-href="{{ item.link }}">
+        <md-list-item ng-repeat="item in menu" href="{{ item.link }}">
           <md-item-content md-ink-ripple layout="row" layout-align="start center">
             <div class="inset">
               <md-icon class="material-icons">{{ item.icon }}</md-icon>
@@ -48,7 +48,7 @@
           </md-item-content>
         </md-list-item>
         <md-divider></md-divider>
-        <md-list-item ng-repeat="item in admin" ng-href="{{ item.link }}">
+        <md-list-item ng-repeat="item in admin" href="{{ item.link }}">
           <md-item-content md-ink-ripple layout="row" layout-align="start center">
             <div class="inset">
               <md-icon class="material-icons">{{ item.icon }}</md-icon>
@@ -62,7 +62,7 @@
       </md-list>
     </md-sidenav>
     <div layout="column" layout-fill role="main">
-      <md-toolbar ng-show="!showSearch">
+      <md-toolbar ng-show="!showSearch" class="md-whiteframe-2dp">
         <div class="md-toolbar-tools">
           <md-button class="md-icon-button" ng-click="toggleSideNav('left')" aria-label="Menu">
             <md-icon class="material-icons">menu</md-icon>
@@ -77,23 +77,23 @@
           </md-button>
         </div>
       </md-toolbar>
-      <md-toolbar ng-show="showSearch" class="md-whiteframe-2dp md-background" style="background-color: #FAFAFA">
+      <md-toolbar ng-show="showSearch" class="md-whiteframe-2dp" style="background-color: #FAFAFA">
         <div class="md-toolbar-tools">
           <md-button ng-click="showSearch = !showSearch" class="md-icon-button" aria-label="Back">
             <md-icon class="material-icons" style="color:black">arrow_back</md-icon>
           </md-button>
           <md-input-container md-theme="input" flex layout="center center">
             <label>&nbsp;</label>
-            <input type="text" ng-model="search" placeholder="Search" style="border-bottom-color: black">
+            <input type="text" ng-model="search" placeholder="Search" style="border-bottom-color: black" md-autofocus>
           </md-input-container>
           <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
             <md-icon class="material-icons" style="color:black">search</md-icon>
           </md-button>
         </div>
       </md-toolbar>
-      <md-content flex="">
-        <div class="container" ng-view=""></div>
-      </md-content>
+        <md-content ng-view="" flex="">
+        </md-content>
+      </div>
     </div>
 
 
@@ -153,6 +153,7 @@
         <script src="scripts/services/auth_events.js"></script>
         <script src="scripts/services/user_roles.js"></script>
         <script src="scripts/services/session.js"></script>
+        <script src="scripts/services/countryservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>

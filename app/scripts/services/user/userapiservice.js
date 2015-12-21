@@ -8,7 +8,7 @@
  * Factory in the app.
  */
 angular.module('app.services', [])
-  .factory('userApiService', ['$http', function ($http) {
+  .service('userApiService', ['$http', function ($http) {
 
     var baseUrl = "http://localhost:8080/user";
     var response = {};

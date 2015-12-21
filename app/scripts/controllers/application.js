@@ -29,6 +29,7 @@ angular.module('app')
       $mdSidenav(menuId).toggle();
     };
 
+    // TODO: http://codepen.io/kyleledbetter/pen/gbQOaV?editors=110
     // define navigation menu items
     $scope.menu = [
       {

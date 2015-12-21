@@ -8,7 +8,7 @@
  * Factory in the app.
  */
 angular.module('app')
-  .factory('authService', ['$http', 'Session', function ($http, Session) {
+  .service('authService', ['$http', 'Session', function ($http, Session) {
 
     var response = {}; // holds response
     var baseUrl = "http://localhost:8080/user";
