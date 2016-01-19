@@ -8,14 +8,10 @@
  * Controller of the app
  */
 angular.module('app')
-  .controller('ApplicationCtrl', ['$scope', '$mdSidenav', '$location', 'authService', 'USER_ROLES', function ($scope, $mdSidenav, $location, authService, USER_ROLES) {
+  .controller('ApplicationCtrl', function ($log, $scope, $mdSidenav, $location, authService, USER_ROLES) {
     // TODO: http://fdietz.github.io/recipes-with-angular-js/urls-routing-and-partials/using-route-location-to-implement-a-navigation-menu.html
 
-    $scope.menuClass = function(page) {
-      var current = $location.path().substring(1);
-      return page === current ? "active": "";
-    };
-
+    $scope.showSearch = false;
     $scope.currentUser = null;
     $scope.userRoles = USER_ROLES;
     $scope.isLoggedIn = authService.isLoggedIn();
@@ -24,13 +20,12 @@ angular.module('app')
       $scope.currentUser = user;
     };
 
-    // open/close side nav
-    $scope.toggleSideNav = function (menuId) {
-      $mdSidenav(menuId).toggle();
-    };
+  })
+  .controller('NavigationCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil) {
 
-    // TODO: http://codepen.io/kyleledbetter/pen/gbQOaV?editors=110
-    // define navigation menu items
+    $scope.toggleLeft = buildToggler('left');
+    $scope.lockLeft = false;
+
     $scope.menu = [
       {
         link: '#/',
@@ -38,19 +33,82 @@ angular.module('app')
         icon: 'home'
       },
       {
-        link: '',
-        title: 'Gigs',
-        icon: 'local_activity'
+        title: 'Events',
+        icon: 'local_activity',
+        sub_items: [
+          {
+            title: 'All Events',
+            link: ''
+          },
+          {
+            title: 'Local',
+            link: ''
+          },
+          {
+            title: 'Music',
+            link: ''
+          },
+          {
+            title: 'Sport',
+            link: ''
+          },
+          {
+            title: 'Theatre',
+            link: ''
+          },
+          {
+            title: 'Comedy',
+            link: ''
+          },
+          {
+            title: 'Festivals',
+            link: ''
+          }
+        ]
       },
       {
-        link: '',
         title: 'Acts',
-        icon: 'music_note'
+        icon: 'music_note',
+        sub_items: [
+          {
+            title: 'All Acts',
+            link: ''
+          },
+          {
+            title: 'Local',
+            link: ''
+          },
+          {
+            title: 'Music',
+            link: ''
+          },
+          {
+            title: 'Sport',
+            link: ''
+          },
+          {
+            title: 'Theatre',
+            link: ''
+          },
+          {
+            title: 'Comedy',
+            link: ''
+          }
+        ]
       },
       {
-        link: '',
         title: 'Venues',
-        icon: 'local_bar'
+        icon: 'local_bar',
+        sub_items: [
+          {
+            title: 'All Events',
+            link: ''
+          },
+          {
+            title: 'Local',
+            link: ''
+          }
+        ]
       }
       //{
       //  link: '',
@@ -98,6 +156,29 @@ angular.module('app')
       ];
     }
 
-    $scope.showSearch = false;
+    function buildToggler(navId) {
+      return $mdUtil.debounce(function () {
+        $mdSidenav(navId)
+          .toggle();
+      }, 300);
+    }
 
-  }]);
+    // toggle main navigation
+    $scope.close = function () {
+      $mdSidenav('left').close()
+        .then(function () {
+          $scope.lockLeft = !$scope.lockLeft;
+        });
+    };
+
+    // open/close side nav on mobile/smallscreens
+    $scope.toggleSideNav = function (menuId) {
+      $mdSidenav(menuId).toggle().then(function () {
+        $scope.sideNavIsOpen = !$scope.sideNavIsOpen;
+      });
+
+      $scope.isSidenavOpen = !$scope.isSidenavOpen;
+
+    };
+  });
+

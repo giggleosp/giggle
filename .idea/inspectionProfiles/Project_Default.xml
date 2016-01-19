@@ -4,11 +4,12 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="4">
+          <list size="5">
             <item index="0" class="java.lang.String" itemvalue="value" />
             <item index="1" class="java.lang.String" itemvalue="uniqueusername" />
             <item index="2" class="java.lang.String" itemvalue="username-exists" />
             <item index="3" class="java.lang.String" itemvalue="unique" />
+            <item index="4" class="java.lang.String" itemvalue="href" />
           </list>
         </value>
       </option>
@@ -17,7 +18,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="9">
+          <list size="13">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -27,6 +28,10 @@
             <item index="6" class="java.lang.String" itemvalue="md-card-header-text" />
             <item index="7" class="java.lang.String" itemvalue="md-card-header" />
             <item index="8" class="java.lang.String" itemvalue="md-card-content" />
+            <item index="9" class="java.lang.String" itemvalue="md-menu-content" />
+            <item index="10" class="java.lang.String" itemvalue="md-item-content" />
+            <item index="11" class="java.lang.String" itemvalue="md-item-template" />
+            <item index="12" class="java.lang.String" itemvalue="md-not-found" />
           </list>
         </value>
       </option>

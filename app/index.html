@@ -11,97 +11,130 @@
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
-    <link rel="stylesheet" href="styles/css/component.css"/>
-    <link rel="stylesheet" href="styles/css/normalize.css"/>
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <!--<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- endbuild -->
   </head>
-  <body ng-app="app" ng-controller="ApplicationCtrl">
-    <!--[if lte IE 8]>
+  <body ng-app="app" ng-controller="ApplicationCtrl" layout="column" ng-cloak>
+<!--     [if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    <![endif] -->
 
-    <md-sidenav class="md-sidenav-left md-whiteframe-2dp" md-component-id="left">
-      <md-whiteframe class="md-whiteframe-2dp">
-        <md-toolbar class="md-tall md-hue-1">
-          <span flex></span>
-          <div layout="column" class="md-toolbar-tools-bottom inset">
-            <user-avatar></user-avatar>
-            <span></span>
-            <div>{{ user.name }}</div>
-            <div>{{ user.username }}</div>
+    <section ng-controller="NavigationCtrl">
+      <md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id="leftLtMd">
+          <md-toolbar class="md-tall md-hue-1 md-whiteframe-2dp">
+            <span flex></span>
+            <div layout="column" class="md-toolbar-tools-bottom inset">
+              <user-avatar></user-avatar>
+              <span></span>
+              <div>{{ user.name }}</div>
+              <div>{{ user.username }}</div>
+            </div>
+          </md-toolbar>
+          <md-list>
+          <md-list-item ng-repeat="item in menu" href="{{ item.link }}">
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+              <div class="inset">
+                <md-icon class="material-icons">{{ item.icon }}</md-icon>
+              </div>
+              <div class="inset">
+                {{ item.title }}
+              </div>
+            </md-item-content>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item ng-repeat="item in admin" href="{{ item.link }}">
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+              <div class="inset">
+                <md-icon class="material-icons">{{ item.icon }}</md-icon>
+              </div>
+              <div class="inset">
+                {{ item.title }}
+              </div>
+            </md-item-content>
+          </md-list-item>
+          <div layout="autofill"></div>
+        </md-list>
+      </md-sidenav>
+      <div layout="column" layout-fill role="main">
+        <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm hide-md>
+          <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" ng-click="close()" aria-label="Menu">
+              <md-icon class="material-icons">menu</md-icon>
+            </md-button>
           </div>
         </md-toolbar>
-      </md-whiteframe>
-      <md-list>
-        <md-list-item ng-repeat="item in menu" href="{{ item.link }}">
-          <md-item-content md-ink-ripple layout="row" layout-align="start center">
-            <div class="inset">
-              <md-icon class="material-icons">{{ item.icon }}</md-icon>
-            </div>
-            <div class="inset">
-              {{ item.title }}
-            </div>
-          </md-item-content>
-        </md-list-item>
-        <md-divider></md-divider>
-        <md-list-item ng-repeat="item in admin" href="{{ item.link }}">
-          <md-item-content md-ink-ripple layout="row" layout-align="start center">
-            <div class="inset">
-              <md-icon class="material-icons">{{ item.icon }}</md-icon>
-            </div>
-            <div class="inset">
-              {{ item.title }}
-            </div>
-          </md-item-content>
-        </md-list-item>
-        <div layout="autofill"></div>
-      </md-list>
-    </md-sidenav>
-    <div layout="column" layout-fill role="main">
-      <md-toolbar ng-show="!showSearch" class="md-whiteframe-2dp">
-        <div class="md-toolbar-tools">
-          <md-button class="md-icon-button" ng-click="toggleSideNav('left')" aria-label="Menu">
-            <md-icon class="material-icons">menu</md-icon>
-          </md-button>
-          <h2>
-            <!-- TODO: change to current location breadcrumb maybe?-->
-            Giggle
-          </h2>
-          <span flex></span>
-          <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
-            <md-icon class="material-icons">search</md-icon>
-          </md-button>
+        <md-toolbar ng-show="!showSearch" class="md-whiteframe-6dp" hide-gt-md>
+          <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" ng-click="toggleSideNav('leftLtMd')" aria-label="Menu">
+              <md-icon class="material-icons">menu</md-icon>
+            </md-button>
+            <span class="brand-title">
+              Giggle
+            </span>
+            <span flex></span>
+            <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
+              <md-icon class="material-icons">search</md-icon>
+            </md-button>
+          </div>
+        </md-toolbar>
+        <md-toolbar ng-show="showSearch" class="md-whiteframe-2dp" hide-gt-md>
+          <div class="md-toolbar-tools">
+            <md-button ng-click="showSearch = !showSearch" class="md-icon-button" aria-label="Back">
+              <md-icon class="material-icons" style="color:black">arrow_back</md-icon>
+            </md-button>
+            <md-input-container flex layout="center center">
+              <label>&nbsp;</label>
+              <input type="text" ng-model="search" placeholder="Search" style="border-bottom-color: black" md-autofocus>
+            </md-input-container>
+            <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
+              <md-icon class="material-icons" style="color:black">search</md-icon>
+            </md-button>
+          </div>
+        </md-toolbar>
+        <div layout="row">
+          <md-content>
+            <md-sidenav class="sidenav-left" md-is-locked-open="lockLeft && $mdMedia('gt-md')" md-component-id="left">
+              <md-list>
+                <md-list-item ng-repeat="item in menu" href="{{ item.link }}">
+                  <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                  <div class="inset">
+                  <md-icon class="material-icons">{{ item.icon }}</md-icon>
+                  </div>
+                  <div class="inset">
+                  {{ item.title }}
+                  </div>
+                  </md-item-content>
+                  </md-list-item>
+                  <md-divider></md-divider>
+                  <md-list-item ng-repeat="item in admin" href="{{ item.link }}">
+                  <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                  <div class="inset">
+                  <md-icon class="material-icons">{{ item.icon }}</md-icon>
+                  </div>
+                  <div class="inset">
+                  {{ item.title }}
+                  </div>
+                  </md-item-content>
+                  </md-list-item>
+                  <div layout="autofill"></div>
+                </md-list>
+              </md-sidenav>
+          </md-content>
+          <div flex="">
+            <md-content ng-view="" layout-padding layout="column" flex>
+
+            </md-content>
+          </div>
         </div>
-      </md-toolbar>
-      <md-toolbar ng-show="showSearch" class="md-whiteframe-2dp" style="background-color: #FAFAFA">
-        <div class="md-toolbar-tools">
-          <md-button ng-click="showSearch = !showSearch" class="md-icon-button" aria-label="Back">
-            <md-icon class="material-icons" style="color:black">arrow_back</md-icon>
-          </md-button>
-          <md-input-container md-theme="input" flex layout="center center">
-            <label>&nbsp;</label>
-            <input type="text" ng-model="search" placeholder="Search" style="border-bottom-color: black" md-autofocus>
-          </md-input-container>
-          <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
-            <md-icon class="material-icons" style="color:black">search</md-icon>
-          </md-button>
-        </div>
-      </md-toolbar>
-        <md-content ng-view="" flex="">
-        </md-content>
       </div>
-    </div>
+    </section>
 
-
-
-      <!--<div class="container">-->
-        <!--<div ng-view="">-->
-        <!--</div>-->
-      <!--</div>-->
 
     <!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID &ndash;&gt;-->
      <!--<script>-->
@@ -133,10 +166,6 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- custom js-->
-    <script src="scripts/js/navigation.js"></script>
-    <script src="scripts/js/classie.js"></script>
-    <script src="scripts/js/modernizr.custom.js"></script>
-    <script src="scripts/js/clickeffects.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>

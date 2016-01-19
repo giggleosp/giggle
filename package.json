@@ -39,6 +39,7 @@
     "test": "grunt test"
   },
   "dependencies": {
+    "debounce": "^1.0.0",
     "ng-regex": "0.0.5"
   }
 }

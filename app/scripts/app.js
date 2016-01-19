@@ -20,7 +20,7 @@ angular
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'ngSanitize',
+    'ngSanitize'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -31,7 +31,7 @@ angular
     $mdThemingProvider.theme('default')
       .primaryPalette('indigo', {
         'default': '500',
-        'hue-1': '600',
+        'hue-1': '800'
       })
       .accentPalette('red')
       .backgroundPalette('grey', {
@@ -43,11 +43,11 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
+        controller: 'MainCtrl'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
+        controller: 'LoginCtrl'
       })
       .when('/sign-up', {
         templateUrl: 'views/signup.html',

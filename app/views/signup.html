@@ -2,20 +2,26 @@
 
   <md-content class="md-padding autoscroll" layout="row" layout-fill="">
 
-    <div flex><!-- filler --></div>
-    <div flex-xs="90" flex-sm="50" flex="30">
-      <md-card layout-align="center center" layout="column" class="md-whiteframe-5dp">
-        <md-card-header>
-          <md-card-header-text>
-            <span class="md-title" style="font-size: 36px">Sign Up</span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-card-content layout-fill="">
+    <div flex="35"><!-- filler --></div>
+    <div flex-xs="90" flex-sm="60" flex="">
+      <md-content layout-align="center center" layout="column" style="border-radius: 4px;">
+        <md-content>
+          <md-header>
+            <span class="form md-title" style="font-size: 50px;">Sign Up</span>
+          </md-header>
+        </md-content>
+        <md-content layout-fill="">
             <form name="signupForm" layout-align="center center">
-              <md-input-container class="md-block">
-                <label>Name</label>
-                <input ng-model="user.name">
-              </md-input-container>
+              <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>First name</label>
+                  <input ng-model="user.firstName">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Last Name</label>
+                  <input ng-model="user.lastName">
+                </md-input-container>
+              </div>
               <md-input-container class="md-block">
                 <label>Username (Required)</label>
                 <input name="username" ng-model="user.username" username-exists ng-required md-maxlength="30" minlength="4">
@@ -47,47 +53,27 @@
                   Password should be a minimum of 8 characters, with at least one digit, one letter and one special character.
                 </md-tooltip>
               </md-input-container>
-              <md-autocomplete md-selected-item="user.country"
-                               md-search-text="countrySearchText"
-                               md-selected-item-change="countryValueChange(user.country.id)"
-                               md-items="country in countries | filter: countrySearchText"
-                               md-item-text="country.niceName"
-                               md-min-length="0"
-                               placeholder="Where are you from?">
-                <md-item-template>
-                  <span md-highlight-text="countrySearchText">
-                    {{ country.niceName }}
-                  </span>
-                </md-item-template>
-                <md-not-found>
-                  No matches for "{{ countrySearchText }}"
-                </md-not-found>
-              </md-autocomplete>
-
-              <div style="height:40px;"></div>
-
-              <md-autocomplete md-selected-item="user.county"
-                               ng-disabled="!counties"
-                               md-search-text="countySearchText"
-                               md-items="county in counties | filter: countySearchText"
-                               md-item-text="county.name"
-                               md-min-length="0"
-                               placeholder="{{ countyPlaceholder }}">
-                <md-item-template>
-                  <span md-highlight-text="countrySearchText">
-                    {{ country.niceName }}
-                  </span>
-                </md-item-template>
-                <md-not-found>
-                  No matches for "{{ countrySearchText }}"
-                </md-not-found>
-              </md-autocomplete>
-
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Country</label>
+                <md-select ng-model="user.country" ng-change="countryValueChanged(user.country)">
+                  <md-option ng-repeat="country in countries" value="{{country.id}}">
+                    {{country.niceName}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>County</label>
+                <md-select ng-model="user.county" ng-disabled="!counties">
+                  <md-option ng-repeat="county in counties" value="{{county.id}}">
+                    {{county.name}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
             </form>
-        </md-card-content>
-      </md-card>
+        </md-content>
+      </md-content>
     </div>
-    <div flex><!-- filler --></div>
+    <div flex="35"><!-- filler --></div>
 
   </md-content>
 </div>
