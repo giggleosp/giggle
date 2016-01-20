@@ -1,3 +1,19 @@
 md-input-container > label, md-autocomplete.md-placeholder {
   color: #757575;
 }
+
+.auth-container {
+  margin-top: 60px;
+  border-radius: 3px;
+
+  > md-card-content {
+    > md-header {
+      margin-top: 10px;
+    }
+    > md-card-content {
+      form {
+        margin-top:35px;
+      }
+    }
+  }
+}

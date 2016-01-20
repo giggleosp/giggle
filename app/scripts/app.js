@@ -33,7 +33,10 @@ angular
         'default': '500',
         'hue-1': '800'
       })
-      .accentPalette('red')
+      .accentPalette('red', {
+        'default': '500',
+        'hue-1' : '700'
+      })
       .backgroundPalette('grey', {
         'default': '200',
         'hue-3': '100'

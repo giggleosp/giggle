@@ -18,9 +18,10 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css"/>
     <!-- endbuild -->
   </head>
-  <body ng-app="app" ng-controller="ApplicationCtrl" layout="column" ng-cloak>
+  <body ng-app="app" ng-controller="ApplicationCtrl" layout="column" ng-cloak style="overflow-y: hidden">
 <!--     [if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif] -->
@@ -37,28 +38,28 @@
             </div>
           </md-toolbar>
           <md-list>
-          <md-list-item ng-repeat="item in menu" href="{{ item.link }}">
-            <md-item-content md-ink-ripple layout="row" layout-align="start center">
-              <div class="inset">
-                <md-icon class="material-icons">{{ item.icon }}</md-icon>
-              </div>
-              <div class="inset">
-                {{ item.title }}
-              </div>
-            </md-item-content>
-          </md-list-item>
-          <md-divider></md-divider>
-          <md-list-item ng-repeat="item in admin" href="{{ item.link }}">
-            <md-item-content md-ink-ripple layout="row" layout-align="start center">
-              <div class="inset">
-                <md-icon class="material-icons">{{ item.icon }}</md-icon>
-              </div>
-              <div class="inset">
-                {{ item.title }}
-              </div>
-            </md-item-content>
-          </md-list-item>
-          <div layout="autofill"></div>
+              <md-list-item ng-repeat="item in menu" href="{{ item.link }}">
+                <md-item-content layout="row" layout-align="start center">
+                  <div class="inset">
+                    <md-icon class="material-icons">{{ item.icon }}</md-icon>
+                  </div>
+                  <div class="inset">
+                    {{ item.title }}
+                  </div>
+                </md-item-content>
+              </md-list-item>
+              <md-divider></md-divider>
+              <md-list-item ng-repeat="item in admin" href="{{ item.link }}">
+                <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                  <div class="inset">
+                    <md-icon class="material-icons">{{ item.icon }}</md-icon>
+                  </div>
+                  <div class="inset">
+                    {{ item.title }}
+                  </div>
+                </md-item-content>
+              </md-list-item>
+            <div layout="autofill"></div>
         </md-list>
       </md-sidenav>
       <div layout="column" layout-fill role="main">
@@ -66,6 +67,9 @@
           <div class="md-toolbar-tools">
             <md-button class="md-icon-button" ng-click="close()" aria-label="Menu">
               <md-icon class="material-icons">menu</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Menu">
+              <!--<md-icon class="material-icons"></md-icon>-->
             </md-button>
           </div>
         </md-toolbar>
@@ -97,38 +101,31 @@
             </md-button>
           </div>
         </md-toolbar>
-        <div layout="row">
-          <md-content>
+        <div layout="row" flex="">
+          <md-content class="sidenav-container">
             <md-sidenav class="sidenav-left" md-is-locked-open="lockLeft && $mdMedia('gt-md')" md-component-id="left">
-              <md-list>
-                <md-list-item ng-repeat="item in menu" href="{{ item.link }}">
-                  <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                  <div class="inset">
-                  <md-icon class="material-icons">{{ item.icon }}</md-icon>
-                  </div>
-                  <div class="inset">
-                  {{ item.title }}
-                  </div>
+              <md-list ng-repeat="section in menu">
+                <md-subheader class="md-no-sticky">
+                  <span>{{ section.title }}</span>
+                </md-subheader>
+                <md-list-item href="{{ item.href }}" class="nav-list-item" ng-if="item.isVisible" ng-repeat="item in section.items">
+                  <md-item-content layout="row" layout-align="start center" class="content">
+                    <div class="inset">
+                      <md-icon ng-if="item.md" class="material-icons md-24">{{ item.icon }}</md-icon>
+                      <md-icon ng-if="!item.md" class="{{ item.icon }}" style="font-size:24px"></md-icon>
+                    </div>
+                    <div class="inset">
+                      {{ item.title }}
+                    </div>
                   </md-item-content>
-                  </md-list-item>
-                  <md-divider></md-divider>
-                  <md-list-item ng-repeat="item in admin" href="{{ item.link }}">
-                  <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                  <div class="inset">
-                  <md-icon class="material-icons">{{ item.icon }}</md-icon>
-                  </div>
-                  <div class="inset">
-                  {{ item.title }}
-                  </div>
-                  </md-item-content>
-                  </md-list-item>
-                  <div layout="autofill"></div>
-                </md-list>
-              </md-sidenav>
+                </md-list-item>
+                <md-divider></md-divider>
+                <div layout="autofill"></div>
+              </md-list>
+            </md-sidenav>
           </md-content>
-          <div flex="">
+          <div flex="" style="overflow-y: scroll">
             <md-content ng-view="" layout-padding layout="column" flex>
-
             </md-content>
           </div>
         </div>

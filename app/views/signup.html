@@ -2,26 +2,14 @@
 
   <md-content class="md-padding autoscroll" layout="row" layout-fill="">
 
-    <div flex="35"><!-- filler --></div>
-    <div flex-xs="90" flex-sm="60" flex="">
-      <md-content layout-align="center center" layout="column" style="border-radius: 4px;">
-        <md-content>
-          <md-header>
-            <span class="form md-title" style="font-size: 50px;">Sign Up</span>
-          </md-header>
-        </md-content>
-        <md-content layout-fill="">
+    <div flex=""><!-- filler --></div>
+    <md-card flex-xs="90" flex-sm="60" flex-gt-md="35" class="auth-container" layout-padding="">
+      <md-card-content layout-align="center center" layout="column">
+        <md-header>
+          <span class="form md-title">Sign Up</span>
+        </md-header>
+        <md-card-content layout-fill="">
             <form name="signupForm" layout-align="center center">
-              <div layout-gt-sm="row">
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>First name</label>
-                  <input ng-model="user.firstName">
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                  <label>Last Name</label>
-                  <input ng-model="user.lastName">
-                </md-input-container>
-              </div>
               <md-input-container class="md-block">
                 <label>Username (Required)</label>
                 <input name="username" ng-model="user.username" username-exists ng-required md-maxlength="30" minlength="4">
@@ -53,27 +41,14 @@
                   Password should be a minimum of 8 characters, with at least one digit, one letter and one special character.
                 </md-tooltip>
               </md-input-container>
-              <md-input-container class="md-block" flex-gt-sm>
-                <label>Country</label>
-                <md-select ng-model="user.country" ng-change="countryValueChanged(user.country)">
-                  <md-option ng-repeat="country in countries" value="{{country.id}}">
-                    {{country.niceName}}
-                  </md-option>
-                </md-select>
-              </md-input-container>
-              <md-input-container class="md-block" flex-gt-sm>
-                <label>County</label>
-                <md-select ng-model="user.county" ng-disabled="!counties">
-                  <md-option ng-repeat="county in counties" value="{{county.id}}">
-                    {{county.name}}
-                  </md-option>
-                </md-select>
-              </md-input-container>
+              <div layout="row" layout-align="center center">
+                <md-button class="md-raised md-accent md-hue-1" layout-fill>Sign Up</md-button>
+              </div>
             </form>
-        </md-content>
-      </md-content>
-    </div>
-    <div flex="35"><!-- filler --></div>
+        </md-card-content>
+      </md-card-content>
+    </md-card>
+    <div flex=""><!-- filler --></div>
 
   </md-content>
 </div>

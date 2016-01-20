@@ -21,102 +21,216 @@ angular.module('app')
     };
 
   })
-  .controller('NavigationCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil) {
+  .controller('NavigationCtrl', function ($log, $scope, $timeout, $mdSidenav, $mdUtil) {
 
     $scope.toggleLeft = buildToggler('left');
-    $scope.lockLeft = false;
+    $scope.lockLeft = true;
 
     $scope.menu = [
       {
-        link: '#/',
-        title: 'Home',
-        icon: 'home'
-      },
-      {
-        title: 'Events',
-        icon: 'local_activity',
-        sub_items: [
+        title: "General",
+        items: [
           {
-            title: 'All Events',
-            link: ''
+            title: "Home",
+            href: "#/",
+            icon: "home",
+            md: true,
+            isVisible: true
           },
           {
-            title: 'Local',
-            link: ''
+            title: "Log In",
+            href: "#/login",
+            icon: "person",
+            md: true,
+            isVisible: !$scope.isLoggedIn
           },
           {
-            title: 'Music',
-            link: ''
+            title: "Sign Up",
+            href: "#/sign-up",
+            icon: "person_add",
+            md: true,
+            isVisible: !$scope.isLoggedIn
           },
           {
-            title: 'Sport',
-            link: ''
+            title: "Profile",
+            href: "",
+            icon: "account_circle",
+            md: true,
+            isVisible: $scope.isLoggedIn
           },
           {
-            title: 'Theatre',
-            link: ''
+            title: "Settings",
+            href: "",
+            icon: "settings",
+            md: true,
+            isVisible: $scope.isLoggedIn
           },
           {
-            title: 'Comedy',
-            link: ''
-          },
-          {
-            title: 'Festivals',
-            link: ''
+            title: "Log Out",
+            href: "#/login",
+            icon: "account_circle",
+            md: true,
+            isVisible: $scope.isLoggedIn
           }
         ]
       },
       {
-        title: 'Acts',
-        icon: 'music_note',
-        sub_items: [
+        title: "Events",
+        items: [
           {
-            title: 'All Acts',
-            link: ''
+            title: "All",
+            href: "",
+            icon: "local_activity",
+            md: true,
+            isVisible: true
           },
           {
-            title: 'Local',
-            link: ''
+            title: "Local",
+            href: "",
+            icon: "location_on",
+            md: true,
+            isVisible: true
           },
           {
-            title: 'Music',
-            link: ''
+            title: "Music",
+            href: "",
+            icon: "music_note",
+            md: true,
+            isVisible: true
           },
           {
-            title: 'Sport',
-            link: ''
+            title: "Sports",
+            href: "",
+            icon: "fa fa-futbol-o",
+            md: false,
+            isVisible: true
           },
           {
-            title: 'Theatre',
-            link: ''
+            title: "Theatre",
+            href: "",
+            icon: "theaters",
+            md: true,
+            isVisible: true
           },
           {
-            title: 'Comedy',
-            link: ''
+            title: "Comedy",
+            href: "",
+            icon: "tag_faces",
+            md: true,
+            isVisible: true
+          },
+          {
+            title: "Festivals",
+            href: "",
+            icon: "library_music",
+            md: true,
+            isVisible: true
           }
         ]
       },
       {
-        title: 'Venues',
-        icon: 'local_bar',
-        sub_items: [
+        title: "Acts",
+        items: [
           {
-            title: 'All Events',
-            link: ''
+            title: "All",
+            href: "",
+            icon: "local_play",
+            md: true,
+            isVisible: true
           },
           {
-            title: 'Local',
-            link: ''
+            title: "Local",
+            href: "",
+            icon: "location_on",
+            md: true,
+            isVisible: true
+          },
+          {
+            title: "Music",
+            href: "",
+            icon: "music_note",
+            md: true,
+            isVisible: true
+          },
+          {
+            title: "Sports",
+            href: "",
+            icon: "fa fa-futbol-o",
+            md: false,
+            isVisible: true
+          },
+          {
+            title: "Theatre",
+            href: "",
+            icon: "theaters",
+            md: true,
+            isVisible: true
+          },
+          {
+            title: "Comedy",
+            href: "",
+            icon: "tag_faces",
+            md: true,
+            isVisible: true
+          },
+          {
+            title: "Festivals",
+            href: "",
+            icon: "library_music",
+            md: true,
+            isVisible: true
+          }
+        ]
+      },
+      {
+        title: "Venues",
+        items: [
+          {
+            title: "All",
+            href: "",
+            icon: "local_play",
+            md: true,
+            isVisible: true
+          },
+          {
+            title: "Local",
+            href: "",
+            icon: "location_on",
+            md: true,
+            isVisible: true
+          },
+          {
+            title: "Bars",
+            href: "",
+            icon: "local_bar",
+            md: true,
+            isVisible: true
+          },
+          {
+            title: "Music",
+            href: "",
+            icon: "music_note",
+            md: true,
+            isVisible: true
+          },
+          {
+            title: "Sports",
+            href: "",
+            icon: "fa fa-futbol-o",
+            md: false,
+            isVisible: true
+          },
+          {
+            title: "Theatre",
+            href: "",
+            icon: "theaters",
+            md: true,
+            isVisible: true
           }
         ]
       }
-      //{
-      //  link: '',
-      //  title: '',
-      //  icon: ''
-      //}
     ];
-    // define navigation menu items
+
 
     if ($scope.isLoggedIn) {
       $scope.admin = [
