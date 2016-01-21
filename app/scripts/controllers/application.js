@@ -8,8 +8,8 @@
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('ApplicationCtrl', ['$scope', '$location', '$cookies', 'userService', 'authService', 'AUTH_EVENTS', 'USER_ROLES', '$mdToast',
-    function ($scope, $location, $cookies, userService, authService, AUTH_EVENTS, USER_ROLES, $mdToast) {
+  .controller('ApplicationCtrl', ['$route', '$scope', '$location', '$cookies', 'userService', 'authService', 'AUTH_EVENTS', 'USER_ROLES', '$mdToast',
+    function ($route, $scope, $location, $cookies, userService, authService, AUTH_EVENTS, USER_ROLES, $mdToast) {
 
     $scope.userRoles = USER_ROLES;
     $scope.isLoggedIn = authService.isLoggedIn();
@@ -71,16 +71,18 @@ angular.module('app.controllers')
     $scope.$on(AUTH_EVENTS.logoutSuccess, function (event, args) {
       $scope.setCurrentUser(null);
       clearSessionCookies();
+      //window.location.reload(false);
+      $scope.menu = [];
       $location.path("/login");
-      $scope.$apply();
     });
 
     $scope.$on(AUTH_EVENTS.loginSuccess, function (event, args) {
       $scope.setCurrentUser(args.user);
       $cookies.put('user', args.user.username);
       $cookies.put('role', args.user.role.name);
+      //window.location.reload(false);
       $location.path("/");
-      $window.location.reload();
+
     });
 
     // clear session cookies
