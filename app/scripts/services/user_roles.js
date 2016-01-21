@@ -9,11 +9,9 @@
  */
 angular.module('app')
   .constant('USER_ROLES', {
-    all: '*',
     admin: 'admin',
     editor: 'editor',
-    guest: 'guest',
-    fan: 'fan',
-    entertainer: 'entertainer',
+    user: 'user',
+    act: 'act',
     venue: 'venue'
   });

@@ -8,10 +8,24 @@
  * Factory in the app.
  */
 angular.module('app.services', [])
-  .service('userApiService', ['$http', function ($http) {
+  .service('userService', ['$http', '$cookies', function ($http, $cookies) {
 
     var baseUrl = "http://localhost:8080/user";
     var response = {};
+
+    response.getSessionUser = function () {
+      var username = $cookies.get('user');
+      if (username != null) {
+        return $http({ 
+          method: "GET",
+          dataType: "json",
+          url: baseUrl + "/username/" + username,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      }
+    }
 
     response.usernameExists = function (username) {
       return $http({
@@ -33,18 +47,6 @@ angular.module('app.services', [])
         params: { email : email },
         headers: {
           'Content-Type': 'application/json'
-        }
-      });
-    };
-
-    response.addUser = function (user) {
-      return $http({
-        method: "POST",
-        dataType: "json",
-        url: baseUrl + "/insert",
-        data: $.param(user),
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
         }
       });
     };

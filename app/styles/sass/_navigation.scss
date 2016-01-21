@@ -53,12 +53,10 @@ md-sidenav {
         border-radius: 15px;
         height: 48px;
         line-height: 48px;
-
         > a {
           display: inline-block;
           vertical-align: middle;
           line-height: normal;
-
           > div.md-list-item-inner {
             > md-item-content {
               div.inset {

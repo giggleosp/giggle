@@ -10,7 +10,7 @@
 // TODO: ref: https://docs.angularjs.org/api/ng/type/ngModel.NgModelController
 
 angular.module('app.directives', [])
-  .directive('usernameExists', ['$q', 'userApiService', function ($q, userApiService) {
+  .directive('usernameExists', ['$q', 'userService', function ($q, userService) {
     return {
       restrict: 'A',
       require: 'ngModel',
@@ -27,7 +27,7 @@ angular.module('app.directives', [])
           }
 
           // call userApiService
-          userApiService.usernameExists(value)
+          userService.usernameExists(value)
             .then(function (response) {
               if (response.data) {
                 // username exists, not unique

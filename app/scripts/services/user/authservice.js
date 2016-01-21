@@ -8,10 +8,26 @@
  * Factory in the app.
  */
 angular.module('app')
-  .service('authService', ['$http', 'Session', function ($http, Session) {
+  .service('authService', ['AUTH_EVENTS', '$cookies', '$log', '$http', function (AUTH_EVENTS, $cookies, $log, $http) {
 
     var response = {}; // holds response
     var baseUrl = "http://localhost:8080/user";
+
+    response.addUser = function (user) {
+      return $http({
+        method: "POST",
+        dataType: "json",
+        url: baseUrl + "/insert",
+        data: $.param(user),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(function (response) {
+        return response;
+      }, function (response) {
+        return response.status;
+      });
+    }
 
     // login user
     response.login = function (credentials) {
@@ -23,17 +39,16 @@ angular.module('app')
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }).then(function (response) {
-        if (response.status === 200) {
-         Session.create(response.data.id,
-           response.data.role);
-        }
-        console.log(response);
         return response;
+      }, function (response) {
+        return response.status;
       });
     };
 
+
+
     response.isLoggedIn = function () {
-      return !!Session.userId;
+      return !!$cookies.get('user');
     };
 
     response.isAuthorised = function (authRoles) {

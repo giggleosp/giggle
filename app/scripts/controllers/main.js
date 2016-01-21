@@ -8,6 +8,6 @@
  * Controller of the app
  */
 angular.module('app.controllers', [])
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function () {
 
   });

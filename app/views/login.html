@@ -1,34 +1,36 @@
-<div class="row">
-  <div class="auth-wrapper col-md-6 col-sm-8 col-xs-12 col-centered">
-    <div class="headers text-center">
-    </div>
-    <div class="well well-lg">
-      <h1 class="text-center">Log In</h1>
-      <form name="loginForm" class="authForm" role="form" ng-submit="login(credentials)">
-        <div class="form-group">
-          <label for="txtUsername" class="sr-only">Username</label>
-          <input type="text" class="form-control" name="username" ng-class="{ 'invalid': loginForm.username.$invalid && loginForm.$submitted }"
-                 id="txtUsername" placeholder="Username" ng-model="credentials.username" required>
-          <div ng-show="loginForm.$submitted && loginForm.$invalid" class="error-messages">
-            <span ng-show="loginForm.username.$error.required">Username is a required field</span>
-          </div>
-        </div>
+<div layout="column" layout-align="center center">
 
-        <div class="form-group">
-          <label for="txtPassword" class="sr-only">Password</label>
-          <input type="password" class="form-control" ng-class="{ 'invalid': loginForm.password.$invalid && loginForm.$submitted }" id="txtPassword" placeholder="Password" ng-model="credentials.password" required>
-          <div ng-show="loginForm.$submitted && loginForm.$invalid" class="error-messages">
-            <span ng-show="loginForm.password.$error.required">Password is a required field</span>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-default raised">Log In</button>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Stayed signed in
-          </label>
-          <a href="#" class="pull-right">Forgot password?</a>
-        </div>
-      </form>
-    </div>
-  </div>
+  <md-content class="md-padding autoscroll" layout="row" layout-fill="">
+
+    <div flex=""><!-- filler --></div>
+    <md-card flex-xs="90" flex-sm="60" flex-lg="35" flex-md="40" class="auth-container" layout-padding="">
+      <md-card-content layout-align="center center" layout="column">
+        <md-header>
+          <span class="form md-title">Log In</span>
+        </md-header>
+        <md-card-content layout-fill="">
+            <form name="loginForm" layout-align="center center" ng-submit="login(user)" novalidate>
+              <md-input-container class="md-block">
+                <label>Username (Required)</label>
+                <input name="username" ng-model="user.username" ng-required="true">
+                <div ng-messages="signupForm.username.$error" ng-show="signupForm.$submitted || signupForm.username.$dirty">
+                  <span ng-message="required">Username is a required field!</span>
+                </div>
+              </md-input-container>
+              <md-input-container class="md-block">
+                <label>Password (Required)</label>
+                <input type="password" name="password" ng-model="user.password" password-strength ng-required="true">
+                <div ng-messages="signupForm.password.$error" ng-show="signupForm.$submitted || signupForm.password.$dirty">
+                  <span ng-message="required">Password is a required field!</span>
+                </div>
+              </md-input-container>
+              <div layout="row" layout-align="center center">
+                <md-button name="btnSubmit" type="submit" class="md-raised md-accent md-hue-1" layout-fill>Log In</md-button>
+              </div>
+            </form>
+        </md-card-content>
+      </md-card-content>
+    </md-card>
+    <div flex=""><!-- filler --></div>
+  </md-content>
 </div>

@@ -9,37 +9,32 @@
  */
 
 angular.module('app.controllers')
-  .controller('SignUpCtrl', ['$log', '$scope', 'userApiService', 'countryService', function ($log, $scope, userApiService, countryService) {
+  .controller('SignUpCtrl', ['$log', '$scope', 'authService', '$rootScope', function ($log, $scope, authService, $rootScope) {
 
-    $scope.countries = {};
-    $scope.counties = null;
+    $scope.signup = function (user) {
 
-    getCountries()
-      .then(function (response) {
-        $log.debug(response);
-        $scope.countries = response.data;
-      });
+      if ($scope.signupForm.$valid) {
 
-    $scope.countryValueChanged = function (id) {
-      getCounties(id);
-    };
+        authService.addUser(user)
+         .then(function (response) {
+           if (response.status === 200) {
+            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: response.data });
+           }
 
-    function getCountries() {
-      return countryService.getCountries()
-        .then(function (response) {
-          return response;
-        });
-    }
+         }, function (status) {
+            $log.debug(response);
+            if (response.status === 500) {
+              $scope.popToast("Internal server error!");
+            } else if (response.status === 400) {
+              $scope.popToast("Something went wrong!");
+            } else if (response.status === 503) {
+              $scope.popToast("Looks like the servers are down!");
+            } else if (response.status === 102) {
+              $scope.popToast("Could not connect to servers!");
+            }
 
-    function getCounties(id) {
-      return countryService.getCountiesForCountry(id)
-        .then(function (response) {
-          if (response.status === 200) {
-            $scope.counties = response.data;
-          }
-        }, function (response) {
-          $scope.counties = null;
-        });
+         });
+      }
     }
 
   }]);
