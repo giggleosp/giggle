@@ -3,17 +3,18 @@ md-input-container > label, md-autocomplete.md-placeholder {
 }
 
 .auth-container {
-  margin-top: 60px;
-  border-radius: 3px;
+  margin-top: 50px;
 
-  > md-card-content {
-    > md-header {
-      margin-top: 10px;
-    }
-    > md-card-content {
-      form {
-        margin-top:35px;
-      }
-    }
-  }
+  //> div > md-card {
+  //  > md-card-content.card-header {
+  //    > md-header > form.md-title {
+  //      background-color: red;
+  //    }
+  //  }
+  //  > md-card {
+  //    form {
+  //      visibility: hidden;
+  //    }
+  //  }
+  //}
 }

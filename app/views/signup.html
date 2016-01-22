@@ -1,48 +1,48 @@
-<div layout="column" layout-align="center center">
-  <div class="md-padding autoscroll" layout="row" layout-fill="">
+<div layout="column" layout-align="center center" class="auth-container">
+  <div class="md-padding" layout="row" layout-fill="" layout-align="center center">
     <div flex=""><!-- filler --></div>
-    <md-card flex-xs="100" flex-sm="55" flex-md="25" flex-gt-md="20" class="auth-container" layout-padding="">
-      <md-card-content layout-align="center center" layout="column">
+    <md-card flex-xs="100" flex-sm="55" flex-gt-md="30" layout-padding="">
+      <md-card-content class="card-header" layout-align="center center" layout="column" style="padding-top:20px;">
         <md-header>
           <span class="form md-title">Sign Up</span>
         </md-header>
         <md-card-content layout-fill="">
-            <form name="signupForm" layout-align="center center" ng-submit="signup(user)" novalidate>
-              <md-input-container class="md-block">
-                <label>Username (Required)</label>
-                <input name="username" ng-model="user.username" username-exists md-maxlength="30" minlength="4" ng-required="true">
-                <div ng-messages="signupForm.username.$error" ng-show="signupForm.$submitted || signupForm.username.$dirty">
-                  <span ng-message="required">Username is a required field!</span>
-                  <span ng-message="usernameExists">This username is already in use!</span>
-                  <span ng-message="md-maxlength">Username can't be more than 30 characters!</span>
-                  <span ng-message="minlength">Username requires at least 4 characters!</span>
-                </div>
-              </md-input-container>
-              <md-input-container class="md-block">
-                <label>Email (Required)</label>
-                <input type="email" name="email" ng-model="user.email" email-exists minlength="4" ng-required="true">
-                <div ng-messages="signupForm.email.$error" ng-show="signupForm.$submitted || signupForm.email.$dirty">
-                  <span ng-message="email">This is not a valid email!</span>
-                  <span ng-message="required">This field cannot be left blank!</span>
-                  <span ng-message="emailExists">This email is already in use!</span>
-                  <span ng-message="minlength">Email requires at least 4 characters!</span>
-                </div>
-              </md-input-container>
-              <md-input-container class="md-block">
-                <label>Password (Required)</label>
-                <input type="password" name="password" ng-model="user.password" password-strength ng-required="true">
-                <div ng-messages="signupForm.password.$error" ng-show="signupForm.$submitted || signupForm.password.$dirty">
-                  <span ng-message="required">Password is a required field!</span>
-                  <span ng-message="passwordStrength">This password is not strong enough!</span>
-                </div>
-                <md-tooltip>
-                  Password should be a minimum of 8 characters, with at least one digit, one letter and one special character.
-                </md-tooltip>
-              </md-input-container>
-              <div layout="row" layout-align="center center">
-                <md-button type="submit" class="md-raised md-accent md-hue-1" layout-fill>Sign Up</md-button>
+          <form name="signupForm" layout-align="center center" ng-submit="signup(user)" novalidate style="padding-top:20px;">
+            <md-input-container class="md-block">
+              <label>Username (Required)</label>
+              <input name="username" ng-model="user.username" username-exists md-maxlength="30" minlength="4" ng-required="true">
+              <div ng-messages="signupForm.username.$error" ng-show="signupForm.$submitted || signupForm.username.$dirty">
+                <span ng-message="required">Username is a required field!</span>
+                <span ng-message="usernameExists">This username is already in use!</span>
+                <span ng-message="md-maxlength">Username can't be more than 30 characters!</span>
+                <span ng-message="minlength">Username requires at least 4 characters!</span>
               </div>
-            </form>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Email (Required)</label>
+              <input type="email" name="email" ng-model="user.email" email-exists minlength="4" ng-required="true">
+              <div ng-messages="signupForm.email.$error" ng-show="signupForm.$submitted || signupForm.email.$dirty">
+                <span ng-message="email">This is not a valid email!</span>
+                <span ng-message="required">This field cannot be left blank!</span>
+                <span ng-message="emailExists">This email is already in use!</span>
+                <span ng-message="minlength">Email requires at least 4 characters!</span>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Password (Required)</label>
+              <input type="password" name="password" ng-model="user.password" password-strength ng-required="true">
+              <div ng-messages="signupForm.password.$error" ng-show="signupForm.$submitted || signupForm.password.$dirty">
+                <span ng-message="required">Password is a required field!</span>
+                <span ng-message="passwordStrength">This password is not strong enough!</span>
+              </div>
+              <md-tooltip>
+                Password should be a minimum of 8 characters, with at least one digit, one letter and one special character.
+              </md-tooltip>
+            </md-input-container>
+            <div layout="row" layout-align="center center">
+              <md-button type="submit" class="md-raised md-accent md-hue-1" layout-fill>Sign Up</md-button>
+            </div>
+          </form>
         </md-card-content>
       </md-card-content>
     </md-card>

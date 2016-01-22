@@ -7,7 +7,7 @@
  * # AuthService
  * Factory in the app.
  */
-angular.module('app')
+angular.module('app.services')
   .service('authService', ['AUTH_EVENTS', '$cookies', '$log', '$http', function (AUTH_EVENTS, $cookies, $log, $http) {
 
     var response = {}; // holds response
@@ -22,12 +22,8 @@ angular.module('app')
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
-      }).then(function (response) {
-        return response;
-      }, function (response) {
-        return response.status;
       });
-    }
+    };
 
     // login user
     response.login = function (credentials) {
@@ -38,17 +34,12 @@ angular.module('app')
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
-      }).then(function (response) {
-        return response;
-      }, function (response) {
-        return response.status;
       });
     };
 
-
-
     response.isLoggedIn = function () {
-      return !!$cookies.get('user');
+      var user = $cookies.get("user");
+      return !!user;
     };
 
     response.isAuthorised = function (authRoles) {

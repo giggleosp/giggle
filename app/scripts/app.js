@@ -43,25 +43,6 @@ angular
         'hue-3': '100'
       });
   })
-  // .config(function ($routeProvider) {
-  //   $routeProvider
-  //     .when('/', {
-  //       templateUrl: 'views/main.html',
-  //       controller: 'MainCtrl'
-  //     })
-  //     .when('/login', {
-  //       templateUrl: 'views/login.html',
-  //       controller: 'LoginCtrl'
-  //     })
-  //     .when('/sign-up', {
-  //       templateUrl: 'views/signup.html',
-  //       controller: 'SignUpCtrl'
-  //     })
-  //     .otherwise({
-  //       redirectTo: '/'
-  //     });
-
-  // })
   .config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
@@ -69,8 +50,9 @@ angular
     $stateProvider
       .state('main', {
         url: '/',
+        access: 'public',
         views: {
-          'main': {
+          main: {
             controller: 'MainCtrl',
             templateUrl: 'views/main.html'
           }
@@ -78,8 +60,9 @@ angular
       })
       .state('login', {
         url: '/login',
+        access: 'anon',
         views: {
-          'main': {
+          main: {
             controller: 'LoginCtrl',
             templateUrl: 'views/login.html'
           }
@@ -87,11 +70,27 @@ angular
       })
       .state('signup', {
         url: '/signup',
+        access: 'anon',
         views: {
-          'main': {
+          main: {
             controller: 'SignUpCtrl',
             templateUrl: 'views/signup.html'
           }
         }
       });
+  })
+  .run(function ($rootScope, $cookies, $state, $stateParams, $location) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+      var user = $cookies.get("user"); // retrieve user from session cookie (if any)
+
+      if (toState.access === 'private' && !$cookies.user) {
+        // anonymous user trying to access a private page, prevent
+        event.preventDefault();
+       $state.transitionTo("login"); // go to login page
+      } else if (toState.access === 'anon' && user) {
+        // authorised user trying to access page for anonymous users, such as login
+        event.preventDefault();
+      }
+
+    });
   });

@@ -8,10 +8,11 @@
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('LogoutCtrl', ['$rootScope', '$scope', '$mdDialog', 'AUTH_EVENTS',
-    function ($rootScope, $scope, $mdDialog, AUTH_EVENTS) {
+  .controller('LogoutCtrl', ['$rootScope', '$scope', '$mdDialog', 'AUTH_EVENTS', function ($rootScope, $scope, $mdDialog, AUTH_EVENTS) {
 
     $scope.confirmLogout = function (ev) {
+
+      //$log.debug("1");
 
     	var confirm = $mdDialog.confirm()
     		.title("Confirm Log Out")
@@ -24,7 +25,6 @@ angular.module('app.controllers')
     		.then(function () {
     			// log out
     			$rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
-
     		}, function () {
     			// do nothing
     		});

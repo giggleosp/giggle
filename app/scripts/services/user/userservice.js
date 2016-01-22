@@ -13,19 +13,16 @@ angular.module('app.services', [])
     var baseUrl = "http://localhost:8080/user";
     var response = {};
 
-    response.getSessionUser = function () {
-      var username = $cookies.get('user');
-      if (username != null) {
-        return $http({ 
-          method: "GET",
-          dataType: "json",
-          url: baseUrl + "/username/" + username,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-      }
-    }
+    response.getUserWithId = function (id) {
+      return $http({
+        method: "GET",
+        dataType: "json",
+        url: baseUrl + "/id/" + id,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    };
 
     response.usernameExists = function (username) {
       return $http({

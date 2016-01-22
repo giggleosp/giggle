@@ -26,7 +26,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif] -->
 
-    <header ng-controller="NavigationCtrl">
+    <div ng-controller="NavigationCtrl as navCtrl">
       <div>
         <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm>
           <div class="md-toolbar-tools">
@@ -34,8 +34,23 @@
               <md-icon class="material-icons">menu</md-icon>
             </md-button>
             <span flex></span>
-            <span ng-controller="LogoutCtrl">
-              <md-button ng-click="confirmLogout($event)" ng-if="isLoggedIn" aria-label="Log Out">Log Out</md-button>
+            <span></span>
+            <span>
+               <md-menu md-position-mode="target-right target">
+                 <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                   <md-icon md-menu-origin="" class="material-design-icons">more_vert</md-icon>
+                 </md-button>
+                 <md-menu-content width="3">
+                   <md-menu-item ng-controller="LogoutCtrl">
+                     <md-button ng-click="confirmLogout($event)" ng-if="isLoggedIn">
+                       <div layout="row">
+                         <p flex="">Log Out</p>
+                         <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons">exit_to_app</md-icon>
+                       </div>
+                     </md-button>
+                   </md-menu-item>
+                 </md-menu-content>
+               </md-menu>
             </span>
           </div>
         </md-toolbar>
@@ -90,10 +105,10 @@
             </md-list>
           </md-sidenav>
         </md-content>
-        <md-content ui-view="main" flex layout="column" layout-padding>
-        </md-content>
+        <md-content ui-view="main" flex layout="column" layout-padding style="height:100vh"></md-content>
+        </div>
       </div>
-    </header>
+    </div>
 
 
     <!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID &ndash;&gt;-->
