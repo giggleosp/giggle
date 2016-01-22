@@ -8,7 +8,7 @@
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('NavigationCtrl', ['$scope', '$mdSidenav', '$mdUtil',  function ($scope, $mdSidenav, $mdUtil) {
+  .controller('NavigationCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log',  function ($scope, $timeout, $mdSidenav, $mdUtil, $log) {
 
     $scope.menu = [
       {
@@ -34,7 +34,7 @@ angular.module('app.controllers')
           },
           {
             title: "Sign Up",
-            href: "#/sign-up",
+            href: "#/signup",
             icon: {
               text: "person_add",
               md: true
@@ -258,33 +258,18 @@ angular.module('app.controllers')
       }
     ];
 
-    function buildToggler(navId) {
-      return $mdUtil.debounce(function () {
-        $mdSidenav(navId)
-          .toggle();
-      }, 300);
-    }
-
-    $scope.toggleLeft = buildToggler('left');
-
     $scope.lockLeft = true;
 
-    // toggle main navigation
-    $scope.close = function () {
-      $mdSidenav('left').close()
-        .then(function () {
-          $scope.lockLeft = !$scope.lockLeft;
-        });
+    // toggle sidenav open/closed
+    $scope.toggleSidenav = function (navID) {
+      if (navID === "left") {
+        $mdSidenav(navID).close()
+          .then(function () {
+            $scope.lockLeft = !$scope.lockLeft;
+          });
+      } else {
+        $mdSidenav(navID).toggle();
+      }
     };
-
-    // // open/close side nav on mobile/smallscreens
-    // $scope.toggleSideNav = function (menuId) {
-    //   $mdSidenav(menuId).toggle().then(function () {
-    //     $scope.sideNavIsOpen = !$scope.sideNavIsOpen;
-    //   });
-
-    //   $scope.isSidenavOpen = !$scope.isSidenavOpen;
-
-    // };
 
   }]);

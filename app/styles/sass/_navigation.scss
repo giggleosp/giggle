@@ -42,8 +42,7 @@ md-sidenav {
   font-size: 28px;
 }
 
-.sidenav-container {
-  .sidenav-left {
+#sidenav-left {
     overflow-y: auto;
     max-width: 215px;
     height: 91vh;
@@ -71,4 +70,3 @@ md-sidenav {
       }
     }
   }
-}

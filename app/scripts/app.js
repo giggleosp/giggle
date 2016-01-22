@@ -19,7 +19,8 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
+    // 'ngRoute',
+    'ui.router',
     'ngSanitize'
   ])
   .config(function ($httpProvider) {
@@ -42,22 +43,55 @@ angular
         'hue-3': '100'
       });
   })
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
-      .when('/sign-up', {
-        templateUrl: 'views/signup.html',
-        controller: 'SignUpCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  // .config(function ($routeProvider) {
+  //   $routeProvider
+  //     .when('/', {
+  //       templateUrl: 'views/main.html',
+  //       controller: 'MainCtrl'
+  //     })
+  //     .when('/login', {
+  //       templateUrl: 'views/login.html',
+  //       controller: 'LoginCtrl'
+  //     })
+  //     .when('/sign-up', {
+  //       templateUrl: 'views/signup.html',
+  //       controller: 'SignUpCtrl'
+  //     })
+  //     .otherwise({
+  //       redirectTo: '/'
+  //     });
 
+  // })
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('main', {
+        url: '/',
+        views: {
+          'main': {
+            controller: 'MainCtrl',
+            templateUrl: 'views/main.html'
+          }
+        }
+      })
+      .state('login', {
+        url: '/login',
+        views: {
+          'main': {
+            controller: 'LoginCtrl',
+            templateUrl: 'views/login.html'
+          }
+        }
+      })
+      .state('signup', {
+        url: '/signup',
+        views: {
+          'main': {
+            controller: 'SignUpCtrl',
+            templateUrl: 'views/signup.html'
+          }
+        }
+      });
   });

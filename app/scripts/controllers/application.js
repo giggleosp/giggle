@@ -8,8 +8,8 @@
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('ApplicationCtrl', ['$route', '$scope', '$location', '$cookies', 'userService', 'authService', 'AUTH_EVENTS', 'USER_ROLES', '$mdToast',
-    function ($route, $scope, $location, $cookies, userService, authService, AUTH_EVENTS, USER_ROLES, $mdToast) {
+  .controller('ApplicationCtrl', ['$rootScope', '$scope', '$location', '$cookies', 'userService', 'authService', 'AUTH_EVENTS', 'USER_ROLES', '$mdToast',
+    function ($rootScope, $scope, $location, $cookies, userService, authService, AUTH_EVENTS, USER_ROLES, $mdToast) {
 
     $scope.userRoles = USER_ROLES;
     $scope.isLoggedIn = authService.isLoggedIn();
@@ -82,6 +82,7 @@ angular.module('app.controllers')
       $cookies.put('role', args.user.role.name);
       //window.location.reload(false);
       $location.path("/");
+      $rootScope.$apply();
 
     });
 

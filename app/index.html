@@ -26,46 +26,11 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif] -->
 
-    <section ng-controller="NavigationCtrl">
-      <md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id="leftLtMd">
-          <md-toolbar class="md-tall md-hue-1 md-whiteframe-2dp">
-            <span flex></span>
-            <div layout="column" class="md-toolbar-tools-bottom inset">
-              <user-avatar></user-avatar>
-              <span></span>
-              <div>{{ user.name }}</div>
-              <div>{{ user.username }}</div>
-            </div>
-          </md-toolbar>
-          <md-list>
-              <md-list-item ng-repeat="item in menu" href="{{ item.link }}">
-                <md-item-content layout="row" layout-align="start center">
-                  <div class="inset">
-                    <md-icon class="material-icons">{{ item.icon }}</md-icon>
-                  </div>
-                  <div class="inset">
-                    {{ item.title }}
-                  </div>
-                </md-item-content>
-              </md-list-item>
-              <md-divider></md-divider>
-              <md-list-item ng-repeat="item in admin" href="{{ item.link }}">
-                <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                  <div class="inset">
-                    <md-icon class="material-icons">{{ item.icon }}</md-icon>
-                  </div>
-                  <div class="inset">
-                    {{ item.title }}
-                  </div>
-                </md-item-content>
-              </md-list-item>
-            <div layout="autofill"></div>
-        </md-list>
-      </md-sidenav>
-      <div layout="column" layout-fill role="main">
+    <header ng-controller="NavigationCtrl">
+      <div>
         <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm>
           <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" ng-click="close()" aria-label="Menu">
+            <md-button class="md-icon-button" ng-click="toggleSidenav('left')" aria-label="Menu">
               <md-icon class="material-icons">menu</md-icon>
             </md-button>
             <span flex></span>
@@ -76,63 +41,59 @@
         </md-toolbar>
         <md-toolbar ng-show="!showSearch" class="md-whiteframe-6dp" hide-gt-sm>
           <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" ng-click="toggleSideNav('leftLtMd')" aria-label="Menu">
+            <md-button class="md-icon-button" ng-click="toggleSidenav('leftSmall')" aria-label="Menu">
               <md-icon class="material-icons">menu</md-icon>
             </md-button>
-            <span class="brand-title">
-              Giggle
-            </span>
             <span flex></span>
             <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
               <md-icon class="material-icons">search</md-icon>
             </md-button>
           </div>
         </md-toolbar>
-        <md-toolbar ng-show="showSearch" class="md-whiteframe-2dp" hide-gt-sm>
+        <md-toolbar ng-show="showSearch" class="md-whiteframe-6dp" hide-gt-sm>
           <div class="md-toolbar-tools">
             <md-button ng-click="showSearch = !showSearch" class="md-icon-button" aria-label="Back">
-              <md-icon class="material-icons" style="color:black">arrow_back</md-icon>
+              <md-icon class="material-icons">arrow_back</md-icon>
             </md-button>
             <md-input-container flex layout="center center">
               <label>&nbsp;</label>
-              <input type="text" ng-model="search" placeholder="Search" style="border-bottom-color: black" md-autofocus>
+              <input type="text" ng-model="search" placeholder="Search" md-autofocus>
             </md-input-container>
             <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
-              <md-icon class="material-icons" style="color:black">search</md-icon>
+              <md-icon class="material-icons">search</md-icon>
             </md-button>
           </div>
         </md-toolbar>
-        <div layout="row" flex="">
-          <md-content class="sidenav-container">
-            <md-sidenav class="sidenav-left" md-is-locked-open="lockLeft && $mdMedia('gt-sm')" md-component-id="left">
-              <md-list ng-repeat="section in menu">
-                <md-subheader class="md-no-sticky">
-                  <span>{{ section.title }}</span>
-                </md-subheader>
-                <md-list-item href="{{ item.href }}" class="nav-list-item" ng-if="item.isVisible && item.title != 'Log Out'" ng-repeat="item in section.items">
-                  <md-item-content layout="row" layout-align="start center" class="content">
-                    <div class="inset">
-                      <md-icon ng-if="item.icon.md" class="material-icons md-24">{{ item.icon.text }}</md-icon>
-                      <md-icon ng-if="!item.icon.md" class="{{ item.icon.text }}" style="font-size:24px"></md-icon>
-                    </div>
-                    <div class="inset">
-                      {{ item.title }}
-                    </div>
-                  </md-item-content>
-                </md-list-item>
-                </span>
-                <md-divider></md-divider>
-                <div layout="autofill"></div>
-              </md-list>
-            </md-sidenav>
-          </md-content>
-          <div flex style="overflow-y: scroll">
-            <md-content ng-view="" layout-padding layout="column">
-            </md-content>
-          </div>
-        </div>
       </div>
-    </section>
+      <div layout="row">
+        <md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id="leftSmall">
+        </md-sidenav>
+        <md-content>
+          <md-sidenav md-component-id="left" id="sidenav-left" md-is-locked-open="lockLeft && $mdMedia('gt-sm')">
+            <md-list ng-repeat="section in menu">
+              <md-subheader class="md-no-sticky">
+                <span>{{ section.title }}</span>
+              </md-subheader>
+              <md-list-item href="{{ item.href }}" class="nav-list-item" ng-if="item.isVisible && item.title != 'Log Out'" ng-repeat="item in section.items">
+                <md-item-content layout="row" layout-align="start center" class="content">
+                  <div class="inset">
+                    <md-icon ng-if="item.icon.md" class="material-icons md-24">{{ item.icon.text }}</md-icon>
+                    <md-icon ng-if="!item.icon.md" class="{{ item.icon.text }}" style="font-size:24px"></md-icon>
+                  </div>
+                  <div class="inset">
+                    {{ item.title }}
+                  </div>
+                </md-item-content>
+              </md-list-item>
+              <md-divider></md-divider>
+              <div layout="autofill"></div>
+            </md-list>
+          </md-sidenav>
+        </md-content>
+        <md-content ui-view="main" flex layout="column" layout-padding>
+        </md-content>
+      </div>
+    </header>
 
 
     <!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID &ndash;&gt;-->
@@ -160,6 +121,7 @@
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- custom js-->
