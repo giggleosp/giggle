@@ -6,13 +6,13 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
+    <!-- build:css(.) assets/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css(.tmp) assets/main.css -->
+    <link rel="stylesheet" href="assets/css/main.css">
     <!--<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>-->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -26,7 +26,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif] -->
 
-    <div ng-controller="NavigationCtrl as navCtrl">
+    <div ng-controller="NavigationCtrl">
       <div>
         <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm>
           <div class="md-toolbar-tools">
@@ -142,23 +142,23 @@
     <!-- custom js-->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/user/login.js"></script>
-        <script src="scripts/services/user/userservice.js"></script>
-        <script src="scripts/controllers/user/signup.js"></script>
-        <script src="scripts/directives/user/usernameexists.js"></script>
-        <script src="scripts/directives/user/emailexists.js"></script>
-        <script src="scripts/directives/user/passwordstrength.js"></script>
-        <script src="scripts/controllers/application.js"></script>
-        <script src="scripts/services/user/authservice.js"></script>
-        <script src="scripts/services/auth_events.js"></script>
-        <script src="scripts/services/user_roles.js"></script>
-        <script src="scripts/services/countryservice.js"></script>
-        <script src="scripts/controllers/toast.js"></script>
-        <script src="scripts/controllers/logout.js"></script>
-        <script src="scripts/controllers/navigation.js"></script>
+        <script src="app.js"></script>
+        <script src="home/controllers/main.js"></script>
+        <script src="about/controllers/about.js"></script>
+        <script src="login/controllers/login.js"></script>
+        <script src="user/services/userservice.js"></script>
+        <script src="signup/controllers/signup.js"></script>
+        <script src="user/directives/usernameexists.js"></script>
+        <script src="user/directives/emailexists.js"></script>
+        <script src="user/directives/passwordstrength.js"></script>
+        <script src="common/controllers/application.js"></script>
+        <script src="common/services/authservice.js"></script>
+        <script src="common/constants/auth_events.js"></script>
+        <script src="user/constants/user_roles.js"></script>
+        <script src="common/controllers/countryservice.js"></script>
+        <script src="common/controllers/toast.js"></script>
+        <script src="logout/controllers/logout.js"></script>
+        <script src="common/controllers/navigation.js"></script>
         <!-- endbuild -->
 </body>
 </html>

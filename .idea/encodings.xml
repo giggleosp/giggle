@@ -2,22 +2,21 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Gruntfile.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/scripts/app.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/scripts/controllers/about.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/scripts/controllers/main.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/scripts/controllers/user/login.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/scripts/services/user/userservice.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/styles/css/component.css" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/styles/main.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/styles/sass/_components.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/styles/sass/_effects.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/styles/sass/_fonts.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/styles/sass/_forms.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/styles/sass/_navigation.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/styles/sass/_variables.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/views/about.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/views/login.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/views/main.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/about/controllers/about.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/about/views/about.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/assets/css/_components.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/assets/css/_effects.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/assets/css/_fonts.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/assets/css/_forms.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/assets/css/_navigation.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/assets/css/_variables.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/assets/css/main.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/home/controllers/main.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/home/views/main.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/login/controllers/login.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/login/views/login.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/user/services/userservice.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/spec/controllers/about.js" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

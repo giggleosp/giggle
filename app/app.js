@@ -54,7 +54,7 @@ angular
         views: {
           main: {
             controller: 'MainCtrl',
-            templateUrl: 'views/main.html'
+            templateUrl: 'home/views/main.html'
           }
         }
       })
@@ -64,7 +64,7 @@ angular
         views: {
           main: {
             controller: 'LoginCtrl',
-            templateUrl: 'views/login.html'
+            templateUrl: 'login/views/login.html'
           }
         }
       })
@@ -74,7 +74,7 @@ angular
         views: {
           main: {
             controller: 'SignUpCtrl',
-            templateUrl: 'views/signup.html'
+            templateUrl: 'signup/views/signup.html'
           }
         }
       });
