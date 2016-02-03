@@ -13,10 +13,8 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) assets/main.css -->
     <link rel="stylesheet" href="assets/css/main.css">
-    <!--<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>-->
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbuild -->
@@ -28,7 +26,7 @@
 
     <div ng-controller="NavigationCtrl">
       <div>
-        <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm>
+        <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm md-scroll-shrink="true">
           <div class="md-toolbar-tools">
             <md-button class="md-icon-button" ng-click="toggleSidenav('left')" aria-label="Menu">
               <md-icon class="material-icons">menu</md-icon>
@@ -37,7 +35,7 @@
             <span></span>
             <span>
                <md-menu md-position-mode="target-right target">
-                 <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                 <md-button aria-label="Open more menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
                    <md-icon md-menu-origin="" class="material-design-icons">more_vert</md-icon>
                  </md-button>
                  <md-menu-content width="3">
@@ -82,6 +80,29 @@
       </div>
       <div layout="row">
         <md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id="leftSmall">
+          <md-toolbar ng-show="!showSearch" class="md-whiteframe-6dp md-tall" hide-gt-sm>
+            <span flex></span>
+            <div layout="column" class="md-toolbar-tools-bottom inset">
+              <span></span>
+              <div>{{ currentUser.username }}</div>
+              <div>{{ currentUser.email }}</div>
+            </div>
+          </md-toolbar>
+          <md-list ng-repeat="section in mobileMenu">
+            <md-subheader class="md-no-sticky">
+              <span>{{ section.title }}</span>
+            </md-subheader>
+            <md-list-item ng-repeat="item in section.items" href="{{ item.href }}" ng-if="item.isVisible">
+              <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                <div class="inset">
+                  <md-icon class="material-icons">{{ item.icon.text }}</md-icon>
+                </div>
+                <div class="inset">
+                  {{ item.title }}
+                </div>
+              </md-item-content>
+            </md-list-item>
+          </md-list>
         </md-sidenav>
         <md-content>
           <md-sidenav md-component-id="left" id="sidenav-left" md-is-locked-open="lockLeft && $mdMedia('gt-sm')">

@@ -19,14 +19,13 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    // 'ngRoute',
     'ui.router',
     'ngSanitize'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
+    $httpProvider.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
+    $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
   })
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
@@ -58,8 +57,8 @@ angular
           }
         }
       })
-      .state('login', {
-        url: '/login',
+      .state('sign-in', {
+        url: '/sign-in',
         access: 'anon',
         views: {
           main: {
@@ -68,8 +67,8 @@ angular
           }
         }
       })
-      .state('signup', {
-        url: '/signup',
+      .state('sign-up', {
+        url: '/sign-up',
         access: 'anon',
         views: {
           main: {

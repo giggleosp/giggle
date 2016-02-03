@@ -11,6 +11,8 @@ angular.module('app.controllers')
   .controller('ApplicationCtrl', ['$log', '$rootScope', '$scope', '$location', '$cookies', 'userService', 'authService', 'AUTH_EVENTS', 'USER_ROLES', '$mdToast', function ($log, $rootScope, $scope, $location, $cookies, userService, authService, AUTH_EVENTS, USER_ROLES, $mdToast) {
 
     $scope.menu = getMenuItems();
+    $scope.mobileMenu = getMobileMenuItems();
+
     $scope.userRoles = USER_ROLES;
     $scope.isLoggedIn = authService.isLoggedIn();
 
@@ -20,45 +22,40 @@ angular.module('app.controllers')
       $scope.currentUser = user;
     };
 
-
-    if ($cookies.get('user') === null) {
-      $scope.currentUser = null;
-
-    } else {
-      var user = $cookies.get('user');
-      $scope.setCurrentUser(user);
-    }
-
     // user logs out
     $scope.$on(AUTH_EVENTS.logoutSuccess, function () {
-      $scope.currentUsr = null;
-      $cookies.remove("user");
+      $scope.currentUser = null;
       $scope.isLoggedIn = authService.isLoggedIn();
       $scope.menu = getMenuItems();
-      $location.path("/login");
+      $location.path("/sign-in");
     });
 
+    // successful login
     $scope.$on(AUTH_EVENTS.loginSuccess, function (event, args) {
       $scope.setCurrentUser(args.user);
-      $cookies.put("user", args.user);
       $scope.isLoggedIn = authService.isLoggedIn();
       $scope.menu = getMenuItems();
-      $location.path("/");
     });
 
+
     $scope.$on(AUTH_EVENTS.loginFailed, function (event, args) {
-      if (args.status != null) {
+
+      if (args.data === null) {
+        $scope.popToast("Incorrect username or password.");
+
+      } else if (args.status != null) {
         var status = args.status;
 
-          if (status === 401) {
-            $scope.popToast("Incorrect username/password");
-          } else if (status === 500) {
-            $scope.popToast("Internal server error");
-          } else if (status === 102 || status === 400 || status === 503) {
-            $scope.popToast("There was a problem connecting to the servers");
-          } else {
-            $scope.popToast("Woops! Something went wrong");
-          }
+        if (status === 500) {
+          $scope.popToast("Internal server error");
+
+        } else if (status === 102 || status === 400 || status === 503) {
+
+          $scope.popToast("There was a problem connecting to the servers");
+
+        } else {
+          $scope.popToast("Woops! Something went wrong");
+        }
       }
 
     });
@@ -78,8 +75,8 @@ angular.module('app.controllers')
               isVisible: true
             },
             {
-              title: "Log In",
-              href: "#/login",
+              title: "Sign In",
+              href: "#/sign-in",
               icon: {
                 text: "person",
                 md: true
@@ -88,7 +85,7 @@ angular.module('app.controllers')
             },
             {
               title: "Sign Up",
-              href: "#/signup",
+              href: "#/sign-up",
               icon: {
                 text: "person_add",
                 md: true
@@ -313,6 +310,85 @@ angular.module('app.controllers')
       ];
     }
 
+    function getMobileMenuItems() {
+      return [
+        {
+          title: "General",
+          items: [
+            {
+              title: "Home",
+              href: "#/",
+              icon: {
+                text: "home",
+                md: true
+              },
+              isVisible: true
+            },
+            {
+              title: "Events",
+              href: "",
+              icon: {
+                text: "event",
+                md: true
+              },
+              isVisible: true
+            },
+            {
+              title: "Acts",
+              href: "",
+              icon: {
+                text: "local_play",
+                md: true
+              },
+              isVisible: true
+            },
+            {
+              title: "Venues",
+              href: "",
+              icon: {
+                text: "local_bar",
+                md: true
+              },
+              isVisible: true
+            }
+          ]
+        },
+        {
+          title: "Account",
+          items: [
+            {
+              title: "Sign In",
+              href: "#/sign-in",
+              icon: {
+                text: "person",
+                md: true
+              },
+              isVisible: !$scope.isLoggedIn
+            },
+            {
+              title: "Sign Up",
+              href: "#/sign-up",
+              icon: {
+                text: "person_add",
+                md: true
+              },
+              isVisible: !$scope.isLoggedIn
+            },
+            {
+              title: "Log Out",
+              href: "",
+              icon: {
+                text: "person_outline",
+                md: true
+              },
+              isVisible: $scope.isLoggedIn
+            }
+          ]
+        }
+      ];
+    }
+
+
     // toast position
     var position = {
       bottom: true,
@@ -330,7 +406,6 @@ angular.module('app.controllers')
         .join(' ');
     };
 
-
     $scope.popToast = function (textContent) {
       var toast = $mdToast.simple()
         .textContent(textContent)
@@ -339,6 +414,5 @@ angular.module('app.controllers')
         .position($scope.getToastPosition());
       $mdToast.show(toast);
     };
-
 
   }]);

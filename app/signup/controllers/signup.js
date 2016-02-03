@@ -9,21 +9,12 @@
  */
 
 angular.module('app.controllers')
-  .controller('SignUpCtrl', ['$log', '$scope', 'authService', '$rootScope', 'AUTH_EVENTS', function ($log, $scope, authService, $rootScope, AUTH_EVENTS) {
+  .controller('SignUpCtrl', ['$log', '$scope', 'authService', function ($log, $scope, authService) {
 
     $scope.signup = function (user) {
-
       if ($scope.signupForm.$valid) {
-
-        authService.addUser(user)
-         .then(function (response) {
-           if (response.status === 200) {
-            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: response.data });
-           }
-         }, function (response) {
-           $rootScope.$broadcast(AUTH_EVENTS.loginFailed, { status: response.status });
-         });
+        authService.addUser(user);
       }
-    }
+    };
 
   }]);

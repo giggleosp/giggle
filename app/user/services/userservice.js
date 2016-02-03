@@ -10,7 +10,7 @@
 angular.module('app.services', [])
   .service('userService', ['$http', '$cookies', function ($http, $cookies) {
 
-    var baseUrl = "http://localhost:8080/user";
+    var baseUrl = "http://localhost:8080/users";
     var response = {};
 
     response.getUserWithId = function (id) {
@@ -21,6 +21,16 @@ angular.module('app.services', [])
         headers: {
           'Content-Type': 'application/json'
         }
+      });
+    };
+
+    response.getUser = function () {
+      var cookie = $cookies.get("XSRF-TOKEN");
+
+      return $http({
+        method: "POST",
+        dataType: "json",
+        url: baseUrl + "/test"
       });
     };
 

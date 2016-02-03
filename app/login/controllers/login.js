@@ -8,21 +8,16 @@
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('LoginCtrl', ['$location', '$log', '$scope', '$rootScope', 'authService', 'AUTH_EVENTS', function ($location, $log, $scope, $rootScope, authService, AUTH_EVENTS) {
+  .controller('LoginCtrl', ['$log', '$scope', 'authService', function ($log, $scope, authService) {
 
-    $scope.login = function(user) {
-
+    $scope.user = {
+        username: "foobar5",
+        password: "0876235718ep!"
+    }
+    
+    $scope.login = function (user) {
       if ($scope.loginForm.$valid) {
-        authService.login(user)
-          .then(function (response) {
-            $log.debug(response);
-            if (response.status === 200) { // OK
-              $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: response.data });
-            }
-          }, function (response) {
-            $scope.loginForm.$invalid = true;
-            $rootScope.$broadcast(AUTH_EVENTS.loginFailed, { status: response.status });
-          });
+        authService.login(user);
       }
     };
 

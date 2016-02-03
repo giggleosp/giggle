@@ -8,32 +8,40 @@
  * Factory in the app.
  */
 angular.module('app.services')
-  .service('authService', ['AUTH_EVENTS', '$cookies', '$log', '$http', function (AUTH_EVENTS, $cookies, $log, $http) {
+  .service('authService', ['$location', '$rootScope', 'AUTH_EVENTS', '$cookies', '$log', '$http', function ($location, $rootScope, AUTH_EVENTS, $cookies, $log, $http) {
 
-    var response = {}; // holds response
-    var baseUrl = "http://localhost:8080/user";
+    var baseUrl = "http://localhost:8080/users";
+    var response = {};
 
     response.addUser = function (user) {
       return $http({
         method: "POST",
         dataType: "json",
         url: baseUrl + "/insert",
-        data: $.param(user),
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
+        data: $.param(user)
+      }).then(function (response) {
+        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: response.data });
+        $location.path("/");
+      }, function (response) {
+        $rootScope.$broadcast(AUTH_EVENTS.loginFailed, { status: response.status, data: response.data });
       });
     };
 
-    // login user
     response.login = function (credentials) {
       return $http({
         method: "POST",
+        dataType: "json",
         url: baseUrl + "/login",
-        data: $.param(credentials),
+        data: $.param({ username: credentials.username }),
+        withCredentials: true,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Authorization': "Basic " + btoa(credentials.username + ":" + credentials.password)
         }
+      }).then(function (response) {
+         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: response.data });
+         $location.path("/");
+      }, function (response) {
+         $rootScope.$broadcast(AUTH_EVENTS.loginFailed, { status: response.status, data: response.data });
       });
     };
 

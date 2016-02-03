@@ -4,7 +4,7 @@
     <md-card flex-xs="100" flex-sm="55" flex-gt-md="30" layout-padding="">
       <md-card-content class="card-header" layout-align="center center" layout="column" style="padding-top:20px;">
         <md-header>
-          <span class="form md-title">Log In</span>
+          <span class="form md-title">Sign In</span>
         </md-header>
         <md-card-content layout-fill="">
           <form name="loginForm" layout-align="center center" ng-submit="login(user)" novalidate style="padding-top:20px;">
@@ -22,8 +22,13 @@
                 <span ng-message="required">Password is a required field!</span>
               </div>
             </md-input-container>
-            <div layout="row" layout-align="center center">
-              <md-button type="submit" class="md-raised md-accent md-hue-1" layout-fill>Log In</md-button>
+            <div layout="row" layout-align="center center" layout-fill>
+              <md-button type="submit" class="md-raised md-accent md-hue-1" layout-fill layout-padding>Sign In</md-button>
+            </div>
+            <div layout-padding style="margin-bottom:-40px;">
+              <md-checkbox ng-model="stayLoggedIn" aria-label="Stay signed in">
+              Stay signed in
+              </md-checkbox>
             </div>
           </form>
         </md-card-content>
