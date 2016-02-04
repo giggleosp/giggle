@@ -19,16 +19,16 @@
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbuild -->
   </head>
-  <body ng-app="app" ng-controller="ApplicationCtrl" layout="column" ng-cloak style="overflow-y: hidden">
+  <body ng-app="app" ng-controller="ApplicationCtrl as application" layout="column" ng-cloak style="overflow-y: hidden">
 <!--     [if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif] -->
 
-    <div ng-controller="NavigationCtrl">
+    <div ng-controller="NavigationCtrl as navigation">
       <div>
         <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm md-scroll-shrink="true">
           <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" ng-click="toggleSidenav('left')" aria-label="Menu">
+            <md-button class="md-icon-button" ng-click="navigation.toggleSidenav('left')" aria-label="Menu">
               <md-icon class="material-icons">menu</md-icon>
             </md-button>
             <span flex></span>
@@ -39,8 +39,8 @@
                    <md-icon md-menu-origin="" class="material-design-icons">more_vert</md-icon>
                  </md-button>
                  <md-menu-content width="3">
-                   <md-menu-item ng-controller="LogoutCtrl">
-                     <md-button ng-click="confirmLogout($event)" ng-if="isLoggedIn">
+                   <md-menu-item ng-controller="LogoutCtrl as logout">
+                     <md-button ng-click="logout.logout(event)" ng-if="logout.isLoggedIn">
                        <div layout="row">
                          <p flex="">Log Out</p>
                          <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons">exit_to_app</md-icon>
@@ -52,27 +52,27 @@
             </span>
           </div>
         </md-toolbar>
-        <md-toolbar ng-show="!showSearch" class="md-whiteframe-6dp" hide-gt-sm>
+        <md-toolbar ng-show="!application.showSearch" class="md-whiteframe-6dp" hide-gt-sm>
           <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" ng-click="toggleSidenav('leftSmall')" aria-label="Menu">
+            <md-button class="md-icon-button" ng-click="navigation.toggleSidenav('leftSmall')" aria-label="Menu">
               <md-icon class="material-icons">menu</md-icon>
             </md-button>
             <span flex></span>
-            <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
+            <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
               <md-icon class="material-icons">search</md-icon>
             </md-button>
           </div>
         </md-toolbar>
-        <md-toolbar ng-show="showSearch" class="md-whiteframe-6dp" hide-gt-sm>
+        <md-toolbar ng-show="application.showSearch" class="md-whiteframe-6dp" hide-gt-sm>
           <div class="md-toolbar-tools">
-            <md-button ng-click="showSearch = !showSearch" class="md-icon-button" aria-label="Back">
+            <md-button ng-click="application.showSearch = !application.showSearch" class="md-icon-button" aria-label="Back">
               <md-icon class="material-icons">arrow_back</md-icon>
             </md-button>
             <md-input-container flex layout="center center">
               <label>&nbsp;</label>
               <input type="text" ng-model="search" placeholder="Search" md-autofocus>
             </md-input-container>
-            <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
+            <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
               <md-icon class="material-icons">search</md-icon>
             </md-button>
           </div>
@@ -80,15 +80,15 @@
       </div>
       <div layout="row">
         <md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id="leftSmall">
-          <md-toolbar ng-show="!showSearch" class="md-whiteframe-6dp md-tall" hide-gt-sm>
+          <md-toolbar ng-show="!application.showSearch" class="md-whiteframe-6dp md-tall" hide-gt-sm>
             <span flex></span>
             <div layout="column" class="md-toolbar-tools-bottom inset">
               <span></span>
-              <div>{{ currentUser.username }}</div>
-              <div>{{ currentUser.email }}</div>
+              <div>{{ application.currentUser.username }}</div>
+              <div>{{ application.currentUser.email }}</div>
             </div>
           </md-toolbar>
-          <md-list ng-repeat="section in mobileMenu">
+          <md-list ng-repeat="section in application.mobileMenu">
             <md-subheader class="md-no-sticky">
               <span>{{ section.title }}</span>
             </md-subheader>
@@ -105,8 +105,8 @@
           </md-list>
         </md-sidenav>
         <md-content>
-          <md-sidenav md-component-id="left" id="sidenav-left" md-is-locked-open="lockLeft && $mdMedia('gt-sm')">
-            <md-list ng-repeat="section in menu">
+          <md-sidenav md-component-id="left" id="sidenav-left" md-is-locked-open="navigation.lockLeft && $mdMedia('gt-sm')">
+            <md-list ng-repeat="section in application.menu">
               <md-subheader class="md-no-sticky">
                 <span>{{ section.title }}</span>
               </md-subheader>
@@ -129,7 +129,6 @@
         <md-content ui-view="main" flex layout="column" layout-padding style="height:100vh"></md-content>
         </div>
       </div>
-    </div>
 
 
     <!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID &ndash;&gt;-->
@@ -158,6 +157,7 @@
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/spring-security-csrf-token-interceptor/src/spring-security-csrf-token-interceptor.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- custom js-->
@@ -167,7 +167,7 @@
         <script src="home/controllers/main.js"></script>
         <script src="about/controllers/about.js"></script>
         <script src="login/controllers/login.js"></script>
-        <script src="user/services/userservice.js"></script>
+        <script src="user/services/userapiservice.js"></script>
         <script src="signup/controllers/signup.js"></script>
         <script src="user/directives/usernameexists.js"></script>
         <script src="user/directives/emailexists.js"></script>
@@ -176,10 +176,10 @@
         <script src="common/services/authservice.js"></script>
         <script src="common/constants/auth_events.js"></script>
         <script src="user/constants/user_roles.js"></script>
-        <script src="common/controllers/countryservice.js"></script>
-        <script src="common/controllers/toast.js"></script>
+        <script src="common/services/countryservice.js"></script>
         <script src="logout/controllers/logout.js"></script>
         <script src="common/controllers/navigation.js"></script>
+        <script src="common/services/notificationservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>

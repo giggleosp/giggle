@@ -7,21 +7,31 @@
  * # NavigationCtrl
  * Controller of the app
  */
+
 angular.module('app.controllers')
-  .controller('NavigationCtrl', ['$location', 'AUTH_EVENTS', '$rootScope', '$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', function ($location, AUTH_EVENTS, $rootScope, $scope, $timeout, $mdSidenav, $mdUtil, $log) {
+  .controller('NavigationCtrl', NavigationCtrl);
 
-    $scope.lockLeft = false;
+  NavigationCtrl.$inject = [
+    '$mdSidenav'
+  ];
 
-    // toggle sidenav open/closed
-    $scope.toggleSidenav = function (navID) {
-      if (navID === "left") {
-        $mdSidenav(navID).close()
+  function NavigationCtrl ($mdSidenav) {
+    var vm = this;
+
+    // opened state of menu
+    vm.lockLeft = false;
+
+    vm.toggleSidenav = toggleSidenav;
+
+    function toggleSidenav (id) {
+      if (id === "left") {
+        $mdSidenav(id).close()
           .then(function () {
-            $scope.lockLeft = !$scope.lockLeft;
+            vm.lockLeft = !vm.lockLeft;
           });
       } else {
-        $mdSidenav(navID).toggle();
+        $mdSidenav(id).toggle();
       }
-    };
+    }
 
-  }]);
+  }

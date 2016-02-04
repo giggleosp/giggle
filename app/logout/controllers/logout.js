@@ -8,26 +8,35 @@
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('LogoutCtrl', ['$rootScope', '$scope', '$mdDialog', 'AUTH_EVENTS', function ($rootScope, $scope, $mdDialog, AUTH_EVENTS) {
+  .controller('LogoutCtrl', LogoutCtrl);
 
-    $scope.confirmLogout = function (ev) {
+  // inject into the controller
+  LogoutCtrl.$inject = [
+    'authService',
+    '$mdDialog'
+  ];
 
-      //$log.debug("1");
+  function LogoutCtrl(authService, $mdDialog) {
+    var vm = this;
 
-    	var confirm = $mdDialog.confirm()
-    		.title("Confirm Log Out")
-    		.textContent("Are you sure you want to log out?")
-    		.ariaLabel("Confirm Log Out")
-    		.targetEvent(ev)
-    		.ok("OK")
-    		.cancel("Cancel");
-    	$mdDialog.show(confirm)
-    		.then(function () {
-    			// log out
-    			$rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
-    		}, function () {
-    			// do nothing
-    		});
-    };
+    vm.logout = function(event) {
+      // build event dialog
+      var confirm = $mdDialog.confirm()
+        .title("Confirm Log Out")
+        .textContent("Are you sure you want to log out?")
+        .ariaLabel("Confirm Log Out")
+        .targetEvent(event)
+        .ok("OK")
+        .cancel("Cancel");
 
-  }]);
+      // return event dialog and show
+      return $mdDialog.show(confirm)
+        .then(function () {
+          // log out
+          authService.logout(event);
+        }, function () {
+          // do nothing
+        });
+
+    }
+  }

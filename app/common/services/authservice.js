@@ -8,55 +8,100 @@
  * Factory in the app.
  */
 angular.module('app.services')
-  .service('authService', ['$location', '$rootScope', 'AUTH_EVENTS', '$cookies', '$log', '$http', function ($location, $rootScope, AUTH_EVENTS, $cookies, $log, $http) {
+  .service('authService', authService);
 
+  authService.$inject = [
+    '$rootScope',
+    '$http',
+    'AUTH_EVENTS',
+    '$location',
+    '$cookies',
+    'notificationService'
+  ];
+
+  function authService($rootScope, $http, AUTH_EVENTS, $location, $cookies, notificationService) {
     var baseUrl = "http://localhost:8080/users";
-    var response = {};
 
-    response.addUser = function (user) {
-      return $http({
-        method: "POST",
-        dataType: "json",
-        url: baseUrl + "/insert",
-        data: $.param(user)
-      }).then(function (response) {
-        $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: response.data });
-        $location.path("/");
-      }, function (response) {
-        $rootScope.$broadcast(AUTH_EVENTS.loginFailed, { status: response.status, data: response.data });
-      });
-    };
+    return {
+      createAccount: function (user) {
+        return $http({
+          method: "POST",
+          dataType: "json",
+          url: baseUrl + "/insert",
+          data: $.param(user)
+        })
+          .then(function (data) {
+            authSuccess(data);
+            $location.path("/");
+          }, function (data) {
+            authFailure(data);
+          });
+      },
+      authenticate: function (credentials) {
+        return $http({
+          method: "POST",
+          dataType: "json",
+          url: baseUrl + "/login",
+          data: $.param({ username: credentials.username }),
+          withCredentials: true,
+          headers: {
+            'Authorization': "Basic " + btoa(credentials.username + ":" + credentials.password)
+          }
+        }).then(function (data) {
+            authSuccess(data);
+            $location.path("/");
+          }, function (data) {
+            authFailure(data);
+          });
+      },
+      logout: function () {
+        // clear session cookies
 
-    response.login = function (credentials) {
-      return $http({
-        method: "POST",
-        dataType: "json",
-        url: baseUrl + "/login",
-        data: $.param({ username: credentials.username }),
-        withCredentials: true,
-        headers: {
-          'Authorization': "Basic " + btoa(credentials.username + ":" + credentials.password)
+      },
+      isLoggedIn: function () {
+        var user = $cookies.get("user");
+        return !!user;
+      },
+      isAuthorised: function (authRoles) {
+        if (!angular.isArray(authRoles)) {
+          authRoles = [authRoles];
         }
-      }).then(function (response) {
-         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: response.data });
-         $location.path("/");
-      }, function (response) {
-         $rootScope.$broadcast(AUTH_EVENTS.loginFailed, { status: response.status, data: response.data });
-      });
-    };
-
-    response.isLoggedIn = function () {
-      var user = $cookies.get("user");
-      return !!user;
-    };
-
-    response.isAuthorised = function (authRoles) {
-      if (!angular.isArray(authRoles)) {
-        authRoles = [authRoles];
+        return (response.isLoggedIn() && authRoles.indexOf(Session.userRole) !== -1);
       }
-      return (response.isLoggedIn() && authRoles.indexOf(Session.userRole) !== -1);
     };
 
-    return response;
+    function logoutSuccess () {
+      $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
+    }
 
-  }]);
+    function authSuccess (data) {
+      $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { data: data });
+    }
+
+    function authFailure (data) {
+      $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+
+      var notificationText = null;
+
+      switch (data.status)
+      {
+        case 403:
+          notificationText = "Incorrect username/password.";
+          break;
+        case 500:
+          notificationText = "Internal server error.";
+          break;
+        case 102 || 400 || 503:
+          notificationText = "There was a problem connecting to the server.";
+          break;
+        case 409:
+          notificationText = "User already exists, please log in.";
+          break;
+        default:
+          notificationText = "Something went wrong!";
+          break;
+      }
+
+      notificationService.showToast(notificationText);
+    }
+  }

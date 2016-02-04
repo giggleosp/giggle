@@ -8,6 +8,8 @@
  * Controller of the app
  */
 angular.module('app.controllers', [])
-  .controller('MainCtrl', ['userService', '$scope', '$http', function (userService, $scope, $http) {
+  .controller('MainCtrl', MainCtrl);
 
-  }]);
+  function MainCtrl () {
+    var vm = this;
+  }

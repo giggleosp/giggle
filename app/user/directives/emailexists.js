@@ -7,7 +7,7 @@
  * # emailExists
  */
 angular.module('app.directives')
-  .directive('emailExists', ['$q', 'userService', function ($q, userService) {
+  .directive('emailExists', ['$q', 'userApiService', function ($q, userApiService) {
     return {
       restrict: 'A',
       require: 'ngModel',
@@ -24,7 +24,7 @@ angular.module('app.directives')
           }
 
           // call userApiService
-          userService.emailExists(value)
+          userApiService.emailExists(value)
             .then(function (response) {
               if (response.data) {
                 // email exists, not unique

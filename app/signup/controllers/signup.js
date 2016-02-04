@@ -7,14 +7,20 @@
  * # SignupCtrl
  * Controller of the app
  */
-
 angular.module('app.controllers')
-  .controller('SignUpCtrl', ['$log', '$scope', 'authService', function ($log, $scope, authService) {
+  .controller('SignUpCtrl', SignUpCtrl);
 
-    $scope.signup = function (user) {
-      if ($scope.signupForm.$valid) {
-        authService.addUser(user);
-      }
-    };
+  // inject into the controller
+  SignUpCtrl.$inject = [
+    'authService'
+  ];
 
-  }]);
+  function SignUpCtrl(authService) {
+    var vm = this;
+
+    vm.user = {};
+
+    vm.signup = function(user) {
+      return authService.createAccount(user);
+    }
+  }

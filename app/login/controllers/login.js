@@ -8,17 +8,20 @@
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('LoginCtrl', ['$log', '$scope', 'authService', function ($log, $scope, authService) {
+  .controller('LoginCtrl', LoginCtrl);
 
-    $scope.user = {
-        username: "foobar5",
-        password: "0876235718ep!"
+  // inject into the controller
+  LoginCtrl.$inject = [
+    'authService'
+  ];
+
+  function LoginCtrl(authService) {
+    var vm = this;
+
+    vm.user = {};
+
+    vm.login = function(user) {
+      return authService.authenticate(user);
     }
-    
-    $scope.login = function (user) {
-      if ($scope.loginForm.$valid) {
-        authService.login(user);
-      }
-    };
+  }
 
-  }]);

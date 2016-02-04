@@ -53,6 +53,7 @@ angular
         views: {
           main: {
             controller: 'MainCtrl',
+            controllerAs: 'vm',
             templateUrl: 'home/views/main.html'
           }
         }
@@ -63,6 +64,7 @@ angular
         views: {
           main: {
             controller: 'LoginCtrl',
+            controllerAs: 'vm',
             templateUrl: 'login/views/login.html'
           }
         }
@@ -73,6 +75,7 @@ angular
         views: {
           main: {
             controller: 'SignUpCtrl',
+            controllerAs: 'vm',
             templateUrl: 'signup/views/signup.html'
           }
         }
