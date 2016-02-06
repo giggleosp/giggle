@@ -40,7 +40,7 @@
                  </md-button>
                  <md-menu-content width="3">
                    <md-menu-item ng-controller="LogoutCtrl as logout">
-                     <md-button ng-click="logout.logout(event)" ng-if="logout.isLoggedIn">
+                     <md-button ng-click="logout.logout(event)" ng-if="application.isLoggedIn">
                        <div layout="row">
                          <p flex="">Log Out</p>
                          <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons">exit_to_app</md-icon>

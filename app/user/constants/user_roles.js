@@ -9,9 +9,8 @@
  */
 angular.module('app')
   .constant('USER_ROLES', {
-    admin: 'admin',
-    editor: 'editor',
-    user: 'user',
-    act: 'act',
-    venue: 'venue'
+    admin: 'ROLE_ADMIN',
+    user: 'ROLE_USER',
+    act: 'ROLE_ACT',
+    venue: 'ROLE_VENUE'
   });

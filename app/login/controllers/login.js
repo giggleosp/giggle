@@ -18,10 +18,8 @@ angular.module('app.controllers')
   function LoginCtrl(authService) {
     var vm = this;
 
-    vm.user = {};
-
     vm.login = function(user) {
-      return authService.authenticate(user);
+      return authService.login(user);
     }
   }
 

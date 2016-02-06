@@ -16,10 +16,11 @@ angular.module('app.services')
     'AUTH_EVENTS',
     '$location',
     '$cookies',
-    'notificationService'
+    'notificationService',
+    '$log'
   ];
 
-  function authService($rootScope, $http, AUTH_EVENTS, $location, $cookies, notificationService) {
+  function authService($rootScope, $http, AUTH_EVENTS, $location, $cookies, notificationService, $log) {
     var baseUrl = "http://localhost:8080/users";
 
     return {
@@ -37,7 +38,7 @@ angular.module('app.services')
             authFailure(data);
           });
       },
-      authenticate: function (credentials) {
+      login: function (credentials) {
         return $http({
           method: "POST",
           dataType: "json",
@@ -56,10 +57,12 @@ angular.module('app.services')
       },
       logout: function () {
         // clear session cookies
-
+        $cookies.remove("user");
+        logoutSuccess();
       },
       isLoggedIn: function () {
         var user = $cookies.get("user");
+        console.log(!!user);
         return !!user;
       },
       isAuthorised: function (authRoles) {
@@ -75,7 +78,8 @@ angular.module('app.services')
     }
 
     function authSuccess (data) {
-      $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { data: data });
+      $cookies.put("user", data);
+      $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: data });
     }
 
     function authFailure (data) {
