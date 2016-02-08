@@ -36,6 +36,11 @@ module.exports = function(config) {
       'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/spring-security-csrf-token-interceptor/src/spring-security-csrf-token-interceptor.js',
+      'bower_components/moment/moment.js',
+      'bower_components/angular-moment/angular-moment.js',
+      'bower_components/angular-file-upload/dist/angular-file-upload.min.js',
+      'bower_components/ng-file-upload/ng-file-upload.js',
+      'bower_components/ng-img-crop/compile/minified/ng-img-crop.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

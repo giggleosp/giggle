@@ -28,7 +28,7 @@ angular.module('app.services')
         return $http({
           method: "POST",
           dataType: "json",
-          url: baseUrl + "/insert",
+          url: baseUrl + "/signup",
           data: $.param(user)
         })
           .then(function (data) {
@@ -62,7 +62,6 @@ angular.module('app.services')
       },
       isLoggedIn: function () {
         var user = $cookies.get("user");
-        console.log(!!user);
         return !!user;
       },
       isAuthorised: function (authRoles) {
@@ -78,7 +77,7 @@ angular.module('app.services')
     }
 
     function authSuccess (data) {
-      $cookies.put("user", data);
+      $cookies.put("user", data.data.username);
       $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: data });
     }
 

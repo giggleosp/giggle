@@ -13,25 +13,40 @@ angular.module('app.controllers')
   ApplicationCtrl.$inject = [
     '$scope',
     'authService',
-    'AUTH_EVENTS'
+    'userApiService',
+    'AUTH_EVENTS',
+    '$cookies'
   ];
 
-  function ApplicationCtrl($scope, authService, AUTH_EVENTS) {
-    var vm = this;
+function ApplicationCtrl($scope, authService, userApiService, AUTH_EVENTS, $cookies) {
+  var vm = this;
+
+    // user context & state
+    getCurrentUser();
+
+    vm.isLoggedIn = authService.isLoggedIn();
 
     // set up menu
     setMenuItems();
-
-    // user context & state
-    vm.currentUser = null;
-
-    vm.isLoggedIn = false;
 
     // mobile search bar visibility
     vm.showSearch = false;
 
     function setCurrentUser(user) {
       vm.currentUser = user;
+    }
+
+    function getCurrentUser() {
+      var user = $cookies.get("user");
+
+      if (user != null) {
+        userApiService.getUserWithUsername(user)
+          .then(function (data) {
+           vm.currentUser = data;
+          });
+      } else {
+        vm.currentUser = null;
+      }
     }
 
     function setMenuItems () {
@@ -72,10 +87,10 @@ angular.module('app.controllers')
               isVisible: !vm.isLoggedIn
             },
             {
-              title: "Dashboard",
-              href: "",
+              title: "Account",
+              href: "#/account",
               icon: {
-                text: "settings",
+                text: "account_circle",
                 md: true
               },
               isVisible: vm.isLoggedIn
@@ -383,6 +398,10 @@ angular.module('app.controllers')
     $scope.$on(AUTH_EVENTS.loginFailed, function () {
       vm.isLoggedIn = authService.isLoggedIn();
       setMenuItems();
+    });
+
+    $scope.$on("user-updated", function (event, args) {
+      setCurrentUser(args.user);
     });
 
   }

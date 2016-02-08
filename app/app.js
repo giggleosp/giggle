@@ -18,9 +18,12 @@ angular
     'ngMessages',
     'ngAnimate',
     'ngCookies',
+    'ngFileUpload',
+    'ngImgCrop',
     'ngResource',
     'ui.router',
-    'ngSanitize'
+    'ngSanitize',
+    'angularMoment'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -54,7 +57,7 @@ angular
           main: {
             controller: 'MainCtrl',
             controllerAs: 'vm',
-            templateUrl: 'home/views/main.html'
+            templateUrl: 'common/home/views/main.html'
           }
         }
       })
@@ -65,7 +68,7 @@ angular
           main: {
             controller: 'LoginCtrl',
             controllerAs: 'vm',
-            templateUrl: 'login/views/login.html'
+            templateUrl: 'user/login/views/login.html'
           }
         }
       })
@@ -76,19 +79,24 @@ angular
           main: {
             controller: 'SignUpCtrl',
             controllerAs: 'vm',
-            templateUrl: 'signup/views/signup.html'
+            templateUrl: 'user/signup/views/signup.html'
           }
         }
       });
+  })
+  .config(function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return moment(date).format('DD/MM/YYYY');
+    };
   })
   .run(function ($rootScope, $cookies, $state, $stateParams, $location) {
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       var user = $cookies.get("user"); // retrieve user from session cookie (if any)
 
-      if (toState.access === 'private' && !$cookies.user) {
+      if (toState.access === 'private' && !user) {
         // anonymous user trying to access a private page, prevent
         event.preventDefault();
-       $state.transitionTo("login"); // go to login page
+       $state.transitionTo("sign-in"); // go to login page
       } else if (toState.access === 'anon' && user) {
         // authorised user trying to access page for anonymous users, such as login
         event.preventDefault();

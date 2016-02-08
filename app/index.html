@@ -9,6 +9,7 @@
     <!-- build:css(.) assets/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) assets/main.css -->
@@ -34,13 +35,21 @@
             <span flex></span>
             <span></span>
             <span>
-               <md-menu md-position-mode="target-right target">
+               <md-menu md-position-mode="target-right target" ng-if="application.isLoggedIn">
                  <md-button aria-label="Open more menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
                    <md-icon md-menu-origin="" class="material-design-icons">more_vert</md-icon>
                  </md-button>
                  <md-menu-content width="3">
+                   <md-menu-item ng-controller="AccountCtrl as account">
+                     <md-button ng-click="account.editAccount(event)">
+                       <div layout="row">
+                         <p flex="">Edit Account</p>
+                         <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons">settings</md-icon>
+                       </div>
+                     </md-button>
+                   </md-menu-item>
                    <md-menu-item ng-controller="LogoutCtrl as logout">
-                     <md-button ng-click="logout.logout(event)" ng-if="application.isLoggedIn">
+                     <md-button ng-click="logout.logout(event)">
                        <div layout="row">
                          <p flex="">Log Out</p>
                          <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons">exit_to_app</md-icon>
@@ -158,28 +167,35 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/spring-security-csrf-token-interceptor/src/spring-security-csrf-token-interceptor.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- custom js-->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="app.js"></script>
-        <script src="home/controllers/main.js"></script>
-        <script src="about/controllers/about.js"></script>
-        <script src="login/controllers/login.js"></script>
-        <script src="user/services/userapiservice.js"></script>
-        <script src="signup/controllers/signup.js"></script>
-        <script src="user/directives/usernameexists.js"></script>
-        <script src="user/directives/emailexists.js"></script>
-        <script src="user/directives/passwordstrength.js"></script>
+        <script src="common/home/controllers/main.js"></script>
+        <script src="common/about/controllers/about.js"></script>
+        <script src="user/login/controllers/login.js"></script>
+        <script src="user/components/services/userapiservice.js"></script>
+        <script src="user/signup/controllers/signup.js"></script>
+        <script src="user/components/directives/usernameexists.js"></script>
+        <script src="user/components/directives/emailexists.js"></script>
+        <script src="user/components/directives/passwordstrength.js"></script>
         <script src="common/controllers/application.js"></script>
-        <script src="common/services/authservice.js"></script>
-        <script src="common/constants/auth_events.js"></script>
-        <script src="user/constants/user_roles.js"></script>
-        <script src="common/services/countryservice.js"></script>
-        <script src="logout/controllers/logout.js"></script>
+        <script src="user/components/services/authservice.js"></script>
+        <script src="user/components/constants/auth_events.js"></script>
+        <script src="user/components/constants/user_roles.js"></script>
+        <script src="common/services/countryapiservice.js"></script>
+        <script src="user/logout/controllers/logout.js"></script>
         <script src="common/controllers/navigation.js"></script>
         <script src="common/services/notificationservice.js"></script>
+        <script src="user/account/controllers/account.js"></script>
+        <script src="user/account/controllers/editaccount.js"></script>
         <!-- endbuild -->
 </body>
 </html>

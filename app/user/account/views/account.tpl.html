@@ -1,0 +1,76 @@
+<md-dialog aria-label="Account Details" ng-cloak flex="40" flex-lt-md="100">
+  <form name="accountForm">
+    <md-toolbar>
+      <div class="md-toolbar-tools" style="margin-top:2px;margin-bottom: 2px;">
+        <h1>Edit account</h1>
+        <span flex></span>
+        <div class="cropArea">
+          <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+        </div>
+        <img class="avatar" ng-model="vm.user.imageUri" ng-src="{{ vm.user.imageUri || vm.placeholder }}">
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-xs>
+            <label>Username</label>
+            <input ng-model="vm.user.username" disabled>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-xs>
+            <label>Email</label>
+            <input ng-model="vm.user.email" disabled>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>First name</label>
+            <input ng-model="vm.user.firstName">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Last Name</label>
+            <input ng-model="vm.user.lastName">
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Country</label>
+            <md-select ng-model="vm.user.country" ng-change="vm.getCountiesForCountry(vm.user.country.id)">
+              <md-option ng-repeat="country in vm.countries" ng-value="country" ng-selected="(country.id === vm.user.country.id) ? true : false">
+                {{ country.niceName }}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-datepicker ng-model="vm.user.dateOfBirth" md-placeholder="dd/MM/yyyy" flex="50"></md-datepicker>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>County/State</label>
+            <md-select ng-model="vm.user.county" ng-change="vm.getCitiesForCounty(vm.user.county.id)" ng-disabled="!vm.anyCounties">
+              <md-option ng-repeat="county in vm.counties" ng-value="county" ng-selected="(county.id === vm.user.county.id) ? true : false">
+                {{ county.name }}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>City/Town</label>
+            <md-select ng-model="vm.user.city" ng-disabled="!vm.anyCities">
+              <md-option ng-repeat="city in vm.cities" ng-value="city" ng-selected="(city.id === vm.user.city.id) ? true : false">
+                {{ city.name }}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="vm.cancel()">
+        Cancel
+      </md-button>
+      <md-button ng-click="vm.save(vm.user)" style="margin-right:20px;">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

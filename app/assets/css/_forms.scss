@@ -23,3 +23,19 @@ md-input-container > label, md-autocomplete.md-placeholder {
   //  }
   //}
 }
+
+// https://github.com/angular/material/issues/4233
+form {
+  md-datepicker {
+    position: relative;
+    top: 15px;
+    left: -16px;
+
+    .md-datepicker-input-container{
+      margin-left: 0;
+    }
+    .md-datepicker-button.md-icon-button {
+      margin-right: 0;
+    }
+  }
+}

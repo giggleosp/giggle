@@ -33,11 +33,8 @@
               <input type="password" name="password" ng-model="vm.user.password" password-strength ng-required="true">
               <div ng-messages="signupForm.password.$error" ng-show="signupForm.$submitted || signupForm.password.$dirty">
                 <span ng-message="required">Password is a required field!</span>
-                <span ng-message="passwordStrength">This password is not strong enough!</span>
+                <span ng-message="passwordStrength">Password should be a minimum of 8 characters with at <br>least one digit, one letter and one special character.</span>
               </div>
-              <md-tooltip>
-                Password should be a minimum of 8 characters, with at least one digit, one letter and one special character.
-              </md-tooltip>
             </md-input-container>
             <div layout="row" layout-align="center center">
               <md-button type="submit" class="md-raised md-accent md-hue-1" layout-fill>Sign Up</md-button>
