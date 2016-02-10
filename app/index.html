@@ -37,7 +37,7 @@
             <span>
                <md-menu md-position-mode="target-right target" ng-if="application.isLoggedIn">
                  <md-button aria-label="Open more menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-                   <md-icon md-menu-origin="" class="material-design-icons">more_vert</md-icon>
+                   <md-icon md-menu-origin="" class="material-design-icons">account_circle</md-icon>
                  </md-button>
                  <md-menu-content width="3">
                    <md-menu-item ng-controller="AccountCtrl as account">
@@ -196,6 +196,7 @@
         <script src="common/services/notificationservice.js"></script>
         <script src="user/account/controllers/account.js"></script>
         <script src="user/account/controllers/editaccount.js"></script>
+        <script src="scripts/services/navigationmenuservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -22,72 +22,99 @@ angular.module('app.services')
 
   function authService($rootScope, $http, AUTH_EVENTS, $location, $cookies, notificationService, $log) {
     var baseUrl = "http://localhost:8080/users";
+    var currentUser;
 
     return {
-      createAccount: function (user) {
-        return $http({
-          method: "POST",
-          dataType: "json",
-          url: baseUrl + "/signup",
-          data: $.param(user)
-        })
-          .then(function (data) {
-            authSuccess(data);
-            $location.path("/");
-          }, function (data) {
-            authFailure(data);
-          });
-      },
-      login: function (credentials) {
-        return $http({
-          method: "POST",
-          dataType: "json",
-          url: baseUrl + "/login",
-          data: $.param({ username: credentials.username }),
-          withCredentials: true,
-          headers: {
-            'Authorization': "Basic " + btoa(credentials.username + ":" + credentials.password)
-          }
-        }).then(function (data) {
-            authSuccess(data);
-            $location.path("/");
-          }, function (data) {
-            authFailure(data);
-          });
-      },
-      logout: function () {
-        // clear session cookies
-        $cookies.remove("user");
-        logoutSuccess();
-      },
-      isLoggedIn: function () {
-        var user = $cookies.get("user");
-        return !!user;
-      },
-      isAuthorised: function (authRoles) {
-        if (!angular.isArray(authRoles)) {
-          authRoles = [authRoles];
-        }
-        return (response.isLoggedIn() && authRoles.indexOf(Session.userRole) !== -1);
-      }
+      login: login,
+      logout: logout,
+      createAccount: createAccount,
+      getCurrentUser: getCurrentUser,
+      setCurrentUser: setCurrentUser,
+      getUserWithUsername: getUserWithUsername,
+      isLoggedIn: isLoggedIn,
+      isAuthorised: isAuthorised
     };
 
-    function logoutSuccess () {
+    function login (credentials) {
+      return $http({
+        method: "POST",
+        dataType: "json",
+        url: baseUrl + "/login",
+        data: $.param({ username: credentials.username }),
+        withCredentials: true,
+        headers: {
+          'Authorization': "Basic " + btoa(credentials.username + ":" + credentials.password)
+        }
+      }).then(function (response) {
+        authSuccess(response.data, false);
+      }, function (response) {
+        authFailure(response.status);
+      });
+    }
+
+    function logout () {
+      currentUser = null;
+      $cookies.remove("user");
+      $location.path("/sign-in");
       $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
     }
 
-    function authSuccess (data) {
-      $cookies.put("user", data.data.username);
-      $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { user: data });
+    function createAccount (user) {
+      return $http({
+        method: "POST",
+        dataType: "json",
+        url: baseUrl + "/signup",
+        data: $.param(user)
+      }).then(function (response) {
+        authSuccess(response.data, true);
+      }, function (response) {
+        authFailure(response.status);
+      });
     }
 
-    function authFailure (data) {
-      $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+    function getUserWithUsername(username) {
+      return $http({
+        method: "POST",
+        dataType: "json",
+        url: baseUrl + "/username",
+        data: $.param({ username: username })
+      }).then(function (response) {
+        authSuccess(response.data, false);
+      });
+    }
 
-      var notificationText = null;
+    function setCurrentUser (user) {
+      currentUser = user;
+    }
 
-      switch (data.status)
-      {
+    function getCurrentUser() {
+      return currentUser;
+    }
+
+    function isLoggedIn () {
+      return !!currentUser;
+    }
+
+    function isAuthorised (authRoles) {
+      if (!angular.isArray(authRoles)) {
+        authRoles = [authRoles];
+      }
+      return (isLoggedIn() && authRoles.indexOf(Session.userRole) !== -1);
+    }
+
+    function authSuccess (user, isNewUser) {
+      setCurrentUser(user);
+      $cookies.put("user", user.username);
+      $location.path("/");
+      $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { isNewUser: isNewUser });
+    }
+
+    function authFailure(status) {
+      var notificationText;
+
+      currentUser = null;
+
+      switch (status) {
         case 403:
           notificationText = "Incorrect username/password.";
           break;
@@ -107,4 +134,5 @@ angular.module('app.services')
 
       notificationService.showToast(notificationText);
     }
+
   }

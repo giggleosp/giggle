@@ -14,11 +14,12 @@ angular.module('app')
     '$rootScope',
     'userApiService',
     'countryApiService',
-    '$mdDialog',
-    'notificationService'
+    'notificationService',
+    'authService',
+    '$mdDialog'
   ];
 
-  function EditAccountCtrl ($rootScope, userApiService, countryApiService, $mdDialog, notificationService) {
+  function EditAccountCtrl ($rootScope, userApiService, countryApiService, notificationService, authService, $mdDialog) {
     var vm = this;
 
     // stitch $scope methods to controller
@@ -31,10 +32,8 @@ angular.module('app')
     getUser();
 
     function getUser() {
-      userApiService.getUserFromCookies()
-        .then(function (response) {
-          preFillForm(response.data);
-        });
+      var user = authService.getCurrentUser();
+      preFillForm(user);
     }
 
     function getCountries() {
@@ -89,13 +88,14 @@ angular.module('app')
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
-        dateOfBirth: new Date(user.dateOfBirth),
+        dateOfBirth: user.dateOfBirth === null ? "" : new Date(user.dateOfBirth),
         country: user.country,
         county: user.county,
         city: user.city,
         imageUri: user.imageUri === null ? null : user.imageUri
       };
 
+      console.log(user.country);
     }
 
     function cancel() {
@@ -103,6 +103,7 @@ angular.module('app')
     }
 
     function save(user) {
+      console.log(user);
       userApiService.updateUser(user)
         .then(function () {
           $mdDialog.cancel();

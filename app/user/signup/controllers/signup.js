@@ -18,9 +18,7 @@ angular.module('app.controllers')
   function SignUpCtrl(authService) {
     var vm = this;
 
-    vm.user = {};
-
     vm.signup = function(user) {
-      return authService.createAccount(user);
+      authService.createAccount(user);
     }
   }
