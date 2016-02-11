@@ -33,3 +33,17 @@ html, body
 .avatar {
   max-width: 55px;
 }
+
+.md-primary-text {
+  color: $primary-color;
+}
+
+.progress-circle-container {
+  position: absolute;
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:10;
+  background-color: rgba(255,255,255,0.35);
+}

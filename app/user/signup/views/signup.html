@@ -1,7 +1,7 @@
 <div layout="column" layout-align="center center" class="auth-container">
   <div class="md-padding" layout="row" layout-fill="" layout-align="center center">
     <div flex=""><!-- filler --></div>
-    <md-card flex-xs="100" flex-sm="55" flex-gt-md="30" layout-padding="">
+    <md-card flex-xs="100" flex-sm="55" flex-gt-md="33" layout-padding="">
       <md-card-content class="card-header" layout-align="center center" layout="column" style="padding-top:20px;">
         <md-header>
           <span class="form md-title">Sign Up</span>
@@ -10,7 +10,7 @@
           <form name="signupForm" layout-align="center center" ng-submit="vm.signup(vm.user)" novalidate style="padding-top:20px;">
             <md-input-container class="md-block">
               <label>Username (Required)</label>
-              <input name="username" ng-model="vm.user.username" username-exists md-maxlength="30" minlength="4" ng-required="true">
+              <input name="username" ng-model="vm.user.username" username-exists md-maxlength="30" minlength="4" ng-required="true" md-select-on-focus="true">
               <div ng-messages="signupForm.username.$error" ng-show="signupForm.$submitted || signupForm.username.$dirty">
                 <span ng-message="required">Username is a required field!</span>
                 <span ng-message="usernameExists">This username is already in use!</span>
@@ -33,7 +33,7 @@
               <input type="password" name="password" ng-model="vm.user.password" password-strength ng-required="true">
               <div ng-messages="signupForm.password.$error" ng-show="signupForm.$submitted || signupForm.password.$dirty">
                 <span ng-message="required">Password is a required field!</span>
-                <span ng-message="passwordStrength">Password should be a minimum of 8 characters with at <br>least one digit, one letter and one special character.</span>
+                <span ng-message="passwordStrength">Password should be a minimum of 8 characters with at least one digit, one letter and one special character.</span>
               </div>
             </md-input-container>
             <div layout="row" layout-align="center center">

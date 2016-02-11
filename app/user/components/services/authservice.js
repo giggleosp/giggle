@@ -20,7 +20,7 @@ angular.module('app.services')
     '$log'
   ];
 
-  function authService($rootScope, $http, AUTH_EVENTS, $location, $cookies, notificationService, $log) {
+  function authService($rootScope, $http, AUTH_EVENTS, $location, $cookies, notificationService) {
     var baseUrl = "http://localhost:8080/users";
     var currentUser;
 
@@ -49,6 +49,7 @@ angular.module('app.services')
         authSuccess(response.data, false);
       }, function (response) {
         authFailure(response.status);
+        console.log(response);
       });
     }
 
@@ -115,20 +116,20 @@ angular.module('app.services')
       currentUser = null;
 
       switch (status) {
-        case 403:
+        case 401, 403, -1:
           notificationText = "Incorrect username/password.";
           break;
         case 500:
           notificationText = "Internal server error.";
           break;
-        case 102 || 400 || 503:
+        case 102, 400, 503:
           notificationText = "There was a problem connecting to the server.";
           break;
         case 409:
-          notificationText = "User already exists, please log in.";
+          notificationText = "This user already exists, please log in.";
           break;
         default:
-          notificationText = "Something went wrong!";
+          notificationText = "Something went wrong! Please try again.";
           break;
       }
 

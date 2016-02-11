@@ -11,22 +11,22 @@ angular.module('app')
   .controller('EditAccountCtrl', EditAccountCtrl);
 
   EditAccountCtrl.$inject = [
-    '$rootScope',
     'userApiService',
     'countryApiService',
-    'notificationService',
     'authService',
     '$mdDialog'
   ];
 
-  function EditAccountCtrl ($rootScope, userApiService, countryApiService, notificationService, authService, $mdDialog) {
+  function EditAccountCtrl (userApiService, countryApiService, authService, $mdDialog) {
     var vm = this;
 
+    vm.showProgress = true;
     // stitch $scope methods to controller
     vm.getCountiesForCountry = getCountiesForCountry;
     vm.getCitiesForCounty = getCitiesForCounty;
     vm.cancel = cancel;
     vm.save = save;
+    vm.maxDate = new Date(); // today
 
     getCountries();
     getUser();
@@ -80,22 +80,13 @@ angular.module('app')
         getCitiesForCounty(user.county.id);
       }
 
-      vm.placeholder = "/app/assets/img/default-avatar.png";
+      vm.user = user;
+      console.log(user.dateOfBirth);
+      vm.user.dateOfBirth = !user.dateOfBirth ? null : new Date(user.dateOfBirth);
 
-      vm.user = {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        dateOfBirth: user.dateOfBirth === null ? "" : new Date(user.dateOfBirth),
-        country: user.country,
-        county: user.county,
-        city: user.city,
-        imageUri: user.imageUri === null ? null : user.imageUri
-      };
+      // hide progress indicator once form is loaded
+      vm.showProgress = false;
 
-      console.log(user.country);
     }
 
     function cancel() {
@@ -103,12 +94,13 @@ angular.module('app')
     }
 
     function save(user) {
-      console.log(user);
+      vm.showProgress = true;
       userApiService.updateUser(user)
-        .then(function () {
-          $mdDialog.cancel();
-        }, function () {
-
+        .then(function (response) {
+          vm.showProgress = false;
+          if (response.status === 200) {
+            $mdDialog.hide();
+          }
         });
     }
 

@@ -19,7 +19,7 @@ angular.module('app.controllers')
     var vm = this;
 
     vm.user = {
-      username: "foobar2",
+      username: "foobar",
       password: "0876235718ep!"
     };
 

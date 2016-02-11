@@ -77,11 +77,11 @@ angular.module('app.services', [])
           'Content-Type': 'application/json'
         }
       }).then(function (response) {
-        notificationService.showToast("Account updated");
         $rootScope.$broadcast("user-updated", { user: response.data });
         return response;
-      }, function () {
-        notificationService.showToast("Could not update, try again.");
+      }, function (response) {
+        notificationService.showToast("Could not update, please try again.");
+        return response;
       });
     }
 

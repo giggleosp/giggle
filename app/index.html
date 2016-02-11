@@ -24,7 +24,6 @@
 <!--     [if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif] -->
-
     <div ng-controller="NavigationCtrl as navigation">
       <div>
         <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm md-scroll-shrink="true">
@@ -37,9 +36,18 @@
             <span>
                <md-menu md-position-mode="target-right target" ng-if="application.isLoggedIn">
                  <md-button aria-label="Open more menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-                   <md-icon md-menu-origin="" class="material-design-icons">account_circle</md-icon>
+                   <md-icon md-menu-origin="" class="material-design-icons">more_vert</md-icon>
                  </md-button>
                  <md-menu-content width="3">
+                   <md-menu-item>
+                     <md-button>
+                       <div layout="row">
+                         <p flex="">My Pages</p>
+                         <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons"></md-icon>
+                       </div>
+                     </md-button>
+                   </md-menu-item>
+                   <md-divider></md-divider>
                    <md-menu-item ng-controller="AccountCtrl as account">
                      <md-button ng-click="account.editAccount(event)">
                        <div layout="row">
@@ -51,7 +59,7 @@
                    <md-menu-item ng-controller="LogoutCtrl as logout">
                      <md-button ng-click="logout.logout(event)">
                        <div layout="row">
-                         <p flex="">Log Out</p>
+                         <p flex="">Sign Out</p>
                          <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons">exit_to_app</md-icon>
                        </div>
                      </md-button>
@@ -135,7 +143,8 @@
             </md-list>
           </md-sidenav>
         </md-content>
-        <md-content ui-view="main" flex layout="column" layout-padding style="height:100vh"></md-content>
+        <md-content ui-view="main" flex layout="column" layout-padding style="height:100vh">
+        </md-content>
         </div>
       </div>
 
@@ -196,7 +205,7 @@
         <script src="common/services/notificationservice.js"></script>
         <script src="user/account/controllers/account.js"></script>
         <script src="user/account/controllers/editaccount.js"></script>
-        <script src="scripts/services/navigationmenuservice.js"></script>
+        <script src="common/services/navigationmenuservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>

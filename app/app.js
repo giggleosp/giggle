@@ -85,8 +85,14 @@ angular
       });
   })
   .config(function($mdDateLocaleProvider) {
+
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, 'L', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+
     $mdDateLocaleProvider.formatDate = function(date) {
-      return moment(date).format('DD/MM/YYYY');
+      return !date ? null : moment(date).format('L');
     };
   })
   .run(function ($rootScope, $cookies, $state, $stateParams, $location) {

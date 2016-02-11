@@ -22,7 +22,7 @@ angular.module('app.controllers')
 
     function editAccount(event) {
       $mdDialog.show({
-        templateUrl: 'user/account/views/account.tpl.html',
+        templateUrl: 'user/account/views/editaccount.tpl.html',
         parent: angular.element(document.body),
         targetEvent: event,
         controller: 'EditAccountCtrl',

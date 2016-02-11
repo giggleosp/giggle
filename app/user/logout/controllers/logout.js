@@ -22,8 +22,8 @@ angular.module('app.controllers')
     vm.logout = function(event) {
       // build event dialog
       var confirm = $mdDialog.confirm()
-        .title("Confirm Log Out")
-        .textContent("Are you sure you want to log out?")
+        .title("Confirm Sign Out")
+        .textContent("Are you sure you want to leave?")
         .ariaLabel("Confirm Log Out")
         .targetEvent(event)
         .ok("OK")
@@ -33,7 +33,7 @@ angular.module('app.controllers')
       return $mdDialog.show(confirm)
         .then(function () {
           // log out
-          authService.logout(event);
+          authService.logout();
         }, function () {
           // do nothing
         });

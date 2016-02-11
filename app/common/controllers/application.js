@@ -33,7 +33,9 @@ function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS
 
     function getCurrentUser() {
       var username = $cookies.get("user");
-      authService.getUserWithUsername(username);
+      if(username) {
+        authService.getUserWithUsername(username);
+      }
     }
 
     function setMenuItems () {
@@ -49,13 +51,15 @@ function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS
       setMenuItems();
 
       if (args.isNewUser) {
-          $mdDialog.show({
-          templateUrl: 'user/account/views/account.tpl.html',
-          parent: angular.element(document.body),
-          controller: 'EditAccountCtrl',
-          controllerAs: 'vm'
-        });
-
+            $mdDialog.show({
+            templateUrl: 'user/account/views/editaccount.tpl.html',
+            parent: angular.element(document.body),
+            controller: 'EditAccountCtrl',
+            controllerAs: 'vm',
+            locals: {
+             isNewUser: true
+            }
+          });
       }
 
     });
