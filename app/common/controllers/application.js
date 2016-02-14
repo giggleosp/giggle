@@ -16,10 +16,11 @@ angular.module('app.controllers')
     'navigationMenuService',
     'AUTH_EVENTS',
     '$cookies',
-    '$mdDialog'
+    '$mdDialog',
+    '$location'
   ];
 
-function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS, $cookies, $mdDialog) {
+function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS, $cookies, $mdDialog, $location) {
   var vm = this;
 
     // user context & state

@@ -7,11 +7,13 @@
  * # navigationService
  * Service in the app.
  */
-angular.module('app')
+angular.module('app.services')
   .service('navigationMenuService', navigationMenuService);
 
 
 function navigationMenuService() {
+  var isMenuOpen = true;
+
   return {
     getMenuItems: function getMenuItems(isLoggedIn) {
       return [
@@ -206,7 +208,7 @@ function navigationMenuService() {
           items: [
             {
               title: "All",
-              href: "",
+              href: "#/venues/recommended",
               icon: {
                 text: "local_play",
                 md: true
@@ -338,6 +340,12 @@ function navigationMenuService() {
           ]
         }
       ];
+    },
+    setOpenedState: function setOpenedState(isOpen) {
+      isMenuOpen = isOpen;
+    },
+    getOpenedState: function getOpenedState() {
+      return isMenuOpen;
     }
   }
 }

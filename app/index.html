@@ -40,16 +40,7 @@
                  </md-button>
                  <md-menu-content width="3">
                    <md-menu-item>
-                     <md-button>
-                       <div layout="row">
-                         <p flex="">My Pages</p>
-                         <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons"></md-icon>
-                       </div>
-                     </md-button>
-                   </md-menu-item>
-                   <md-divider></md-divider>
-                   <md-menu-item ng-controller="AccountCtrl as account">
-                     <md-button ng-click="account.editAccount(event)">
+                     <md-button ng-click="navigation.editAccount(event)">
                        <div layout="row">
                          <p flex="">Edit Account</p>
                          <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons">settings</md-icon>
@@ -68,6 +59,10 @@
                </md-menu>
             </span>
           </div>
+          <div layout="row">
+            <div flex="33" flex-gt-md="40"></div>
+            <div flex="" ui-view="tabs"></div>
+          </div>
         </md-toolbar>
         <md-toolbar ng-show="!application.showSearch" class="md-whiteframe-6dp" hide-gt-sm>
           <div class="md-toolbar-tools">
@@ -78,6 +73,10 @@
             <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
               <md-icon class="material-icons">search</md-icon>
             </md-button>
+          </div>
+          <div layout="row">
+            <!--<div flex></div>-->
+            <div flex="" ui-view="tabs"></div>
           </div>
         </md-toolbar>
         <md-toolbar ng-show="application.showSearch" class="md-whiteframe-6dp" hide-gt-sm>
@@ -92,6 +91,10 @@
             <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
               <md-icon class="material-icons">search</md-icon>
             </md-button>
+          </div>
+          <div layout="row">
+            <!--<div flex></div>-->
+            <div flex="" ui-view="tabs"></div>
           </div>
         </md-toolbar>
       </div>
@@ -143,7 +146,7 @@
             </md-list>
           </md-sidenav>
         </md-content>
-        <md-content ui-view="main" flex layout="column" layout-padding style="height:100vh">
+        <md-content ui-view="main" flex layout="column" layout-padding style="overflow-y: scroll;height: 100vh;">
         </md-content>
         </div>
       </div>
@@ -181,6 +184,7 @@
     <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+    <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- custom js-->
@@ -203,9 +207,14 @@
         <script src="user/logout/controllers/logout.js"></script>
         <script src="common/controllers/navigation.js"></script>
         <script src="common/services/notificationservice.js"></script>
-        <script src="user/account/controllers/account.js"></script>
         <script src="user/account/controllers/editaccount.js"></script>
         <script src="common/services/navigationmenuservice.js"></script>
+        <script src="venue/controllers/venues.js"></script>
+        <script src="venue/services/venueapiservice.js"></script>
+        <script src="venue/controllers/recommendedvenues.js"></script>
+        <script src="venue/controllers/favouritevenues.js"></script>
+        <script src="venue/controllers/myvenues.js"></script>
+        <script src="scripts/filters/array.js"></script>
         <!-- endbuild -->
 </body>
 </html>

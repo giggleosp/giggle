@@ -41,6 +41,7 @@ module.exports = function(config) {
       'bower_components/angular-file-upload/dist/angular-file-upload.min.js',
       'bower_components/ng-file-upload/ng-file-upload.js',
       'bower_components/ng-img-crop/compile/minified/ng-img-crop.js',
+      'bower_components/ng-lodash/build/ng-lodash.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

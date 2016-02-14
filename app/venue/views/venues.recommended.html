@@ -1,0 +1,13 @@
+<md-content layout="row" layout-margin="">
+  <md-card flex="20" ng-repeat="venue in vm.venues">
+    <img style="max-height:220px;" src="{{ venue.imageUri }}" alt="" class="md-card-image">
+    <md-card-title>
+      <md-card-title-text>
+        <span>{{ venue.name }}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content style="margin-top:-7px;">
+      <p style="font-size: 13px;color:#424242">{{ venue.type }} in {{ venue.county.name }}, {{ venue.country.niceName }}</p>
+    </md-card-content>
+  </md-card>
+</md-content>

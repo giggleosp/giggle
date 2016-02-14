@@ -12,6 +12,7 @@ angular
   .module('app', [
     'app.controllers',
     'app.services',
+    'app.filters',
     'app.directives',
     'app.constants',
     'ngMaterial',
@@ -23,7 +24,8 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'angularMoment'
+    'angularMoment',
+    'ngLodash'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -48,6 +50,7 @@ angular
   .config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.when("/venues", "/venues/recommended");
 
     $stateProvider
       .state('main', {
@@ -82,6 +85,40 @@ angular
             templateUrl: 'user/signup/views/signup.html'
           }
         }
+      })
+      .state('venues', {
+        //abstract: true,
+        url: '/venues',
+        views: {
+          tabs: {
+            templateUrl: 'venue/views/tabs.tpl.html',
+            controller: 'VenuesCtrl',
+            controllerAs: 'vm'
+          },
+          main: {
+            templateUrl: 'venue/views/venues.html',
+            controller: 'VenuesCtrl',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state('venues.recommended', {
+        url: '/recommended',
+        templateUrl: 'venue/views/venues.recommended.html',
+        controller: 'VenuesCtrl',
+        controllerAs: 'vm'
+      })
+      .state('venues.favourites', {
+        url: '/favourites',
+        templateUrl: 'venue/views/venues.favourites.html',
+        controller: 'VenuesCtrl',
+        controllerAs: 'vm'
+      })
+      .state('venues.yours', {
+        url: '/yours',
+        templateUrl: 'venue/views/venues.yours.html',
+        controller: 'MyVenuesCtrl',
+        controllerAs: 'vm'
       });
   })
   .config(function($mdDateLocaleProvider) {

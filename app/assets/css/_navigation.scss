@@ -43,9 +43,9 @@ md-sidenav {
 }
 
 #sidenav-left {
-    overflow-y: auto;
+    overflow-y: scroll;
     max-width: 195px;
-    height: 91vh;
+    max-height: 85vh;
     font-size: 16px;
     > md-list  {
       > md-list-item {

@@ -10,17 +10,8 @@
 // end
 
 
-html {
-  height: 100%;
-}
-
 .search-toolbar {
   background-color: white;
-}
-
-html, body
-{
-  height: 100%;
 }
 
 // Rules for sizing the icon.
@@ -47,3 +38,12 @@ html, body
   z-index:10;
   background-color: rgba(255,255,255,0.35);
 }
+
+.md-tab {
+  padding-left:40px;
+  padding-right:40px;
+}
+
+//body {
+//  overflow-y: scroll;
+//}

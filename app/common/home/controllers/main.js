@@ -10,6 +10,12 @@
 angular.module('app.controllers', [])
   .controller('MainCtrl', MainCtrl);
 
-  function MainCtrl () {
+  MainCtrl.$inject = [
+    '$state'
+  ];
+
+  function MainCtrl ($state) {
     var vm = this;
+
+    $state.transitionTo("venues.yours");
   }

@@ -14,11 +14,10 @@ angular.module('app.services', [])
     '$rootScope',
     '$http',
     '$cookies',
-    'notificationService',
-    'authService'
+    'notificationService'
   ];
 
-  function userApiService ($rootScope, $http, $cookies, notificationService, authService) {
+  function userApiService ($rootScope, $http, $cookies, notificationService) {
     var baseUrl = "http://localhost:8080/users";
 
     return {

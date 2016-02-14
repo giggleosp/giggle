@@ -81,7 +81,6 @@ angular.module('app')
       }
 
       vm.user = user;
-      console.log(user.dateOfBirth);
       vm.user.dateOfBirth = !user.dateOfBirth ? null : new Date(user.dateOfBirth);
 
       // hide progress indicator once form is loaded
