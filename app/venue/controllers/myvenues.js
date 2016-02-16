@@ -13,12 +13,13 @@ angular.module('app.controllers')
 MyVenuesCtrl.$inject = [
   '$scope',
   '$timeout',
+  '$state',
   'venueApiService',
   'authService',
   'navigationMenuService'
 ];
 
-function MyVenuesCtrl($scope, $timeout, venueApiService, authService, navigationMenuService) {
+function MyVenuesCtrl($scope, $timeout, $state, venueApiService, authService, navigationMenuService) {
   var vm = this;
 
   var user = authService.getCurrentUser();
@@ -26,10 +27,10 @@ function MyVenuesCtrl($scope, $timeout, venueApiService, authService, navigation
 
   getVenues();
   vm.cardsPerRow = getNumberOfCardsPerRow();
+  vm.gotoVenue = gotoVenue;
 
   function getVenues() {
-    var userId = user.id;
-    venueApiService.getVenuesManagedByUser(userId)
+    venueApiService.getVenuesManagedByUser(user.id)
       .then(function (response) {
         vm.venues = response.data;
       }, function (response) {
@@ -38,11 +39,17 @@ function MyVenuesCtrl($scope, $timeout, venueApiService, authService, navigation
   }
 
   function getNumberOfCardsPerRow() {
-    if (isMenuOpen) {
-      return 5;
+    var mainWidth;
+    if (isMenuOpen && window.innerWidth > 960) {
+      mainWidth = window.innerWidth - 195;
     } else {
-      return 6;
+      mainWidth = window.innerWidth;
     }
+    return mainWidth / 220;
+  }
+
+  function gotoVenue(id) {
+    $state.transitionTo('venues.venue', {id: id})
   }
 
   $scope.$on("navigation-menu-state-changed", function () {

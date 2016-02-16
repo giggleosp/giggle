@@ -48,7 +48,6 @@ angular
       });
   })
   .config(function ($stateProvider, $urlRouterProvider) {
-
     $urlRouterProvider.otherwise('/');
     $urlRouterProvider.when("/venues", "/venues/recommended");
 
@@ -87,7 +86,7 @@ angular
         }
       })
       .state('venues', {
-        //abstract: true,
+        'abstract': true,
         url: '/venues',
         views: {
           tabs: {
@@ -104,9 +103,13 @@ angular
       })
       .state('venues.recommended', {
         url: '/recommended',
-        templateUrl: 'venue/views/venues.recommended.html',
-        controller: 'VenuesCtrl',
-        controllerAs: 'vm'
+        views: {
+          main: {
+            templateUrl: 'venue/views/venues.recommended.html',
+            controller: 'VenuesCtrl',
+            controllerAs: 'vm'
+          }
+        }
       })
       .state('venues.favourites', {
         url: '/favourites',
@@ -118,6 +121,13 @@ angular
         url: '/yours',
         templateUrl: 'venue/views/venues.yours.html',
         controller: 'MyVenuesCtrl',
+        controllerAs: 'vm'
+      })
+      .state('venues.venue', {
+        //access: 'public',
+        url: '/:id',
+        templateUrl: 'venue/views/venues.venue.html',
+        controller: 'VenueCtrl',
         controllerAs: 'vm'
       });
   })

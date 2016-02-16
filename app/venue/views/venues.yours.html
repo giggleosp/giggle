@@ -1,13 +1,15 @@
-<div layout="row" layout-fill layout-align="start center" ng-repeat="row in (vm.venues.length/vm.cardsPerRow | array)">
-  <md-card style="margin: 12px;max-width: 200px;cursor: pointer" ng-repeat="venue in vm.venues.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow)" ng-mouseover="hover = true" ng-class="{ 'md-whiteframe-5dp' : hover, 'md-whiteframe-2dp': !hover}" ng-mouseleave="hover = false">
-    <img style="max-height:200px;" src="{{ venue.imageUri }}" alt="" class="md-card-image">
-    <md-card-title>
-      <md-card-title-text>
-        <span>{{ venue.name }}</span>
-      </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
-      <p style="font-size: 13px;color:#424242;margin-top: -5px;">{{ venue.type.name }} in {{ venue.county.name }}, {{ venue.country.niceName }}</p>
-    </md-card-content>
-  </md-card>
+<div layout="column" layout-fill layout-align="center center" layout-padding="">
+  <div layout-fill layout="row" layout-sm="column" layout-xs="column" class="cards-row" layout-align="start center" ng-repeat="row in (vm.venues.length/vm.cardsPerRow | array)">
+    <md-card flex-lt-md="" ng-click="vm.gotoVenue(venue.id)" ng-repeat="venue in vm.venues.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow)" ng-mouseover="hover = true" ng-class="{ 'md-whiteframe-6dp' : hover, 'md-whiteframe-1dp': !hover}" ng-mouseleave="hover = false">
+      <img src="{{ venue.imageUri }}" alt="" class="md-card-image">
+      <md-card-title>
+        <md-card-title-text>
+          <span>{{ venue.name }}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p>{{ venue.type.name }} in {{ venue.county.name }}, {{ venue.country.niceName }}</p>
+      </md-card-content>
+    </md-card>
+  </div>
 </div>

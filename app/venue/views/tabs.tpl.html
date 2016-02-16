@@ -1,4 +1,4 @@
-<toolbar-tools ng-hide="!vm.isLoggedIn">
+<toolbar-tools ng-hide="!vm.isLoggedIn || vm.state.includes('venues.venue')">
   <md-tabs md-selected="vm.selectedIndex">
     <md-tab class="toolbar-tabs" ng-repeat="tab in vm.tabs">
       <span class="text">{{ tab.title }}</span>

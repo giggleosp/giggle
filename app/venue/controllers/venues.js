@@ -18,16 +18,28 @@ VenuesCtrl.$inject = [
 
 function VenuesCtrl(authService, $scope, $state) {
   var vm = this;
+  vm.state = $state;
 
   vm.isLoggedIn = authService.isLoggedIn();
-  //vm.venues = venues;
+  vm.hideTabs = false;
 
   vm.tabs = [
     { title: 'Recommended' },
     { title: 'Favourites' },
     { title: 'Yours '}
   ];
-  vm.selectedIndex = 0;
+
+  preSelectCorrectTab();
+
+  function preSelectCorrectTab() {
+    if ($state.includes("venues.recommended")) {
+      vm.selectedIndex = 0;
+    } else if ($state.includes("venues.favourites")) {
+      vm.selectedIndex = 1;
+    } else if ($state.includes("venues.yours")) {
+      vm.selectedIndex = 2;
+    }
+  }
   $scope.$watch('vm.selectedIndex', function (current, old) {
     if (current != old) {
       switch (current)

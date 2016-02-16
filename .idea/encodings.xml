@@ -3,10 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Gruntfile.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/app.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/assets/css/_components.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/assets/css/_effects.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/assets/css/_fonts.scss" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/assets/css/_forms.scss" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/css/_navigation.scss" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/css/_variables.scss" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/assets/css/main.scss" charset="UTF-8" />

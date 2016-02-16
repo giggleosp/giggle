@@ -1,0 +1,74 @@
+// layout breakpoints
+$my-layout-breakpoint-xs: 600px;
+$my-layout-breakpoint-sm: 960px;
+$my-layout-breakpoint-md: 1280px;
+$my-layout-breakpoint-lg: 1500px;
+$my-layout-breakpoint-xl: 1920px;
+
+// venue list
+.cards-row {
+  margin: 0 auto;
+  md-card {
+    margin:8px;
+    cursor: pointer;
+    > img {
+      width: 200px;
+      max-height: 200px;
+    }
+    > md-card-content {
+      p {
+        font-size: 13px;
+        color:#424242;
+        margin-top: -5px;
+      }
+    }
+  }
+}
+
+// venue
+.venue-container {
+  //@media screen and (min-width: $my-layout-breakpoint-sm) and (max-width: $my-layout-breakpoint-lg){
+  //  width: 880px;
+  //}
+  //@media screen and (min-width: $my-layout-breakpoint-lg) {
+  //  width: 1120px;
+  //}
+  margin: 0 auto;
+  .backdrop-container {
+    img {
+      margin-top:-100px;
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+  .backdrop-tools {
+    margin-top:-100px;
+    margin-left:10px;
+    .profile-picture {
+      img {
+        width:100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid white;
+      }
+    }
+    .title {
+      color: #eeeeee;
+      margin-top:20px;
+      margin-left:10px;
+      > h1 {
+        font-weight:600;
+      }
+      > h3 {
+        font-weight: 400;
+      }
+    }
+    .action-buttons {
+      margin-top:35px;
+      margin-right: 10px;
+      #btnFollow {
+        padding: 3px;
+      }
+    }
+  }
+}

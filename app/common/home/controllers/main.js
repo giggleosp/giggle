@@ -17,5 +17,5 @@ angular.module('app.controllers', [])
   function MainCtrl ($state) {
     var vm = this;
 
-    $state.transitionTo("venues.yours");
+    //$state.transitionTo("venues.yours");
   }

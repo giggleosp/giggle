@@ -1,14 +1,24 @@
 // custom imports
 @import "variables";
-@import "components";
-@import "forms";
 @import "navigation";
-@import "fonts";
-@import "effects";
-@import "yeoman-stuff";
-@import "modals";
+
+
+// sections
+@import "venues";
+@import "forms";
 // end
 
+
+body {
+  font-family: $primary-font;
+  font-weight: 300;
+  margin:0;
+  padding:0;
+}
+
+h1, h2, h3 {
+  margin:0;
+}
 
 .search-toolbar {
   background-color: white;
@@ -43,7 +53,3 @@
   padding-left:40px;
   padding-right:40px;
 }
-
-//body {
-//  overflow-y: scroll;
-//}

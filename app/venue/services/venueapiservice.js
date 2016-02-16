@@ -18,15 +18,24 @@ function venueApiService($http) {
   var baseUrl = "http://localhost:8080/venues";
 
   return {
+    getVenueWithId: getVenueWithId,
     getVenuesManagedByUser:getVenuesManagedByUser
   };
 
   function getVenuesManagedByUser(id) {
     return $http({
-      method: "POST",
+      method: "GET",
       url: baseUrl + "/managed_by",
       dataType: "json",
-      data: $.param({ id: id })
+      params: { id: id }
+    });
+  }
+
+  function getVenueWithId(id) {
+    return $http({
+      method: "GET",
+      url: baseUrl + "/" + id,
+      dataType: "json"
     });
   }
 }

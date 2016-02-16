@@ -1,0 +1,33 @@
+<div layout="row">
+  <div class="venue-container">
+    <div class="backdrop-container" layout-align="center start" layout="row">
+      <img src="{{ vm.venue.backdropUri }}" alt="backdrop" class="md-whiteframe-5dp">
+    </div>
+    <div layout="row" class="backdrop-tools" layout-wrap="">
+      <div class="profile-picture">
+        <img src="{{ vm.venue.imageUri }}" alt="backdrop" class="md-whiteframe-5dp">
+      </div>
+      <div class="title">
+        <h1>{{ vm.venue.name }}</h1>
+        <h3>
+          {{ vm.venue.type.name }} in {{ vm.venue.county.name }}, {{ vm.venue.country.niceName }}
+          <md-icon style="color:#FFC107;margin-top:-3px;" class="material-design-icons">star</md-icon>
+          <md-icon style="color:#FFC107;margin-top:-3px;" class="material-design-icons">star</md-icon>
+          <md-icon style="color:#FFC107;margin-top:-3px;" class="material-design-icons">star</md-icon>
+          <md-icon style="color:#FFC107;margin-top:-3px;" class="material-design-icons">star</md-icon>
+          <md-icon style="color:#FFC107;margin-top:-3px;" class="material-design-icons">star</md-icon>
+        </h3>
+      </div>
+      <div flex=""></div>
+      <div class="action-buttons">
+        <md-button class="md-icon-button">
+          <md-icon class="material-design-icons" style="color: #EEEEEE">info_outline</md-icon>
+        </md-button>
+        <md-button class="md-icon-button">
+          <md-icon class="material-design-icons" style="color: #EEEEEE">more_vert</md-icon>
+        </md-button>
+        <md-button class="md-raised" id="btnFollow">Follow</md-button>
+      </div>
+    </div>
+  </div>
+</div>

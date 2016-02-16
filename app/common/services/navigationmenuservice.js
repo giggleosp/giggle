@@ -208,7 +208,7 @@ function navigationMenuService() {
           items: [
             {
               title: "All",
-              href: "#/venues/recommended",
+              href: "#/venues",
               icon: {
                 text: "local_play",
                 md: true
