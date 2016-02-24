@@ -27,7 +27,6 @@ angular
     'angularMoment',
     'ngLodash',
     'uiGmapgoogle-maps'
-    //'sprintf'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -52,6 +51,7 @@ angular
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $urlRouterProvider.when("/venues", "/venues/recommended");
+    $urlRouterProvider.when("/events", "/events/recommended");
 
     $stateProvider
       .state('main', {
@@ -61,7 +61,7 @@ angular
           main: {
             controller: 'MainCtrl',
             controllerAs: 'vm',
-            templateUrl: 'common/home/views/main.html'
+            templateUrl: 'home/views/main.html'
           }
         }
       })
@@ -87,17 +87,53 @@ angular
           }
         }
       })
+      .state('events', {
+        'abstract':true,
+        url: '/events',
+        views: {
+          tabs: {
+            templateUrl: 'events/views/tabs.tpl.html',
+            controller: 'EventsCtrl',
+            controllerAs: 'vm'
+          }
+        },
+        main: {
+          templateUrl: 'events/views/events.html',
+          controller: 'EventsCtrl',
+          controllerAs: 'vm'
+        }
+      })
+      .state('events.recommended', {
+        url: '/recommended',
+        views: {
+          main: {
+            templateUrl: 'events/views/events.recommended.html',
+            controller: 'EventsCtrl',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state('events.following', {
+        url: '/following',
+        views: {
+          main: {
+            templateUrl: 'events/views/events.following.html',
+            controller: 'EventsCtrl',
+            controllerAs: 'vm'
+          }
+        }
+      })
       .state('venues', {
         'abstract': true,
         url: '/venues',
         views: {
           tabs: {
-            templateUrl: 'venue/views/tabs.tpl.html',
+            templateUrl: 'venues/views/tabs.tpl.html',
             controller: 'VenuesCtrl',
             controllerAs: 'vm'
           },
           main: {
-            templateUrl: 'venue/views/venues.html',
+            templateUrl: 'venues/views/venues.html',
             controller: 'VenuesCtrl',
             controllerAs: 'vm'
           }
@@ -107,7 +143,7 @@ angular
         url: '/recommended',
         views: {
           main: {
-            templateUrl: 'venue/views/venues.recommended.html',
+            templateUrl: 'venues/views/venues.recommended.html',
             controller: 'VenuesCtrl',
             controllerAs: 'vm'
           }
@@ -115,27 +151,27 @@ angular
       })
       .state('venues.favourites', {
         url: '/favourites',
-        templateUrl: 'venue/views/venues.favourites.html',
+        templateUrl: 'venues/views/venues.favourites.html',
         controller: 'VenuesCtrl',
         controllerAs: 'vm'
       })
       .state('venues.yours', {
         url: '/yours',
-        templateUrl: 'venue/views/venues.yours.html',
+        templateUrl: 'venues/views/venues.yours.html',
         controller: 'MyVenuesCtrl',
         controllerAs: 'vm'
       })
       .state('venues.venue', {
         //access: 'public',
         url: '/:id',
-        templateUrl: 'venue/views/venues.venue.html',
+        templateUrl: 'venues/views/venues.venue.html',
         controller: 'VenueCtrl',
         controllerAs: 'vm'
       });
   })
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
-      key: 'AIzaSyCZNTiE8tjnl72tbgJi80JlobAJ30vG3fk',
+      key: 'AIzaSyCZNTiE8tjnl72tbgJi80JlobAJ30vG3fk', // TODO: Move somewhere secure
       v: '3.23', //defaults to latest 3.X anyhow
       libraries: 'weather,geometry,visualization'
     });

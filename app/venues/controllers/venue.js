@@ -23,12 +23,13 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
   var venueId = $stateParams.id;
 
   vm.user = authService.getCurrentUser();
+  vm.fabIsOpen = false;
 
   vm.showVenueInfo = showVenueInfo;
 
   if (venueId) {
     getVenueWithId(venueId);
-    // get users relationship with venue if any
+    // get users relationship with venues if any
   }
 
   if (vm.user) {
@@ -46,7 +47,7 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
       });
   }
 
-  // dictates how many full stars will be displayed in the venue rating
+  // dictates how many full stars will be displayed in the venues rating
   function ratingArray() {
     return new Array(Math.floor(vm.venue.rating));
   }
@@ -71,7 +72,7 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
     $mdDialog.show({
       controller: 'VenueInfoCtrl',
       controllerAs: 'vm',
-      templateUrl: 'venue/views/venues.venue.info.html',
+      templateUrl: 'venues/views/venues.venues.info.html',
       parent: angular.element(document.body),
       targetEvent: event,
       clickOutsideToClose: true,

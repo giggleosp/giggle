@@ -57,7 +57,7 @@ function MyVenuesCtrl($scope, $timeout, $state, $mdDialog, venueApiService, auth
 
   function addNewVenue() {
     $mdDialog.show({
-      templateUrl: 'venue/views/add-venue.tpl.html',
+      templateUrl: 'venues/views/add-venues.tpl.html',
       parent: angular.element(document.body),
       controller: 'AddVenueCtrl',
       controllerAs: 'vm'

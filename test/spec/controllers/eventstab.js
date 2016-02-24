@@ -1,0 +1,23 @@
+'use strict';
+
+describe('Controller: EventstabCtrl', function () {
+
+  // load the controller's module
+  beforeEach(module('app'));
+
+  var EventstabCtrl,
+    scope;
+
+  // Initialize the controller and a mock scope
+  beforeEach(inject(function ($controller, $rootScope) {
+    scope = $rootScope.$new();
+    EventstabCtrl = $controller('EventstabCtrl', {
+      $scope: scope
+      // place here mocked dependencies
+    });
+  }));
+
+  it('should attach a list of awesomeThings to the scope', function () {
+    expect(EventstabCtrl.awesomeThings.length).toBe(3);
+  });
+});

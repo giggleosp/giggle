@@ -1,0 +1,13 @@
+<toolbar-tools ng-hide="!vm.isLoggedIn || vm.state.includes('events.event')">
+  <md-tabs md-selected="vm.selectedIndex">
+    <md-tab class="toolbar-tabs" ng-repeat="tab in vm.tabs">
+      <span class="text">{{ tab.title }}</span>
+    </md-tab>
+  </md-tabs>
+</toolbar-tools>
+
+<style>
+  .text {
+    color: #EEEEEE;
+  }
+</style>

@@ -56,17 +56,14 @@ h1, h2, h3 {
   padding-right:40px;
 }
 
-// TODO: does not work? hard coding into button for now
-button.md-fab {
-  .fixed {
-    position: fixed;
-  }
-  .bottom {
-    bottom: 20px;
-  }
-  .right {
-    right:25px;
-  }
+.fixed {
+  position: fixed;
+}
+.bottom {
+  bottom: 20px;
+}
+.right {
+  right:25px;
 }
 
 .social-icon {

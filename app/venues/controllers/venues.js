@@ -21,12 +21,11 @@ function VenuesCtrl(authService, $scope, $state) {
   vm.state = $state;
 
   vm.isLoggedIn = authService.isLoggedIn();
-  vm.hideTabs = false;
 
   vm.tabs = [
     { title: 'Recommended' },
     { title: 'Favourites' },
-    { title: 'Yours '}
+    { title: 'Yours' }
   ];
 
   preSelectCorrectTab();

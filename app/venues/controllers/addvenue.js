@@ -85,7 +85,7 @@ function AddVenueCtrl($scope, $state, authService, venueApiService, countryApiSe
          if (response.status === 200) {
            $mdDialog.hide();
 
-           // go to newly created venue
+           // go to newly created venues
            $state.go('venues.venue', {id: response.data.id });
 
          } else {

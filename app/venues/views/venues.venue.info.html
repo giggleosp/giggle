@@ -28,7 +28,7 @@
     </md-toolbar>
     <md-dialog-content>
       <div class="md-dialog-content" layout-align="center center" layout="column">
-        <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' options="vm.options">
+        <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' options="vm.options" refresh="vm.refreshMap">
           <ui-gmap-marker
             coords='vm.marker.coords'
             idKey='vm.marker.id'
@@ -48,11 +48,11 @@
     <md-dialog-content>
       <div class="md-dialog-content">
         <div layout="column">
-          <p ng-if="vm.venue.website"><a ng-href="{{ vm.venue.website }}" target="_blank"><md-icon class="material-design-icons">exit_to_app</md-icon>&nbsp;&nbsp;&nbsp;{{ vm.venue.website }}</a></p>
-          <p ng-if="vm.venue.phone"><a ng-href="{{ 'tel:' + vm.venue.phone }}" target="_blank"><md-icon class="material-design-icons">phone</md-icon>&nbsp;&nbsp;&nbsp;{{ vm.venue.phone }}</a></p>
-          <p ng-if="vm.venue.email"><a ng-href="{{ 'mailto:' + vm.venue.email }}"><md-icon class="material-design-icons">email</md-icon>&nbsp;&nbsp;&nbsp;{{ vm.venue.email }}</a></p>
+          <p ng-if="vm.venue.website"><a ng-href="{{ vm.venue.website }}" target="_blank"><md-icon class="material-design-icons">exit_to_app</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.venue.website }}</a></p>
+          <p ng-if="vm.venue.phone"><a ng-href="{{ 'tel:' + vm.venue.phone }}" target="_blank"><md-icon class="material-design-icons">phone</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.venue.phone }}</a></p>
+          <p ng-if="vm.venue.email"><a ng-href="{{ 'mailto:' + vm.venue.email }}"><md-icon class="material-design-icons">email</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.venue.email }}</a></p>
           <p>
-            <md-icon class="material-design-icons">my_location</md-icon>&nbsp;&nbsp;
+            <md-icon class="material-design-icons">my_location</md-icon>&nbsp;&nbsp;&nbsp;
             <span>{{ vm.venue.addressLine1 }}, </span>
             <span>{{ vm.venue.city.name }}, </span>
             <span ng-if="vm.city.name != vm.county.name">{{ vm.venue.county.name }}, </span>
@@ -70,6 +70,7 @@
     </md-dialog-content>
   </md-dialog>
 </span>
+
 <style>
   a {
     text-decoration: none;
