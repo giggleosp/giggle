@@ -7,7 +7,7 @@
  * # EditaccountCtrl
  * Controller of the app
  */
-angular.module('app')
+angular.module('app.controllers')
   .controller('EditAccountCtrl', EditAccountCtrl);
 
   EditAccountCtrl.$inject = [

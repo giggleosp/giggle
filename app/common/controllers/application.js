@@ -52,15 +52,15 @@ function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS
       setMenuItems();
 
       if (args.isNewUser) {
-            $mdDialog.show({
-            templateUrl: 'user/account/views/editaccount.tpl.html',
-            parent: angular.element(document.body),
-            controller: 'EditAccountCtrl',
-            controllerAs: 'vm',
-            locals: {
-             isNewUser: true
-            }
-          });
+        $mdDialog.show({
+          templateUrl: 'user/account/views/editaccount.tpl.html',
+          parent: angular.element(document.body),
+          controller: 'EditAccountCtrl',
+          controllerAs: 'vm',
+          locals: {
+            isNewUser: true
+          }
+        });
       }
 
     });

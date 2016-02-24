@@ -13,7 +13,7 @@ $my-layout-breakpoint-xl: 1920px;
     cursor: pointer;
     > img {
       width: 200px;
-      max-height: 200px;
+      height: 200px;
     }
     > md-card-content {
       p {
@@ -27,17 +27,11 @@ $my-layout-breakpoint-xl: 1920px;
 
 // venue
 .venue-container {
-  //@media screen and (min-width: $my-layout-breakpoint-sm) and (max-width: $my-layout-breakpoint-lg){
-  //  width: 880px;
-  //}
-  //@media screen and (min-width: $my-layout-breakpoint-lg) {
-  //  width: 1120px;
-  //}
   margin: 0 auto;
   .backdrop-container {
     img {
       margin-top:-100px;
-      width: 100%;
+      width: 948px;
       border-radius: 5px;
     }
   }
@@ -66,9 +60,18 @@ $my-layout-breakpoint-xl: 1920px;
     .action-buttons {
       margin-top:35px;
       margin-right: 10px;
-      #btnFollow {
+      .md-raised {
         padding: 3px;
       }
     }
+  }
+}
+
+.info-picture {
+  img {
+    width:150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
   }
 }

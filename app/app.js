@@ -25,7 +25,9 @@ angular
     'ui.router',
     'ngSanitize',
     'angularMoment',
-    'ngLodash'
+    'ngLodash',
+    'uiGmapgoogle-maps'
+    //'sprintf'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -130,6 +132,13 @@ angular
         controller: 'VenueCtrl',
         controllerAs: 'vm'
       });
+  })
+  .config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+      key: 'AIzaSyCZNTiE8tjnl72tbgJi80JlobAJ30vG3fk',
+      v: '3.23', //defaults to latest 3.X anyhow
+      libraries: 'weather,geometry,visualization'
+    });
   })
   .config(function($mdDateLocaleProvider) {
 

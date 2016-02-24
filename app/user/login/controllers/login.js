@@ -18,11 +18,6 @@ angular.module('app.controllers')
   function LoginCtrl(authService) {
     var vm = this;
 
-    vm.user = {
-      username: "foobar",
-      password: "0876235718ep!"
-    };
-
     vm.login = function(user) {
       return authService.login(user);
     }

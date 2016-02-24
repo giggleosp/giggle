@@ -100,14 +100,7 @@
       </div>
       <div layout="row">
         <md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id="leftSmall">
-          <md-toolbar ng-show="!application.showSearch" class="md-whiteframe-6dp md-tall" hide-gt-sm>
-            <span flex></span>
-            <div layout="column" class="md-toolbar-tools-bottom inset">
-              <span></span>
-              <div>{{ application.currentUser.username }}</div>
-              <div>{{ application.currentUser.email }}</div>
-            </div>
-          </md-toolbar>
+          `
           <md-list ng-repeat="section in application.mobileMenu">
             <md-subheader class="md-no-sticky">
               <span>{{ section.title }}</span>
@@ -185,8 +178,13 @@
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
     <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
+    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="bower_components/sprintf/src/sprintf.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script>-->
     <!-- custom js-->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -216,6 +214,10 @@
         <script src="venue/controllers/myvenues.js"></script>
         <script src="scripts/filters/array.js"></script>
         <script src="venue/controllers/venue.js"></script>
+        <script src="venue/controllers/addvenue.js"></script>
+        <script src="venue/controllers/venueinfo.js"></script>
+        <script src="scripts/services/pageinfofactory.js"></script>
+        <script src="scripts/services/googlemapsapiservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>

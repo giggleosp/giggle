@@ -1,0 +1,87 @@
+<span style="overflow: auto" flex="40" layout-align="center center" ng-cloak flex-sm flex-xs>
+  <md-dialog ng-show="vm.venue.longDescription">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>HMV Sound Garden</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div>
+          {{ !vm.readMore ? (vm.venue.longDescription | limitTo: 250) + '...' : vm.venue.longDescription }}
+        </div>
+        <div layout-align="center center" layout="row">
+          <md-button ng-click="vm.readMore = !vm.readMore" class="md-primary">
+            {{ !vm.readMore ? 'READ MORE' : 'SHOW LESS'}}
+          </md-button>
+        </div>
+      </div>
+    </md-dialog-content>
+  </md-dialog>
+  <md-dialog>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Map</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout-align="center center" layout="column">
+        <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' options="vm.options">
+          <ui-gmap-marker
+            coords='vm.marker.coords'
+            idKey='vm.marker.id'
+          >
+          </ui-gmap-marker>
+        </ui-gmap-google-map>
+      </div>
+    </md-dialog-content>
+  </md-dialog>
+  <md-dialog>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>General Information</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout="column">
+          <p ng-if="vm.venue.website"><a ng-href="{{ vm.venue.website }}" target="_blank"><md-icon class="material-design-icons">exit_to_app</md-icon>&nbsp;&nbsp;&nbsp;{{ vm.venue.website }}</a></p>
+          <p ng-if="vm.venue.phone"><a ng-href="{{ 'tel:' + vm.venue.phone }}" target="_blank"><md-icon class="material-design-icons">phone</md-icon>&nbsp;&nbsp;&nbsp;{{ vm.venue.phone }}</a></p>
+          <p ng-if="vm.venue.email"><a ng-href="{{ 'mailto:' + vm.venue.email }}"><md-icon class="material-design-icons">email</md-icon>&nbsp;&nbsp;&nbsp;{{ vm.venue.email }}</a></p>
+          <p>
+            <md-icon class="material-design-icons">my_location</md-icon>&nbsp;&nbsp;
+            <span>{{ vm.venue.addressLine1 }}, </span>
+            <span>{{ vm.venue.city.name }}, </span>
+            <span ng-if="vm.city.name != vm.county.name">{{ vm.venue.county.name }}, </span>
+            <span>{{ vm.venue.country.niceName }}</span>
+          </p>
+        </div>
+        <div layout="row" layout-align="center center">
+          <p>
+            <a ng-href="{{ vm.venue.facebook }}" target="_blank" ng-if="vm.venue.facebook"><img id="facebook" class="social-icon" src="../../assets/img/FB-f-Logo__blue_50.png" alt="Facebook"/></a>
+            <a ng-href="{{ vm.venue.twitter }}" target="_blank" ng-if="vm.venue.twitter"><img id="twitter" class="social-icon" src="../../assets/img/Twitter_logo_blue.png" alt="Twitter"/></a>
+            <a ng-href="{{ vm.venue.googlePlus }}" target="_blank" ng-if="vm.venue.googlePlus"><img id="google-plus" class="social-icon" src="../../assets/img/btn_google+_dark_normal.png" alt="Google+"/></a>
+          </p>
+        </div>
+      </div>
+    </md-dialog-content>
+  </md-dialog>
+</span>
+<style>
+  a {
+    text-decoration: none;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  md-dialog {
+    margin-bottom:15px;
+  }
+  .angular-google-map-container {
+    height: 400px;
+    width: 450px;
+  }
+</style>
