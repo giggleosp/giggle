@@ -26,6 +26,7 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
   vm.fabIsOpen = false;
 
   vm.showVenueInfo = showVenueInfo;
+  vm.showAddEventDialog = showAddEventDialog;
 
   if (venueId) {
     getVenueWithId(venueId);
@@ -72,13 +73,28 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
     $mdDialog.show({
       controller: 'VenueInfoCtrl',
       controllerAs: 'vm',
-      templateUrl: 'venues/views/venues.venues.info.html',
+      templateUrl: 'venues/views/venues.venue.info.html',
       parent: angular.element(document.body),
       targetEvent: event,
       clickOutsideToClose: true,
       fullscreen: useFullScreen,
       locals: {
         venue: vm.venue
+      }
+    });
+  }
+
+  function showAddEventDialog(event) {
+    $mdDialog.show({
+      controller: 'AddEventCtrl',
+      controllerAs: 'vm',
+      templateUrl: 'events/views/partials/add-event.tpl.html',
+      parent: angular.element(document.body),
+      targetEvent: event,
+      clickOutsideToClose: false,
+      locals: {
+        ownerType: "venue",
+        ownerId: venueId
       }
     });
   }

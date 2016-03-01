@@ -92,7 +92,7 @@ angular
         url: '/events',
         views: {
           tabs: {
-            templateUrl: 'events/views/tabs.tpl.html',
+            templateUrl: 'events/views/partials/tabs.tpl.html',
             controller: 'EventsCtrl',
             controllerAs: 'vm'
           }
@@ -128,7 +128,7 @@ angular
         url: '/venues',
         views: {
           tabs: {
-            templateUrl: 'venues/views/tabs.tpl.html',
+            templateUrl: 'venues/views/partials/tabs.tpl.html',
             controller: 'VenuesCtrl',
             controllerAs: 'vm'
           },
@@ -194,7 +194,7 @@ angular
       if (toState.access === 'private' && !user) {
         // anonymous user trying to access a private page, prevent
         event.preventDefault();
-       $state.transitionTo("sign-in"); // go to login page
+       $state.go("sign-in"); // go to login page
       } else if (toState.access === 'anon' && user) {
         // authorised user trying to access page for anonymous users, such as login
         event.preventDefault();

@@ -18,7 +18,7 @@ angular.module('app.services', [])
   ];
 
   function userApiService ($rootScope, $http, $cookies, notificationService) {
-    var baseUrl = "http://localhost:8080/users";
+    var baseUrl = "http://localhost:8080/users/";
 
     return {
       usernameExists: usernameExists,
@@ -32,7 +32,7 @@ angular.module('app.services', [])
       return $http({
         method: "GET",
         dataType: "json",
-        url: baseUrl + "/usernameexists/",
+        url: baseUrl + "usernameexists/",
         params: { username: username }
       });
     }
@@ -41,7 +41,7 @@ angular.module('app.services', [])
       return $http({
         method: "GET",
         dataType: "json",
-        url: baseUrl + "/emailexists/",
+        url: baseUrl + "emailexists/",
         params: { email: email }
       });
     }
@@ -50,7 +50,7 @@ angular.module('app.services', [])
       return $http({
         method: "POST",
         dataType: "json",
-        url: baseUrl + "/username",
+        url: baseUrl + "username",
         data: $.param({ username: username })
       });
     }
@@ -60,7 +60,7 @@ angular.module('app.services', [])
       return $http({
         method: "POST",
         dataType: "json",
-        url: baseUrl + "/username",
+        url: baseUrl + "username",
         data: $.param({ username: username })
       });
     }
@@ -69,8 +69,8 @@ angular.module('app.services', [])
       return $http({
         method: "PUT",
         dataType: "json",
-        url: baseUrl + "/update",
-        data: JSON.stringify(user),
+        url: baseUrl + "update",
+        data: angular.toJson(user),
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

@@ -72,7 +72,7 @@ function navigationMenuService() {
           items: [
             {
               title: "All",
-              href: "",
+              href: "#/events",
               icon: {
                 text: "local_activity",
                 md: true

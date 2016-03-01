@@ -24,7 +24,7 @@ angular.module('app.controllers')
       var confirm = $mdDialog.confirm()
         .title("Confirm Sign Out")
         .textContent("Are you sure you want to leave?")
-        .ariaLabel("Confirm Log Out")
+        .ariaLabel("Confirm Sign Out")
         .targetEvent(event)
         .ok("OK")
         .cancel("Cancel");
