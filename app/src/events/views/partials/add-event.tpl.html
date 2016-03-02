@@ -1,0 +1,50 @@
+<md-dialog aria-label="Create an event" ng-cloak flex="35">
+  <form name="addEventForm" ng-submit="vm.save(vm.event)" novalidate>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h1>Add an event</h1>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout="row">
+          <md-input-container class="md-block" flex>
+            <label>Name</label>
+            <input ng-model="vm.event.name" name="name">
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-autocomplete md-selected-item="vm.event.act" placeholder="Select the act that will be performing at your event" ng-required="vm.ownerType == 'venue'" flex md-search-text="searchText" md-items="act in vm.acts | filter: searchText" ng-if="vm.ownerType == 'venue'" md-item-text="act.name">
+            <md-item-template>
+              <span md-highlight-text="searchText">{{ act.name }} ({{ act.county.name }}, {{ act.country.niceName }})</span>
+            </md-item-template>
+            <md-not-found>
+              No matches found.
+            </md-not-found>
+          </md-autocomplete>
+           <md-autocomplete md-selected-item="vm.event.act" placeholder="Select the venue you will perform at" ng-required="vm.ownerType == 'act'" flex md-search-text="searchText" md-items="venue in vm.venues | filter: searchText" ng-if="vm.ownerType == 'act'" md-item-text="venue.name">
+            <md-item-template>
+              <span md-highlight-text="searchText">{{ venue.name }}</span>
+            </md-item-template>
+            <md-not-found>
+              No matches found.
+            </md-not-found>
+          </md-autocomplete>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="vm.cancel()">
+        Cancel
+      </md-button>
+      <md-button type="submit" style="margin-right:20px;" ng-disabled="addVenueForm.$pristine" class="md-primary">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+  <div layout="column" layout-align="center center" class="progress-circle-container" ng-if="vm.showProgress">
+    <md-progress-circular md-mode="indeterminate" class="md-accent"></md-progress-circular>
+  </div>
+</md-dialog>

@@ -40,6 +40,9 @@
   },
   "dependencies": {
     "debounce": "^1.0.0",
-    "ng-regex": "0.0.5"
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.21",
+    "ng-regex": "0.0.5",
+    "phantomjs-prebuilt": "^2.1.4"
   }
 }

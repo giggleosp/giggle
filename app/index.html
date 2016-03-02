@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbuild -->
   </head>
@@ -29,21 +29,22 @@
         <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm md-scroll-shrink="true">
           <div class="md-toolbar-tools">
             <md-button class="md-icon-button" ng-click="navigation.toggleSidenav('left')" aria-label="Menu">
-              <md-icon class="material-icons">menu</md-icon>
+              <md-icon md-svg-icon="menu"></md-icon>
             </md-button>
             <span flex></span>
             <span></span>
             <span>
                <md-menu md-position-mode="target-right target" ng-if="application.isLoggedIn">
                  <md-button aria-label="Open more menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-                   <md-icon md-menu-origin="" class="material-design-icons">more_vert</md-icon>
+                   <md-icon md-svg-icon="more_vert"></md-icon>
                  </md-button>
                  <md-menu-content width="3">
                    <md-menu-item>
                      <md-button ng-click="navigation.editAccount(event)">
                        <div layout="row">
                          <p flex="">Edit Account</p>
-                         <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons">settings</md-icon>
+                         <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="settings"
+                                  class="grey-icon"></md-icon>
                        </div>
                      </md-button>
                    </md-menu-item>
@@ -51,7 +52,8 @@
                      <md-button ng-click="logout.logout(event)">
                        <div layout="row">
                          <p flex="">Sign Out</p>
-                         <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" class="material-design-icons">exit_to_app</md-icon>
+                         <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="exit_to_app"
+                                  class="grey-icon"></md-icon>
                        </div>
                      </md-button>
                    </md-menu-item>
@@ -67,11 +69,11 @@
         <md-toolbar ng-show="!application.showSearch" class="md-whiteframe-6dp" hide-gt-sm>
           <div class="md-toolbar-tools">
             <md-button class="md-icon-button" ng-click="navigation.toggleSidenav('leftSmall')" aria-label="Menu">
-              <md-icon class="material-icons">menu</md-icon>
+              <md-icon md-svg-icon="menu"></md-icon>
             </md-button>
             <span flex></span>
             <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
-              <md-icon class="material-icons">search</md-icon>
+              <md-icon md-svg-icon="search"></md-icon>
             </md-button>
           </div>
           <div layout="row">
@@ -89,7 +91,7 @@
               <input type="text" ng-model="search" placeholder="Search" md-autofocus>
             </md-input-container>
             <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
-              <md-icon class="material-icons">search</md-icon>
+              <md-icon md-svg-icon="search"></md-icon>
             </md-button>
           </div>
           <div layout="row">
@@ -108,7 +110,7 @@
             <md-list-item ng-repeat="item in section.items" href="{{ item.href }}" ng-if="item.isVisible">
               <md-item-content md-ink-ripple layout="row" layout-align="start center">
                 <div class="inset">
-                  <md-icon class="material-icons">{{ item.icon.text }}</md-icon>
+                  <md-icon md-svg-icon="{{ item.icon.text }}"></md-icon>
                 </div>
                 <div class="inset">
                   {{ item.title }}
@@ -126,7 +128,7 @@
               <md-list-item href="{{ item.href }}" class="nav-list-item" ng-if="item.isVisible && item.title != 'Log Out'" ng-repeat="item in section.items">
                 <md-item-content layout="row" layout-align="start center" class="content">
                   <div class="inset">
-                    <md-icon ng-if="item.icon.md" class="material-icons md-24">{{ item.icon.text }}</md-icon>
+                    <md-icon ng-if="item.icon.md" md-svg-icon="{{ item.icon.text }}"></md-icon>
                     <md-icon ng-if="!item.icon.md" class="{{ item.icon.text }}" style="font-size:24px"></md-icon>
                   </div>
                   <div class="inset">
@@ -188,37 +190,37 @@
     <!-- custom js-->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="app.js"></script>
-        <script src="home/controllers/main.js"></script>
-        <script src="common/about/controllers/about.js"></script>
-        <script src="user/login/controllers/login.js"></script>
-        <script src="user/components/services/userapiservice.js"></script>
-        <script src="user/signup/controllers/signup.js"></script>
-        <script src="user/components/directives/usernameexists.js"></script>
-        <script src="user/components/directives/emailexists.js"></script>
-        <script src="user/components/directives/passwordstrength.js"></script>
-        <script src="common/controllers/application.js"></script>
-        <script src="user/components/services/authservice.js"></script>
-        <script src="user/components/constants/auth_events.js"></script>
-        <script src="user/components/constants/user_roles.js"></script>
-        <script src="common/services/countryapiservice.js"></script>
-        <script src="user/logout/controllers/logout.js"></script>
-        <script src="common/controllers/navigation.js"></script>
-        <script src="common/services/notificationservice.js"></script>
-        <script src="user/account/controllers/editaccount.js"></script>
-        <script src="common/services/navigationmenuservice.js"></script>
-        <script src="venues/controllers/venues.js"></script>
-        <script src="venues/controllers/myvenues.js"></script>
-        <script src="venues/services/venueapiservice.js"></script>
-        <script src="common/filters/array.js"></script>
-        <script src="venues/controllers/venue.js"></script>
-        <script src="venues/controllers/add-venue.js"></script>
-        <script src="venues/controllers/venue-information.js"></script>
-        <script src="common/services/googlemapsapiservice.js"></script>
-        <script src="events/controllers/events.js"></script>
-        <script src="events/services/eventsapiservice.js"></script>
-        <script src="events/controllers/addevent.js"></script>
-        <script src="acts/services/actsapiservice.js"></script>
+        <script src="src/app.js"></script>
+        <script src="src/home/controllers/main.js"></script>
+        <script src="src/common/about/controllers/about.js"></script>
+        <script src="src/user/login/controllers/login.js"></script>
+        <script src="src/user/components/services/userapiservice.js"></script>
+        <script src="src/user/signup/controllers/signup.js"></script>
+        <script src="src/user/components/directives/usernameexists.js"></script>
+        <script src="src/user/components/directives/emailexists.js"></script>
+        <script src="src/user/components/directives/passwordstrength.js"></script>
+        <script src="src/common/controllers/application.js"></script>
+        <script src="src/user/components/services/authservice.js"></script>
+        <script src="src/user/components/constants/auth_events.js"></script>
+        <script src="src/user/components/constants/user_roles.js"></script>
+        <script src="src/common/services/countryapiservice.js"></script>
+        <script src="src/user/logout/controllers/logout.js"></script>
+        <script src="src/common/controllers/navigation.js"></script>
+        <script src="src/common/services/notificationservice.js"></script>
+        <script src="src/user/account/controllers/editaccount.js"></script>
+        <script src="src/common/services/navigationmenuservice.js"></script>
+        <script src="src/venues/controllers/venues.js"></script>
+        <script src="src/venues/controllers/myvenues.js"></script>
+        <script src="src/venues/services/venueapiservice.js"></script>
+        <script src="src/common/filters/array.js"></script>
+        <script src="src/venues/controllers/venue.js"></script>
+        <script src="src/venues/controllers/add-venue.js"></script>
+        <script src="src/venues/controllers/venue-information.js"></script>
+        <script src="src/common/services/googlemapsapiservice.js"></script>
+        <script src="src/events/controllers/events.js"></script>
+        <script src="src/events/services/eventsapiservice.js"></script>
+        <script src="src/events/controllers/addevent.js"></script>
+        <script src="src/acts/services/actsapiservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>
