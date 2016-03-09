@@ -80,6 +80,12 @@ h1, h2, h3 {
   height:40px;
 }
 
-.grey-icon {
-  fill: #757575;
+md-icon {
+  .indigo {
+    fill:#3F51B5;
+  }
+}
+
+.md-dialog-content, md-datepicker, md-dialog-actions {
+  background-color: white;
 }

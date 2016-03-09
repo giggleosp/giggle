@@ -11,9 +11,7 @@ angular.module('app.controllers')
   .controller('VenuesCtrl', VenuesCtrl);
 
 VenuesCtrl.$inject = [
-  'authService',
-  '$scope',
-  '$state'
+  'authService', '$scope', '$state'
 ];
 
 function VenuesCtrl(authService, $scope, $state) {
@@ -39,6 +37,7 @@ function VenuesCtrl(authService, $scope, $state) {
       vm.selectedIndex = 2;
     }
   }
+
   $scope.$watch('vm.selectedIndex', function (current, old) {
     if (current != old) {
       switch (current)

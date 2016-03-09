@@ -22,7 +22,7 @@ function navigationMenuService() {
           items: [
             {
               title: "Home",
-              href: "#/",
+              state: "main",
               icon: {
                 text: "home",
                 md: true
@@ -31,7 +31,7 @@ function navigationMenuService() {
             },
             {
               title: "Sign In",
-              href: "#/sign-in",
+              state: "sign-in",
               icon: {
                 text: "person",
                 md: true
@@ -40,7 +40,7 @@ function navigationMenuService() {
             },
             {
               title: "Sign Up",
-              href: "#/sign-up",
+              state: "sign-up",
               icon: {
                 text: "person_add",
                 md: true
@@ -49,7 +49,7 @@ function navigationMenuService() {
             }
             // {
             //   title: "Account",
-            //   href: "#/account",
+            //   state: "#/account",
             //   icon: {
             //     text: "account_circle",
             //     md: true
@@ -58,7 +58,7 @@ function navigationMenuService() {
             // },
             //{
             //  title: "Sign Out",
-            //  href: "",
+            //  state: "",
             //  icon: {
             //    text: "person_outline",
             //    md: true
@@ -72,194 +72,194 @@ function navigationMenuService() {
           items: [
             {
               title: "All",
-              href: "#/events",
+              state: "events.recommended",
               icon: {
                 text: "local_activity",
                 md: true
               },
               isVisible: true
-            },
-            {
-              title: "Local",
-              href: "",
-              icon: {
-                text: "location_on",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Music",
-              href: "",
-              icon: {
-                text: "music_note",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Sports",
-              href: "",
-              icon: {
-                text: "fa fa-futbol-o",
-                md: false
-              },
-              isVisible: true
-            },
-            {
-              title: "Theatre",
-              href: "",
-              icon: {
-                text: "theaters",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Comedy",
-              href: "",
-              icon: {
-                text: "tag_faces",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Festivals",
-              href: "",
-              icon: {
-                text: "library_music",
-                md: true
-              },
-              isVisible: true
             }
+            //{
+            //  title: "Local",
+            //  state: "",
+            //  icon: {
+            //    text: "location_on",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //},
+            //{
+            //  title: "Music",
+            //  state: "",
+            //  icon: {
+            //    text: "music_note",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //},
+            //{
+            //  title: "Sports",
+            //  state: "",
+            //  icon: {
+            //    text: "fa fa-futbol-o",
+            //    md: false
+            //  },
+            //  isVisible: true
+            //},
+            //{
+            //  title: "Theatre",
+            //  state: "",
+            //  icon: {
+            //    text: "theaters",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //},
+            //{
+            //  title: "Comedy",
+            //  state: "",
+            //  icon: {
+            //    text: "tag_faces",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //},
+            //{
+            //  title: "Festivals",
+            //  state: "",
+            //  icon: {
+            //    text: "library_music",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //}
           ]
         },
-        {
-          title: "Acts",
-          items: [
-            {
-              title: "All",
-              href: "",
-              icon: {
-                text: "local_play",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Local",
-              href: "",
-              icon: {
-                text: "location_on",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Music",
-              href: "",
-              icon: {
-                text: "music_note",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Sports",
-              href: "",
-              icon: {
-                text: "fa fa-futbol-o",
-                md: false
-              },
-              isVisible: true
-            },
-            {
-              title: "Theatre",
-              href: "",
-              icon: {
-                text: "theaters",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Comedy",
-              href: "",
-              icon: {
-                text: "tag_faces",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Festivals",
-              href: "",
-              icon: {
-                text: "library_music",
-                md: true
-              },
-              isVisible: true
-            }
-          ]
-        },
+        //{
+        //  title: "Acts",
+        //  items: [
+        //    {
+        //      title: "All",
+        //      state: "",
+        //      icon: {
+        //        text: "local_play",
+        //        md: true
+        //      },
+        //      isVisible: true
+        //    },
+        //    {
+        //      title: "Local",
+        //      state: "",
+        //      icon: {
+        //        text: "location_on",
+        //        md: true
+        //      },
+        //      isVisible: true
+        //    },
+        //    {
+        //      title: "Music",
+        //      state: "",
+        //      icon: {
+        //        text: "music_note",
+        //        md: true
+        //      },
+        //      isVisible: true
+        //    },
+        //    {
+        //      title: "Sports",
+        //      state: "",
+        //      icon: {
+        //        text: "fa fa-futbol-o",
+        //        md: false
+        //      },
+        //      isVisible: true
+        //    },
+        //    {
+        //      title: "Theatre",
+        //      state: "",
+        //      icon: {
+        //        text: "theaters",
+        //        md: true
+        //      },
+        //      isVisible: true
+        //    },
+        //    {
+        //      title: "Comedy",
+        //      state: "",
+        //      icon: {
+        //        text: "tag_faces",
+        //        md: true
+        //      },
+        //      isVisible: true
+        //    },
+        //    {
+        //      title: "Festivals",
+        //      state: "",
+        //      icon: {
+        //        text: "library_music",
+        //        md: true
+        //      },
+        //      isVisible: true
+        //    }
+        //  ]
+        //},
         {
           title: "Venues",
           items: [
             {
               title: "All",
-              href: "#/venues",
+              state: "venues.recommended",
               icon: {
                 text: "local_play",
                 md: true
               },
               isVisible: true
-            },
-            {
-              title: "Local",
-              href: "",
-              icon: {
-                text: "location_on",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Bars",
-              href: "",
-              icon: {
-                text: "local_bar",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Music",
-              href: "",
-              icon: {
-                text: "music_note",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Sports",
-              href: "",
-              icon: {
-                text: "fa fa-futbol-o",
-                md: false
-              },
-              isVisible: true
-            },
-            {
-              title: "Theatre",
-              href: "",
-              icon: {
-                text: "theaters",
-                md: true
-              },
-              isVisible: true
             }
+            //{
+            //  title: "Local",
+            //  state: "",
+            //  icon: {
+            //    text: "location_on",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //},
+            //{
+            //  title: "Bars",
+            //  state: "",
+            //  icon: {
+            //    text: "local_bar",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //},
+            //{
+            //  title: "Music",
+            //  state: "",
+            //  icon: {
+            //    text: "music_note",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //},
+            //{
+            //  title: "Sports",
+            //  state: "",
+            //  icon: {
+            //    text: "fa fa-futbol-o",
+            //    md: false
+            //  },
+            //  isVisible: true
+            //},
+            //{
+            //  title: "Theatre",
+            //  state: "",
+            //  icon: {
+            //    text: "theaters",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //}
           ]
         }
       ];
@@ -271,7 +271,7 @@ function navigationMenuService() {
           items: [
             {
               title: "Home",
-              href: "#/",
+              state: "main",
               icon: {
                 text: "home",
                 md: true
@@ -280,25 +280,25 @@ function navigationMenuService() {
             },
             {
               title: "Events",
-              href: "",
+              state: "events.recommended",
               icon: {
                 text: "event",
                 md: true
               },
               isVisible: true
             },
-            {
-              title: "Acts",
-              href: "",
-              icon: {
-                text: "local_play",
-                md: true
-              },
-              isVisible: true
-            },
+            //{
+            //  title: "Acts",
+            //  state: "",
+            //  icon: {
+            //    text: "local_play",
+            //    md: true
+            //  },
+            //  isVisible: true
+            //},
             {
               title: "Venues",
-              href: "",
+              state: "venues.recommended",
               icon: {
                 text: "local_bar",
                 md: true
@@ -312,7 +312,7 @@ function navigationMenuService() {
           items: [
             {
               title: "Sign In",
-              href: "#/sign-in",
+              state: "#/sign-in",
               icon: {
                 text: "person",
                 md: true
@@ -321,22 +321,22 @@ function navigationMenuService() {
             },
             {
               title: "Sign Up",
-              href: "#/sign-up",
+              state: "#/sign-up",
               icon: {
                 text: "person_add",
                 md: true
               },
               isVisible: !isLoggedIn
             },
-            {
-              title: "Log Out",
-              href: "",
-              icon: {
-                text: "person_outline",
-                md: true
-              },
-              isVisible: isLoggedIn
-            }
+            //{
+            //  title: "Log Out",
+            //  state: "",
+            //  icon: {
+            //    text: "person_outline",
+            //    md: true
+            //  },
+            //  isVisible: isLoggedIn
+            //}
           ]
         }
       ];

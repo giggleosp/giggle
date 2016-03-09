@@ -25,8 +25,10 @@ angular
     'ui.router',
     'ngSanitize',
     'angularMoment',
+    'ngFileUpload',
     'ngLodash',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'ngMaterialDatePicker'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -76,6 +78,7 @@ angular
       .icon('person', '../assets/svg/person.svg', 24)
       .icon('person_outline', '../assets/svg/person_outline.svg', 24)
       .icon('location_searching', '../assets/svg/location_searching.svg', 24)
+      .icon('add_a_photo', '../assets/svg/add_a_photo.svg', 24)
   })
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -117,7 +120,7 @@ angular
         }
       })
       .state('events', {
-        'abstract':true,
+        abstract:true,
         url: '/events',
         views: {
           tabs: {
@@ -152,8 +155,14 @@ angular
           }
         }
       })
+      .state('events.event', {
+        url: '/:id',
+        templateUrl: 'src/events/views/events.event.html',
+        controller: 'EventCtrl',
+        controllerAs: 'vm'
+      })
       .state('venues', {
-        'abstract': true,
+        abstract: true,
         url: '/venues',
         views: {
           tabs: {
@@ -191,7 +200,6 @@ angular
         controllerAs: 'vm'
       })
       .state('venues.venue', {
-        //access: 'public',
         url: '/:id',
         templateUrl: 'src/venues/views/venues.venue.html',
         controller: 'VenueCtrl',
@@ -208,12 +216,12 @@ angular
   .config(function($mdDateLocaleProvider) {
 
     $mdDateLocaleProvider.parseDate = function(dateString) {
-      var m = moment(dateString, 'L', true);
+      var m = moment(dateString, 'MM-DD-YYYY', true);
       return m.isValid() ? m.toDate() : new Date(NaN);
     };
 
     $mdDateLocaleProvider.formatDate = function(date) {
-      return !date ? null : moment(date).format('L');
+      return !date ? null : moment(date).format('DD/MM/YYYY');
     };
   })
   .run(function ($rootScope, $cookies, $state, $stateParams, $location) {

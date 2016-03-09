@@ -82,8 +82,8 @@
             </div>
           </md-input-container>
         </div>
-        <md-switch ng-model="vm.isVisible" aria-label="Venue visibility">
-          Visible to public
+        <md-switch ng-model="vm.venue.isVisible" aria-label="Venue visibility">
+          Visible
         </md-switch>
       </div>
     </md-dialog-content>
@@ -92,7 +92,7 @@
       <md-button ng-click="vm.cancel()">
         Cancel
       </md-button>
-      <md-button type="submit" ng-disabled="addVenueForm.$pristine" class="md-primary">
+      <md-button type="submit" ng-disabled="addVenueForm.$pristine" class="md-primary" style="margin-right:20px;">
         Save
       </md-button>
     </md-dialog-actions>

@@ -1,21 +1,63 @@
-<md-dialog aria-label="Create an event" ng-cloak flex="35">
+<md-dialog aria-label="Create an event" ng-cloak flex-gt-sm="35" flex style="max-height: 80vh">
   <form name="addEventForm" ng-submit="vm.save(vm.event)" novalidate>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h1>Add an event</h1>
+        <h1>Create event</h1>
         <span flex></span>
       </div>
     </md-toolbar>
     <md-dialog-content>
       <div class="md-dialog-content">
+        <div layout="column" layout-align="center center">
+          <div layout-margin>
+            <md-button ngf-select ng-model="vm.photo" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB">Upload
+              photo</md-button>
+            <md-button ngf-select ng-model="vm.photo" ngf-pattern="'image/*'" ngf-accept="'image/*'"
+                       class="md-icon-button" ngf-max-size="20MB">
+              <md-icon md-svg-icon="add_a_photo"></md-icon>
+            </md-button>
+          </div>
+          <img ng-if="vm.photo" ngf-src="vm.photo" width="100%;" style="margin-top: 5px;margin-bottom:20px;">
+        </div>
         <div layout="row">
           <md-input-container class="md-block" flex>
             <label>Name</label>
-            <input ng-model="vm.event.name" name="name">
+            <input ng-model="vm.event.name" name="name" required>
+            <div ng-messages="addEventForm.name.$error" ng-show="addEventForm.$submitted">
+              <span ng-message="required">You must provide an event name.</span>
+            </div>
           </md-input-container>
         </div>
         <div layout="row">
-          <md-autocomplete md-selected-item="vm.event.act" placeholder="Select the act that will be performing at your event" ng-required="vm.ownerType == 'venue'" flex md-search-text="searchText" md-items="act in vm.acts | filter: searchText" ng-if="vm.ownerType == 'venue'" md-item-text="act.name">
+          <md-input-container class="md-block" flex>
+            <label>Description</label>
+            <textarea ng-model="vm.event.description" md-maxlength="500" rows="5"></textarea>
+          </md-input-container>
+        </div>
+        <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-sm="65" flex>
+            <label>Type (Required)</label>
+            <md-select ng-model="vm.event.type" name="type" required>
+              <md-option ng-repeat="type in vm.eventTypes" ng-value="type">
+                {{ type.name }}
+              </md-option>
+            </md-select>
+            <div ng-messages="addEventForm.type.$error" ng-show="addEventForm.$submitted">
+              <span ng-message="required">You must select an event type.</span>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Price ({{ vm.currentUser.country.currency }})</label>
+            <input ng-model="vm.event.price">
+          </md-input-container>
+        </div>
+        <div layout="row" style="padding-bottom: 40px" ng-if="vm.event.type.name != 'Festival'">
+          <md-autocomplete md-selected-item="vm.event.act"
+                           placeholder="Select the act that will be performing at your event"
+                           ng-required="vm.ownerType == 'venue' || vm.event.type.name != 'Festival'" flex
+                           md-search-text="searchText" name="act"
+                           md-items="act in vm.acts | filter: searchText" ng-if="vm.ownerType == 'venue'"
+                           md-item-text="act.name">
             <md-item-template>
               <span md-highlight-text="searchText">{{ act.name }} ({{ act.county.name }}, {{ act.country.niceName }})</span>
             </md-item-template>
@@ -23,14 +65,56 @@
               No matches found.
             </md-not-found>
           </md-autocomplete>
-           <md-autocomplete md-selected-item="vm.event.act" placeholder="Select the venue you will perform at" ng-required="vm.ownerType == 'act'" flex md-search-text="searchText" md-items="venue in vm.venues | filter: searchText" ng-if="vm.ownerType == 'act'" md-item-text="venue.name">
+          <div ng-messages="addEventForm.act.$error"
+               ng-show="addEventForm.$submitted">
+            <span ng-message="required">You must select an act.</span>
+          </div>
+          <md-autocomplete md-selected-item="vm.event.venue" placeholder="Select the venue you will be performing at"
+                           ng-required="vm.ownerType == 'act' || vm.event.type.name != 'Festival'"
+                           flex md-search-text="searchText" md-items="venue in vm.venues | filter: searchText" ng-if="vm.ownerType == 'act'" md-item-text="venue.name">
             <md-item-template>
-              <span md-highlight-text="searchText">{{ venue.name }}</span>
+              <span md-highlight-text="searchText">{{ venue.name }} ({{ venue.county.name }}, {{ venue.country.niceName }})</span>
             </md-item-template>
             <md-not-found>
               No matches found.
             </md-not-found>
           </md-autocomplete>
+        </div>
+        <div layout-gt-sm="row">
+          <div layout="column" style="padding-right:10px;">
+            <md-datepicker ng-model="vm.event.startDate" style="background-color: inherit"
+                           name="startDate" required md-placeholder="Start Date" md-min-date="vm.currentDate"></md-datepicker>
+            <div ng-messages="addEventForm.startDate.$error" ng-show="addEventForm.$submitted"
+                 class="validation-messages">
+              <span ng-message="valid">This is not a valid date.</span>
+              <span ng-message="required">You must provide a start date.</span>
+            </div>
+          </div>
+          <md-input-container>
+            <label>Start Time</label>
+            <input type="time" ng-model="vm.event.startTime">
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <div layout="column" style="padding-right:10px;">
+            <md-datepicker ng-model="vm.event.endDate" style="background-color: inherit"
+                           name="endDate" md-placeholder="End Date"></md-datepicker>
+            <!--<div ng-messages="addEventForm.endDate.$error" ng-show="addEventForm.$submitted"-->
+                 <!--class="validation-messages">-->
+              <!--<span>End date must be after start date.</span>-->
+            <!--</div>-->
+          </div>
+          <md-input-container>
+            <label>End Time</label>
+            <input type="time" ng-model="vm.event.endTime">
+          </md-input-container>
+        </div>
+
+        <md-switch ng-model="vm.event.isVisible" aria-label="Event visibility">
+          Visible
+        </md-switch>
+        <div layout="row" layout-align="center center" class="validation-messages">
+          <span ng-if="vm.isError">{{ vm.errorMessage }}</span>
         </div>
       </div>
     </md-dialog-content>
@@ -39,7 +123,10 @@
       <md-button ng-click="vm.cancel()">
         Cancel
       </md-button>
-      <md-button type="submit" style="margin-right:20px;" ng-disabled="addVenueForm.$pristine" class="md-primary">
+      <md-button type="submit" style="margin-right:20px;"
+                 ng-disabled="addEventForm.$pristine
+                 && addEventForm.$invalid"
+                 class="md-primary">
         Save
       </md-button>
     </md-dialog-actions>

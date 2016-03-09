@@ -8,20 +8,6 @@ md-input-container > label, md-autocomplete.md-placeholder {
   .md-title {
     font-size: 36px;
   }
-
-
-  //> div > md-card {
-  //  > md-card-content.card-header {
-  //    > md-header > form.md-title {
-  //      background-color: red;
-  //    }
-  //  }
-  //  > md-card {
-  //    form {
-  //      visibility: hidden;
-  //    }
-  //  }
-  //}
 }
 
 // https://github.com/angular/material/issues/4233
@@ -31,11 +17,24 @@ form {
     top: 15px;
     left: -16px;
 
-    .md-datepicker-input-container{
+    .md-datepicker-input-container {
       margin-left: 0;
     }
     .md-datepicker-button.md-icon-button {
       margin-right: 0;
     }
+  }
+}
+
+.validation-messages {
+  padding-top: 10px;
+  > span {
+    color: rgb(221,44,0);
+    font-size: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    opacity: 1;
+    margin-top: 0;
+    line-height: 14px;
   }
 }

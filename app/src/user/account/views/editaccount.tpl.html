@@ -9,17 +9,17 @@
     <md-dialog-content>
       <div class="md-dialog-content">
         <div layout-gt-xs="row">
-          <md-input-container class="md-block" flex-gt-xs>
+          <md-input-container class="md-block" flex-gt-sm>
             <label>Username</label>
             <input ng-model="vm.user.username" disabled>
           </md-input-container>
-          <md-input-container class="md-block" flex-gt-xs>
+          <md-input-container class="md-block" flex-gt-sm>
             <label>Email</label>
             <input ng-model="vm.user.email" disabled>
           </md-input-container>
         </div>
         <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
+          <md-input-container class="md-block" flex-gt-xs>
             <label>First name</label>
             <input ng-model="vm.user.firstName">
           </md-input-container>
@@ -37,7 +37,8 @@
               </md-option>
             </md-select>
           </md-input-container>
-          <md-datepicker name="dateOfBirth" ng-model="vm.user.dateOfBirth" md-placeholder="dd/mm/yyyy" md-max-date="vm.maxDate" flex="50"></md-datepicker>
+          <md-datepicker name="dateOfBirth" ng-model="vm.user.dateOfBirth" md-placeholder="Enter date of birth"
+                         md-max-date="vm.maxDate" flex="50"></md-datepicker>
           <div class="validation-messages" ng-messages="accountForm.dateOfBirth.$error" ng-show="accountForm.$submitted || accountForm.dateOfBirth.$dirty">
             <div ng-show="maxdate">Date of birth must be in the past.</div>
           </div>

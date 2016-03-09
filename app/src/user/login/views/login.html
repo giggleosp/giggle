@@ -10,7 +10,7 @@
           <form name="loginForm" layout-align="center center" ng-submit="vm.login(vm.user)" novalidate style="padding-top:20px;">
             <md-input-container class="md-block" md-is-error="loginForm.$submitted && loginForm.$invalid">
               <label>Username (Required)</label>
-              <input name="username" ng-model="vm.user.username" ng-required="true" class="invalid">
+              <input name="username" ng-model="vm.user.username" required class="invalid">
               <div ng-messages="loginForm.username.$error" ng-show="loginForm.$submitted || loginForm.username.$dirty">
                 <span ng-message="required">Username is a required field!</span>
               </div>

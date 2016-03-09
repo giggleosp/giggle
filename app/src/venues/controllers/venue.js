@@ -11,31 +11,30 @@ angular.module('app.controllers')
   .controller('VenueCtrl', VenueCtrl);
 
 VenueCtrl.$inject = [
-  '$stateParams',
-  '$mdDialog',
-  '$mdMedia',
-  'venueApiService',
-  'authService'
+  '$stateParams', '$mdDialog', '$mdMedia', 'venueApiService', 'authService'
 ];
 function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authService) {
   var vm = this;
 
   var venueId = $stateParams.id;
 
-  vm.user = authService.getCurrentUser();
-  vm.fabIsOpen = false;
+  init();
 
   vm.showVenueInfo = showVenueInfo;
   vm.showAddEventDialog = showAddEventDialog;
 
-  if (venueId) {
-    getVenueWithId(venueId);
-    // get users relationship with venues if any
+  function init() {
+    if (authService.isLoggedIn()) {
+      vm.user = authService.getCurrentUser();
+    }
+    if (venueId) {
+      getVenueWithId(venueId);
+    }
+    if (vm.user) {
+      getUserVenueRelationship(venueId, vm.user.id);
+    }
   }
 
-  if (vm.user) {
-    getUserVenueRelationship(venueId, vm.user.id);
-  }
 
   function getVenueWithId(id) {
     venueApiService.getVenueWithId(id)
@@ -85,6 +84,7 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
   }
 
   function showAddEventDialog(event) {
+    var useFullScreen = $mdMedia('sm') || $mdMedia('xs');
     $mdDialog.show({
       controller: 'AddEventCtrl',
       controllerAs: 'vm',
@@ -92,9 +92,10 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
       parent: angular.element(document.body),
       targetEvent: event,
       clickOutsideToClose: false,
+      fullscreen: useFullScreen,
       locals: {
         ownerType: "venue",
-        ownerId: venueId
+        owner: vm.venue
       }
     });
   }

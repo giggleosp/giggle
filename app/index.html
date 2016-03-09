@@ -10,6 +10,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
+    <link rel="stylesheet" href="bower_components/angular-material-datetimepicker/css/material-datetimepicker.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) assets/main.css -->
@@ -44,7 +45,7 @@
                        <div layout="row">
                          <p flex="">Edit Account</p>
                          <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="settings"
-                                  class="grey-icon"></md-icon>
+                                  class="grey"></md-icon>
                        </div>
                      </md-button>
                    </md-menu-item>
@@ -53,7 +54,7 @@
                        <div layout="row">
                          <p flex="">Sign Out</p>
                          <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="exit_to_app"
-                                  class="grey-icon"></md-icon>
+                                  class="grey"></md-icon>
                        </div>
                      </md-button>
                    </md-menu-item>
@@ -107,7 +108,7 @@
             <md-subheader class="md-no-sticky">
               <span>{{ section.title }}</span>
             </md-subheader>
-            <md-list-item ng-repeat="item in section.items" href="{{ item.href }}" ng-if="item.isVisible">
+            <md-list-item ng-repeat="item in section.items" ui-sref="{{ item.state }}" ng-if="item.isVisible">
               <md-item-content md-ink-ripple layout="row" layout-align="start center">
                 <div class="inset">
                   <md-icon md-svg-icon="{{ item.icon.text }}"></md-icon>
@@ -125,7 +126,8 @@
               <md-subheader class="md-no-sticky">
                 <span>{{ section.title }}</span>
               </md-subheader>
-              <md-list-item href="{{ item.href }}" class="nav-list-item" ng-if="item.isVisible && item.title != 'Log Out'" ng-repeat="item in section.items">
+              <md-list-item ui-sref="{{ item.state }}" class="nav-list-item"
+                            ng-if="item.isVisible && item.title != 'Log Out'" ng-repeat="item in section.items">
                 <md-item-content layout="row" layout-align="start center" class="content">
                   <div class="inset">
                     <md-icon ng-if="item.icon.md" md-svg-icon="{{ item.icon.text }}"></md-icon>
@@ -145,7 +147,6 @@
         </md-content>
         </div>
       </div>
-
 
     <!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID &ndash;&gt;-->
      <!--<script>-->
@@ -184,6 +185,8 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <script src="bower_components/sprintf/src/sprintf.js"></script>
+    <script src="bower_components/momentjs/moment.js"></script>
+    <script src="bower_components/angular-material-datetimepicker/js/angular-material-datetimepicker.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script>-->
@@ -221,6 +224,9 @@
         <script src="src/events/services/eventsapiservice.js"></script>
         <script src="src/events/controllers/addevent.js"></script>
         <script src="src/acts/services/actsapiservice.js"></script>
+        <script src="src/events/services/eventsservice.js"></script>
+        <script src="scripts/services/photoapiservice.js"></script>
+        <script src="src/events/controllers/event.js"></script>
         <!-- endbuild -->
 </body>
 </html>

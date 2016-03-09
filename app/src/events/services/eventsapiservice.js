@@ -10,16 +10,18 @@
 angular.module('app.services')
   .service('eventsApiService', eventsApiService);
 
-eventsApiService.$inject = [
-  '$http'
-];
+eventsApiService.$inject = ['$http'];
 
 function eventsApiService($http) {
   var baseUrl = "http://localhost:8080/events/";
+
   return {
-    getRecommendedEvents: getRecommendedEvents
+    getRecommendedEvents: getRecommendedEvents,
+    getEventTypes: getEventTypes,
+    addEvent: addEvent
   };
 
+  // TODO: Change to a GET request
   function getRecommendedEvents(user) {
     return $http({
       method: "POST",
@@ -31,4 +33,31 @@ function eventsApiService($http) {
       }
     });
   }
+
+  function getEventTypes() {
+    return $http.get(baseUrl + "types");
+  }
+
+  function addEvent(event, user, photo) {
+    return $http({
+      method: "POST",
+      url: baseUrl + "add",
+      transformRequest: function(data) {
+        var formData = new FormData();
+        formData.append("event", new Blob([angular.toJson(data.event)], {
+          type: "application/json"
+        }));
+        formData.append("user", new Blob([angular.toJson(data.user)], {
+          type: "application/json"
+        }));
+        formData.append("photo", data.photo);
+        return formData;
+      },
+      data: { event: event, user: user, photo: photo },
+      headers: {
+        "Content-Type": undefined
+      }
+    });
+  }
+
 }
