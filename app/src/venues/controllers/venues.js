@@ -16,7 +16,6 @@ VenuesCtrl.$inject = [
 
 function VenuesCtrl(authService, $scope, $state) {
   var vm = this;
-  vm.state = $state;
 
   vm.isLoggedIn = authService.isLoggedIn();
 
@@ -43,13 +42,13 @@ function VenuesCtrl(authService, $scope, $state) {
       switch (current)
       {
         case 0:
-          $state.transitionTo('venues.recommended');
+          $state.go('venues.recommended');
               break;
         case 1:
-          $state.transitionTo('venues.favourites');
+          $state.go('venues.favourites');
               break;
         case 2:
-          $state.transitionTo('venues.yours');
+          $state.go('venues.yours');
               break;
       }
     }

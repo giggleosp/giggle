@@ -4,7 +4,10 @@
       <img ng-src="{{ vm.venue.backdropUri || '../../assets/img/backdrop.jpg' }}" alt="backdrop" class="md-whiteframe-5dp">
     </div>
     <div layout="row" class="backdrop-tools" layout-wrap>
-      <div class="profile-picture main">
+      <div class="profile-picture main" layout="column">
+        <md-button class="md-icon-button" id="upload-picture" ng-click="vm.uploadPhotoDialog();">
+          <md-icon md-svg-icon="add_a_photo" class="grey"></md-icon>
+        </md-button>
         <img ng-src="{{ vm.venue.imageUri || '../../assets/img/venue-card.png' }}" alt="Profile Picture" class="md-whiteframe-5dp">
       </div>
       <div class="title">
@@ -20,10 +23,10 @@
       <div flex=""></div>
       <div class="action-buttons">
         <md-button class="md-icon-button" ng-click="vm.showVenueInfo($event);">
-          <md-icon class="material-design-icons" style="color: #EEEEEE" md-svg-icon="info_outline"></md-icon>
+          <md-icon style="color: #EEEEEE" md-svg-icon="info_outline"></md-icon>
         </md-button>
         <md-button class="md-icon-button">
-          <md-icon class="material-design-icons" style="color: #EEEEEE" md-svg-icon="more_vert"></md-icon>
+          <md-icon style="color: #EEEEEE" md-svg-icon="more_vert"></md-icon>
         </md-button>
         <md-button class="md-raised" ng-if="vm.user && !vm.userVenue.admin">{{ vm.user.following ? 'Unfollow' : 'Follow' }}</md-button>
         <md-button class="md-raised" ng-if="vm.userVenue.admin">Edit</md-button>

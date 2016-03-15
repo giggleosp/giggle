@@ -16,34 +16,35 @@ EventsCtrl.$inject = [
 
 function EventsCtrl(authService, eventsApiService, $scope, $state) {
   var vm = this;
-  vm.state = $state;
 
   vm.isLoggedIn = authService.isLoggedIn();
-
   vm.tabs = [
     { title: 'Recommended' },
     { title: 'Following' }
   ];
 
-  preSelectCorrectTab();
+  init();
+
+  function init() {
+    preSelectCorrectTab();
+  }
 
   function preSelectCorrectTab() {
-    if (vm.state.includes("events.recommended")) {
+    if ($state.includes("events.recommended")) {
       vm.selectedIndex = 0;
-    } else if (vm.state.includes("events.following")) {
+    } else if ($state.includes("events.following")) {
       vm.selectedIndex = 1;
     }
   }
 
   $scope.$watch('vm.selectedIndex', function (current, old) {
     if (current != old) {
-      switch (current)
-      {
+      switch (current) {
         case 0:
-          vm.state.transitionTo('events.recommended');
+          $state.go('events.recommended');
           break;
         case 1:
-          vm.state.transitionTo('events.following');
+          $state.go('events.following');
           break;
       }
     }

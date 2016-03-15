@@ -27,8 +27,7 @@ angular
     'angularMoment',
     'ngFileUpload',
     'ngLodash',
-    'uiGmapgoogle-maps',
-    'ngMaterialDatePicker'
+    'uiGmapgoogle-maps'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -119,48 +118,6 @@ angular
           }
         }
       })
-      .state('events', {
-        abstract:true,
-        url: '/events',
-        views: {
-          tabs: {
-            templateUrl: 'src/events/views/partials/tabs.tpl.html',
-            controller: 'EventsCtrl',
-            controllerAs: 'vm'
-          }
-        },
-        main: {
-          templateUrl: 'src/events/views/events.html',
-          controller: 'EventsCtrl',
-          controllerAs: 'vm'
-        }
-      })
-      .state('events.recommended', {
-        url: '/recommended',
-        views: {
-          main: {
-            templateUrl: 'src/events/views/events.recommended.html',
-            controller: 'EventsCtrl',
-            controllerAs: 'vm'
-          }
-        }
-      })
-      .state('events.following', {
-        url: '/following',
-        views: {
-          main: {
-            templateUrl: 'src/events/views/events.following.html',
-            controller: 'EventsCtrl',
-            controllerAs: 'vm'
-          }
-        }
-      })
-      .state('events.event', {
-        url: '/:id',
-        templateUrl: 'src/events/views/events.event.html',
-        controller: 'EventCtrl',
-        controllerAs: 'vm'
-      })
       .state('venues', {
         abstract: true,
         url: '/venues',
@@ -179,13 +136,9 @@ angular
       })
       .state('venues.recommended', {
         url: '/recommended',
-        views: {
-          main: {
-            templateUrl: 'src/venues/views/venues.recommended.html',
-            controller: 'VenuesCtrl',
-            controllerAs: 'vm'
-          }
-        }
+        templateUrl: 'src/venues/views/venues.recommended.html',
+        controller: 'VenuesCtrl',
+        controllerAs: 'vm'
       })
       .state('venues.favourites', {
         url: '/favourites',
@@ -204,7 +157,51 @@ angular
         templateUrl: 'src/venues/views/venues.venue.html',
         controller: 'VenueCtrl',
         controllerAs: 'vm'
+      })
+      .state('events', {
+        abstract:true,
+        url: '/events',
+        views: {
+          tabs: {
+            templateUrl: 'src/events/views/partials/tabs.tpl.html',
+            controller: 'EventsCtrl',
+            controllerAs: 'vm'
+          },
+          main: {
+            templateUrl: 'src/events/views/events.html',
+            controller: 'EventsCtrl',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state('events.recommended', {
+        url: '/recommended',
+        templateUrl: 'src/events/views/events.recommended.html',
+        controller: 'RecommendedEventsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('events.following', {
+        url: '/following',
+        views: {
+          main: {
+            templateUrl: 'src/events/views/events.following.html',
+            controller: 'EventsCtrl',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state('events.event', {
+        url: '/:id',
+        templateUrl: 'src/events/views/events.event.html',
+        controller: 'EventCtrl',
+        controllerAs: 'vm'
       });
+  })
+  .config(function($locationProvider) {
+    $locationProvider.html5Mode({
+      enabled: false,
+      requireBase: true
+    });
   })
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
@@ -214,18 +211,19 @@ angular
     });
   })
   .config(function($mdDateLocaleProvider) {
-
     $mdDateLocaleProvider.parseDate = function(dateString) {
       var m = moment(dateString, 'MM-DD-YYYY', true);
       return m.isValid() ? m.toDate() : new Date(NaN);
     };
-
     $mdDateLocaleProvider.formatDate = function(date) {
       return !date ? null : moment(date).format('DD/MM/YYYY');
     };
   })
   .run(function ($rootScope, $cookies, $state, $stateParams, $location) {
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+      $rootScope.$state = $state;
+      $rootScope.$stateParams = $stateParams;
+
       var user = $cookies.get("user"); // retrieve user from session cookie (if any)
 
       if (toState.access === 'private' && !user) {

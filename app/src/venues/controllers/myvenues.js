@@ -17,17 +17,16 @@ MyVenuesCtrl.$inject = [
   '$mdDialog',
   'venueApiService',
   'authService',
-  'navigationMenuService'
+  'layoutService'
 ];
 
-function MyVenuesCtrl($scope, $timeout, $state, $mdDialog, venueApiService, authService, navigationMenuService) {
+function MyVenuesCtrl($scope, $timeout, $state, $mdDialog, venueApiService, authService, layoutService) {
   var vm = this;
 
   var user = authService.getCurrentUser();
-  var isMenuOpen = navigationMenuService.getOpenedState();
 
   getVenues();
-  vm.cardsPerRow = getNumberOfCardsPerRow();
+  vm.cardsPerRow = layoutService.getNumberOfCardsPerRow();
   vm.gotoVenue = gotoVenue;
   vm.addNewVenue = addNewVenue;
 
@@ -40,19 +39,8 @@ function MyVenuesCtrl($scope, $timeout, $state, $mdDialog, venueApiService, auth
       });
   }
 
-  // TODO: Move into a service
-  function getNumberOfCardsPerRow() {
-    var mainWidth;
-    if (isMenuOpen && window.innerWidth > 960) {
-      mainWidth = window.innerWidth - 195;
-    } else {
-      mainWidth = window.innerWidth;
-    }
-    return mainWidth / 220;
-  }
-
   function gotoVenue(id) {
-    $state.transitionTo('venues.venue', {id: id})
+    $state.go('venues.venue', {id: id});
   }
 
   function addNewVenue() {
@@ -65,9 +53,8 @@ function MyVenuesCtrl($scope, $timeout, $state, $mdDialog, venueApiService, auth
   }
 
   $scope.$on("navigation-menu-state-changed", function () {
-    isMenuOpen = navigationMenuService.getOpenedState();
     $timeout(function () {
-      vm.cardsPerRow = getNumberOfCardsPerRow();
+      vm.cardsPerRow = layoutService.getNumberOfCardsPerRow();
     }, 200);
   });
 }

@@ -13,18 +13,19 @@ angular.module('app.controllers')
 AddEventCtrl.$inject = [
   '$scope', '$log', 'authService', 'eventsApiService',
   'actsApiService', '$mdDialog', 'owner',
-  'ownerType', 'eventsService', '$state'
+  'ownerType', 'dateService', '$state'
 ];
 
 function AddEventCtrl($scope, $log, authService, eventsApiService,
                       actsApiService, $mdDialog, owner,
-                      ownerType, eventsService, $state) {
+                      ownerType, dateService, $state) {
   var vm = this;
 
   vm.currentUser = authService.getCurrentUser();
   vm.ownerType = ownerType;
   vm.owner = owner; // id of the venue or act
   vm.currentDate = new Date();
+  vm.state = $state;
 
   vm.cancel = cancel;
   vm.save = save;
@@ -45,6 +46,7 @@ function AddEventCtrl($scope, $log, authService, eventsApiService,
   }
 
   function save (event) {
+    $log.debug(event);
     if ($scope.addEventForm.$valid) {
       vm.showProgress = true;
 
@@ -54,12 +56,6 @@ function AddEventCtrl($scope, $log, authService, eventsApiService,
       } else {
         event.act = vm.owner;
         event.actConfirmed = true;
-      }
-      if (event.startTime != null || event.startTime != undefined) {
-        event.startTime = eventsService.formatTime(event.startTime);
-      }
-      if (event.endTime != null || event.endTime != undefined) {
-        event.endTime = eventsService.formatTime(event.endTime);
       }
 
       eventsApiService.addEvent(event, vm.currentUser, vm.photo)

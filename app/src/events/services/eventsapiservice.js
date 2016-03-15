@@ -16,10 +16,20 @@ function eventsApiService($http) {
   var baseUrl = "http://localhost:8080/events/";
 
   return {
+    getEvents: getEvents,
+    getEventWithId: getEventWithId,
     getRecommendedEvents: getRecommendedEvents,
     getEventTypes: getEventTypes,
     addEvent: addEvent
   };
+
+  function getEvents() {
+    return $http.get(baseUrl + "all");
+  }
+
+  function getEventWithId(id) {
+    return $http.get(baseUrl + "event/" + id);
+  }
 
   // TODO: Change to a GET request
   function getRecommendedEvents(user) {

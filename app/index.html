@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
     <link rel="stylesheet" href="bower_components/angular-material-datetimepicker/css/material-datetimepicker.min.css" />
+    <link rel="stylesheet" href="bower_components/ngQuickDate/dist/ng-quick-date.css" />
+    <link rel="stylesheet" href="bower_components/ngQuickDate/dist/ng-quick-date-default-theme.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) assets/main.css -->
+    <base href="/"/>
     <link rel="stylesheet" href="assets/css/main.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
-    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbuild -->
   </head>
@@ -187,6 +189,7 @@
     <script src="bower_components/sprintf/src/sprintf.js"></script>
     <script src="bower_components/momentjs/moment.js"></script>
     <script src="bower_components/angular-material-datetimepicker/js/angular-material-datetimepicker.min.js"></script>
+    <script src="bower_components/ngQuickDate/dist/ng-quick-date.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script>-->
@@ -224,9 +227,10 @@
         <script src="src/events/services/eventsapiservice.js"></script>
         <script src="src/events/controllers/addevent.js"></script>
         <script src="src/acts/services/actsapiservice.js"></script>
-        <script src="src/events/services/eventsservice.js"></script>
-        <script src="scripts/services/photoapiservice.js"></script>
+        <script src="src/common/services/dateservice.js"></script>
         <script src="src/events/controllers/event.js"></script>
+        <script src="src/events/controllers/recommendedevents.js"></script>
+        <script src="src/common/services/layoutservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>
