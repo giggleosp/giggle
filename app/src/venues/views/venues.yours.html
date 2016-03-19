@@ -12,7 +12,7 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
-          <p>{{ venue.type.name }} in {{ venue.county.name }}<span ng-if="venue.county">,</span> {{ venue.country.niceName }}</p>
+          <p>{{ venue.types[0].name }} in {{ venue.county.name }}<span ng-if="venue.county">,</span> {{ venue.country.niceName }}</p>
         </md-card-content>
       </md-card>
     </div>

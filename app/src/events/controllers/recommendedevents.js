@@ -11,13 +11,15 @@ angular.module('app.controllers')
   .controller('RecommendedEventsCtrl', RecommendedEventsCtrl);
 
 RecommendedEventsCtrl.$inject = [
-  'eventsApiService', 'dateService', 'layoutService', '$log'
+  'authService', 'eventsApiService', 'dateService', 'layoutService', '$log', '$state'
 ];
 
-function RecommendedEventsCtrl(eventsApiService, dateService, layoutService, $log) {
+function RecommendedEventsCtrl(authService, eventsApiService, dateService, layoutService, $log, $state) {
   var vm = this;
 
   vm.eventIsThisYear = eventIsThisYear;
+
+  vm.currentUser = authService.getCurrentUser();
 
   init();
 

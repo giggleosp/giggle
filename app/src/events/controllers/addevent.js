@@ -11,14 +11,10 @@ angular.module('app.controllers')
   .controller('AddEventCtrl', AddEventCtrl);
 
 AddEventCtrl.$inject = [
-  '$scope', '$log', 'authService', 'eventsApiService',
-  'actsApiService', '$mdDialog', 'owner',
-  'ownerType', 'dateService', '$state'
+  '$scope', '$log', 'authService', 'eventsApiService', 'actApiService', 'venueApiService', '$mdDialog', 'owner', 'ownerType', 'dateService', '$state'
 ];
 
-function AddEventCtrl($scope, $log, authService, eventsApiService,
-                      actsApiService, $mdDialog, owner,
-                      ownerType, dateService, $state) {
+function AddEventCtrl($scope, $log, authService, eventsApiService, actApiService, venueApiService, $mdDialog, owner, ownerType, dateService, $state) {
   var vm = this;
 
   vm.currentUser = authService.getCurrentUser();
@@ -36,7 +32,7 @@ function AddEventCtrl($scope, $log, authService, eventsApiService,
     if (vm.ownerType == 'venue') {
       getActs();
     } else {
-
+      getVenues();
     }
     getEventTypes();
   }
@@ -82,13 +78,17 @@ function AddEventCtrl($scope, $log, authService, eventsApiService,
   }
 
   function getActs() {
-    actsApiService.getActs()
+    actApiService.getActs()
       .then(function (response) {
-        if (response.status == 200) {
-          vm.acts = response.data;
-        } else {
-          vm.acts = null;
-        }
+        vm.acts = response.data;
+      });
+  }
+
+  function getVenues() {
+    venueApiService.getVenues()
+      .then(function (response) {
+        vm.venues = response.data;
+        $log.debug(vm.venues);
       });
   }
 

@@ -1,39 +1,36 @@
 <div layout="row">
   <div class="venue-container">
     <div class="backdrop-container" layout-align="center start" layout="row">
-      <img ng-src="{{ vm.venue.backdropUri || '../../assets/img/backdrop.jpg' }}" alt="backdrop" class="md-whiteframe-5dp">
+      <img ng-src="{{ vm.act.backdropUri || '../../assets/img/backdrop.jpg' }}" alt="backdrop" class="md-whiteframe-5dp">
     </div>
     <div layout="row" class="backdrop-tools" layout-wrap>
       <div class="profile-picture main" layout="column">
         <md-button class="md-icon-button" id="upload-picture" ng-click="vm.uploadPhotoDialog();">
           <md-icon md-svg-icon="add_a_photo" class="grey"></md-icon>
         </md-button>
-        <img ng-src="{{ vm.venue.imageUri || '../../assets/img/venue-card.png' }}" alt="Profile Picture" class="md-whiteframe-5dp">
+        <img ng-src="{{ vm.act.imageUri || '../../assets/img/venue-card.png' }}" alt="Profile Picture"
+             class="md-whiteframe-5dp">
       </div>
       <div class="title">
-        <h1>{{ vm.venue.name }}</h1>
+        <h1>{{ vm.act.name }}</h1>
         <h3>
-          {{ vm.venue.types[0].name }} <span ng-if="vm.venue.types[1]"> & {{ vm.venue.types[1].name }}</span> in {{ vm.venue.county.name
-          }}<span
-          ng-if="vm.venue.county">,
-        </span> {{
-          vm.venue.country.niceName }}
-          <md-icon ng-if="vm.venue.rating" ng-repeat="star in vm.ratingArray() track by $index" style="color:#FFC107;margin-top:-3px;"
+          {{ vm.act.types[0].name }} in {{ vm.act.county.name }}<span ng-if="vm.act.county">,</span> {{ vm.act.country.niceName }}
+          <md-icon ng-if="vm.act.rating" ng-repeat="star in vm.ratingArray() track by $index" style="color:#FFC107;margin-top:-3px;"
                    md-svg-icon="star"></md-icon>
-          <md-icon ng-if="vm.venue.rating && vm.ratingHasHalfStar()" style="color:#FFC107;margin-left:-5px;margin-top:-3px;" md-svg-icon="star_half">
+          <md-icon ng-if="vm.act.rating && vm.ratingHasHalfStar()" style="color:#FFC107;margin-left:-5px;margin-top:-3px;" md-svg-icon="star_half">
           </md-icon>
         </h3>
       </div>
       <div flex=""></div>
       <div class="action-buttons">
-        <md-button class="md-icon-button" ng-click="vm.showVenueInfo($event);">
+        <md-button class="md-icon-button" ng-click="vm.showActInfo($event);">
           <md-icon style="color: #EEEEEE" md-svg-icon="info_outline"></md-icon>
         </md-button>
         <md-button class="md-icon-button">
           <md-icon style="color: #EEEEEE" md-svg-icon="more_vert"></md-icon>
         </md-button>
-        <md-button class="md-raised" ng-if="vm.user && !vm.userVenue.admin">{{ vm.user.following ? 'Unfollow' : 'Follow' }}</md-button>
-        <md-button class="md-raised" ng-if="vm.userVenue.admin">Edit</md-button>
+        <md-button class="md-raised" ng-if="vm.user && !vm.actUser.admin">{{ vm.user.following ? 'Unfollow' : 'Follow' }}</md-button>
+        <md-button class="md-raised" ng-if="vm.actUser.admin">Edit</md-button>
       </div>
     </div>
   </div>
@@ -46,7 +43,7 @@
   </md-fab-trigger>
   <md-fab-actions>
     <md-button aria-label="Add event" class="md-fab md-raised md-mini" ng-click="vm.showAddEventDialog($event);"
-               ng-if="vm.userVenue.admin">
+               ng-if="vm.actUser.admin">
       <md-icon md-svg-icon="event" style="fill: #3F51B5"></md-icon>
     </md-button>
   </md-fab-actions>

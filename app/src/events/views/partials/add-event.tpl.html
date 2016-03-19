@@ -54,7 +54,7 @@
         </div>
         <div layout="row" ng-if="vm.event.type.name != 'Festival'">
           <md-tooltip md-direction="top">
-            If you can't find the act you are looking for, just leave this blank :)
+            If you can't who you're looking for, just leave this blank.
           </md-tooltip>
           <md-autocomplete md-selected-item="vm.event.act"
                            placeholder="Select the act that will be performing at your event"
@@ -83,12 +83,21 @@
           </div>
           <md-autocomplete md-selected-item="vm.event.venue" placeholder="Select the venue you will be performing at"
                            md-floating-label="Select the venue you will be performing at"
-                           flex md-search-text="searchText" md-items="venue in vm.venues | filter: searchText" ng-if="vm.ownerType == 'act'" md-item-text="venue.name">
+                           flex md-search-text="searchText" md-items="venue in vm.venues | filter: searchText"
+                           md-menu-class="venue-autocomplete"
+                           ng-if="vm.ownerType == 'act'" md-item-text="venue.name">
             <md-item-template>
-              <span md-highlight-text="searchText">{{ venue.name }} ({{ venue.county.name }}, {{ venue.country.niceName }})</span>
+              <span class="item-title">
+                <span>{{ venue.name }}</span>
+              </span>
+              <span class="item-subtitle">
+                <md-icon md-svg-icon="location_on"></md-icon>
+                <span>{{ venue.county.name }}, {{ venue.country.niceName }}</span>
+              </span>
             </md-item-template>
             <md-not-found>
-              No matches found.
+              No venues matching "{{ vm.searchText }}" found.
+              <a>Invite them!</a>
             </md-not-found>
           </md-autocomplete>
         </div>

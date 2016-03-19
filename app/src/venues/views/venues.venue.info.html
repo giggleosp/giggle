@@ -2,7 +2,7 @@
   <md-dialog ng-show="vm.venue.longDescription">
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>HMV Sound Garden</h2>
+        <h2>{{ vm.venue.name }}</h2>
         <span flex></span>
       </div>
     </md-toolbar>
@@ -55,7 +55,7 @@
             <md-icon md-svg-icon="location_searching" class="grey-icon"></md-icon>&nbsp;&nbsp;&nbsp;
             <span>{{ vm.venue.addressLine1 }}, </span>
             <span>{{ vm.venue.city.name }}, </span>
-            <span ng-if="vm.city.name != vm.county.name">{{ vm.venue.county.name }}, </span>
+            <span ng-if="vm.venue.city.name != vm.venue.county.name">{{ vm.venue.county.name }}, </span>
             <span>{{ vm.venue.country.niceName }}</span>
           </p>
         </div>

@@ -79,9 +79,10 @@ angular
       .icon('location_searching', '../assets/svg/location_searching.svg', 24)
       .icon('add_a_photo', '../assets/svg/add_a_photo.svg', 24)
   })
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
     $urlRouterProvider.when("/venues", "/venues/recommended");
+    $urlRouterProvider.when("/acts", "/acts/recommended");
     $urlRouterProvider.when("/events", "/events/recommended");
 
     $stateProvider
@@ -158,6 +159,46 @@ angular
         controller: 'VenueCtrl',
         controllerAs: 'vm'
       })
+      .state('acts', {
+        abstract: true,
+        url: '/acts',
+        views: {
+          tabs: {
+            templateUrl: 'src/acts/views/partials/tabs.tpl.html',
+            controller: 'ActsCtrl',
+            controllerAs: 'vm'
+          },
+          main: {
+            templateUrl: 'src/acts/views/acts.html',
+            controller: 'ActsCtrl',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state('acts.recommended', {
+        url: '/recommended',
+        templateUrl: 'src/acts/views/acts.recommended.html',
+        controller: 'ActsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('acts.favourites', {
+        url: '/favourites',
+        templateUrl: 'src/acts/views/acts.favourites.html',
+        controller: 'ActsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('acts.yours', {
+        url: '/yours',
+        templateUrl: 'src/acts/views/acts.yours.html',
+        controller: 'MyActsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('acts.act', {
+        url: '/:id',
+        templateUrl: 'src/acts/views/acts.act.html',
+        controller: 'ActCtrl',
+        controllerAs: 'vm'
+      })
       .state('events', {
         abstract:true,
         url: '/events',
@@ -196,6 +237,8 @@ angular
         controller: 'EventCtrl',
         controllerAs: 'vm'
       });
+
+    $locationProvider.html5Mode(true);
   })
   .config(function($locationProvider) {
     $locationProvider.html5Mode({

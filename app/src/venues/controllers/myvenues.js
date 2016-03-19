@@ -11,13 +11,7 @@ angular.module('app.controllers')
   .controller('MyVenuesCtrl', MyVenuesCtrl);
 
 MyVenuesCtrl.$inject = [
-  '$scope',
-  '$timeout',
-  '$state',
-  '$mdDialog',
-  'venueApiService',
-  'authService',
-  'layoutService'
+  '$scope', '$timeout', '$state', '$mdDialog', 'venueApiService', 'authService', 'layoutService'
 ];
 
 function MyVenuesCtrl($scope, $timeout, $state, $mdDialog, venueApiService, authService, layoutService) {

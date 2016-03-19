@@ -8,40 +8,31 @@
     </md-toolbar>
     <md-dialog-content>
       <div class="md-dialog-content">
-        <div layout-gt-xs="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Username</label>
-            <input ng-model="vm.user.username" disabled>
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Email</label>
-            <input ng-model="vm.user.email" disabled>
-          </md-input-container>
-        </div>
         <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>First name</label>
-            <input ng-model="vm.user.firstName">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Last Name</label>
-            <input ng-model="vm.user.lastName">
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Country</label>
-            <md-select ng-model="vm.user.country" ng-change="vm.getCountiesForCountry(vm.user.country.id)" ng-model-options="{trackBy: '$value.id'}">
-              <md-option ng-repeat="country in vm.countries" ng-value="country">
-                {{ country.niceName }}
-              </md-option>
-            </md-select>
-          </md-input-container>
-          <md-datepicker name="dateOfBirth" ng-model="vm.user.dateOfBirth" md-placeholder="Enter date of birth"
-                         md-max-date="vm.maxDate" flex="50"></md-datepicker>
-          <div class="validation-messages" ng-messages="accountForm.dateOfBirth.$error" ng-show="accountForm.$submitted || accountForm.dateOfBirth.$dirty">
-            <div ng-show="maxdate">Date of birth must be in the past.</div>
+          <md-autocomplete md-selected-item="vm.user.country"
+                           placeholder="Country"
+                           ng-model="vm.user.country"
+                           flex md-search-text="vm.searchText" name="country"
+                           md-floating-label="Country"
+                           md-selected-item-change="vm.getCountiesForCountry(country.id)"
+                           ng-model-options="{trackBy: '$value.id'}"
+                           md-items="country in vm.countries | filter: vm.searchText"
+                           md-item-text="country.niceName">
+            <md-item-template>
+              <span>{{ country.niceName }}</span>
+            </md-item-template>
+            <md-not-found>
+              No countries matching "{{ vm.searchText }}" found.
+            </md-not-found>
+          </md-autocomplete>
+          <div ng-messages="accountForm.country.$error"
+               ng-show="accountForm.$submitted">
+            <span ng-message="required">You must select a country.</span>
           </div>
+          <md-datepicker name="dateOfBirth" ng-model="vm.user.dateOfBirth" md-placeholder="Date of birth"></md-datepicker>
+          <!--<div class="validation-messages" ng-messages="accountForm.dateOfBirth.$error" ng-show="accountForm.$submitted || accountForm.dateOfBirth.$dirty">-->
+            <!--<div ng-show="maxdate">Date of birth must be in the past.</div>-->
+          <!--</div>-->
         </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" flex-gt-sm>

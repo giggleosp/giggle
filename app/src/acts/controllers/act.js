@@ -2,23 +2,24 @@
 
 /**
  * @ngdoc function
- * @name app.controller:VenueCtrl
+ * @name app.controller:ActCtrl
  * @description
- * # VenueCtrl
+ * # ActCtrl
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('VenueCtrl', VenueCtrl);
+  .controller('ActCtrl', ActCtrl);
 
-VenueCtrl.$inject = [
-  '$stateParams', '$mdDialog', '$mdMedia', 'venueApiService', 'authService'
+ActCtrl.$inject = [
+  '$stateParams', '$mdDialog', '$mdMedia', 'actApiService', 'authService'
 ];
-function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authService) {
+
+function ActCtrl($stateParams, $mdDialog, $mdMedia, actApiService, authService) {
   var vm = this;
 
-  var venueId = $stateParams.id;
+  var actId = $stateParams.id;
 
-  vm.showVenueInfo = showVenueInfo;
+  vm.showActInfo = showActInfo;
   vm.showAddEventDialog = showAddEventDialog;
 
   init();
@@ -27,19 +28,19 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
     if (authService.isLoggedIn()) {
       vm.user = authService.getCurrentUser();
     }
-    if (venueId) {
-      getVenueWithId(venueId);
+    if (actId) {
+      getActWithId(actId);
     }
     if (vm.user) {
-      getUserVenueRelationship(venueId, vm.user.id);
+      getUserActRelationship(actId, vm.user.id);
     }
   }
 
 
-  function getVenueWithId(id) {
-    venueApiService.getVenueWithId(id)
+  function getActWithId(id) {
+    actApiService.getActWithId(id)
       .then(function (response) {
-        vm.venue = response.data;
+        vm.act = response.data;
         vm.ratingArray = ratingArray;
         vm.ratingHasHalfStar = ratingHasHalfStar;
       }, function (response) {
@@ -47,38 +48,38 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
       });
   }
 
-  // dictates how many full stars will be displayed in the venues rating
+  // dictates how many full stars will be displayed in the acts rating
   function ratingArray() {
-    return new Array(Math.floor(vm.venue.rating));
+    return new Array(Math.floor(vm.act.rating));
   }
 
   function ratingHasHalfStar() {
-    var remainder = vm.venue.rating % 1;
+    var remainder = vm.act.rating % 1;
 
     return remainder >= 0.1
       && remainder <= 0.5
-      && vm.venue.rating < 5;
+      && vm.act.rating < 5;
   }
 
-  function getUserVenueRelationship(venueId, userId) {
-    venueApiService.getUserVenueRelationship(venueId, userId)
+  function getUserActRelationship(actId, userId) {
+    actApiService.getUserActRelationship(actId, userId)
       .then(function(response) {
-        vm.userVenue = response.data;
+        vm.actUser = response.data;
       });
   }
 
-  function showVenueInfo(event) {
+  function showActInfo(event) {
     var useFullScreen = $mdMedia('sm') || $mdMedia('xs');
     $mdDialog.show({
-      controller: 'VenueInfoCtrl',
+      controller: 'ActInfoCtrl',
       controllerAs: 'vm',
-      templateUrl: 'src/venues/views/venues.venue.info.html',
+      templateUrl: 'src/acts/views/acts.act.info.html',
       parent: angular.element(document.body),
       targetEvent: event,
       clickOutsideToClose: true,
       fullscreen: useFullScreen,
       locals: {
-        venue: vm.venue
+        act: vm.act
       }
     });
   }
@@ -94,8 +95,8 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
       clickOutsideToClose: false,
       fullscreen: useFullScreen,
       locals: {
-        ownerType: "venue",
-        owner: vm.venue
+        ownerType: "act",
+        owner: vm.act
       }
     });
   }

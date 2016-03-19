@@ -139,7 +139,7 @@ function navigationMenuService() {
           items: [
             {
               title: "All",
-              state: "main",
+              state: "acts",
               icon: {
                 text: "local_play",
                 md: true
@@ -288,7 +288,7 @@ function navigationMenuService() {
             },
             {
               title: "Acts",
-              state: "main",
+              state: "acts",
               icon: {
                 text: "local_play",
                 md: true
