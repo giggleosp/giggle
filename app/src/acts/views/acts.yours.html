@@ -3,7 +3,7 @@
   <div>
     <div layout="row" layout-sm="column" layout-xs="column" class="cards-row"
          layout-align="start center " ng-repeat="row in (vm.acts.length/vm.cardsPerRow | array)">
-      <md-card ng-click="vm.gotoAct(act.id)"
+      <md-card ui-sref="acts.act({id: act.id})"
                ng-repeat="act in vm.acts.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow) | orderBy:'-name'"
                ng-mouseover="hover = true" ng-mouseleave="hover = false" ng-class="{'md-whiteframe-6dp':hover, 'md-whiteframe-1dp':!hover}">
         <img ng-src="{{ act.imageUri || '../../assets/img/act-card.png' }}" alt="" class="md-card-image">
@@ -14,7 +14,7 @@
         </md-card-title>
         <md-card-content>
           <p>
-            {{ act.types[0].name }}/{{ act.types[1].name }} in {{ act.city.name }}
+            {{ act.types[0].name }}<span ng-if="act.types[1]">/{{ act.types[1].name }}</span> in {{ act.city.name }}
             <span ng-if="act.country.id != vm.currentUser.country.id">, {{ act.country.niceName }}</span>
           </p>
         </md-card-content>

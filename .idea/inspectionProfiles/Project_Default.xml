@@ -4,7 +4,7 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="19">
+          <list size="20">
             <item index="0" class="java.lang.String" itemvalue="value" />
             <item index="1" class="java.lang.String" itemvalue="uniqueusername" />
             <item index="2" class="java.lang.String" itemvalue="username-exists" />
@@ -24,6 +24,7 @@
             <item index="16" class="java.lang.String" itemvalue="ngf-max-size" />
             <item index="17" class="java.lang.String" itemvalue="date-format" />
             <item index="18" class="java.lang.String" itemvalue="center" />
+            <item index="19" class="java.lang.String" itemvalue="md-on-demand" />
           </list>
         </value>
       </option>
@@ -32,7 +33,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="19">
+          <list size="20">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -52,6 +53,7 @@
             <item index="16" class="java.lang.String" itemvalue="toolbar-tools" />
             <item index="17" class="java.lang.String" itemvalue="md-card-title-text" />
             <item index="18" class="java.lang.String" itemvalue="md-card-title" />
+            <item index="19" class="java.lang.String" itemvalue="md-whiteframe" />
           </list>
         </value>
       </option>

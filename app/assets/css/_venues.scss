@@ -5,52 +5,6 @@ $my-layout-breakpoint-md: 1280px;
 $my-layout-breakpoint-lg: 1500px;
 $my-layout-breakpoint-xl: 1920px;
 
-// venues
-.venue-container {
-  margin: 0 auto;
-  .backdrop-container {
-    img {
-      margin-top:-100px;
-      width: 948px;
-      border-radius: 5px;
-    }
-  }
-  .backdrop-tools {
-    margin-top:-100px;
-    margin-left:10px;
-    .profile-picture {
-      > #upload-picture {
-        margin: 5px 0 0 46px;
-        position: absolute;
-      }
-      img {
-        width:125px;
-        height: 125px;
-        border-radius: 50%;
-        border: 4px solid white;
-      }
-    }
-    .title {
-      color: #eeeeee;
-      margin-top:20px;
-      margin-left:10px;
-      > h1 {
-        font-weight:600;
-      }
-      > h3 {
-        font-weight: 400;
-      }
-    }
-    .action-buttons {
-      margin-top:35px;
-      margin-right: 10px;
-      .md-raised {
-        padding: 3px;
-      }
-    }
-  }
-}
-
 .info-picture {
   img {
     width:150px;

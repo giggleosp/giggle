@@ -1,5 +1,5 @@
 <div layout="row">
-  <div class="venue-container">
+  <div class="page-container act">
     <div class="backdrop-container" layout-align="center start" layout="row">
       <img ng-src="{{ vm.act.backdropUri || '../../assets/img/backdrop.jpg' }}" alt="backdrop" class="md-whiteframe-5dp">
     </div>
@@ -14,7 +14,10 @@
       <div class="title">
         <h1>{{ vm.act.name }}</h1>
         <h3>
-          {{ vm.act.types[0].name }} in {{ vm.act.county.name }}<span ng-if="vm.act.county">,</span> {{ vm.act.country.niceName }}
+          {{ vm.act.types[0].name }}<span ng-if="vm.act.types[1]"> & {{ vm.act.types[1].name }}</span> in {{ vm.act.county.name }}<span
+          ng-if="vm.act.county">,</span>
+          {{
+          vm.act.country.niceName }}
           <md-icon ng-if="vm.act.rating" ng-repeat="star in vm.ratingArray() track by $index" style="color:#FFC107;margin-top:-3px;"
                    md-svg-icon="star"></md-icon>
           <md-icon ng-if="vm.act.rating && vm.ratingHasHalfStar()" style="color:#FFC107;margin-left:-5px;margin-top:-3px;" md-svg-icon="star_half">

@@ -27,7 +27,8 @@ angular
     'angularMoment',
     'ngFileUpload',
     'ngLodash',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'dibari.angular-ellipsis'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -79,7 +80,7 @@ angular
       .icon('location_searching', '../assets/svg/location_searching.svg', 24)
       .icon('add_a_photo', '../assets/svg/add_a_photo.svg', 24)
   })
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $urlRouterProvider.when("/venues", "/venues/recommended");
     $urlRouterProvider.when("/acts", "/acts/recommended");
@@ -160,7 +161,7 @@ angular
         controllerAs: 'vm'
       })
       .state('acts', {
-        abstract: true,
+        //abstract: true,
         url: '/acts',
         views: {
           tabs: {
@@ -237,8 +238,6 @@ angular
         controller: 'EventCtrl',
         controllerAs: 'vm'
       });
-
-    $locationProvider.html5Mode(true);
   })
   .config(function($locationProvider) {
     $locationProvider.html5Mode({

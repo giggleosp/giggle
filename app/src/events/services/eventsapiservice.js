@@ -18,6 +18,7 @@ function eventsApiService($http) {
   return {
     getEvents: getEvents,
     getEventWithId: getEventWithId,
+    getEventUser: getEventUser,
     getRecommendedEvents: getRecommendedEvents,
     getEventTypes: getEventTypes,
     addEvent: addEvent
@@ -29,6 +30,10 @@ function eventsApiService($http) {
 
   function getEventWithId(id) {
     return $http.get(baseUrl + "event/" + id);
+  }
+
+  function getEventUser(eventId, userId) {
+    return $http.get(baseUrl + "event/"+eventId+"/user/"+userId);
   }
 
   // TODO: Change to a GET request

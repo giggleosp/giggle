@@ -3,26 +3,27 @@
   <div class="cards-container">
     <div layout="row" layout-sm="column" layout-xs="column" class="cards-row" layout-fill
          layout-align="start center" ng-repeat="row in (vm.events.length/vm.cardsPerRow | array)">
-      <md-card
-        class="event"
-        ng-repeat="event in vm.events.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow) | orderBy:'-name'"
+      <md-card class="event" ui-sref="events.event({id: '{{event.id}}'})"
+               ng-repeat="event in vm.events.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow) | orderBy:'name'"
                ng-mouseover="hover = true" ng-mouseleave="hover = false" ng-class="{'md-whiteframe-6dp':hover, 'md-whiteframe-1dp':!hover}">
         <img ng-src="{{ event.type.name == 'Festival' ? event.venue.imageUri : event.act.imageUri }}" alt="" class="md-card-image">
         <md-card-title>
           <md-card-title-text>
-            <span>{{ event.name }}</span>
+            <span>{{ event.name | limitTo: 25 }}<span ng-if="event.name.length > 24">...</span></span>
           </md-card-title-text>
+          <md-tooltip style="font-size: 12px;" ng-if="event.name.length > 24" md-direction="top">
+            {{ event.name }}
+          </md-tooltip>
         </md-card-title>
         <md-card-content>
           <p style="font-size: 14px;">
-            <a ng-click="$state.go('venues.venue', { id: event.venue.id })">
+            <a class="nice-link" ng-click="$state.go('venues.venue', { id: event.venue.id })">
               <span>{{ event.venue.name }},</span>
               <span>{{ event.venue.city.name }}</span>
-              <span ng-if="vm.currentUser.county.id != event.venue.county.id">, {{ event.venue.county.name }}</span>
               <span ng-if="vm.currentUser.country.id != event.venue.country.id">, {{ event.venue.country.niceName }}</span>
             </a>
           </p>
-          <p style="margin-top:-3px;">{{ event.startDate | date: vm.eventIsThisYear(event.startDate) ? "d MMMM" : "d MMMM yyyy" }} at {{ event.startTime | date: "hh:mm a" }}</p>
+          <p>{{ event.startDate | date: vm.eventIsThisYear(event.startDate) ? "d MMMM" : "d MMMM yyyy" }} at {{ event.startTime | date: "h:mm a" }}</p>
         </md-card-content>
       </md-card>
     </div>

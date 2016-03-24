@@ -10,13 +10,9 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
-    <link rel="stylesheet" href="bower_components/angular-material-datetimepicker/css/material-datetimepicker.min.css" />
-    <link rel="stylesheet" href="bower_components/ngQuickDate/dist/ng-quick-date.css" />
-    <link rel="stylesheet" href="bower_components/ngQuickDate/dist/ng-quick-date-default-theme.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) assets/main.css -->
-    <base href="/">
     <link rel="stylesheet" href="assets/css/main.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
@@ -66,7 +62,7 @@
           </div>
           <div layout="row">
             <div flex="33" flex-gt-md="40"></div>
-            <div flex="" ui-view="tabs"></div>
+            <div flex ui-view="tabs"></div>
           </div>
         </md-toolbar>
         <md-toolbar ng-show="!application.showSearch" class="md-whiteframe-6dp" hide-gt-sm>
@@ -104,24 +100,6 @@
         </md-toolbar>
       </div>
       <div layout="row">
-        <md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id="leftSmall">
-          `
-          <md-list ng-repeat="section in application.mobileMenu">
-            <md-subheader class="md-no-sticky">
-              <span>{{ section.title }}</span>
-            </md-subheader>
-            <md-list-item ng-repeat="item in section.items" ui-sref="{{ item.state }}" ng-if="item.isVisible">
-              <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                <div class="inset">
-                  <md-icon md-svg-icon="{{ item.icon.text }}"></md-icon>
-                </div>
-                <div class="inset">
-                  {{ item.title }}
-                </div>
-              </md-item-content>
-            </md-list-item>
-          </md-list>
-        </md-sidenav>
         <md-content>
           <md-sidenav md-component-id="left" id="sidenav-left" md-is-locked-open="navigation.lockLeft && $mdMedia('gt-sm')">
             <md-list ng-repeat="section in application.menu">
@@ -145,6 +123,23 @@
             </md-list>
           </md-sidenav>
         </md-content>
+        <md-sidenav class="md-sidenav-left md-whiteframe-6dp" md-component-id="leftSmall">
+          <md-list ng-repeat="section in application.mobileMenu">
+            <md-subheader class="md-no-sticky">
+              <span>{{ section.title }}</span>
+            </md-subheader>
+            <md-list-item ng-repeat="item in section.items" ui-sref="{{ item.state }}" ng-if="item.isVisible">
+              <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                <div class="inset">
+                  <md-icon md-svg-icon="{{ item.icon.text }}"></md-icon>
+                </div>
+                <div class="inset">
+                  {{ item.title }}
+                </div>
+              </md-item-content>
+            </md-list-item>
+          </md-list>
+        </md-sidenav>
         <md-content ui-view="main" flex layout="column" layout-padding style="overflow-y: scroll;height: 100vh;" id="main">
         </md-content>
         </div>
@@ -187,9 +182,7 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <script src="bower_components/sprintf/src/sprintf.js"></script>
-    <script src="bower_components/momentjs/moment.js"></script>
-    <script src="bower_components/angular-material-datetimepicker/js/angular-material-datetimepicker.min.js"></script>
-    <script src="bower_components/ngQuickDate/dist/ng-quick-date.js"></script>
+    <script src="bower_components/angular-ellipsis/src/angular-ellipsis.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script>-->
