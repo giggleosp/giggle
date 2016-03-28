@@ -33,6 +33,25 @@ h1, h2, h3 {
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+md-icon {
+  .md-36 {
+  font-size: 36px;
+  }
+}
+
+.md-whiteframe-1dp,
+.md-whiteframe-2dp,
+.md-whiteframe-3dp,
+.md-whiteframe-4dp,
+.md-whiteframe-5dp,
+.md-whiteframe-6dp,
+.md-whiteframe-7dp,
+.md-whiteframe-8dp,
+.md-whiteframe-9dp,
+.md-whiteframe-10dp {
+  background-color: white;
+}
+
 .avatar {
   max-width: 55px;
 }
@@ -140,8 +159,10 @@ h1, h2, h3 {
 }
 
 a.nice-link {
+  color: rgba(0, 0, 0, 0.87);
   text-decoration: none;
   &:hover, &:visited {
+    color: rgba(0, 0, 0, 0.87);
     text-decoration: underline;
   }
 }
@@ -200,9 +221,8 @@ a.nice-link {
   }
   .content-container {
     margin-top:30px;
-    > .md-whiteframe-5dp {
+    > .md-whiteframe-2dp {
       border-radius: 5px;
-      background-color: white;
     }
   }
   &.event {
@@ -219,4 +239,8 @@ a.nice-link {
       }
     }
   }
+}
+
+md-card[md-ink-ripple] {
+  position: relative;
 }

@@ -1,4 +1,4 @@
-<div layout="row">
+<div layout="row" ng-cloak>
   <div class="page-container event">
     <div class="backdrop-container" layout-align="center start" layout="row">
       <img ng-src="{{ vm.event.imageUri ? 'http://localhost:8080/'+ vm.event.imageUri : '../../assets/img/backdrop.jpg' }}" alt="backdrop"
@@ -6,29 +6,20 @@
     </div>
     <div layout="row" class="backdrop-tools" layout-wrap>
       <div class="title">
-        <h1 ng-if="vm.event.type.name == 'Festival' || vm.event.type.name == 'Sports'">
-          {{ vm.event.name }}
-        </h1>
-        <h1 style="cursor: pointer" ng-hide="vm.event.type.name == 'Festival' || vm.event.type.name == 'Sports'">
-          {{ vm.event.name }}
-        </h1>
+        <h1>{{ vm.event.name }}</h1>
       </div>
       <div flex=""></div>
       <div class="action-buttons">
-        <md-button class="md-icon-button">
+        <md-button class="md-icon-button" ng-click="vm.showEventInfo(event)">
           <md-icon style="color: #EEEEEE" md-svg-icon="info_outline"></md-icon>
         </md-button>
         <md-button class="md-icon-button">
           <md-icon style="color: #EEEEEE" md-svg-icon="more_vert"></md-icon>
         </md-button>
-        <md-button ng-click="vm.currentUser.attending = !vm.currentUser.attending" class="md-raised" ng-if="vm.currentUser && !vm.eventUser.admin">{{ vm.currentUser.attending ? 'Not Going' : 'Going' }}</md-button>
+        <md-button ng-click="vm.currentUser.attending = !vm.currentUser.attending" class="md-raised"
+                   ng-if="vm.currentUser && !vm.eventUser.admin">{{ vm.currentUser.attending ? 'Not Going' : 'Going' }}</md-button>
         <md-button ng-click="vm.currentUser.following = !vm.currentUser.following" class="md-raised" ng-if="vm.currentUser && !vm.eventUser.admin">{{ vm.currentUser.following ? 'Unfollow' : 'Follow' }}</md-button>
         <md-button class="md-raised" ng-if="vm.eventUser.admin">Edit</md-button>
-      </div>
-    </div>
-    <div layout="row" layout-fill class="content-container" layout-wrap>
-      <md-whiteframe class="md-whiteframe-5dp" flex layout-padding>
-        <h1>12</h1>
       </div>
     </div>
   </div>

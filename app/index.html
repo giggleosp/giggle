@@ -20,6 +20,8 @@
     <!-- endbuild -->
   </head>
   <body ng-app="app" ng-controller="ApplicationCtrl as application" layout="column" ng-cloak style="overflow-y: hidden">
+    <md-progress-linear ng-show="application.showProgress" md-mode="indeterminate" class="md-accent hue-1"
+                        style="height:2px;"></md-progress-linear>
 <!--     [if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif] -->
@@ -229,6 +231,7 @@
         <script src="src/acts/controllers/myacts.js"></script>
         <script src="src/acts/controllers/addact.js"></script>
         <script src="src/acts/controllers/actinfo.js"></script>
+        <script src="src/events/controllers/eventinfo.js"></script>
         <!-- endbuild -->
 </body>
 </html>

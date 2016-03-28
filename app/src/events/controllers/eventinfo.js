@@ -2,22 +2,22 @@
 
 /**
  * @ngdoc function
- * @name app.controller:VenueinfoCtrl
+ * @name app.controller:EventinfoctrlCtrl
  * @description
- * # VenueinfoCtrl
+ * # EventinfoctrlCtrl
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('VenueInfoCtrl', VenueInfoCtrl);
+  .controller('EventInfoCtrl', EventInfoCtrl);
 
-VenueInfoCtrl.$inject = [
-  'venue', 'googleMapsApiService', 'uiGmapGoogleMapApi'
+EventInfoCtrl.$inject = [
+  'event', 'googleMapsApiService', 'uiGmapGoogleMapApi'
 ];
 
-function VenueInfoCtrl(venue, googleMapsApiService, uiGmapGoogleMapApi) {
+function EventInfoCtrl(event, googleMapsApiService, uiGmapGoogleMapApi) {
   var vm = this;
 
-  vm.venue = venue;
+  vm.event = event;
   vm.readMore = false;
   vm.refreshMap = false;
 
@@ -31,7 +31,9 @@ function VenueInfoCtrl(venue, googleMapsApiService, uiGmapGoogleMapApi) {
     vm.refreshMap = true;
     uiGmapGoogleMapApi.then(function () {
       var address = sprintf("%s, %s, %s, %s, %s",
-        vm.venue.name, vm.venue.addressLine1, vm.venue.city.name, vm.venue.county.name, vm.venue.country.niceName);
+        vm.event.venue.name, vm.event.venue.addressLine1,
+        vm.event.venue.city.name, vm.event.venue.county.name,
+        vm.event.venue.country.niceName);
       googleMapsApiService.getLocationByAddress(address)
         .then(function (response) {
           vm.foundOnMap = true;

@@ -17,7 +17,10 @@ dateService.$inject = [
 function dateService($filter, $log) {
 
   return {
-    isThisYear: isThisYear
+    isThisYear: isThisYear,
+    isToday: isToday,
+    compareDates: compareDates,
+    compareMonths: compareMonths
   };
 
   // comparing the current year with the year of a date passed in
@@ -26,6 +29,32 @@ function dateService($filter, $log) {
     var date = new Date(d);
 
     return today.getFullYear() == date.getFullYear();
+  }
+
+  function isToday(d) {
+    var today = new Date();
+    var date = new Date(d);
+
+    return today.getDay() == date.getDay()
+      && today.getMonth() == date.getMonth()
+      && today.getYear() == date.getYear();
+  }
+
+  function compareDates(d1, d2) {
+    var dateOne = new Date(d1);
+    var dateTwo = new Date(d2);
+
+    return dateOne.getDay() == dateTwo.getDay()
+      && dateOne.getMonth() == dateTwo.getMonth()
+      && dateOne.getYear() == dateTwo.getYear();
+  }
+
+  function compareMonths(d1, d2) {
+    var dateOne = new Date(d1);
+    var dateTwo = new Date(d2);
+
+    return dateOne.getMonth()
+      == dateTwo.getMonth();
   }
 
 }

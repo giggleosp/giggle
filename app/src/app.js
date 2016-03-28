@@ -27,8 +27,7 @@ angular
     'angularMoment',
     'ngFileUpload',
     'ngLodash',
-    'uiGmapgoogle-maps',
-    'dibari.angular-ellipsis'
+    'uiGmapgoogle-maps'
   ])
   .config(function ($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -79,6 +78,7 @@ angular
       .icon('person_outline', '../assets/svg/person_outline.svg', 24)
       .icon('location_searching', '../assets/svg/location_searching.svg', 24)
       .icon('add_a_photo', '../assets/svg/add_a_photo.svg', 24)
+      .icon('euro_symbol', '../assets/svg/euro_symbol.svg', 24)
   })
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');

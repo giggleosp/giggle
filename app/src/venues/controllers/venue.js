@@ -72,7 +72,7 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
     $mdDialog.show({
       controller: 'VenueInfoCtrl',
       controllerAs: 'vm',
-      templateUrl: 'src/venues/views/venues.venue.info.html',
+      templateUrl: 'src/venues/views/partials/venues.venue.info.html',
       parent: angular.element(document.body),
       targetEvent: event,
       clickOutsideToClose: true,

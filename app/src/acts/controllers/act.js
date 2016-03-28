@@ -73,7 +73,7 @@ function ActCtrl($stateParams, $mdDialog, $mdMedia, actApiService, authService) 
     $mdDialog.show({
       controller: 'ActInfoCtrl',
       controllerAs: 'vm',
-      templateUrl: 'src/acts/views/acts.act.info.html',
+      templateUrl: 'src/acts/views/partials/acts.act.info.html',
       parent: angular.element(document.body),
       targetEvent: event,
       clickOutsideToClose: true,

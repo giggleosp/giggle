@@ -37,30 +37,30 @@ md-toolbar:not(.md-hue-1),
 }
 
 #sidenav-left {
-    overflow-y: scroll;
-    max-width: 195px;
-    max-height: 85vh;
-    font-size: 16px;
-    > md-list  {
-      > md-list-item {
-        border-radius: 15px;
-        height: 48px;
-        line-height: 48px;
-        > a {
-          display: inline-block;
-          vertical-align: middle;
-          line-height: normal;
-          > div.md-list-item-inner {
-            > md-item-content {
-              div.inset {
-                padding:0 25px 0 0;
-              }
+  overflow-y: scroll;
+  max-width: 195px;
+  height: 100vh;
+  font-size: 16px;
+  > md-list  {
+    > md-list-item {
+      border-radius: 15px;
+      height: 48px;
+      line-height: 48px;
+      > a {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+        > div.md-list-item-inner {
+          > md-item-content {
+            div.inset {
+              padding:0 25px 0 0;
             }
           }
         }
       }
-      md-divider {
-        margin: 5px 10px 1px 5px; // top, right, bottom, left
-      }
+    }
+    md-divider {
+      margin: 5px 10px 1px 5px; // top, right, bottom, left
     }
   }
+}
