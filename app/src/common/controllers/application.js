@@ -11,17 +11,18 @@ angular.module('app.controllers')
   .controller('ApplicationCtrl', ApplicationCtrl);
 
   ApplicationCtrl.$inject = [
-    '$scope',
-    'authService',
-    'navigationMenuService',
-    'AUTH_EVENTS',
-    '$cookies',
-    '$mdDialog',
-    '$location'
+    '$scope', 'authService', 'navigationMenuService', 'AUTH_EVENTS',
+    '$cookies', '$mdDialog', '$mdSidenav', '$rootScope'
   ];
 
-function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS, $cookies, $mdDialog, $location) {
+function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS, $cookies, $mdDialog, $mdSidenav, $rootScope) {
   var vm = this;
+
+  // opened state of menu
+  vm.lockLeft = true;
+
+  vm.toggleSidenav = toggleSidenav;
+  vm.editAccount = editAccount;
 
   init();
 
@@ -45,6 +46,34 @@ function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS
   function setMenuItems () {
     vm.menu = navigationMenuService.getMenuItems(vm.isLoggedIn);
     vm.mobileMenu = navigationMenuService.getMobileMenuItems(vm.isLoggedIn);
+  }
+
+  function editAccount(event) {
+    $mdDialog.show({
+      templateUrl: 'src/user/account/views/editaccount.tpl.html',
+      parent: angular.element(document.body),
+      targetEvent: event,
+      controller: 'EditAccountCtrl',
+      controllerAs: 'vm'
+    });
+  }
+
+  function toggleSidenav (id) {
+    if (id === "left") {
+      $mdSidenav(id).close()
+        .then(function () {
+          vm.lockLeft = !vm.lockLeft;
+          setMenuChangedState(vm.lockLeft);
+        });
+    } else {
+      $mdSidenav(id).toggle();
+    }
+
+  }
+
+  function setMenuChangedState(lockLeft) {
+    navigationMenuService.setOpenedState(lockLeft);
+    $rootScope.$broadcast("navigation-menu-state-changed");
   }
 
 

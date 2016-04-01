@@ -1,5 +1,5 @@
-<span style="overflow: auto" flex="40" layout-align="center center" flex-sm flex-xs>
-  <md-dialog ng-show="vm.event.description" ng-cloak>
+<span style="overflow: auto" flex="" flex-gt-sm="40" layout-align="center center">
+  <md-dialog ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>{{ vm.event.name }} at {{ vm.event.venue.name }}</h2>
@@ -7,18 +7,80 @@
       </div>
     </md-toolbar>
     <md-dialog-content>
-      <div class="md-dialog-content" layout="row" flex="">
-        <div flex="">
-
+      <div class="md-dialog-content" layout="row" flex layout-align="space-around center">
+        <div layout-gt-xs="column" layout-align="center center">
+          <div class="profile-picture" ng-click="vm.moveToState('acts.act', vm.event.act.id)" style="cursor: pointer">
+            <img ng-src="{{ vm.event.act.imageUri || '../../assets/img/venue-card.png' }}" alt="Profile Picture" class="md-whiteframe-5dp">
+          </div>
+          <h3 ng-click="vm.moveToState('acts.act', vm.event.act.id)" style="cursor: pointer">
+            {{ vm.event.act.name }}
+          </h3>
         </div>
-        <div flex="">test</div>
+        <div layout="column" layout-align="center center">
+          <div class="profile-picture" ng-click="vm.moveToState('venues.venue', vm.event.venue.id)" style="cursor: pointer">
+            <img ng-src="{{ vm.event.venue.imageUri || '../../assets/img/venue-card.png' }}" alt="Profile Picture" class="md-whiteframe-5dp">
+          </div>
+          <h3 ng-click="vm.moveToState('venues.venue', vm.event.venue.id)" style="cursor: pointer">
+            {{ vm.event.venue.name }}
+          </h3>
+        </div>
+      </div>
+    </md-dialog-content>
+  </md-dialog>
+  <md-dialog>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Details</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="row">
+        <section flex layout-gt-xs="column" layout-padding>
+          <div>
+            <md-icon md-svg-icon="event"></md-icon>
+            <span ng-if="!vm.event.endDate">
+              {{ vm.event.startDate | date: vm.eventIsThisYear() ? 'd MMMM' : 'd MMMM yyyy' }} at {{ vm.event.startTime | date: 'H:mm' }}
+            </span>
+            <span ng-if="vm.event.endDate && vm.compareDates()">
+              {{ vm.event.startDate | date: vm.eventIsThisYear() ? 'd MMMM' : 'd MMMM yyyy' }} from
+              {{ vm.event.startTime | date: 'H:mm' }}<span ng-if="vm.event.endTime"> to {{ vm.event.endTime | date: 'H:mm' }}</span>
+            </span>
+            <span ng-if="vm.event.endDate && !vm.compareDates()">
+              {{ vm.event.startDate | date: 'd MMMM' }},
+              {{ vm.event.startTime | date: 'H:mm' }} to {{ vm.event.endDate | date: vm.eventIsThisYear() ? 'd MMMM'
+              : 'd MMMM yyyy' }}, {{ vm.event.endTime | date: 'H:mm' }}
+            </span>
+          </div>
+          <div>
+            <md-icon md-svg-icon="location_on"></md-icon>
+            <span>{{ vm.event.venue.name }}</span><span ng-if="vm.event.venue.city && vm.currentUser.county.id == vm.event.venue.county.id">, {{ vm.event.venue.city.name }}</span><span ng-hide="vm.event.venue.country.id == vm.currentUser.country.id">, {{ vm.event.venue.country.niceName }}</span>
+          </div>
+        </section>
+        <section flex layout="column" layout-padding>
+          <div>
+            <strong>Price: </strong>
+            <span ng-hide="vm.event.price && vm.event.price != 0">Free</span>
+            <span ng-if="vm.event.venue.country.id == vm.currentUser.country.id">
+              {{ vm.currentUser.country.currency }}{{ vm.event.price | number:2 }}
+            </span>
+            <span ng-if="vm.event.venue.country.id != vm.currentUser.country.id">
+              {{ vm.currentUser.country.currency }}{{ vm.convertedPrice | number:2 }}
+            </span>
+          </div>
+          <div>
+            <strong>Minimum Age: </strong>
+            <span ng-if="!vm.event.minimumAge">Any</span>
+            <span ng-if="vm.event.minimumAge">{{ vm.event.minimumAge }}</span>
+          </div>
+        </section>
       </div>
     </md-dialog-content>
   </md-dialog>
   <md-dialog ng-show="vm.event.description">
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>Details</h2>
+        <h2>Description</h2>
         <span flex></span>
       </div>
     </md-toolbar>
@@ -27,7 +89,7 @@
         <div>
           {{ !vm.readMore ? (vm.event.description | limitTo: 250) + '...' : vm.event.description }}
         </div>
-        <div layout-align="center center" layout="row">
+        <div layout-align="center center" layout="row" ng-if="vm.event.description.length > 250">
           <md-button ng-click="vm.readMore = !vm.readMore" class="md-primary">
             {{ !vm.readMore ? 'READ MORE' : 'SHOW LESS'}}
           </md-button>

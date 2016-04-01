@@ -20,10 +20,6 @@ function EventCtrl($stateParams, $mdMedia, $mdDialog, authService, eventsApiServ
   var eventId = $stateParams.id;
   vm.currentUser = authService.getCurrentUser();
 
-  vm.eventIsThisYear = eventIsThisYear;
-  vm.eventIsToday = eventIsToday;
-  vm.compareDates = compareDates;
-  vm.compareMonths = compareMonths;
   vm.showEventInfo = showEventInfo;
 
   init();
@@ -45,22 +41,6 @@ function EventCtrl($stateParams, $mdMedia, $mdDialog, authService, eventsApiServ
       .then(function (response) {
         vm.eventUser = response.data;
       });
-  }
-
-  function eventIsThisYear(date) {
-    return dateService.isThisYear(date);
-  }
-
-  function eventIsToday(date) {
-    return dateService.isToday(date);
-  }
-
-  function compareDates(startDate, endDate) {
-    return dateService.compareDates(startDate, endDate);
-  }
-
-  function compareMonths(startDate, endDate) {
-    return dateService.compareMonths(startDate, endDate);
   }
 
   function showEventInfo(event) {

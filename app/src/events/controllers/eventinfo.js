@@ -11,12 +11,23 @@ angular.module('app.controllers')
   .controller('EventInfoCtrl', EventInfoCtrl);
 
 EventInfoCtrl.$inject = [
-  'event', 'googleMapsApiService', 'uiGmapGoogleMapApi'
+  'authService', '$mdDialog', 'event', 'googleMapsApiService', 'uiGmapGoogleMapApi',
+  '$state', 'dateService', 'currencyApiService', '$log'
 ];
 
-function EventInfoCtrl(event, googleMapsApiService, uiGmapGoogleMapApi) {
+function EventInfoCtrl(authService, $mdDialog, event, googleMapsApiService, uiGmapGoogleMapApi,
+                       $state, dateService, currencyApiService, $log) {
   var vm = this;
 
+  // bind methods to viewmodel
+  vm.moveToState = moveToState;
+  vm.eventIsThisYear = eventIsThisYear;
+  vm.eventIsToday = eventIsToday;
+  vm.compareDates = compareDates;
+  vm.compareMonths = compareMonths;
+  vm.convertPriceToUserLocale = convertPriceToUserLocale;
+
+  // viewmodel variables
   vm.event = event;
   vm.readMore = false;
   vm.refreshMap = false;
@@ -24,7 +35,50 @@ function EventInfoCtrl(event, googleMapsApiService, uiGmapGoogleMapApi) {
   init();
 
   function init() {
+    if (authService.isLoggedIn()) {
+      vm.currentUser = authService.getCurrentUser();
+
+      if (vm.currentUser.country.id != vm.event.venue.country.id) {
+        convertPriceToUserLocale();
+      }
+
+    }
     setUpMap();
+  }
+
+  function moveToState(state, id) {
+    $state.go(state, {id: id});
+    $mdDialog.hide();
+  }
+
+  function eventIsThisYear() {
+    return dateService.isThisYear(vm.event.startDate);
+  }
+
+  function eventIsToday() {
+    return dateService.isToday(vm.event.startDate);
+  }
+
+  function compareDates() {
+    return dateService.compareDates(vm.event.startDate, vm.event.endDate);
+  }
+
+  function compareMonths() {
+    return dateService.compareMonths(vm.event.startDate, vm.event.endDate);
+  }
+
+  // getting converted price on date event was created
+  function convertPriceToUserLocale() {
+    var date = vm.event.dateCreated;
+    var eventCurrency = vm.event.venue.country.iso4217;
+    var userCurrency = vm.currentUser.country.iso4217;
+
+    currencyApiService.getExchangeRate(date, eventCurrency, userCurrency)
+      .then(function (response) {
+        var rates = response.data.rates;
+        var rate = rates[Object.keys(rates)[0]]; // get first property of object
+        vm.convertedPrice = vm.event.price * rate;
+      });
   }
 
   function setUpMap() {

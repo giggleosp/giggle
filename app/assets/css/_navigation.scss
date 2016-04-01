@@ -38,6 +38,7 @@ md-toolbar:not(.md-hue-1),
 
 #sidenav-left {
   overflow-y: scroll;
+  position: static;
   max-width: 195px;
   height: 100vh;
   font-size: 16px;

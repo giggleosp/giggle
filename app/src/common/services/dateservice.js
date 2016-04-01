@@ -20,7 +20,8 @@ function dateService($filter, $log) {
     isThisYear: isThisYear,
     isToday: isToday,
     compareDates: compareDates,
-    compareMonths: compareMonths
+    compareMonths: compareMonths,
+    formatDate: formatDate
   };
 
   // comparing the current year with the year of a date passed in
@@ -55,6 +56,11 @@ function dateService($filter, $log) {
 
     return dateOne.getMonth()
       == dateTwo.getMonth();
+  }
+
+  function formatDate(d, format) {
+    var date = new Date(d);
+    return $filter('date')(date, format)
   }
 
 }

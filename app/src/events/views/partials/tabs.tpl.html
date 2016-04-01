@@ -1,4 +1,4 @@
-<toolbar-tools ng-hide="!vm.isLoggedIn || $state.includes('events.event')">
+<toolbar-tools ng-hide="!vm.isLoggedIn || $state.includes('events.event')" flex style="background-color: red">
   <md-tabs md-selected="vm.selectedIndex">
     <md-tab class="toolbar-tabs" ng-repeat="tab in vm.tabs">
       <span class="text">{{ tab.title }}</span>

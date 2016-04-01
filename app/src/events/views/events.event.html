@@ -1,16 +1,21 @@
 <div layout="row" ng-cloak>
   <div class="page-container event">
     <div class="backdrop-container" layout-align="center start" layout="row">
-      <img ng-src="{{ vm.event.imageUri ? 'http://localhost:8080/'+ vm.event.imageUri : '../../assets/img/backdrop.jpg' }}" alt="backdrop"
-           class="md-whiteframe-5dp">
+      <img ng-src="{{ vm.event.imageUri ? 'http://localhost:8080/'+ vm.event.imageUri : '../../assets/img/backdrop.jpg' }}" alt="backdrop" class="md-whiteframe-5dp">
     </div>
     <div layout="row" class="backdrop-tools" layout-wrap>
       <div class="title">
         <h1>{{ vm.event.name }}</h1>
+        <h2 ui-sref="venues.venue({id: vm.event.venue.id })">
+          {{ vm.event.venue.name }}
+          <md-tooltip>
+            {{ vm.event.venue.types[0].name }} <span ng-if="vm.event.venue.types[1]"> & {{ vm.event.venue.types[1].name }}</span> in {{ vm.event.venue.county.name}}<span ng-if="vm.event.venue.county">,</span> {{ vm.event.venue.country.niceName }}
+          </md-tooltip>
+        </h2>
       </div>
       <div flex=""></div>
       <div class="action-buttons">
-        <md-button class="md-icon-button" ng-click="vm.showEventInfo(event)">
+        <md-button class="md-icon-button" ng-click="vm.showEventInfo(ev)">
           <md-icon style="color: #EEEEEE" md-svg-icon="info_outline"></md-icon>
         </md-button>
         <md-button class="md-icon-button">
