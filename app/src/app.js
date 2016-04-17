@@ -15,6 +15,7 @@ angular
     'app.filters',
     'app.directives',
     'app.constants',
+    'app.factories',
     'ngMaterial',
     'ngMessages',
     'ngAnimate',
@@ -79,6 +80,12 @@ angular
       .icon('location_searching', '../assets/svg/location_searching.svg', 24)
       .icon('add_a_photo', '../assets/svg/add_a_photo.svg', 24)
       .icon('euro_symbol', '../assets/svg/euro_symbol.svg', 24)
+      .icon('phone', '../assets/svg/phone.svg', 24)
+      .icon('email', '../assets/svg/email.svg', 24)
+      .icon('language', '../assets/svg/language.svg', 24)
+      .icon('facebook', '../assets/svg/facebook.svg', 24)
+      .icon('twitter', '../assets/svg/twitter.svg', 24)
+      .icon('google_plus', '../assets/svg/google_plus.svg', 24)
   })
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');

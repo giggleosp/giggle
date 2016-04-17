@@ -11,10 +11,10 @@ angular.module('app.controllers')
   .controller('MyActsCtrl', MyActsCtrl);
 
 MyActsCtrl.$inject = [
-  '$scope', '$timeout', '$state', '$mdDialog', 'actApiService', 'authService', 'layoutService'
+  '$scope', '$timeout', '$state', '$mdDialog', 'actApiService', 'authService', 'layoutService', 'actFactory'
 ];
 
-function MyActsCtrl($scope, $timeout, $state, $mdDialog, actApiService, authService, layoutService) {
+function MyActsCtrl($scope, $timeout, $state, $mdDialog, actApiService, authService, layoutService, actFactory) {
   var vm = this;
 
   vm.currentUser = authService.getCurrentUser();
@@ -24,6 +24,11 @@ function MyActsCtrl($scope, $timeout, $state, $mdDialog, actApiService, authServ
   vm.cardsPerRow = layoutService.getNumberOfCardsPerRow();
   vm.gotoAct = gotoAct;
   vm.addNewAct = addNewAct;
+  vm.createActSubTitle = createActSubtitle;
+
+  function createActSubtitle(act) {
+    return actFactory.createCardSubtitle(act);
+  }
 
   function init() {
     getActs();

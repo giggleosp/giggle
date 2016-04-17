@@ -18,9 +18,13 @@ function EventCtrl($stateParams, $mdMedia, $mdDialog, authService, eventsApiServ
   var vm = this;
 
   var eventId = $stateParams.id;
+  var relationshipExists = false;
   vm.currentUser = authService.getCurrentUser();
+  vm.event = {};
+  vm.eventUser = {};
 
   vm.showEventInfo = showEventInfo;
+  vm.clickAttending = clickAttending;
 
   init();
 
@@ -40,6 +44,16 @@ function EventCtrl($stateParams, $mdMedia, $mdDialog, authService, eventsApiServ
     eventsApiService.getEventUser(eventId, userId)
       .then(function (response) {
         vm.eventUser = response.data;
+        relationshipExists = true;
+      }, function () {
+        vm.eventUser = {
+          user: vm.currentUser,
+          event: vm.event,
+          attending: false,
+          following: false,
+          admin: false,
+          hidden: false
+        };
       });
   }
 
@@ -59,4 +73,23 @@ function EventCtrl($stateParams, $mdMedia, $mdDialog, authService, eventsApiServ
     });
   }
 
+  function clickAttending(eventUser) {
+    vm.eventUser.attending = !eventUser.attending;
+    updateEventUser();
+  }
+
+  function updateEventUser() {
+    var eventUser = {
+      user: vm.currentUser,
+      event: vm.event
+    };
+    if (!relationshipExists) {
+      eventsApiService.createEventUser(eventUser)
+        .then(function (response) {
+          relationshipExists = true;
+        });
+    } else {
+      eventsApiService.updateEventUser(eventUser);
+    }
+  }
 }

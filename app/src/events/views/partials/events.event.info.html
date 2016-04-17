@@ -1,4 +1,4 @@
-<span style="overflow: auto" flex="" flex-gt-sm="40" layout-align="center center">
+<span style="overflow: auto" flex="" flex-gt-sm="50" layout-align="center center">
   <md-dialog ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -60,12 +60,15 @@
         <section flex layout="column" layout-padding>
           <div>
             <strong>Price: </strong>
-            <span ng-hide="vm.event.price && vm.event.price != 0">Free</span>
+            <span ng-if="!vm.event.price || vm.event.price == 0">Free</span>
             <span ng-if="vm.event.venue.country.id == vm.currentUser.country.id">
               {{ vm.currentUser.country.currency }}{{ vm.event.price | number:2 }}
             </span>
-            <span ng-if="vm.event.venue.country.id != vm.currentUser.country.id">
+            <span ng-if="vm.currentUser.country && vm.event.price && vm.event.venue.country.id != vm.currentUser.country.id">
               {{ vm.currentUser.country.currency }}{{ vm.convertedPrice | number:2 }}
+            </span>
+            <span ng-if="!vm.currentUser.country && vm.event.price">
+              {{ vm.event.venue.country.currency }}{{ vm.event.price | number:2}}
             </span>
           </div>
           <div>
@@ -109,44 +112,12 @@
         <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom' options="vm.options" refresh="vm.refreshMap">
           <ui-gmap-marker
             coords='vm.marker.coords'
-            idKey='vm.marker.id'
-          >
+            idKey='vm.marker.id'>
           </ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
     </md-dialog-content>
   </md-dialog>
-  <!--<md-dialog>-->
-    <!--<md-toolbar>-->
-      <!--<div class="md-toolbar-tools">-->
-        <!--<h2>General Information</h2>-->
-        <!--<span flex></span>-->
-      <!--</div>-->
-    <!--</md-toolbar>-->
-    <!--<md-dialog-content>-->
-      <!--<div class="md-dialog-content">-->
-        <!--<div layout="column">-->
-          <!--<p ng-if="vm.venue.website"><a ng-href="{{ vm.venue.website }}" target="_blank"><md-icon class="material-design-icons">exit_to_app</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.venue.website }}</a></p>-->
-          <!--<p ng-if="vm.venue.phone"><a ng-href="{{ 'tel:' + vm.venue.phone }}" target="_blank"><md-icon class="material-design-icons">phone</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.venue.phone }}</a></p>-->
-          <!--<p ng-if="vm.venue.email"><a ng-href="{{ 'mailto:' + vm.venue.email }}"><md-icon class="material-design-icons">email</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.venue.email }}</a></p>-->
-          <!--<p>-->
-            <!--<md-icon md-svg-icon="location_searching" class="grey-icon"></md-icon>&nbsp;&nbsp;&nbsp;-->
-            <!--<span>{{ vm.venue.addressLine1 }}, </span>-->
-            <!--<span>{{ vm.venue.city.name }}, </span>-->
-            <!--<span ng-if="vm.venue.city.name != vm.venue.county.name">{{ vm.venue.county.name }}, </span>-->
-            <!--<span>{{ vm.venue.country.niceName }}</span>-->
-          <!--</p>-->
-        <!--</div>-->
-        <!--<div layout="row" layout-align="center center">-->
-          <!--<p>-->
-            <!--<a ng-href="{{ vm.venue.facebook }}" target="_blank" ng-if="vm.venue.facebook"><img id="facebook" class="social-icon" src="../../assets/img/FB-f-Logo__blue_50.png" alt="Facebook"/></a>-->
-            <!--<a ng-href="{{ vm.venue.twitter }}" target="_blank" ng-if="vm.venue.twitter"><img id="twitter" class="social-icon" src="../../assets/img/Twitter_logo_blue.png" alt="Twitter"/></a>-->
-            <!--<a ng-href="{{ vm.venue.googlePlus }}" target="_blank" ng-if="vm.venue.googlePlus"><img id="google-plus" class="social-icon" src="../../assets/img/btn_google+_dark_normal.png" alt="Google+"/></a>-->
-          <!--</p>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</md-dialog-content>-->
-  <!--</md-dialog>-->
 </span>
 
 <style>

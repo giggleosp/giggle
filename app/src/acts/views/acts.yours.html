@@ -9,13 +9,18 @@
         <img ng-src="{{ act.imageUri || '../../assets/img/act-card.png' }}" alt="" class="md-card-image">
         <md-card-title>
           <md-card-title-text>
-            <span>{{ act.name }}</span>
+            <span>{{ act.name | limitTo: 25 }}<span ng-if="act.name.length > 24">...</span></span>
           </md-card-title-text>
+          <md-tooltip style="font-size: 12px;" ng-if="act.name.length > 24" md-direction="top">
+            {{ act.name }}
+          </md-tooltip>
         </md-card-title>
         <md-card-content>
           <p>
-            {{ act.types[0].name }}<span ng-if="act.types[1]">/{{ act.types[1].name }}</span> in {{ act.city.name }}
-            <span ng-if="act.country.id != vm.currentUser.country.id">, {{ act.country.niceName }}</span>
+            <span>{{ vm.createActSubTitle(act) | limitTo: 25 }}<span ng-if="vm.createActSubTitle(act).length > 24">...</span></span>
+            <md-tooltip style="font-size: 12px;" ng-if="vm.createActSubTitle(act).length > 24" md-direction="bottom">
+              {{ vm.createActSubTitle(act) }}
+            </md-tooltip>
           </p>
         </md-card-content>
       </md-card>

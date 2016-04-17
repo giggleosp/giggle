@@ -23,7 +23,8 @@ function venueApiService($http) {
     getVenuesManagedByUser:getVenuesManagedByUser,
     getVenueTypes: getVenueTypes,
     createVenue: createVenue,
-    getUserVenueRelationship: getUserVenueRelationship
+    getUserVenueRelationship: getUserVenueRelationship,
+    updateVenue: updateVenue
   };
 
   function getVenues() {
@@ -78,9 +79,18 @@ function venueApiService($http) {
   }
 
   function getUserVenueRelationship(venueId, userId) {
+    var url = baseUrl + "venue/" + venueId + "/user/" + userId;
+    return $http.get(url);
+  }
+
+  function updateVenue(venue) {
     return $http({
-      method: "GET",
-      url: baseUrl + "venue/" + venueId + "/user/" + userId
+      method: "PUT",
+      url: baseUrl + "update",
+      data: angular.toJson(venue),
+      headers: {
+        "Content-Type": "application/json"
+      }
     });
   }
 }

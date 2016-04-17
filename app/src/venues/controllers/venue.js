@@ -18,6 +18,7 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
 
   var venueId = $stateParams.id;
 
+  vm.showEditVenueDialog = showEditVenueDialog;
   vm.showVenueInfo = showVenueInfo;
   vm.showAddEventDialog = showAddEventDialog;
 
@@ -60,6 +61,22 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
       && vm.venue.rating < 5;
   }
 
+  function showEditVenueDialog(event) {
+    var useFullScreen = $mdMedia('sm') || $mdMedia('xs');
+    $mdDialog.show({
+      controller: 'EditVenueCtrl',
+      controllerAs: 'vm',
+      templateUrl: 'src/venues/views/partials/venues.venue.edit.tpl.html',
+      parent: angular.element(document.body),
+      targetEvent: event,
+      clickOutsideToClose: false,
+      fullscreen: useFullScreen,
+      locals: {
+        venue: vm.venue
+      }
+    });
+  }
+
   function getUserVenueRelationship(venueId, userId) {
     venueApiService.getUserVenueRelationship(venueId, userId)
       .then(function(response) {
@@ -72,7 +89,7 @@ function VenueCtrl($stateParams, $mdDialog, $mdMedia, venueApiService, authServi
     $mdDialog.show({
       controller: 'VenueInfoCtrl',
       controllerAs: 'vm',
-      templateUrl: 'src/venues/views/partials/venues.venue.info.html',
+      templateUrl: 'src/venues/views/partials/venues.venue.info.tpl.html',
       parent: angular.element(document.body),
       targetEvent: event,
       clickOutsideToClose: true,

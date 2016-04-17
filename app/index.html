@@ -27,7 +27,7 @@
     <![endif] -->
 
     <div ng-controller="ApplicationCtrl as application" layout="column" ng-cloak>
-      <section layout="row" flex>
+      <div layout="row" flex>
         <md-sidenav md-component-id="left" id="sidenav-left"
                     md-is-locked-open="application.lockLeft && $mdMedia('gt-sm')">
           <md-toolbar class="md-primary" md-whiteframe="4">
@@ -129,7 +129,7 @@
           </div>
           <div flex></div>
         </md-content>
-      </section>
+      </div>
     </div>
 
     <!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID &ndash;&gt;-->
@@ -218,6 +218,8 @@
         <script src="src/acts/controllers/actinfo.js"></script>
         <script src="src/events/controllers/eventinfo.js"></script>
         <script src="src/common/services/currencyapiservice.js"></script>
+        <script src="src/venues/controllers/editvenue.js"></script>
+        <script src="scripts/services/actfactory.js"></script>
         <!-- endbuild -->
 </body>
 </html>
