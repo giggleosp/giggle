@@ -36,23 +36,6 @@ angular.module('app.controllers')
         controllerAs: 'vm'
       });
     }
-
-    function toggleSidenav (id) {
-      if (id === "left") {
-        $mdSidenav(id).close()
-          .then(function () {
-            vm.lockLeft = !vm.lockLeft;
-            setMenuChangedState(vm.lockLeft);
-          });
-      } else {
-        $mdSidenav(id).toggle();
-      }
-
-    }
-
-    function setMenuChangedState(lockLeft) {
-      navigationMenuService.setOpenedState(lockLeft);
-      $rootScope.$broadcast("navigation-menu-state-changed");
-    }
+    
 
   }

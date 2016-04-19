@@ -1,4 +1,4 @@
-<md-dialog aria-label="Create an event" ng-cloak flex-gt-sm="35" flex style="max-height: 80vh">
+<md-dialog aria-label="Create an event" ng-cloak flex-gt-sm="40" flex style="height: 90vh">
   <form name="addEventForm" ng-submit="vm.save(vm.event)" novalidate>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -103,7 +103,7 @@
         </div>
         <div layout-gt-xs="row">
           <md-datepicker ng-model="vm.event.startDate" md-placeholder="Start Date"
-                         style="background-color: white" md-min-date="vm.today"></md-datepicker>
+                         class="white" md-min-date="vm.today"></md-datepicker>
           <div ng-messages="addEventForm.startDate.$error" ng-show="addEventForm.$submitted || addEventForm.startDate.$dirty">
             <span ng-message="mindate">Start date can't be in the past.</span>
           </div>
@@ -114,7 +114,7 @@
         </div>
         <div layout-gt-xs="row">
           <md-datepicker ng-model="vm.event.endDate" md-placeholder="End Date"
-                         md-min-date="vm.event.startDate" name="endDate" style="background-color: white"></md-datepicker>
+                         md-min-date="vm.event.startDate" name="endDate" class="white"></md-datepicker>
           <div ng-messages="addEventForm.endDate.$error"
                ng-show="addEventForm.$submitted || addEventForm.endDate.$dirty">
             <span ng-message="mindate">End date can't be before start date.</span>
@@ -137,10 +137,7 @@
       <md-button ng-click="vm.cancel()">
         Cancel
       </md-button>
-      <md-button type="submit" style="margin-right:20px;"
-                 ng-disabled="addEventForm.$pristine
-                 && addEventForm.$invalid"
-                 class="md-primary">
+      <md-button type="submit" style="margin-right:20px;" ng-disabled="addEventForm.$pristine && addEventForm.$invalid" class="md-primary">
         Save
       </md-button>
     </md-dialog-actions>

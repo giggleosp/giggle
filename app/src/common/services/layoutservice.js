@@ -17,7 +17,11 @@ layoutService.$inject = [
 function layoutService(navigationMenuService) {
   return {
     getNumberOfCardsPerRow: function getNumberOfCardsPerRow() {
-      return 5;
+      var availableWidth = window.innerWidth;
+      if (navigationMenuService.isMenuOpen) {
+        availableWidth -= 200;
+      }
+      return availableWidth / 240;
     }
   };
 

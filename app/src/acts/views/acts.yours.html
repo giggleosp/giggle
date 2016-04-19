@@ -17,8 +17,8 @@
         </md-card-title>
         <md-card-content>
           <p>
-            <span>{{ vm.createActSubTitle(act) | limitTo: 25 }}<span ng-if="vm.createActSubTitle(act).length > 24">...</span></span>
-            <md-tooltip style="font-size: 12px;" ng-if="vm.createActSubTitle(act).length > 24" md-direction="bottom">
+            <span>{{ vm.createActSubTitle(act) | limitTo: 26 }}<span ng-if="vm.createActSubTitle(act).length > 25">...</span></span>
+            <md-tooltip style="font-size: 12px;" ng-if="vm.createActSubTitle(act).length > 25" md-direction="bottom">
               {{ vm.createActSubTitle(act) }}
             </md-tooltip>
           </p>

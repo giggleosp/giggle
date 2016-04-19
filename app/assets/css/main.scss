@@ -99,8 +99,12 @@ md-icon {
   height:40px;
 }
 
-.md-dialog-content, md-datepicker, md-dialog-actions {
+.md-dialog-content, md-dialog-actions {
   background-color: white;
+}
+
+md-datepicker.white {
+  background: white;
 }
 
 .act-autocomplete, .venue-autocomplete {
