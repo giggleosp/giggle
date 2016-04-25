@@ -4,7 +4,7 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="27">
+          <list size="28">
             <item index="0" class="java.lang.String" itemvalue="value" />
             <item index="1" class="java.lang.String" itemvalue="uniqueusername" />
             <item index="2" class="java.lang.String" itemvalue="username-exists" />
@@ -32,6 +32,7 @@
             <item index="24" class="java.lang.String" itemvalue="idkey" />
             <item index="25" class="java.lang.String" itemvalue="md-scroll-y" />
             <item index="26" class="java.lang.String" itemvalue="md-autocomplete-snap" />
+            <item index="27" class="java.lang.String" itemvalue="ng-href" />
           </list>
         </value>
       </option>

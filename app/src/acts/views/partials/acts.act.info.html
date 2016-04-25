@@ -29,9 +29,9 @@
     <md-dialog-content>
       <div class="md-dialog-content">
         <div layout="column">
-          <p ng-if="vm.act.website"><a ng-href="{{ vm.act.website }}" target="_blank"><md-icon class="material-design-icons">exit_to_app</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.act.website }}</a></p>
-          <p ng-if="vm.act.phone"><a ng-href="{{ 'tel:' + vm.act.phone }}" target="_blank"><md-icon class="material-design-icons">phone</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.act.phone }}</a></p>
-          <p ng-if="vm.act.email"><a ng-href="{{ 'mailto:' + vm.act.email }}"><md-icon class="material-design-icons">email</md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.act.email }}</a></p>
+          <p ng-if="vm.act.website"><a ng-href="{{ vm.act.website }}" target="_blank"><md-icon md-svg-icon="exit_to_app"></md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.act.website }}</a></p>
+          <p ng-if="vm.act.phone"><a ng-href="{{ 'tel:' + vm.act.phone }}" target="_blank"><md-icon md-svg-icon="phone"></md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.act.phone }}</a></p>
+          <p ng-if="vm.act.email"><a ng-href="{{ 'mailto:' + vm.act.email }}"><md-icon md-svg-icon="email"></md-icon>&nbsp;&nbsp;&nbsp;&nbsp;{{ vm.act.email }}</a></p>
           <p>
             <md-icon md-svg-icon="location_searching" class="grey-icon"></md-icon>&nbsp;&nbsp;&nbsp;
             <span ng-if="vm.act.city">{{ vm.act.city.name }}, </span>
@@ -41,9 +41,9 @@
         </div>
         <div layout="row" layout-align="center center">
           <p>
-            <a ng-href="{{ vm.act.facebook }}" target="_blank" ng-if="vm.act.facebook"><img id="facebook" class="social-icon" src="../../assets/img/FB-f-Logo__blue_50.png" alt="Facebook"/></a>
-            <a ng-href="{{ vm.act.twitter }}" target="_blank" ng-if="vm.act.twitter"><img id="twitter" class="social-icon" src="../../assets/img/Twitter_logo_blue.png" alt="Twitter"/></a>
-            <a ng-href="{{ vm.act.googlePlus }}" target="_blank" ng-if="vm.act.googlePlus"><img id="google-plus" class="social-icon" src="../../assets/img/btn_google+_dark_normal.png" alt="Google+"/></a>
+            <a ng-href="{{ vm.act.facebook }}" target="_blank" ng-if="vm.act.facebook"><img id="facebook" class="social-icon" src="assets/img/facebook.png" alt="Facebook"/><md-tooltip>Facebook</md-tooltip></a>
+            <a ng-href="{{ vm.act.twitter }}" target="_blank" ng-if="vm.venue.twitter"><img id="twitter" class="social-icon" src="assets/img/twitter.png" alt="Twitter"/><md-tooltip>Twitter</md-tooltip></a>
+            <a ng-href="{{ vm.act.googlePlus }}" target="_blank" ng-if="vm.act.googlePlus"><img id="google-plus" class="social-icon" src="assets/img/google_plus.png" alt="Google+"/><md-tooltip>Google+</md-tooltip></a>
           </p>
         </div>
       </div>
