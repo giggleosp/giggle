@@ -25,39 +25,37 @@
 <!--     [if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif] -->
-    <md-toolbar hide-xs hide-sm>
+    <md-toolbar hide-xs hide-sm md-scroll-shrink>
       <div class="md-toolbar-tools">
         <md-button class="md-icon-button" ng-click="application.toggleSidenav('left')" aria-label="Menu">
           <md-icon md-svg-icon="menu"></md-icon>
         </md-button>
         <span flex></span>
         <span>
-                 <md-menu md-position-mode="target-right target" ng-if="application.isLoggedIn">
-                   <md-button aria-label="Open more menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-                     <md-icon md-svg-icon="more_vert"></md-icon>
-                   </md-button>
-                   <md-menu-content width="3">
-                     <md-menu-item>
-                       <md-button ng-click="application.editAccount(event)">
-                         <div layout="row">
-                           <p flex="">Edit Account</p>
-                           <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="settings"
-                                    class="grey"></md-icon>
-                         </div>
-                       </md-button>
-                     </md-menu-item>
-                     <md-menu-item ng-controller="LogoutCtrl as logout">
-                       <md-button ng-click="logout.logout(event)">
-                         <div layout="row">
-                           <p flex="">Sign Out</p>
-                           <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="exit_to_app"
-                                    class="grey"></md-icon>
-                         </div>
-                       </md-button>
-                     </md-menu-item>
-                   </md-menu-content>
-                 </md-menu>
-              </span>
+          <md-menu md-position-mode="target-right target" ng-if="application.isLoggedIn">
+            <md-button aria-label="Open more menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+              <md-icon md-svg-icon="more_vert"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+              <md-menu-item>
+                <md-button ng-click="application.editAccount(event)">
+                  <div layout="row">
+                    <p flex="">Edit Account</p>
+                    <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="settings" class="grey"></md-icon>
+                  </div>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item ng-controller="LogoutCtrl as logout">
+                <md-button ng-click="logout.logout(event)">
+                  <div layout="row">
+                    <p flex="">Sign Out</p>
+                    <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="exit_to_app" class="grey"></md-icon>
+                  </div>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </span>
       </div>
       <div layout="row" layout-align="center center">
         <span flex="20"></span>
@@ -65,7 +63,7 @@
         <span flex="10"></span>
       </div>
     </md-toolbar>
-    <md-toolbar ng-show="!application.showSearch" hide-gt-sm>
+    <md-toolbar ng-show="!application.showSearch" hide-gt-sm md-scroll-shrink>
       <div class="md-toolbar-tools">
         <md-button class="md-icon-button" ng-click="application.toggleSidenav('leftSmall')" aria-label="Menu">
           <md-icon md-svg-icon="menu"></md-icon>
@@ -74,6 +72,29 @@
         <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
           <md-icon md-svg-icon="search"></md-icon>
         </md-button>
+        <md-menu md-position-mode="target-right target" ng-if="application.isLoggedIn">
+          <md-button aria-label="Open more menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-svg-icon="more_vert"></md-icon>
+          </md-button>
+          <md-menu-content width="3">
+            <md-menu-item>
+              <md-button ng-click="application.editAccount(event)">
+                <div layout="row">
+                  <p flex="">Edit Account</p>
+                  <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="settings" class="grey"></md-icon>
+                </div>
+              </md-button>
+            </md-menu-item>
+            <md-menu-item ng-controller="LogoutCtrl as logout">
+              <md-button ng-click="logout.logout(event)">
+                <div layout="row">
+                  <p flex="">Sign Out</p>
+                  <md-icon md-menu-align-target="" style="margin: auto 3px auto 0;" md-svg-icon="exit_to_app" class="grey"></md-icon>
+                </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
       </div>
       <!--<div layout="row">-->
       <!--<span flex="5"></span>-->
@@ -143,7 +164,7 @@
         </md-sidenav>
       </div>
       <div layout="column" flex>
-        <md-content layout="column" flex class="md-padding" ui-view="main">
+        <md-content layout="column" flex class="md-padding" ui-view="main" style="height:100vh;">
         </md-content>
       </div>
     </div>
@@ -238,6 +259,8 @@
         <script src="src/acts/services/actfactory.js"></script>
         <script src="src/events/filters/cityfilter.js"></script>
         <script src="src/events/filters/daterangefilter.js"></script>
+        <script src="src/acts/controllers/recommendedacts.js"></script>
+        <script src="src/venues/controllers/recommendedvenues.js"></script>
         <!-- endbuild -->
 </body>
 </html>

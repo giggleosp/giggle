@@ -139,7 +139,7 @@ function navigationMenuService() {
           items: [
             {
               title: "All",
-              state: "acts.all",
+              state: "acts.recommended",
               icon: {
                 text: "local_play",
                 md: true

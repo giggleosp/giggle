@@ -29,7 +29,7 @@ angular.module('app.services')
         return $http({
           method: "GET",
           dataType: "json",
-          url: baseUrl + "countries" + id + "/counties"
+          url: baseUrl + "countries/" + id + "/counties"
         });
       },
       getCitiesForCounty: function (id) {

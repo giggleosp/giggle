@@ -2,22 +2,23 @@
 
 /**
  * @ngdoc function
- * @name app.controller:MyactsCtrl
+ * @name app.controller:RecommendedactsCtrl
  * @description
- * # MyactsCtrl
+ * # RecommendedactsCtrl
  * Controller of the app
  */
 angular.module('app.controllers')
-  .controller('MyActsCtrl', MyActsCtrl);
+  .controller('RecommendedActsCtrl', RecommendedActsCtrl);
 
-MyActsCtrl.$inject = [
+RecommendedActsCtrl.$inject = [
   '$scope', '$timeout', '$state', '$mdDialog', 'actApiService', 'authService', 'layoutService', 'actFactory'
 ];
 
-function MyActsCtrl($scope, $timeout, $state, $mdDialog, actApiService, authService, layoutService, actFactory) {
+function RecommendedActsCtrl($scope, $timeout, $state, $mdDialog, actApiService, authService, layoutService, actFactory) {
   var vm = this;
-  
+
   vm.currentUser = authService.getCurrentUser();
+
   vm.cardsPerRow = layoutService.getNumberOfCardsPerRow();
   vm.gotoAct = gotoAct;
   vm.createActSubTitle = createActSubtitle;
@@ -33,7 +34,7 @@ function MyActsCtrl($scope, $timeout, $state, $mdDialog, actApiService, authServ
   }
 
   function getActs() {
-    actApiService.getActs(vm.currentUser.id)
+    actApiService.getActs()
       .then(function (response) {
         vm.acts = response.data;
       });
@@ -41,6 +42,15 @@ function MyActsCtrl($scope, $timeout, $state, $mdDialog, actApiService, authServ
 
   function gotoAct(id) {
     $state.go('acts.act', { id: id });
+  }
+
+  function addNewAct() {
+    $mdDialog.show({
+      templateUrl: 'src/acts/views/partials/add-act.tpl.html',
+      parent: angular.element(document.body),
+      controller: 'AddActCtrl',
+      controllerAs: 'vm'
+    });
   }
 
   $scope.$on("navigation-menu-state-changed", function () {

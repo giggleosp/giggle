@@ -71,6 +71,7 @@ angular.module('app.services', [])
         dataType: "json",
         url: baseUrl + "update",
         data: angular.toJson(user),
+        withCredentials: true,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'

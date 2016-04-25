@@ -1,18 +1,27 @@
 <div layout="row">
   <div flex></div>
   <div>
-    <div layout="row" layout-sm="column" layout-xs="column" class="cards-row" layout-fill
-         layout-align="start center" ng-repeat="row in (vm.events.length/vm.cardsPerRow | array)">
-      <md-card ng-repeat="event in vm.events.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow) | orderBy:'-name'"
+    <div layout="row" layout-sm="column" layout-xs="column" class="cards-row"
+         layout-align="start center " ng-repeat="row in (vm.acts.length/vm.cardsPerRow | array)">
+      <md-card ui-sref="acts.act({id: act.id})" md-ink-ripple
+               ng-repeat="act in vm.acts.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow) | orderBy:'-name'"
                ng-mouseover="hover = true" ng-mouseleave="hover = false" ng-class="{'md-whiteframe-6dp':hover, 'md-whiteframe-1dp':!hover}">
-        <img ng-src="{{ event.act.imageUri || 'http://images4.fanpop.com/image/photos/20700000/rhcp-red-hot-chili-peppers-20776698-754-746.jpg' }}" alt="" class="md-card-image">
+        <img ng-src="{{ act.imageUri || '../../assets/img/act-card.png' }}" alt="" class="md-card-image">
         <md-card-title>
           <md-card-title-text>
-            <span>{{ event.name }}</span>
+            <span>{{ act.name | limitTo: 25 }}<span ng-if="act.name.length > 24">...</span></span>
           </md-card-title-text>
+          <md-tooltip style="font-size: 12px;" ng-if="act.name.length > 24" md-direction="top">
+            {{ act.name }}
+          </md-tooltip>
         </md-card-title>
         <md-card-content>
-          <p></p>
+          <p>
+            <span>{{ vm.createActSubTitle(act) | limitTo: 26 }}<span ng-if="vm.createActSubTitle(act).length > 25">...</span></span>
+            <md-tooltip style="font-size: 12px;" ng-if="vm.createActSubTitle(act).length > 25" md-direction="bottom">
+              {{ vm.createActSubTitle(act) }}
+            </md-tooltip>
+          </p>
         </md-card-content>
       </md-card>
     </div>

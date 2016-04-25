@@ -19,7 +19,10 @@ angular.module('app.controllers')
     var vm = this;
 
     vm.login = function(user) {
-      return authService.login(user);
+      authService.login(user)
+        .then(function (response) {
+          authService.setCredentials(user.username, user.password);
+        });
     }
   }
 

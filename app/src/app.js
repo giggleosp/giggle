@@ -34,6 +34,17 @@ angular
     $httpProvider.defaults.useXDomain = true;
     $httpProvider.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
     $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
+
+    $httpProvider.interceptors.push(function () {
+      return {
+        response: function (response) {
+          $httpProvider.defaults.headers.common['X-CSRF-TOKEN'] = response.headers('X-CSRF-TOKEN');
+          return response;
+        }
+      }
+    });
+
   })
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
@@ -147,7 +158,7 @@ angular
       .state('venues.recommended', {
         url: '/recommended',
         templateUrl: 'src/venues/views/venues.recommended.html',
-        controller: 'VenuesCtrl',
+        controller: 'RecommendedVenuesCtrl',
         controllerAs: 'vm'
       })
       .state('venues.sports', {
@@ -217,7 +228,7 @@ angular
       .state('acts.recommended', {
         url: '/recommended',
         templateUrl: 'src/acts/views/acts.recommended.html',
-        controller: 'ActsCtrl',
+        controller: 'RecommendedActsCtrl',
         controllerAs: 'vm'
       })
       .state('acts.local', {
@@ -359,21 +370,25 @@ angular
       return !date ? null : moment(date).format('DD/MM/YYYY');
     };
   })
-  .run(function ($rootScope, $cookies, $state, $stateParams, $location) {
+  .run(['$rootScope', '$cookies', '$location', '$state', '$stateParams', '$http', function ($rootScope, $cookies, $location, $state, $stateParams, $http) {
+
+    $rootScope.globals = $cookies.get('globals') || {};
+    if ($rootScope.globals.currentUser) {
+      $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
+    }
+
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       $rootScope.$state = $state;
       $rootScope.$stateParams = $stateParams;
 
-      var user = $cookies.get("user"); // retrieve user from session cookie (if any)
-
-      if (toState.access === 'private' && !user) {
+      if (toState.access === 'private' && !$rootScope.globals.currentUser) {
         // anonymous user trying to access a private page, prevent
         event.preventDefault();
-       $state.go("sign-in"); // go to login page
-      } else if (toState.access === 'anon' && user) {
+        $state.go("sign-in"); // go to login page
+      } else if (toState.access === 'anon' && $rootScope.globals.currentUser) {
         // authorised user trying to access page for anonymous users, such as login
         event.preventDefault();
       }
 
     });
-  });
+  }]);

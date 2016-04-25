@@ -12,10 +12,11 @@ angular.module('app.controllers')
 
   ApplicationCtrl.$inject = [
     '$scope', 'authService', 'navigationMenuService', 'AUTH_EVENTS',
-    '$cookies', '$mdDialog', '$mdSidenav', '$rootScope'
+    '$cookies', '$mdDialog', '$mdSidenav', '$rootScope', '$log'
   ];
 
-function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS, $cookies, $mdDialog, $mdSidenav, $rootScope) {
+function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS,
+                         $cookies, $mdDialog, $mdSidenav, $rootScope, $log) {
   var vm = this;
 
   // opened state of menu
@@ -37,13 +38,17 @@ function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS
   }
 
   function getCurrentUser() {
-    var username = $cookies.get("user");
+    var username = authService.getUsername();
     if(username) {
-      authService.getUserWithUsername(username);
+      authService.setCredentialsFromCookieStore();
+      authService.getUserWithUsername(username)
+        .then(function (response) {
+          $log.debug(response);
+        });
     }
   }
 
-  function setMenuItems () {
+  function setMenuItems() {
     vm.menu = navigationMenuService.getMenuItems(vm.isLoggedIn);
   }
 
@@ -58,7 +63,7 @@ function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS
   }
 
   function toggleSidenav (id) {
-    if (id === "left") {
+    if (id == "left") {
       $mdSidenav(id).close()
         .then(function () {
           vm.lockLeft = !vm.lockLeft;

@@ -10,32 +10,29 @@
 angular.module('app.services')
   .service('authService', authService);
 
-  authService.$inject = [
-    '$rootScope',
-    '$http',
-    'AUTH_EVENTS',
-    '$location',
-    '$cookies',
-    'notificationService',
-    '$log'
+authService.$inject = [
+    '$rootScope', '$http', 'AUTH_EVENTS', '$location', '$cookies', 'notificationService', '$log'
   ];
 
-  function authService($rootScope, $http, AUTH_EVENTS, $location, $cookies, notificationService) {
-    var baseUrl = "http://localhost:8080/users";
-    var currentUser;
+function authService($rootScope, $http, AUTH_EVENTS, $location, $cookies, notificationService, $log) {
+  var baseUrl = "http://localhost:8080/users";
+  var currentUser;
 
-    return {
-      login: login,
-      logout: logout,
-      createAccount: createAccount,
-      getCurrentUser: getCurrentUser,
-      setCurrentUser: setCurrentUser,
-      getUserWithUsername: getUserWithUsername,
-      isLoggedIn: isLoggedIn,
-      isAuthorised: isAuthorised
-    };
+  return {
+    login: login,
+    logout: logout,
+    createAccount: createAccount,
+    getCurrentUser: getCurrentUser,
+    setCurrentUser: setCurrentUser,
+    getUserWithUsername: getUserWithUsername,
+    isLoggedIn: isLoggedIn,
+    isAuthorised: isAuthorised,
+    setCredentials: setCredentials,
+    setCredentialsFromCookieStore: setCredentialsFromCookieStore,
+    getUsername: getUsername
+  };
 
-    function login (credentials) {
+  function login (credentials) {
       return $http({
         method: "POST",
         dataType: "json",
@@ -45,72 +42,110 @@ angular.module('app.services')
         headers: {
           'Authorization': "Basic " + btoa(credentials.username + ":" + credentials.password)
         }
-      }).then(function (response) {
+      })
+        .then(function (response) {
         authSuccess(response.data, false);
-      }, function (response) {
+      },
+          function (response) {
         authFailure(response.status);
         console.log(response);
       });
     }
 
-    function logout () {
-      currentUser = null;
-      $cookies.remove("user");
-      $location.path("/sign-in");
-      $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
-    }
+  function logout () {
+    currentUser = null;
+    clearCredentials();
+    $location.path("/sign-in");
+    $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
+  }
 
-    function createAccount (user) {
-      return $http({
+  function createAccount (user) {
+    return $http({
         method: "POST",
         dataType: "json",
         url: baseUrl + "/signup",
         data: $.param(user)
-      }).then(function (response) {
+      })
+      .then(function (response) {
         authSuccess(response.data, true);
-      }, function (response) {
+      },
+        function (response) {
         authFailure(response.status);
       });
-    }
+  }
 
-    function getUserWithUsername(username) {
-      return $http({
-        method: "POST",
-        dataType: "json",
-        url: baseUrl + "/username",
-        data: $.param({ username: username })
-      }).then(function (response) {
-        authSuccess(response.data, false);
-      });
-    }
+  function getUserWithUsername(username) {
+    return $http({
+      method: "POST",
+      dataType: "json",
+      url: baseUrl + "/username",
+      data: $.param({ username: username })
+    }).then(function (response) {
+      authSuccess(response.data, false);
+    });
+  }
 
-    function setCurrentUser (user) {
+  function setCurrentUser (user) {
       currentUser = user;
     }
 
-    function getCurrentUser() {
+  function getCurrentUser() {
       return currentUser;
-    }
+  }
 
-    function isLoggedIn () {
+  function setCredentialsFromCookieStore() {
+    $rootScope.globals = $cookies.getObject('globals') || {};
+
+    $http.defaults.headers.common.Authorization = 'Basic ' + $rootScope.globals.currentUser.authData;
+  }
+
+  function getUsername() {
+    $rootScope.globals = $cookies.getObject('globals') || null;
+
+    $log.info($rootScope.globals);
+
+    return $rootScope.globals ? $rootScope.globals.currentUser.username : null;
+  }
+
+  function isLoggedIn () {
       return !!currentUser;
     }
 
-    function isAuthorised (authRoles) {
+  // http://jasonwatmore.com/post/2014/05/26/AngularJS-Basic-HTTP-Authentication-Example.aspx
+  function setCredentials(username, password) {
+    var authData = btoa(username + ":" + password);
+
+    $rootScope.globals = {
+      currentUser: {
+        username: username,
+        authData: authData
+      }
+    };
+
+    $http.defaults.headers.common.Authorization = 'Basic ' + authData;
+    $cookies.putObject('globals', $rootScope.globals);
+  }
+
+  function clearCredentials() {
+    $rootScope.globals = {};
+    $cookies.remove('globals');
+    $http.defaults.headers.common.Authorization = 'Basic ';
+  }
+
+  function isAuthorised (authRoles) {
       if (!angular.isArray(authRoles)) {
         authRoles = [authRoles];
       }
       return (isLoggedIn() && authRoles.indexOf(Session.userRole) !== -1);
     }
 
-    function authSuccess (user, isNewUser) {
+  function authSuccess(user, isNewUser) {
       setCurrentUser(user);
-      $cookies.put("user", user.username);
       $location.path("/");
       $rootScope.$broadcast(AUTH_EVENTS.loginSuccess, { isNewUser: isNewUser });
     }
 
-    function authFailure(status) {
+  function authFailure(status) {
       var notificationText;
 
       currentUser = null;
@@ -135,5 +170,4 @@ angular.module('app.services')
 
       notificationService.showToast(notificationText);
     }
-
-  }
+}
