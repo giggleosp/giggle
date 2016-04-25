@@ -19,48 +19,19 @@
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbuild -->
   </head>
-  <body ng-app="app">
+  <body ng-app="app" layout="column" ng-controller="ApplicationCtrl as application">
     <md-progress-linear ng-show="application.showProgress" md-mode="indeterminate" class="md-accent hue-1"
                         style="height:2px;"></md-progress-linear>
 <!--     [if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif] -->
-
-    <div ng-controller="ApplicationCtrl as application" layout="column" ng-cloak>
-      <section layout="row" flex>
-        <md-sidenav md-component-id="left" id="sidenav-left"
-                    md-is-locked-open="application.lockLeft && $mdMedia('gt-sm')">
-          <md-toolbar class="md-primary" md-whiteframe="4">
-            <h1 class="md-toolbar-tools">Giggle</h1>
-          </md-toolbar>
-          <md-list ng-repeat="section in application.menu">
-            <md-subheader class="md-no-sticky">
-              <span>{{ section.title }}</span>
-            </md-subheader>
-            <md-list-item ui-sref="{{ item.state }}" class="nav-list-item"
-                          ng-if="item.isVisible && item.title != 'Log Out'" ng-repeat="item in section.items">
-              <md-item-content layout="row" layout-align="start center" class="content">
-                <div class="inset">
-                  <md-icon ng-if="item.icon.md" md-svg-icon="{{ item.icon.text }}"></md-icon>
-                  <md-icon ng-if="!item.icon.md" class="{{ item.icon.text }}" style="font-size:24px"></md-icon>
-                </div>
-                <div class="inset">
-                  {{ item.title }}
-                </div>
-              </md-item-content>
-            </md-list-item>
-            <md-divider></md-divider>
-          </md-list>
-        </md-sidenav>
-        <md-content flex>
-          <md-toolbar class="md-whiteframe-6dp" hide-xs hide-sm md-scroll-shrink="true">
-            <div class="md-toolbar-tools">
-              <md-button class="md-icon-button" ng-click="application.toggleSidenav('left')" aria-label="Menu">
-                <md-icon md-svg-icon="menu"></md-icon>
-              </md-button>
-              <span flex></span>
-              <span></span>
-              <span>
+    <md-toolbar hide-xs hide-sm>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="application.toggleSidenav('left')" aria-label="Menu">
+          <md-icon md-svg-icon="menu"></md-icon>
+        </md-button>
+        <span flex></span>
+        <span>
                  <md-menu md-position-mode="target-right target" ng-if="application.isLoggedIn">
                    <md-button aria-label="Open more menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
                      <md-icon md-svg-icon="more_vert"></md-icon>
@@ -87,49 +58,94 @@
                    </md-menu-content>
                  </md-menu>
               </span>
-            </div>
-            <div layout="row" layout-align="center center">
-              <span flex="10"></span>
-              <span flex="" ui-view="tabs"></span>
-              <span flex="10"></span>
-            </div>
+      </div>
+      <div layout="row" layout-align="center center">
+        <span flex="20"></span>
+        <span flex ui-view="tabs"></span>
+        <span flex="10"></span>
+      </div>
+    </md-toolbar>
+    <md-toolbar ng-show="!application.showSearch" hide-gt-sm>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click="application.toggleSidenav('leftSmall')" aria-label="Menu">
+          <md-icon md-svg-icon="menu"></md-icon>
+        </md-button>
+        <span flex></span>
+        <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
+          <md-icon md-svg-icon="search"></md-icon>
+        </md-button>
+      </div>
+      <!--<div layout="row">-->
+      <!--<span flex="5"></span>-->
+      <!--<span ui-view="tabs"></span>-->
+      <!--</div>-->
+    </md-toolbar>
+    <md-toolbar ng-show="application.showSearch" hide-gt-sm>
+      <div class="md-toolbar-tools">
+        <md-button ng-click="application.showSearch = !application.showSearch" class="md-icon-button" aria-label="Back">
+          <md-icon class="material-icons">arrow_back</md-icon>
+        </md-button>
+        <md-input-container flex layout="center center">
+          <label>&nbsp;</label>
+          <input type="text" ng-model="search" placeholder="Search" md-autofocus>
+        </md-input-container>
+        <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
+          <md-icon md-svg-icon="search"></md-icon>
+        </md-button>
+      </div>
+      <div layout="row">
+      </div>
+    </md-toolbar>
+
+    <div layout="row" flex="">
+      <div layout="column">
+        <md-sidenav hide-gt-sm md-component-id="leftSmall">
+          <md-toolbar class="md-theme-indigo md-tall">
+
           </md-toolbar>
-          <md-toolbar ng-show="!application.showSearch" class="md-whiteframe-6dp" hide-gt-sm>
-            <div class="md-toolbar-tools">
-              <md-button class="md-icon-button" ng-click="application.toggleSidenav('leftSmall')" aria-label="Menu">
-                <md-icon md-svg-icon="menu"></md-icon>
-              </md-button>
-              <span flex></span>
-              <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
-                <md-icon md-svg-icon="search"></md-icon>
-              </md-button>
-            </div>
-            <!--<div layout="row">-->
-              <!--<span flex="5"></span>-->
-              <!--<span ui-view="tabs"></span>-->
-            <!--</div>-->
-          </md-toolbar>
-          <md-toolbar ng-show="application.showSearch" class="md-whiteframe-6dp" hide-gt-sm>
-            <div class="md-toolbar-tools">
-              <md-button ng-click="application.showSearch = !application.showSearch" class="md-icon-button" aria-label="Back">
-                <md-icon class="material-icons">arrow_back</md-icon>
-              </md-button>
-              <md-input-container flex layout="center center">
-                <label>&nbsp;</label>
-                <input type="text" ng-model="search" placeholder="Search" md-autofocus>
-              </md-input-container>
-              <md-button aria-label="Search" class="md-icon-button" ng-click="application.showSearch = !application.showSearch">
-                <md-icon md-svg-icon="search"></md-icon>
-              </md-button>
-            </div>
-            <div layout="row">
-            </div>
-          </md-toolbar>
-          <div ui-view="main" flex layout-fill layout-align="top center">
-          </div>
-          <div flex></div>
+          <md-list ng-repeat="section in application.menu">
+            <md-subheader class="md-no-sticky">
+              <span>{{ section.title }}</span>
+            </md-subheader>
+            <md-list-item ui-sref="{{ item.state }}" class="nav-list-item" ng-if="item.isVisible && item.title != 'Sign Out'" ng-repeat="item in section.items">
+              <md-item-content layout="row" layout-align="start center" class="content">
+                <div class="inset">
+                  <md-icon ng-if="item.icon.md" md-svg-icon="{{ item.icon.text }}"></md-icon>
+                  <md-icon ui-sref="{{ item.state }}" ui-sref-active="active" ng-if="!item.icon.md" md-font-set="fa" style="font-size: 24px">&#xf1e3</md-icon>
+                </div>
+                <div class="inset">
+                  {{ item.title }}
+                </div>
+              </md-item-content>
+            </md-list-item>
+            <md-divider></md-divider>
+          </md-list>
+        </md-sidenav>
+        <md-sidenav layout="column" md-component-id="left" id="sidenav-left" md-is-locked-open="application.lockLeft && $mdMedia('gt-sm')">
+          <md-list ng-repeat="section in application.menu">
+            <md-subheader class="md-no-sticky">
+              <span>{{ section.title }}</span>
+            </md-subheader>
+            <md-list-item ui-sref="{{ item.state }}" class="nav-list-item" ui-sref-active="active"
+                          ng-if="item.isVisible && item.title != 'Sign Out'" ng-repeat="item in section.items">
+              <md-item-content layout="row" layout-align="start center" class="content">
+                <div class="inset">
+                  <md-icon ui-sref="{{ item.state }}" ui-sref-active="active" ng-if="item.icon.md" md-svg-icon="{{ item.icon.text }}"></md-icon>
+                  <md-icon ui-sref="{{ item.state }}" ui-sref-active="active" ng-if="!item.icon.md" md-font-set="fa" style="font-size: 24px;">&#xf1e3</md-icon>
+                </div>
+                <div class="inset">
+                  {{ item.title }}
+                </div>
+              </md-item-content>
+            </md-list-item>
+            <md-divider></md-divider>
+          </md-list>
+        </md-sidenav>
+      </div>
+      <div layout="column" flex>
+        <md-content layout="column" flex class="md-padding" ui-view="main">
         </md-content>
-      </section>
+      </div>
     </div>
 
     <!--&lt;!&ndash; Google Analytics: change UA-XXXXX-X to be your site's ID &ndash;&gt;-->
@@ -218,6 +234,10 @@
         <script src="src/acts/controllers/actinfo.js"></script>
         <script src="src/events/controllers/eventinfo.js"></script>
         <script src="src/common/services/currencyapiservice.js"></script>
+        <script src="src/venues/controllers/editvenue.js"></script>
+        <script src="src/acts/services/actfactory.js"></script>
+        <script src="src/events/filters/cityfilter.js"></script>
+        <script src="src/events/filters/daterangefilter.js"></script>
         <!-- endbuild -->
 </body>
 </html>

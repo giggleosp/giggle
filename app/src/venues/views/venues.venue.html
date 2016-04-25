@@ -33,7 +33,7 @@
           <md-icon style="color: #EEEEEE" md-svg-icon="more_vert"></md-icon>
         </md-button>
         <md-button class="md-raised" ng-if="vm.user && !vm.userVenue.admin">{{ vm.user.following ? 'Unfollow' : 'Follow' }}</md-button>
-        <md-button class="md-raised" ng-if="vm.userVenue.admin">Edit</md-button>
+        <md-button class="md-raised" ng-if="vm.userVenue.admin" ng-click="vm.showEditVenueDialog($event);">Edit</md-button>
       </div>
     </div>
   </div>

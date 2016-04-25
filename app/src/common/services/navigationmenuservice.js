@@ -80,7 +80,7 @@ function navigationMenuService() {
             },
             {
               title: "Local",
-              state: "main",
+              state: "events.local",
               icon: {
                 text: "location_on",
                 md: true
@@ -89,7 +89,7 @@ function navigationMenuService() {
             },
             {
               title: "Music",
-              state: "main",
+              state: "events.music",
               icon: {
                 text: "music_note",
                 md: true
@@ -98,7 +98,7 @@ function navigationMenuService() {
             },
             {
               title: "Sports",
-              state: "main",
+              state: "events.sports",
               icon: {
                 text: "fa fa-futbol-o",
                 md: false
@@ -107,7 +107,7 @@ function navigationMenuService() {
             },
             {
               title: "Theatre",
-              state: "main",
+              state: "events.theatre",
               icon: {
                 text: "theaters",
                 md: true
@@ -116,7 +116,7 @@ function navigationMenuService() {
             },
             {
               title: "Comedy",
-              state: "main",
+              state: "events.comedy",
               icon: {
                 text: "tag_faces",
                 md: true
@@ -125,7 +125,7 @@ function navigationMenuService() {
             },
             {
               title: "Festivals",
-              state: "main",
+              state: "events.festivals",
               icon: {
                 text: "library_music",
                 md: true
@@ -139,7 +139,7 @@ function navigationMenuService() {
           items: [
             {
               title: "All",
-              state: "acts",
+              state: "acts.all",
               icon: {
                 text: "local_play",
                 md: true
@@ -148,7 +148,7 @@ function navigationMenuService() {
             },
             {
               title: "Local",
-              state: "main",
+              state: "acts.local",
               icon: {
                 text: "location_on",
                 md: true
@@ -157,7 +157,7 @@ function navigationMenuService() {
             },
             {
               title: "Music",
-              state: "main",
+              state: "acts.music",
               icon: {
                 text: "music_note",
                 md: true
@@ -166,16 +166,16 @@ function navigationMenuService() {
             },
             {
               title: "Sports",
-              state: "main",
+              state: "acts.sports",
               icon: {
-                text: "fa fa-futbol-o",
+                text: "football",
                 md: false
               },
               isVisible: true
             },
             {
               title: "Theatre",
-              state: "main",
+              state: "acts.theatre",
               icon: {
                 text: "theaters",
                 md: true
@@ -184,18 +184,9 @@ function navigationMenuService() {
             },
             {
               title: "Comedy",
-              state: "main",
+              state: "acts.comedy",
               icon: {
                 text: "tag_faces",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Festivals",
-              state: "main",
-              icon: {
-                text: "library_music",
                 md: true
               },
               isVisible: true
@@ -216,7 +207,7 @@ function navigationMenuService() {
             },
             {
               title: "Local",
-              state: "main",
+              state: "venues.local",
               icon: {
                 text: "location_on",
                 md: true
@@ -225,7 +216,7 @@ function navigationMenuService() {
             },
             {
               title: "Bars",
-              state: "main",
+              state: "venues.bars",
               icon: {
                 text: "local_bar",
                 md: true
@@ -234,7 +225,7 @@ function navigationMenuService() {
             },
             {
               title: "Music",
-              state: "main",
+              state: "venues.music",
               icon: {
                 text: "music_note",
                 md: true
@@ -243,7 +234,7 @@ function navigationMenuService() {
             },
             {
               title: "Sports",
-              state: "main",
+              state: "venues.sports",
               icon: {
                 text: "fa fa-futbol-o",
                 md: false
@@ -252,89 +243,12 @@ function navigationMenuService() {
             },
             {
               title: "Theatre",
-              state: "main",
+              state: "venues.theatre",
               icon: {
                 text: "theaters",
                 md: true
               },
               isVisible: true
-            }
-          ]
-        }
-      ];
-    },
-    getMobileMenuItems: function getMobileMenuItems(isLoggedIn) {
-      return [
-        {
-          title: "General",
-          items: [
-            {
-              title: "Home",
-              state: "main",
-              icon: {
-                text: "home",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Events",
-              state: "events.recommended",
-              icon: {
-                text: "event",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Acts",
-              state: "acts",
-              icon: {
-                text: "local_play",
-                md: true
-              },
-              isVisible: true
-            },
-            {
-              title: "Venues",
-              state: "venues.recommended",
-              icon: {
-                text: "local_bar",
-                md: true
-              },
-              isVisible: true
-            }
-          ]
-        },
-        {
-          title: "Account",
-          items: [
-            {
-              title: "Sign In",
-              state: "#/sign-in",
-              icon: {
-                text: "person",
-                md: true
-              },
-              isVisible: !isLoggedIn
-            },
-            {
-              title: "Sign Up",
-              state: "#/sign-up",
-              icon: {
-                text: "person_add",
-                md: true
-              },
-              isVisible: !isLoggedIn
-            },
-            {
-              title: "Log Out",
-              state: "main",
-              icon: {
-                text: "person_outline",
-                md: true
-              },
-              isVisible: isLoggedIn
             }
           ]
         }

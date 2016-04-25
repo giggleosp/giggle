@@ -1,10 +1,26 @@
-<div layout="row">
-  <div flex></div>
+<div layout="row" layout-align="center start" layout-padding>
+  <md-chips ng-model="vm.selectedCities" md-autocomplete-snap md-require-match="true">
+    <md-autocomplete
+      md-selected-item="vm.selectedCity"
+      md-search-text="vm.citySearchText"
+      md-selected-item-change="vm.setNumberOfCardsPerRow()"
+      md-items="city in vm.cities | filter: vm.citySearchText"
+      md-item-text="city.name"
+      placeholder="Location(s)">
+      <span md-highlight-text="ctrl.citySearchText">{{city.name}} ({{ city.county.name }}, {{ city.county.country.niceName }})</span>
+    </md-autocomplete>
+    <md-chip-template>
+      <strong>{{$chip.name}}</strong>
+    </md-chip-template>
+  </md-chips>
+  <md-datepicker ng-model="vm.startDate" ng-change="vm.setNumberOfCardsPerRow()" style="margin-top: 13px;margin-right:5px;" md-placeholder="Date From"></md-datepicker>
+  <md-datepicker ng-disabled="!vm.startDate" md-min-date="vm.startDate" ng-change="vm.setNumberOfCardsPerRow()" ng-model="vm.endDate" style="margin-top: 13px;margin-right:5px;" md-placeholder="Date To"></md-datepicker>
+</div>
+<div layout="row" layout-align="center center">
   <div class="cards-container">
-    <div layout="row" layout-sm="column" layout-xs="column" class="cards-row" layout-fill
-         layout-align="start center" ng-repeat="row in (vm.events.length/vm.cardsPerRow | array)">
+    <div layout="row" layout-sm="column" layout-xs="column" class="cards-row" layout-fill ng-repeat="row in (vm.events.length/vm.cardsPerRow | array)">
       <md-card md-ink-ripple class="event" ui-sref="events.event({id: '{{event.id}}'})"
-               ng-repeat="event in vm.events.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow) | orderBy:'name'"
+               ng-repeat="event in vm.events.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow) | orderBy:'startDate' | dateRangeFilter:vm.startDate:vm.endDate | cityFilter: vm.selectedCities"
                ng-mouseover="hover = true" ng-mouseleave="hover = false" ng-class="{'md-whiteframe-6dp':hover, 'md-whiteframe-1dp':!hover}">
         <img ng-src="{{ event.type.name == 'Festival' ? event.venue.imageUri : event.act.imageUri }}" alt="" class="md-card-image">
         <md-card-title>
@@ -27,7 +43,5 @@
         </md-card-content>
       </md-card>
     </div>
-  </div>
-  <div flex>
   </div>
 </div>

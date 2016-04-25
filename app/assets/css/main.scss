@@ -13,7 +13,7 @@ body {
   height: 100%;
   width: 100%;
   font-family: $primary-font;
-  font-weight: 300;
+  //font-weight: 300;
   margin:0;
   padding:0;
 }
@@ -99,8 +99,12 @@ md-icon {
   height:40px;
 }
 
-.md-dialog-content, md-datepicker, md-dialog-actions {
+.md-dialog-content, md-dialog-actions {
   background-color: white;
+}
+
+md-datepicker.white {
+  background: white;
 }
 
 .act-autocomplete, .venue-autocomplete {
@@ -188,15 +192,14 @@ a.nice-link {
 .page-container {
   margin: 0 auto;
   .backdrop-container {
+    width: 948px;
+    @media (max-width: 959px) {
+      width: 100vw;
+    }
     img {
+      width: inherit;
       margin-top:-25px;
       border-radius: 5px;
-      @media (min-width: 960px) {
-        width: 948px;
-      }
-      @media (max-width: 959px) {
-        width: 100vw;
-      }
     }
   }
   .backdrop-tools {
@@ -235,14 +238,14 @@ a.nice-link {
   &.event {
     .backdrop-tools {
       .title {
-        margin-top:34px;
+        margin-top:24px;
       }
     }
   }
   &.act, &.venue {
     .backdrop-tools {
       .title {
-        margin-top:36px;
+        margin-top:24px;
       }
     }
   }
@@ -254,4 +257,8 @@ md-card[md-ink-ripple] {
 
 *[ui-sref] {
   cursor: pointer;
+}
+
+.active {
+  color: $accent-color;
 }

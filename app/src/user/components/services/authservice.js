@@ -116,13 +116,13 @@ angular.module('app.services')
       currentUser = null;
 
       switch (status) {
-        case 401, 403, -1:
+        case 401:case 403:case -1:
           notificationText = "Incorrect username/password.";
           break;
         case 500:
           notificationText = "Internal server error.";
           break;
-        case 102, 400, 503:
+        case 102:case 503:case 400:
           notificationText = "There was a problem connecting to the server.";
           break;
         case 409:

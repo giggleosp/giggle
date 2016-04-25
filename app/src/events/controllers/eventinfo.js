@@ -29,6 +29,9 @@ function EventInfoCtrl(authService, $mdDialog, event, googleMapsApiService, uiGm
 
   // viewmodel variables
   vm.event = event;
+
+  $log.debug(event);
+  
   vm.readMore = false;
   vm.refreshMap = false;
 
@@ -38,7 +41,7 @@ function EventInfoCtrl(authService, $mdDialog, event, googleMapsApiService, uiGm
     if (authService.isLoggedIn()) {
       vm.currentUser = authService.getCurrentUser();
 
-      if (vm.currentUser.country.id != vm.event.venue.country.id) {
+      if (vm.currentUser.country && vm.currentUser.country.id != vm.event.venue.country.id) {
         convertPriceToUserLocale();
       }
 

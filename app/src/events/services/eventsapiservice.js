@@ -19,9 +19,10 @@ function eventsApiService($http) {
     getEvents: getEvents,
     getEventWithId: getEventWithId,
     getEventUser: getEventUser,
-    getRecommendedEvents: getRecommendedEvents,
     getEventTypes: getEventTypes,
-    addEvent: addEvent
+    addEvent: addEvent,
+    createEventUser: createEventUser,
+    updateEventUser: updateEventUser
   };
 
   function getEvents() {
@@ -33,18 +34,12 @@ function eventsApiService($http) {
   }
 
   function getEventUser(eventId, userId) {
-    return $http.get(baseUrl + "event/"+eventId+"/user/"+userId);
-  }
-
-  // TODO: Change to a GET request
-  function getRecommendedEvents(user) {
     return $http({
-      method: "POST",
-      url: baseUrl + "recommended",
-      data: angular.toJson(user),
-      dataType: "json",
-      headers: {
-        "Content-Type": "application/json"
+      url: baseUrl + "event_user",
+      method: "GET",
+      params: {
+        event: eventId,
+        user: userId
       }
     });
   }
@@ -71,6 +66,32 @@ function eventsApiService($http) {
       data: { event: event, user: user, photo: photo },
       headers: {
         "Content-Type": undefined
+      }
+    });
+  }
+
+  function createEventUser(eventUser) {
+    return $http({
+      url: baseUrl + "event_user/create",
+      method: "POST",
+      data: angular.toJson(eventUser),
+      dataType: "json",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  function updateEventUser(eventUser) {
+    return $http({
+      url: baseUrl + "event_user/update",
+      method: "PUT",
+      data: angular.toJson(eventUser),
+      dataType: "json",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       }
     });
   }

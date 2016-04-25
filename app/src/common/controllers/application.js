@@ -45,7 +45,6 @@ function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS
 
   function setMenuItems () {
     vm.menu = navigationMenuService.getMenuItems(vm.isLoggedIn);
-    vm.mobileMenu = navigationMenuService.getMobileMenuItems(vm.isLoggedIn);
   }
 
   function editAccount(event) {

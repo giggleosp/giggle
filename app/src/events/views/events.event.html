@@ -21,9 +21,8 @@
         <md-button class="md-icon-button">
           <md-icon style="color: #EEEEEE" md-svg-icon="more_vert"></md-icon>
         </md-button>
-        <md-button ng-click="vm.currentUser.attending = !vm.currentUser.attending" class="md-raised"
-                   ng-if="vm.currentUser && !vm.eventUser.admin">{{ vm.currentUser.attending ? 'Not Going' : 'Going' }}</md-button>
-        <md-button ng-click="vm.currentUser.following = !vm.currentUser.following" class="md-raised" ng-if="vm.currentUser && !vm.eventUser.admin">{{ vm.currentUser.following ? 'Unfollow' : 'Follow' }}</md-button>
+        <md-button ng-click="vm.clickAttending(vm.eventUser)" class="md-raised" ng-if="vm.currentUser && !vm.eventUser.admin">{{ vm.eventUser.attending ? 'Not Going' : 'Going' }}</md-button>
+        <md-button ng-click="vm.eventUser.following = !vm.eventUser.following" class="md-raised" ng-if="vm.currentUser && !vm.eventUser.admin">{{ vm.eventUser.following ? 'Unfollow' : 'Follow' }}</md-button>
         <md-button class="md-raised" ng-if="vm.eventUser.admin">Edit</md-button>
       </div>
     </div>

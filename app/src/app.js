@@ -15,6 +15,7 @@ angular
     'app.filters',
     'app.directives',
     'app.constants',
+    'app.factories',
     'ngMaterial',
     'ngMessages',
     'ngAnimate',
@@ -51,7 +52,8 @@ angular
   })
   .config(function ($mdIconProvider) {
     $mdIconProvider
-      .iconSet('../assets/svg/icons.svg', 24)
+      .defaultFontSet('fa')
+      .defaultIconSet('../assets/svg/icons.svg', 24)
       .icon('menu', '../assets/svg/menu.svg', 24)
       .icon('more_vert', '../assets/svg/more_vert.svg', 24)
       .icon('home', '../assets/svg/home.svg', 24)
@@ -79,6 +81,12 @@ angular
       .icon('location_searching', '../assets/svg/location_searching.svg', 24)
       .icon('add_a_photo', '../assets/svg/add_a_photo.svg', 24)
       .icon('euro_symbol', '../assets/svg/euro_symbol.svg', 24)
+      .icon('phone', '../assets/svg/phone.svg', 24)
+      .icon('email', '../assets/svg/email.svg', 24)
+      .icon('language', '../assets/svg/language.svg', 24)
+      .icon('facebook', '../assets/svg/facebook.svg', 24)
+      .icon('twitter', '../assets/svg/twitter.svg', 24)
+      .icon('google_plus', '../assets/svg/google_plus.svg', 24)
   })
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -142,6 +150,36 @@ angular
         controller: 'VenuesCtrl',
         controllerAs: 'vm'
       })
+      .state('venues.sports', {
+        url: '/sports',
+        templateUrl: 'src/venues/views/venues.sports.html',
+        controller: 'VenuesCtrl',
+        controllerAs: 'vm'
+      })
+      .state('venues.local', {
+        url: '/local',
+        templateUrl: 'src/venues/views/venues.local.html',
+        controller: 'VenuesCtrl',
+        controllerAs: 'vm'
+      })
+      .state('venues.bars', {
+        url: '/bars',
+        templateUrl: 'src/venues/views/venues.bars.html',
+        controller: 'VenuesCtrl',
+        controllerAs: 'vm'
+      })
+      .state('venues.music', {
+        url: '/music',
+        templateUrl: 'src/venues/views/venues.music.html',
+        controller: 'VenuesCtrl',
+        controllerAs: 'vm'
+      })
+      .state('venues.theatre', {
+        url: '/theatre',
+        templateUrl: 'src/venues/views/venues.theatre.html',
+        controller: 'VenuesCtrl',
+        controllerAs: 'vm'
+      })
       .state('venues.favourites', {
         url: '/favourites',
         templateUrl: 'src/venues/views/venues.favourites.html',
@@ -179,6 +217,36 @@ angular
       .state('acts.recommended', {
         url: '/recommended',
         templateUrl: 'src/acts/views/acts.recommended.html',
+        controller: 'ActsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('acts.local', {
+        url: '/local',
+        templateUrl: 'src/acts/views/acts.local.html',
+        controller: 'ActsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('acts.comedy', {
+        url: '/comedy',
+        templateUrl: 'src/acts/views/acts.comedy.html',
+        controller: 'ActsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('acts.music', {
+        url: '/music',
+        templateUrl: 'src/acts/views/acts.music.html',
+        controller: 'ActsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('acts.sports', {
+        url: '/sports',
+        templateUrl: 'src/acts/views/acts.sports.html',
+        controller: 'ActsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('acts.theatre', {
+        url: '/theatre',
+        templateUrl: 'src/acts/views/acts.theatre.html',
         controller: 'ActsCtrl',
         controllerAs: 'vm'
       })
@@ -222,6 +290,42 @@ angular
         controller: 'RecommendedEventsCtrl',
         controllerAs: 'vm'
       })
+      .state('events.local', {
+        url: '/local',
+        templateUrl: 'src/events/views/events.local.html',
+        controller: 'RecommendedEventsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('events.music', {
+        url: '/music',
+        templateUrl: 'src/events/views/events.music.html',
+        controller: 'RecommendedEventsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('events.sports', {
+        url: '/sports',
+        templateUrl: 'src/events/views/events.sports.html',
+        controller: 'RecommendedEventsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('events.theatre', {
+        url: '/theatre',
+        templateUrl: 'src/events/views/events.theatre.html',
+        controller: 'RecommendedEventsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('events.comedy', {
+        url: '/comedy',
+        templateUrl: 'src/events/views/events.comedy.html',
+        controller: 'RecommendedEventsCtrl',
+        controllerAs: 'vm'
+      })
+      .state('events.festivals', {
+        url: '/festivals',
+        templateUrl: 'src/events/views/events.festivals.html',
+        controller: 'RecommendedEventsCtrl',
+        controllerAs: 'vm'
+      })
       .state('events.following', {
         url: '/following',
         views: {
@@ -238,12 +342,6 @@ angular
         controller: 'EventCtrl',
         controllerAs: 'vm'
       });
-  })
-  .config(function($locationProvider) {
-    $locationProvider.html5Mode({
-      enabled: false,
-      requireBase: true
-    });
   })
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({

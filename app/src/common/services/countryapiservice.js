@@ -15,28 +15,35 @@ angular.module('app.services')
   ];
 
   function countryApiService ($http) {
-    var baseUrl = "http://localhost:8080/countries";
+    var baseUrl = "http://localhost:8080/";
 
     return {
       getCountries: function () {
         return $http({
           method: "GET",
           dataType: "json",
-          url: baseUrl + "/"
+          url: baseUrl + "countries"
         });
       },
       getCountiesForCountry: function (id) {
         return $http({
           method: "GET",
           dataType: "json",
-          url: baseUrl + "/" + id + "/counties"
+          url: baseUrl + "countries" + id + "/counties"
         });
       },
       getCitiesForCounty: function (id) {
         return $http({
           method: "GET",
           dataType: "json",
-          url: baseUrl + "/counties/" + id + "/cities"
+          url: baseUrl + "countries/counties/" + id + "/cities"
+        });
+      },
+      getCities: function getCountries() {
+        return $http({
+          method: "GET",
+          dataType: "json",
+          url: baseUrl + "cities"
         });
       }
     }

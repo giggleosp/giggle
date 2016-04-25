@@ -76,21 +76,14 @@ function AddVenueCtrl($scope, $state, authService, venueApiService, countryApiSe
 
   function save(venue) {
    if ($scope.addVenueForm.$valid) {
-     var user = authService.getCurrentUser();
      vm.showProgress = true;
+     var user = authService.getCurrentUser();
      venueApiService.createVenue(venue, user)
-       .then(function (response) {
+       .then(function () {
          vm.showProgress = false;
-         console.log(response);
-         if (response.status === 200) {
-           $mdDialog.hide();
-
-           // go to newly created venues
-           $state.go('venues.venue', {id: response.data.id });
-
-         } else {
-           // TODO: Handle error
-         }
+         $mdDialog.hide();
+       }, function () {
+         
        });
    }
   }
