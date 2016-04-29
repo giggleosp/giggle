@@ -26,7 +26,6 @@ angular
     'ui.router',
     'ngSanitize',
     'angularMoment',
-    'ngFileUpload',
     'ngLodash',
     'uiGmapgoogle-maps'
   ])
@@ -210,7 +209,7 @@ angular
         controllerAs: 'vm'
       })
       .state('acts', {
-        //abstract: true,
+        abstract: true,
         url: '/acts',
         views: {
           tabs: {
@@ -373,7 +372,7 @@ angular
   .run(['$rootScope', '$cookies', '$location', '$state', '$stateParams', '$http', function ($rootScope, $cookies, $location, $state, $stateParams, $http) {
 
     $rootScope.globals = $cookies.get('globals') || {};
-    if ($rootScope.globals.currentUser) {
+    if ($rootScope.globals && $rootScope.globals.currentUser) {
       $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authData;
     }
 
@@ -381,11 +380,11 @@ angular
       $rootScope.$state = $state;
       $rootScope.$stateParams = $stateParams;
 
-      if (toState.access === 'private' && !$rootScope.globals.currentUser) {
+      if (toState.access === 'private' && !$rootScope.globals) {
         // anonymous user trying to access a private page, prevent
         event.preventDefault();
         $state.go("sign-in"); // go to login page
-      } else if (toState.access === 'anon' && $rootScope.globals.currentUser) {
+      } else if (toState.access === 'anon' && $rootScope.globals) {
         // authorised user trying to access page for anonymous users, such as login
         event.preventDefault();
       }

@@ -101,9 +101,7 @@ function authService($rootScope, $http, AUTH_EVENTS, $location, $cookies, notifi
 
   function getUsername() {
     $rootScope.globals = $cookies.getObject('globals') || null;
-
-    $log.info($rootScope.globals);
-
+    
     return $rootScope.globals ? $rootScope.globals.currentUser.username : null;
   }
 

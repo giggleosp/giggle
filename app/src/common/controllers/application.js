@@ -43,7 +43,7 @@ function ApplicationCtrl($scope, authService, navigationMenuService, AUTH_EVENTS
       authService.setCredentialsFromCookieStore();
       authService.getUserWithUsername(username)
         .then(function (response) {
-          $log.debug(response);
+          
         });
     }
   }

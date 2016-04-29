@@ -27,9 +27,8 @@ function RecommendedVenuesCtrl($scope, $timeout, $state, $mdDialog, venueApiServ
     venueApiService.getVenues()
       .then(function (response) {
         vm.venues = response.data;
-        console.log(response);
       }, function (response) {
-
+        console.log(response);
       });
   }
 

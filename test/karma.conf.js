@@ -47,6 +47,7 @@ module.exports = function(config) {
       'bower_components/angular-google-maps/dist/angular-google-maps.js',
       'bower_components/sprintf/src/sprintf.js',
       'bower_components/angular-ellipsis/src/angular-ellipsis.js',
+      'bower_components/angular-ui-router.stateHelper/statehelper.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

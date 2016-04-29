@@ -19,10 +19,16 @@ function MyVenuesCtrl($scope, $timeout, $state, $mdDialog, venueApiService, auth
 
   var user = authService.getCurrentUser();
 
-  getVenues();
   vm.cardsPerRow = layoutService.getNumberOfCardsPerRow();
+
+  init();
+
   vm.gotoVenue = gotoVenue;
   vm.addNewVenue = addNewVenue;
+
+  function init() {
+    getVenues();
+  }
 
   function getVenues() {
     venueApiService.getVenuesManagedByUser(user.id)

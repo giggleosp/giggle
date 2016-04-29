@@ -9,7 +9,7 @@
     <md-dialog-content>
       <div class="md-dialog-content" layout="row" flex layout-align="space-around center">
         <div layout-gt-xs="column" layout-align="center center">
-          <div class="profile-picture" ng-click="vm.moveToState('acts.act', vm.event.act.id)" style="cursor: pointer">
+          <div class="profile-picture" ui-sref="acts.act({id: vm.event.act.id })" style="cursor: pointer">
             <img ng-src="{{ vm.event.act.imageUri || '../../assets/img/venue-card.png' }}" alt="Profile Picture" class="md-whiteframe-5dp">
           </div>
           <h3 ng-click="vm.moveToState('acts.act', vm.event.act.id)" style="cursor: pointer">
@@ -17,7 +17,7 @@
           </h3>
         </div>
         <div layout="column" layout-align="center center">
-          <div class="profile-picture" ng-click="vm.moveToState('venues.venue', vm.event.venue.id)" style="cursor: pointer">
+          <div class="profile-picture" ui-sref="venues.venue({id: vm.event.venue.id })" style="cursor: pointer">
             <img ng-src="{{ vm.event.venue.imageUri || '../../assets/img/venue-card.png' }}" alt="Profile Picture" class="md-whiteframe-5dp">
           </div>
           <h3 ng-click="vm.moveToState('venues.venue', vm.event.venue.id)" style="cursor: pointer">

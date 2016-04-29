@@ -18,8 +18,8 @@ function RecommendedActsCtrl($scope, $timeout, $state, $mdDialog, actApiService,
   var vm = this;
 
   vm.currentUser = authService.getCurrentUser();
-
   vm.cardsPerRow = layoutService.getNumberOfCardsPerRow();
+  
   vm.gotoAct = gotoAct;
   vm.createActSubTitle = createActSubtitle;
 

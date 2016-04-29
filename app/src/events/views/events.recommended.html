@@ -19,9 +19,9 @@
 <div layout="row" layout-align="center center">
   <div class="cards-container">
     <div layout="row" layout-sm="column" layout-xs="column" class="cards-row" layout-fill ng-repeat="row in (vm.events.length/vm.cardsPerRow | array)">
-      <md-card md-ink-ripple class="event" ui-sref="events.event({id: '{{event.id}}'})"
+      <md-card md-ink-ripple class="event" ui-sref="^.event({id: '{{event.id}}'})"
                ng-repeat="event in vm.events.slice(vm.cardsPerRow*$index, vm.cardsPerRow*$index + vm.cardsPerRow) | orderBy:'startDate' | dateRangeFilter:vm.startDate:vm.endDate | cityFilter: vm.selectedCities"
-               ng-mouseover="hover = true" ng-mouseleave="hover = false" ng-class="{'md-whiteframe-6dp':hover, 'md-whiteframe-1dp':!hover}">
+               ng-mouseover="hover = true" ng-mouseleave="hover = false" ng-class="{'md-whiteframe-6dp':hover, 'md-whiteframe-2dp':!hover}">
         <img ng-src="{{ event.type.name == 'Festival' ? event.venue.imageUri : event.act.imageUri }}" alt="" class="md-card-image">
         <md-card-title>
           <md-card-title-text>
